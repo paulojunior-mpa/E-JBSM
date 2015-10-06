@@ -557,20 +557,8 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $topico_para = htmlspecialchars($_POST["topico_para"]);
             //
 
-            $sql = "select max(id) as maxid from ejbsm_batepapo_mensagem";
-            $r = mysqli_fetch_object($link->query($sql));
-            $maxid = $r->maxid + 1;
-
-            $nome_anexo = "Sem anexo";
-            if ($_FILES["anexo"]) {
-                $ext = $_FILES['anexo']['name'];
-                $ext = end(explode(".", $ext));
-                $nome_anexo = $user_login . $maxid . '.' . $ext;
-                move_uploaded_file($_FILES['anexo']['tmp_name'], '../arquivos_batepapo_anexo/' . $nome_anexo);
-            }
-
-            $sql = "insert into ejbsm_batepapo_mensagem(data, hora, login, para, mensagem, anexo) values("
-                . "curdate(), curtime(), '$user_login', '$topico_para', '$topico_mensagem', '$nome_anexo');";
+            $sql = "insert into ejbsm_batepapo_mensagem(data, hora, login, para, mensagem) values("
+                . "curdate(), curtime(), '$user_login', '$topico_para', '$topico_mensagem');";
             $result = $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_bate-papo.php#primeiro_topico');

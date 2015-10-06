@@ -4,6 +4,8 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta charset="utf-8">
     <title>E-JBSM</title>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">

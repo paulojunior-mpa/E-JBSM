@@ -73,9 +73,7 @@ if (isset($_GET["operacao"])) {
                                             }
                                         }
                                     }
-                                    $json = json_encode(array(
-                                        'distancia' => $distancia,
-                                        'planta' => $planta));
+                                    $json = json_encode($planta);
                                     echo $json;
                                     exit;
                                 } else {
@@ -101,7 +99,7 @@ if (isset($_GET["operacao"])) {
                 if (isset($_GET['login']) AND isset($_GET['senha'])) {
                     if (!empty($_GET["login"]) AND !empty($_GET["senha"])) {
                         $login = htmlspecialchars($_GET['login']);
-                        $senha = htmlspecialchars($_GET['senha']);
+                        $senha = sha1(htmlspecialchars($_GET['senha']));
 
                         $sql = "select * from ejbsm_usuario where login = '$login'";
                         $result = $link->query($sql) or die(mysqli_error($link));

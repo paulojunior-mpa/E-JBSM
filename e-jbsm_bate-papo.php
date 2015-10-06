@@ -39,9 +39,6 @@ if (isset($_GET["inicio_consulta"])) {
                     </select>
                 </div>
                 <div class="col-md-4"><br>
-                    <input type="file" name="anexo" class="form-control">
-                </div>
-                <div class="col-md-4"><br>
                     <button type="submit" class="btn btn-success btn-block" name="opcao" value="Enviar mensagem">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar
@@ -72,7 +69,6 @@ while ($r = mysqli_fetch_object($qr)) {
             <font color="green"><b>Dia </b></font><? echo $r->data; ?>
             <font color="green"><b>as </b></font><? echo $r->hora; ?>
             <font color="green"><b>ID </b></font><? echo $r->id ?>
-            <font color="green"><b>Anexo:</b></font> <a href="arquivos_batepapo_anexo/<?= $r->anexo?>" target="_blank"><?= $r->anexo?></a>
             <table class="table">
                 <tr>
                     <td style="text-align: center; width: 7%;">
