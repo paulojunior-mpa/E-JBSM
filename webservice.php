@@ -159,13 +159,13 @@ if (isset($_GET["operacao"])) {
                                 }
                             }
                             if ($i AND count($arrayPlantas) < 3) {
-                                $arrayPlantas->append($planta);
+                                //unset($planta->img);
+                                if(!empty($planta))
+                                    $arrayPlantas->append($planta);
                             }
                         }
-                        echo json_encode(array(
-                            'usuario' => $usuario,
-                            'plantas' => $arrayPlantas
-                        ));
+                        echo json_encode($arrayPlantas);
+                        exit;
                     } else {
                         echo "USUARIO null.";
                     }
