@@ -127,7 +127,7 @@ if (isset($_GET["operacao"])) {
 
                         $usuario = htmlspecialchars($_GET['usuario']);
 
-                        $arrayPlantas = new ArrayObject();
+                        $arrayPlantas = array();
 
 
                         $sql = "select * from ejbsm_imei where login = '$usuario' OR imei = '$usuario'";
@@ -151,7 +151,7 @@ if (isset($_GET["operacao"])) {
                             $planta = mysqli_fetch_object($result2);
                             $sql2 = "select * from ejbsm_planta where especie = '$planta->especie' and familia = '$planta->familia' and genero = '$planta->genero' and id != '$planta->id' limit 1";
                             $result2 = $link->query($sql2);
-                            $planta = mysqli_fetch_object($result2);
+                            $planta = mysqli_fetch_array($result2);
                             $i = true;
                             foreach ($arrayPlantas as $p) {
                                 if ($p == $planta) {
@@ -161,7 +161,7 @@ if (isset($_GET["operacao"])) {
                             if ($i AND count($arrayPlantas) < 3) {
                                 //unset($planta->img);
                                 if(!empty($planta))
-                                    $arrayPlantas->append($planta);
+                                    array_push($arrayPlantas, $planta);
                             }
                         }
                         echo json_encode($arrayPlantas);
