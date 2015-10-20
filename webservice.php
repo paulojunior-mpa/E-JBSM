@@ -35,7 +35,7 @@ if (isset($_GET["operacao"])) {
                                 $linha = mysqli_fetch_object($result);
                                 $id_imei_inserido = $linha->id_imei;
 
-                                $sql = "update ejbsm_planta set visualizada = (visualizada+1), ult_visualizada = now()";
+                                $sql = "update ejbsm_planta set visualizada = (visualizada+1), ult_visualizada = now() where id = $id";
                                 $link->query($sql);
                                 $sql = "select * from ejbsm_planta where id = $id";
                                 $result = $link->query($sql);
@@ -73,6 +73,7 @@ if (isset($_GET["operacao"])) {
                                             }
                                         }
                                     }
+                                    $planta->distancia = $distancia;
                                     $json = json_encode($planta);
                                     echo $json;
                                     exit;
@@ -159,7 +160,7 @@ if (isset($_GET["operacao"])) {
                                 }
                             }
                             if ($i AND count($arrayPlantas) < 3) {
-                                //unset($planta->img);
+                                unset($planta["img"]);
                                 if(!empty($planta))
                                     array_push($arrayPlantas, $planta);
                             }
