@@ -59,6 +59,27 @@ if (isset($_GET["operacao"])) {
                                             $sql = "update ejbsm_recomendacao set data = now(), id_planta = '$id' WHERE id_recomendacao = $menor_data->id_recomendacao";
                                             $link->query($sql);
                                         }
+                                    }else{
+
+                                        $array_p = array();
+                                        $sql = "select * from ejbsm_recomendacao WHERE id_imei = $id_imei_inserido";
+                                        $result = $link->query($sql);
+                                        while($p = mysqli_fetch_object($result)){
+                                            array_push($array_p, $p->id_planta);
+                                        }
+                                        $sql = "select * from ejbsm_planta where especie = '$planta->especie' and familia = '$planta->familia' and genero = '$planta->genero' and id not in(";
+                                        $i=count($array_p);
+                                        $j=1;
+                                        foreach($array_p as $p){
+                                            if($j == $i)
+                                                $sql.="$p";
+                                            else
+                                                $sql.="$p, ";
+                                            $j++;
+                                        }
+                                        $sql.=") limit 1";
+
+                                        $link->query($sql);
                                     }
                                     $distancia = "Indisponível";
                                     if(isset($_GET['lat'])){
@@ -145,6 +166,14 @@ if (isset($_GET["operacao"])) {
 
                         $sql = "select * from ejbsm_recomendacao WHERE id_imei = '$imei'";
                         $result = $link->query($sql);
+                        if(mysqli_num_rows($result) == 0){
+                            $sql = "select * from ejbsm_planta limit 5 ORDER by visualizada DESC";
+                            $r = $link->query($sql);
+                            while($lp = mysqli_fetch_object($r)){
+                                $sql = "insert into ejbsm_recomendacao(id_imei, id_planta, data) VALUES($imei, $lp->id, $now())";
+                                $link->query($sql);
+                            }
+                        }
                         while ($recomendacao = mysqli_fetch_object($result)) {
                             $sql2 = "select * from ejbsm_planta WHERE id = $recomendacao->id_planta";
                             $result2 = $link->query($sql2);
@@ -194,7 +223,6 @@ if (isset($_GET["operacao"])) {
                         }
                     }
                 }
-
                 $sql_final .= " 1 = 1;";
                 $i = true;
                 $result = $link->query($sql_final);
@@ -206,11 +234,9 @@ if (isset($_GET["operacao"])) {
                     }
                     if ($i) {
                         if (count($arrayPlantas) < 5) {
-                            $arrayPlantas->append($planta);
+                            array_push($arrayPlantas, $planta);
                         }else{
-                            echo json_encode(array(
-                                'plantas' => $arrayPlantas
-                            ));
+                            echo json_encode($arrayPlantas);
                             break;
                         }
                     }
