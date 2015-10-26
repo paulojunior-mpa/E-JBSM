@@ -15,22 +15,24 @@ include 'e-jbsm_cabecalho.php';
 <form action="webservice.php" method="get" target="_blank">
     <hr>
     <script src="js/mapa_sobre.js"></script>
-    ID<input type="text" name="id" value="20"><br>
-    USUARIO<input type="text" name="usuario" value="willian"><br>
+    Planta ID<input type="text" name="id" value="1"><br>
+    Login<input type="text" name="login" value="willian"><br>
+    Imei<input type="text" name="imei" value="123456" required>
     LAT<input type="text" name="lat" value="-29.6815435"><br>
     LONG<input type="text" name="long" value="-53.8074623"><br>
-    <input type="submit" name="operacao" value="id">
+    <input type="submit" name="operation" value="plant">
 </form>
 <form action="webservice.php" method="get" target="_blank">
     <hr>
     LOGIN<input type="text" name="login" value="willian"><br>
-    USUARIO<input type="text" name="senha" value="dc032056e839884d74910e1c442a7ee8f3434a38"><br>
-    <input type="submit" name="operacao" value="login">
+    USUARIO<input type="text" name="senha" value="f7huz3a6"><br>
+    <input type="submit" name="operation" value="login">
 </form>
 <form action="webservice.php" method="get" target="_blank">
     <hr>
-    USUARIO<input type="text" name="usuario" value="willian"><br>
-    <input type="submit" name="operacao" value="plantas">
+    Login<input type="text" name="user" value="willian"><br>
+    Imei<input type="text" name="imei" value="123456" required>
+    <input type="submit" name="operation" value="plants">
 </form>
 
 <form action="webservice.php" method="get" target="_blank">
