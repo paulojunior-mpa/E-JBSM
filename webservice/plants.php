@@ -74,8 +74,8 @@ if (isset($_GET['imei'])) {
 
         }
 
-        //$json = json_encode($array_plants);
-        //echo $json;
+        $json = json_encode($array_plants);
+        echo $json;
 
 
         //BUSCA DA TERCEIRA PLANTA POR PARTE DE OUTROS USUÁRIOS
