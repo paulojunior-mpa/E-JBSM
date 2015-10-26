@@ -71,9 +71,17 @@ if (isset($_GET['id'])) {
                         //se maior que o limite
                         if (mysqli_num_rows($result_list_recomendation) >= 20) {
 
+                            //seleciona planta mais antiga
+                            $sql = "SELECT * from ejbsm_recomendacao WHERE id_imei = $user_imei ORDER BY DATA ASC limit 1";
+                            $result = $link->query($sql) or die(mysqli_error($link));
+                            $r_a = mysqli_fetch_object($result);
+                            $r_a = $r_a->id_recomendacao;
+
+
                             //insere a planta visitada no lugar da mais antiga na lista
-                            $sql_update_list = "update ejbsm_recomendacao set id_planta = $plant_id, data = now() WHERE data in(SELECT * from ejbsm_recomendacao WHERE id_imei = $user_imei ORDER BY DATA ASC limit 1)";
-                            $link->query($sql_update_list);
+                            $sql_update_list = "update ejbsm_recomendacao set id_planta = $plant_id, data = now() WHERE id_recomendacao = $r_a";
+                            $link->query($sql_update_list) or die(mysqli_error($link));
+                            exit;
                         } else {
 
                             //insere a nova planta na lista

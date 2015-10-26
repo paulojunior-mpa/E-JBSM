@@ -106,9 +106,9 @@ if (isset($_GET['imei'])) {
 
         }
 
-        /*foreach($array_plants as $p){
+        foreach($array_plants as $p){
             echo "<br><a target='_blank' href='webservice.php?id=$p->id&login=willian&imei=123456&lat=-29.6815435&long=-53.8074623&operation=plant'>Id: $p->id Nome: $p->nome_popular</a>";
-        }*/
+        }
 
         $json = json_encode($array_plants);
         echo $json;
