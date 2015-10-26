@@ -39,7 +39,7 @@ if (isset($_GET['imei'])) {
 
         // plantas do perfil
         $sql = "select * from ejbsm_recomendacao where id_imei = $id_imei->id_imei";
-        $result = $link->query($sql);
+        $result = $link->query($sql) or die(mysqli_error($link));
 
 
         $i = 1;
@@ -74,11 +74,26 @@ if (isset($_GET['imei'])) {
 
         }
 
-        $json = json_encode($array_plants);
-        echo $json;
-
+        //$json = json_encode($array_plants);
+        //echo $json;
 
         //BUSCA DA TERCEIRA PLANTA POR PARTE DE OUTROS USUÁRIOS
-        $sql = "select * from ejbsm_planta";
+        foreach($array_plants as $p){
+            $list_not_use =$list_id_plants_base.", $p->id";
+        }
+
+        //selecionar uma planta
+
+        //selecionar todos os usuários que possuem perfil de recomendação
+        $sql = "select * from ejbsm_imei where id_imei in(select id_imei from ejbsm_recomendacao)";
+        $result = $link->query($sql);
+        while($users_r = mysqli_fetch_object($result)){
+
+            //seleciona a lista de recomendação do usuário
+            $sql = "";
+        }
+
+
+        //$sql = "select * from ejbsm_planta";
     }
 }

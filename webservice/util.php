@@ -72,10 +72,12 @@ function checkImei($link, $user_login, $user_imei){
         $sql = "select * from ejbsm_planta ORDER BY visualizada DESC limit 3";
         $result = $link->query($sql) or die(mysqli_error($link));
         while($plant = mysqli_fetch_object($result)){
-            $sql_insert = "insert into ejbsm_recomendacao(id_imei, id_planta, data) values('$id_imei', '$plant->id', now());";
-            $link->query($sql_insert) or die(mysqli_error($link));
+
+            $plant_id = $plant->id;
+
+            $sql = "insert into ejbsm_recomendacao(id_imei, id_planta, data) values($id_imei, $plant_id, now())";
+            $link->query($sql) or die(mysqli_error($link));
         }
-        exit;
     }
 
     return;
