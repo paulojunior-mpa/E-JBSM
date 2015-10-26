@@ -16,15 +16,12 @@ if (isset($_GET['login']) AND isset($_GET['senha'])) {
             if ($usuario->senha == $senha){
                 $json = json_encode($usuario);
                 echo $json;
-            } else {
-                echo "SENHA incorreta.";
+                exit;
             }
-        } else {
-            echo "LOGIN incorreto.";
         }
-    } else {
-        echo "LOGIN SENHA null.";
     }
-} else {
-    echo "LOGIN SENHA no";
 }
+$user->login = null;
+$user->senha = null;
+$json = json_encode($user);
+echo $json;

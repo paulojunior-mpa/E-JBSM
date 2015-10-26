@@ -23,7 +23,6 @@ function checkImei($link, $user_login, $user_imei){
     // starta a inserção de novo usuário
     $sql_user_insert = null;
     $sql_user_update = null;
-    $user_fisrt_time = false;
 
     if ($user_login) {
         //seleciona um usuário pelo login
@@ -36,7 +35,6 @@ function checkImei($link, $user_login, $user_imei){
             $sql_user_update = "update ejbsm_imei set data = now(), imei = $user_imei where login = '$user_login';";
         } //senão insere novo usuário
         else {
-            $user_fisrt_time = true;
             $sql_user_insert = "insert into ejbsm_imei(login, imei, data) values('$user_login', '$user_imei', now());";
         }
     } else {
@@ -50,7 +48,6 @@ function checkImei($link, $user_login, $user_imei){
             $sql_user_update = "update ejbsm_imei set data = now() where imei = '$user_imei';";
         } //senão insere novo usuário
         else {
-            $user_fisrt_time = true;
             $sql_user_insert = "insert into ejbsm_imei(login, imei, data) values('', '$user_imei', now());";
         }
     }
@@ -64,18 +61,19 @@ function checkImei($link, $user_login, $user_imei){
     $result = $link->query($sql);
     $id_imei = mysqli_fetch_object($result);
 
-    //se é a primeira vez do usuário
-    if($user_fisrt_time){
+    //se a lista de recomendação do usuário esta vasia
+
+    $sql = "select * from ejbsm_recomendacao WHERE id_imei = $id_imei->id_imei";
+    $result = $link->query($sql);
+
+    if(mysqli_num_rows($result)<=0){
         //vamos inserir em sua lista plantas mais acessadas e recomendalas
 
         //seleciona as plantas mais acessadas
-        $sql = "select * from ejbsm_planta ORDER BY visualizada DESC limit 3";
+        $sql = "select * from ejbsm_planta ORDER BY visualizada DESC limit 5";
         $result = $link->query($sql) or die(mysqli_error($link));
         while($plant = mysqli_fetch_object($result)){
-
-            $plant_id = $plant->id;
-
-            $sql = "insert into ejbsm_recomendacao(id_imei, id_planta, data) values($id_imei, $plant_id, now())";
+            $sql = "insert into ejbsm_recomendacao(id_imei, id_planta, data) values($id_imei->id_imei, $plant->id, now())";
             $link->query($sql) or die(mysqli_error($link));
         }
     }

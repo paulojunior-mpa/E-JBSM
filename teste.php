@@ -30,7 +30,7 @@ include 'e-jbsm_cabecalho.php';
 </form>
 <form action="webservice.php" method="get" target="_blank">
     <hr>
-    Login<input type="text" name="user" value="willian"><br>
+    Login<input type="text" name="login" value="willian"><br>
     Imei<input type="text" name="imei" value="123456" required>
     <input type="submit" name="operation" value="plants">
 </form>
