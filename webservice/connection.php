@@ -9,6 +9,7 @@
 class Connection
 {
     function link(){
-        return new mysqli("localhost", "jbsm", "santo1981", "JBSM") or die("Sem conexao");
+        $link =  new mysqli("localhost", "jbsm", "santo1981", "JBSM") or die(mysqli_error());
+        return $link;
     }
 }

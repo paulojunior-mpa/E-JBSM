@@ -94,13 +94,13 @@ if (isset($_GET['id'])) {
                         $sql_update_list = "update ejbsm_recomendacao set data = now() WHERE id_imei = $id_imei AND id_planta = $plant_id";
                         $link->query($sql_update_list);
                     }
+
                     $distancia = "indisponível";
                     if (isset($_GET['lat'])) {
                         if (isset($_GET['long'])) {
                             if (!empty($_GET['lat']) AND !empty($_GET['long'])) {
                                 $lat_user = $_GET['lat'];
                                 $long_user = $_GET['long'];
-
                                 if (!empty($plant->latitude) AND !empty($plant->longitude)) {
                                     $distancia = distance($lat_user, $long_user, $plant->latitude, $plant->longitude);
                                 }
@@ -110,8 +110,7 @@ if (isset($_GET['id'])) {
                     $plant->distancia = $distancia;
                     $json =  json_encode($plant);
                     echo $json;
-                } //senao informa ao usuário
-                else {
+                } else {
                     echo "PLANTA null";
                 }
             }
