@@ -5,7 +5,7 @@ if (isset($_GET["operation"])) {
 
         require_once 'webservice/connection.php';
 
-        $connection = new connection();
+        $connection = new Connection();
 
         require_once 'webservice/util.php';
 
