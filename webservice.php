@@ -24,10 +24,6 @@ if (isset($_GET["operation"])) {
                 include 'webservice/plants.php';
                 break;
 
-            case 'filter':
-                include 'webservice/filter.php';
-                break;
-
             case 'search':
                 include 'webservice/search.php';
                 break;
