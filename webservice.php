@@ -13,6 +13,7 @@ if (isset($_GET["operation"])) {
 
         switch ($operation) {
             case "plant":
+                require_once 'webservice/views/printPlant.php';
                 include 'webservice/plant.php';
                 break;
 
@@ -26,6 +27,10 @@ if (isset($_GET["operation"])) {
 
             case 'search':
                 include 'webservice/search.php';
+                break;
+
+            case 'img':
+                include 'webservice/img.php';
                 break;
         }
     } else {

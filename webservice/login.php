@@ -21,7 +21,4 @@ if (isset($_GET['login']) AND isset($_GET['senha'])) {
         }
     }
 }
-$user->login = null;
-$user->senha = null;
-$json = json_encode($user);
-echo $json;
+echo '{"login":null,"senha":null}';

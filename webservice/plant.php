@@ -44,9 +44,6 @@ if (isset($_GET['id'])) {
                     $sql = "update ejbsm_planta set visualizada = (visualizada+1), ult_visualizada = now() where id = $plant_id";
                     $link->query($sql);
 
-                    // remove a imagem da planta
-                    unset($plant->img);
-
                     //hora de atualiza a lista de recomendação do usuário
 
                     //primeiro selecionar a chave primaria da tabela imei do usuário
@@ -81,7 +78,7 @@ if (isset($_GET['id'])) {
                             //insere a planta visitada no lugar da mais antiga na lista
                             $sql_update_list = "update ejbsm_recomendacao set id_planta = $plant_id, data = now() WHERE id_recomendacao = $r_a";
                             $link->query($sql_update_list) or die(mysqli_error($link));
-                            exit;
+
                         } else {
 
                             //insere a nova planta na lista
@@ -107,9 +104,15 @@ if (isset($_GET['id'])) {
                             }
                         }
                     }
-                    $plant->distancia = $distancia;
-                    $json =  json_encode($plant);
-                    echo $json;
+
+                    // remove a imagem da planta
+                    unset($plant->img);
+                    //$plant->distancia = $distancia;
+                    //$plant = checkPlanta($plant);
+
+                    echo json_encode($plant);
+                    //printPlant($plant);
+
                 } else {
                     echo "PLANTA null";
                 }

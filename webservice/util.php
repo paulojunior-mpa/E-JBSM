@@ -80,3 +80,39 @@ function checkImei($link, $user_login, $user_imei){
 
     return;
 }
+function checkPlanta($planta){
+
+    if(empty($planta->nome_popular)){
+        $planta->nome_popular = "não definido.";
+    }
+    if(empty($planta->especie)){
+        $planta->especie = "não definido.";
+    }
+    if(empty($planta->genero)){
+        $planta->genero = "não definido.";
+    }
+    if(empty($planta->familia)){
+        $planta->familia = "não definido.";
+    }
+    if(empty($planta->descricao)){
+        $planta->descricao = "não definido.";
+    }
+    if(empty($planta->origem)){
+        $planta->origem = "não definido.";
+    }
+    if(empty($planta->exotica)){
+        $planta->exotica = "não definido.";
+    }
+    if(empty($planta->florescimento_inicio) or $planta->florescimento_inicio == '0000-00-00'){
+        $planta->florescimento = "não definido.";
+    }else{
+        $planta->florescimento = "de $planta->florescimento_inicio até ";
+    }
+    if(empty($planta->florescimento_fim) or $planta->florescimento_fim == '0000-00-00'){
+        $planta->florescimento = "não definido.";
+    }else{
+        $planta->florescimento.= " $planta->florescimento_fim";
+    }
+
+    return $planta;
+}
