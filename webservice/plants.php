@@ -76,7 +76,7 @@ if (isset($_GET['imei'])) {
 
         }
 
-        //BUSCA DA TERCEIRA PLANTA POR PARTE DE OUTROS USUÁRIOS
+        //BUSCA DA TERCEIRA e QUARTA PLANTA POR PARTE DE OUTROS USUÁRIOS
 
         //selecionar o id_imei da tabela de recomendações que possui uma planta igual mas nao seja o mesmo imei
         $sql = "select id_imei from ejbsm_recomendacao where id_planta in($list_id_plants_base) and id_imei != $id_imei limit 1";
@@ -85,7 +85,7 @@ if (isset($_GET['imei'])) {
         $imei_semelhante = $imei_semelhante->id_imei;
 
         // plantas do perfil semelhante
-        $sql = "select * from ejbsm_recomendacao where id_imei = $id_imei ORDER BY data DESC limit 2";
+        $sql = "select * from ejbsm_recomendacao where id_imei = $imei_semelhante ORDER BY data DESC limit 2";
         $result = $link->query($sql);
         while ($plant_base = mysqli_fetch_object($result)) {
             //seleciona os dados da planta base
