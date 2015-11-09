@@ -47,7 +47,7 @@ if (isset($_GET["info"])) {
     </div>
 </div>
 <div class="row" style="background-image: url(arquivos_imagem_sistema/fundo.png);">
-    <div class="col-md-6">
+    <div class="col-md-5 col-md-offset-1">
         <?
         list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png');
         $max = 245;

@@ -46,11 +46,15 @@ function LinkAberto($user_permissao)
             </button>
             <a class="navbar-brand" href="#">
                 <?
-                list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png');
+                $caminho = "arquivos_imagem_sistema";
+                if(!list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png')){
+                    list($largura, $altura) = getimagesize('../arquivos_imagem_sistema/logo.png');
+                    $caminho = "../arquivos_imagem_sistema";
+                }
                 //regra de 3
                 $max = 30;
                 $x = ($altura * $max) / $largura;
-                echo "<img src='arquivos_imagem_sistema/logo.png' style='margin-top: -30%;' width='$max' height='$x'>";
+                echo "<img src='$caminho/logo.png' style='margin-top: -30%;' width='$max' height='$x'>";
                 ?>
             </a>
         </div>

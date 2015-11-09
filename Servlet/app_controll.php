@@ -2,10 +2,12 @@
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
 include 'Controller_func.php';
-include '../Func/permitir_app.php';
 
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];
+
+    include "../Service/Conexao.php";
+
     switch ($opcao) {
         case "":
             header('location: app.php');
@@ -46,7 +48,7 @@ if (isset($_POST["opcao"])) {
             $img = "";
 
             if (isset($_FILES["file"])) {
-                if ($_FILES["file"]) {
+                if (!empty($_FILES["file"])) {
                     if ($_FILES["file"]["size"] <= 2000000) {
                         $img = addslashes(file_get_contents($_FILES['file']['tmp_name']));
                     } else {
