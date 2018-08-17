@@ -1,5 +1,5 @@
 <?
-include 'Service/Conexao.php';
+include 'DBConnection/Conexao.php';
 include 'e-jbsm_cabecalho.php';
 
 $info = "";

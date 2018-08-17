@@ -1,6 +1,6 @@
 <?
 $permissao = array("bolsista", "orientador", "administrador");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 ?>
 <ul class="nav nav-tabs" role="tablist" id="cadastro_programacao" xmlns="http://www.w3.org/1999/html">
     <li role="presentation">
@@ -185,7 +185,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="Servlet/Controller.php" method="post">
+                                                <form action="controller/Controller.php" method="post">
                                                     <button type="button" class="btn btn-danger"
                                                             data-toggle="modal"
                                                             data-target="#myModal<?= $j ?>">

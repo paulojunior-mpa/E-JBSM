@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -13,7 +13,7 @@ if (isset($_GET["info"])) {
     <?php if ($info == "area_sugerida") { ?>
         <div class="alert alert-success" role="alert">Sua sugestão de área foi cadastrada</div>
     <?php } ?>
-    <form action="Servlet/Forum_Controller.php" method="post">
+    <form action="controller/Forum_Controller.php" method="post">
         <table class="table">
             <tr>
                 <td>Nome da área
@@ -40,7 +40,7 @@ if (isset($_GET["info"])) {
     <?php if ($info == "subarea_sugerida") { ?>
         <div class="alert alert-success" role="alert">Sua sugestão de subárea foi cadastrada</div>
     <?php } ?>
-    <form action="Servlet/Forum_Controller.php" method="post">
+    <form action="controller/Forum_Controller.php" method="post">
         <table class="table">
             <tr>
                 <td style="width: 30%">Área
@@ -98,7 +98,7 @@ if (isset($_GET["info"])) {
                             <li class='has-sub'>
                                 <a>
                                     <table class="table">
-                                        <form action="Servlet/Forum_Controller.php" method="post">
+                                        <form action="controller/Forum_Controller.php" method="post">
                                             <tr>
                                                 <td colspan="2">Nome da área
                                                     <input type="text" class="form-control" name="area_nome"
@@ -124,7 +124,7 @@ if (isset($_GET["info"])) {
                                                     </button>
                                                 </td>
                                         </form>
-                                        <form action="Servlet/Forum_Controller.php" method="post">
+                                        <form action="controller/Forum_Controller.php" method="post">
                                             <td>
 
                                                 <input type="hidden" value="forum_sugestao" name="local">
@@ -182,7 +182,7 @@ if (isset($_GET["info"])) {
                             <li class='has-sub'>
                                 <a>
                                     <table class="table">
-                                        <form action="Servlet/Forum_Controller.php" method="post">
+                                        <form action="controller/Forum_Controller.php" method="post">
                                             <tr>
                                                 <td style="width:30%;">
                                                     <select name="subarea_area" class="form-control">

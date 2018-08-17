@@ -1,12 +1,12 @@
 <?php
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include 'Controller_func.php';
+include 'Helper.php';
 
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];
 
-    include "../Service/Conexao.php";
+    include "../DBConnection/Conexao.php";
 
     switch ($opcao) {
         case "":

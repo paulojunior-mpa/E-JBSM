@@ -1,5 +1,5 @@
 <?php
-include '../Service/Conexao.php';
+include '../DBConnection/Conexao.php';
 
 // get the q parameter from URL
 $q = htmlspecialchars($_REQUEST["q"]);

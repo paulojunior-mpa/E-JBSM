@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -41,7 +41,7 @@ if (isset($_GET["info"])) {
                         <ul>
                             <li class='has-sub'>
                                 <a>
-                                    <form action="Servlet/Forum_Controller.php" method="post">
+                                    <form action="controller/Forum_Controller.php" method="post">
                                         <table class="table">
                                             <tr>
                                                 <td>Nome da área
@@ -70,7 +70,7 @@ if (isset($_GET["info"])) {
                                         </table>
                                     </form>
                                     <? if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
-                                        <form action="Servlet/Forum_Controller.php" method="post">
+                                        <form action="controller/Forum_Controller.php" method="post">
                                             <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">

@@ -214,7 +214,7 @@ function LinkAberto($user_permissao)
                             </li>
                             <? if ($user_permissao == "administrador") { ?>
                                 <li>
-                                    <a href="Service/adminer-4.2.0.php" target="_blank">
+                                    <a href="DBConnection/adminer-4.2.0.php" target="_blank">
                                         <button type="button" class="btn btn-default btn-lg">
                                             <span class="glyphicon glyphicon-hdd"></span> Banco
                                         </button>
@@ -240,7 +240,7 @@ function LinkAberto($user_permissao)
                             <? } ?>
                             <li class="divider"></li>
                             <li>
-                                <a href="Servlet/Controller.php" methods="post">
+                                <a href="controller/Controller.php" methods="post">
                                     <button type="button" class="btn btn-danger btn-lg">
                                         <span class="glyphicon glyphicon-off"></span>Sair
                                     </button>

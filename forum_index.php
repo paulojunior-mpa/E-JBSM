@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $inicio_consulta = 0;
 $consulta = "";

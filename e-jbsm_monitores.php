@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 if (isset($_GET["addmonitor"])) {
     $login_monitor = $_GET["addmonitor"];

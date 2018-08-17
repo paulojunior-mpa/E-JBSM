@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -75,7 +75,7 @@ if ($info == "deletada") {
                                             <div class="row">
                                                 <? if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
-                                                        <form action="Servlet/Controller.php" method="post">
+                                                        <form action="controller/Controller.php" method="post">
                                                             <button type="button" class="btn btn-danger"
                                                                     data-toggle="modal"
                                                                     data-target="#myModal<?= $j ?>">

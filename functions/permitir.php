@@ -11,26 +11,26 @@ if (isset($_SESSION["dono_sessao"])) {
                 $user_login = $_SESSION['user_login'];
                 $user_permissao = $_SESSION['user_permissao'];
 
-                if(include 'Service/Conexao.php'){
+                if(include 'DBConnection/Conexao.php'){
                     include 'e-jbsm_cabecalho.php';
                     include "forum_menu_lateral_.php";
                 }else{
-                    include "../Service/Conexao.php";
+                    include "../DBConnection/Conexao.php";
                 }
                 $ok = true;
                 break;
             }
         }
         if(!$ok){
-            Logout();
+            logout();
         }
     } else {
-        Logout();
+        logout();
     }
 } else {
-    Logout();
+    logout();
 }
-function Logout()
+function logout()
 {
     session_destroy();
     header('location:index.php');

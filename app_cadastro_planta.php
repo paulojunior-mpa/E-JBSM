@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir_app.php';
+include 'functions/permitir_app.php';
 
 $inicio_consulta = "";
 $info = "";
@@ -28,7 +28,7 @@ if (isset($_GET["info"])) {
             ?>
             <h4>Cadastro manual</h4>
 
-            <form action="Servlet/app_controll.php" enctype="multipart/form-data" method="post">
+            <form action="controller/app_controll.php" enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="col-md-4">
                         Nome popular
@@ -109,7 +109,7 @@ if (isset($_GET["info"])) {
         </div>
         <?
         if (isset($_POST["xls"])) {
-            include 'Func/excel_reader/excel_reader2.php';
+            include 'functions/excel_reader/excel_reader2.php';
             $arquivo = $_FILES["file"]["tmp_name"];
             $data = new Spreadsheet_Excel_Reader($arquivo);
             ?>

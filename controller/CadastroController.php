@@ -1,6 +1,6 @@
 <?php
 
-include '../Service/Conexao.php';
+include '../DBConnection/Conexao.php';
 
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];

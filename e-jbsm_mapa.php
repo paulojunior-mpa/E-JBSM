@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 ?>
 <h3>Mapa de navegação do sistema por nível de usuário</h3>
 <div class="panel panel-default">

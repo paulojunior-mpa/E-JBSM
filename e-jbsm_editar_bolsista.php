@@ -1,11 +1,11 @@
 <?
 $permissao = array("administrador", "orientador");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Editar dados de bolsista</h3>
-        <form action="Servlet/Controller.php" method="post">
+        <form action="controller/Controller.php" method="post">
             <?
             if(isset($_POST["bolsista_login"])) {
                 $bolsista_login = $_POST["bolsista_login"];

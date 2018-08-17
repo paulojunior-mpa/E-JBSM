@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir_app.php';
+include 'functions/permitir_app.php';
 
 $inicio_consulta = "";
 $info = "";
@@ -33,7 +33,7 @@ if (isset($_GET["info"])) {
 
                 <h4>Cadastro de trilha</h4>
 
-                <form action="Servlet/app_controll.php" method="post">
+                <form action="controller/app_controll.php" method="post">
                     Nome da trilha
                     <input class="form-control" type="text" name="nome" placeholder="nome" required="">
                     Descrição da trilha

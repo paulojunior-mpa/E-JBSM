@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 if ($user_permissao == "orientador" or $user_permissao == "administrador") {
     $loginBolsista = "";
@@ -103,7 +103,7 @@ if ($user_permissao == "bolsista") {
             <h3>Cadastro de Frequência</h3>
             <h4>Seu total de horas é: <? echo "$total_horas"; ?> horas</h4>
 
-            <form action="Servlet/Controller.php" method="post">
+            <form action="controller/Controller.php" method="post">
                 <table class="table">
                     <tr>
                         <td>

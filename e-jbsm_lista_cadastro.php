@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -51,7 +51,7 @@ include 'Func/permitir.php';
                         <td><?=$row->now_date_time?></td>
                         <td><?=$row->id?></td>
                         <td>
-                            <form action="Servlet/Cadastro_controller.php" method="post">
+                            <form action="controller/Cadastro_controller.php" method="post">
                                 <input type="hidden" name="id" value="<?=$row->id?>">
                                 <button class="btn btn-danger" name="opcao" value="deletar">
                                     <span class="glyphicon glyphicon-remove"></span>

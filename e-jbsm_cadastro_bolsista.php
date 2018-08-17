@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -9,7 +9,7 @@ if (isset($_GET["info"])) {
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Cadastro bolsista</h3>
-        <form action="Servlet/Controller.php" method="post">
+        <form action="controller/Controller.php" method="post">
             <? if ($info == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Bolsista cadastrado!</div>
             <? } elseif ($info == "login") { ?>

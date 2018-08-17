@@ -1,5 +1,5 @@
 <?php
-include 'Service/Conexao.php';
+include 'DBConnection/Conexao.php';
 include 'e-jbsm_cabecalho.php';
 
 $info = "";
@@ -42,7 +42,7 @@ if (isset($_GET["email"])) {
     </div>
     <div class="panel panel-default col-md-6" style="margin-top: 2%">
         <div class="panel-body" style="margin-bottom: 2%">
-            <form action="Servlet/Controller_public.php" method="post">
+            <form action="controller/Controller_public.php" method="post">
                 <table class="table">
                     <tr>
                         <td>Para redefinir sua senha insira o 'login' cadastrado no campo abaixo.</td>

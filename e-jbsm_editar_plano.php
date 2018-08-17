@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 if(isset($_POST["id"])){
     $id = $_POST["id"];
 }
@@ -12,7 +12,7 @@ $r = mysqli_fetch_object($qr);
     <div class="panel-body">
         <h3>Editar plano <?= $r->nome ?></h3>
 
-        <form action="Servlet/Controller.php" method="post">
+        <form action="controller/Controller.php" method="post">
             <table class="table">
                 <tr>
                     <td>Nome

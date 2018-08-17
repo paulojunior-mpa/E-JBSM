@@ -1,5 +1,5 @@
 <?
-include 'Service/Conexao.php';
+include 'DBConnection/Conexao.php';
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
@@ -19,7 +19,7 @@ include 'e-jbsm_cabecalho.php';
         }
         ?>
 
-        <form action="Servlet/Cadastro_controller.php" method="post">
+        <form action="controller/Cadastro_controller.php" method="post">
             <div class="row">
                 <div class="col-md-6">
                     Nome

@@ -1,5 +1,5 @@
 <?
-include 'Service/Conexao.php';
+include 'DBConnection/Conexao.php';
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"])) {
@@ -12,7 +12,7 @@ if (isset($_GET["info"])) {
                 visibility: hidden;
             }
         </style>
-        <form action="Servlet/Controller_public.php" method="post" id="form_login">
+        <form action="controller/Controller_public.php" method="post" id="form_login">
             <input type="text" value="<?= $_COOKIE["login_e-jbsm"] ?>" name="user_login">
             <input type="text" value="<?= $_COOKIE["senha_e-jbsm"] ?>" name="user_senha">
             <input type="hidden" value="sim" name="sha1">
@@ -62,7 +62,7 @@ if (isset($_GET["info"])) {
                     no cadastro.
                 </div>
             <? } ?>
-            <form class="form-horizontal" action="Servlet/Controller_public.php" method="post">
+            <form class="form-horizontal" action="controller/Controller_public.php" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Login</label>
 

@@ -1,7 +1,7 @@
 <?php
 
-include '../Service/Conexao.php';
-include 'Controller_func.php';
+include '../DBConnection/Conexao.php';
+include 'Helper.php';
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);

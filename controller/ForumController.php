@@ -1,8 +1,8 @@
 ﻿<?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include 'Controller_func.php';
-include '../Func/permitir.php';
+include 'Helper.php';
+include '../functions/permitir.php';
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);

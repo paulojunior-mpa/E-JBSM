@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $inicio_consulta = "";
 if (isset($_GET["inicio_consulta"])) {
@@ -18,7 +18,7 @@ if (isset($_GET["inicio_consulta"])) {
         </div>
         <h4>Nova mensagem</h4>
 
-        <form action="Servlet/Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/Controller.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-12">
             <textarea class="form-control" id="htmlbox_silk_icon_set_blue" rows="5"
@@ -123,7 +123,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                                             </td>
                                                             <? if ($resposta->login == $user_login) { ?>
                                                                 <td>
-                                                                    <form action="Servlet/Controller.php" method="post">
+                                                                    <form action="controller/Controller.php" method="post">
                                                                         <input type="hidden"
                                                                                value="<?= $resposta->id ?>"
                                                                                name="id">
@@ -153,7 +153,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                         <li class='has-sub'>
                                             <a>
                                             <span>
-                                                <form action="Servlet/Controller.php" method="post">
+                                                <form action="controller/Controller.php" method="post">
                                                     <table class="table">
                                                         <tr>
                                                             <td>Responder
@@ -187,7 +187,7 @@ while ($r = mysqli_fetch_object($qr)) {
                     </td>
                     <td>
                         <? if ($r->login == $user_login) { ?>
-                            <form action="Servlet/Controller.php" method="post">
+                            <form action="controller/Controller.php" method="post">
                                 <button type="button" style="width: 100%;" class="btn btn-danger btn-block"
                                         data-toggle="modal"
                                         data-target="#myModal<?= $j ?>">

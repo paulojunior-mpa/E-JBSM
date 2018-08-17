@@ -1,6 +1,6 @@
 <?php
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir_app.php';
+include 'functions/permitir_app.php';
 
 $info = "";
 if (isset($_GET["info"]))
@@ -37,7 +37,7 @@ if (isset($_GET["info"]))
                                 document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                             }
                         }
-                        xmlhttp.open("GET", "Func/ajax_editar_plantas.php?q=" + str, true);
+                        xmlhttp.open("GET", "functions/ajax_editar_plantas.php?q=" + str, true);
                         xmlhttp.send();
                     }
                 </script>
@@ -55,7 +55,7 @@ if (isset($_GET["info"]))
                     ?>
                     Visualizações: <?=$planta->visualizada?><br>
                     Ultima visualização: <?=$planta->ult_visualizada?><hr>
-                    <form action="Servlet/app_controll.php" method="post" enctype="multipart/form-data">
+                    <form action="controller/app_controll.php" method="post" enctype="multipart/form-data">
                         <div class="col-md-4">
                             Nome popular
                             <input class="form-control" type="text" value="<?= $planta->nome_popular ?>"
@@ -141,7 +141,7 @@ if (isset($_GET["info"]))
                     </form>
                     <div class="row">
                         <div class="col-md-offset-8">
-                            <form action="Servlet/app_controll.php" method="post">
+                            <form action="controller/app_controll.php" method="post">
                                 <button type="button" class="btn btn-danger"
                                         data-toggle="modal"
                                         data-target="#myModal" style="margin-left: 10px;">

@@ -1,6 +1,6 @@
 <?php
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir_app.php';
+include 'functions/permitir_app.php';
 
 $info = "";
 if (isset($_GET["info"]))
@@ -65,7 +65,7 @@ if (isset($_GET["info"]))
                             ?>
                         </div>
                         <div class="col-md-12" id="trilha">
-                            <form action="Servlet/app_controll.php" method="post">
+                            <form action="controller/app_controll.php" method="post">
                                 <h4>Trilha <input type="text" class="form-control" name="nome"
                                                   value="<?= $trilha->nome ?>"></h4><h5>Descrição: <textarea
                                         class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
@@ -77,7 +77,7 @@ if (isset($_GET["info"]))
                                 </button>
                             </form>
                             <div class="col-md-offset-3">
-                                <form action="Servlet/app_controll.php" method="post">
+                                <form action="controller/app_controll.php" method="post">
                                     <button type="button" class="btn btn-danger"
                                             data-toggle="modal"
                                             data-target="#myModal">
@@ -196,7 +196,7 @@ if (isset($_GET["info"]))
                                     }
                                 }
                                 var trilha_id = "";
-                                xmlhttp.open("GET", "Func/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?=$trilha_id?>, true);
+                                xmlhttp.open("GET", "functions/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?=$trilha_id?>, true);
                                 xmlhttp.send();
                             }
                         }

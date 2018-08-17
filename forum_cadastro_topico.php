@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -12,7 +12,7 @@ if (isset($_GET["info"])) {
     <h3>Pesquisas personalizadas de tópicos</h3>
     <? include 'forum_caixa _pesquisa_.php'; ?>
     <h3>Cadastro de novo tópico</h3>
-    <form action="Servlet/Forum_Controller.php" method="post" enctype="multipart/form-data">
+    <form action="controller/Forum_Controller.php" method="post" enctype="multipart/form-data">
         <table class="table">
             <tr>
                 <td style="width:30%;">Área / Subárea
@@ -68,7 +68,7 @@ if (isset($_GET["info"])) {
         if ($info == "area_ja_cadastrada") { ?>
             <div class="alert alert-warning" role="alert">Área com mesmo nome já existe!</div>
         <?php } ?>
-        <form action="Servlet/Forum_Controller.php" method="post">
+        <form action="controller/Forum_Controller.php" method="post">
             <table class="table">
                 <tr>
                     <td>Nome da nova área
@@ -100,7 +100,7 @@ if (isset($_GET["info"])) {
         if ($info == "subarea_ja_cadastrada") { ?>
             <div class="alert alert-success" role="alert">Subárea com mesmo nome já existe!</div>
         <?php } ?>
-        <form action="Servlet/Forum_Controller.php" method="post">
+        <form action="controller/Forum_Controller.php" method="post">
             <table class="table">
                 <tr>
                     <td style="width: 30%">Slecione a área

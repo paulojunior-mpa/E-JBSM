@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -91,7 +91,7 @@ if (isset($_GET["info"])) {
                 <?}?>
             </table>
             <? if ($user_permissao == "administrador") { ?>
-                <form action="Servlet/Controller.php" method="post">
+                <form action="controller/Controller.php" method="post">
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

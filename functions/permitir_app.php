@@ -9,18 +9,18 @@ if (isset($_SESSION["dono_sessao"])) {
                 $user_login = $_SESSION['user_login'];
                 $user_permissao = $_SESSION['user_permissao'];
 
-                include "Service/Conexao.php";
+                include "DBConnection/Conexao.php";
                 include 'e-jbsm_cabecalho.php';
                 break;
             }
         }
     } else {
-        Logout();
+        logout();
     }
 } else {
-    Logout();
+    logout();
 }
-function Logout()
+function logout()
 {
     session_destroy();
     header('location: app.php?info=permissao');

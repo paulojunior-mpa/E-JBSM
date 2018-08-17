@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -68,7 +68,7 @@ if (isset($_GET["topico"])) {
                 <font color="green">Permissões:</font> <? echo $row->permissao; ?><br>
                 <font color="green">E-mail:</font> <? echo $row->email; ?><br>
                 <? if ($topico->login == $user_login or $user_permissao == "administrador") { ?>
-                    <form action="Servlet/Forum_Controller.php" method="post">
+                    <form action="controller/Forum_Controller.php" method="post">
                         <input type="hidden" value="<?= $topico->id ?>" name="id">
                         <input type="hidden" value="<?= $topico->anexo ?>" name="topico_anexo">
                         <!-- Button trigger modal -->
@@ -136,7 +136,7 @@ if (isset($_GET["topico"])) {
         </div>
         <h3>Responder</h3>
 
-        <form action="Servlet/Forum_Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/Forum_Controller.php" method="post" enctype="multipart/form-data">
             <table class="table">
                 <tr>
                     <td colspan="2">
@@ -194,7 +194,7 @@ if (isset($_GET["topico"])) {
                     <font color="green">Permissões: </font><? echo $row->permissao; ?><br>
                     <font color="green">E-mail: </font><? echo $row->email; ?><br>
                     <? if ($resposta->login == $user_login or $user_permissao == "administrador") { ?>
-                        <form action="Servlet/Forum_Controller.php" method="post">
+                        <form action="controller/Forum_Controller.php" method="post">
                             <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">

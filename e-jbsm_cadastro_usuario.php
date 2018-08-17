@@ -1,5 +1,5 @@
 <?php
-include 'Service/Conexao.php';
+include 'DBConnection/Conexao.php';
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"])) {
@@ -24,7 +24,7 @@ if (isset($_REQUEST["usuario"])) {
 </script>
 <div class="panel panel-default">
     <div class="panel-body">
-        <form action="Servlet/Controller_public.php" method="post">
+        <form action="controller/Controller_public.php" method="post">
             <h1>Realize o seu cadastro</h1>
             <h4>Insira seus dados nos campos especificados</h4>
 

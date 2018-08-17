@@ -1,4 +1,3 @@
 <?
-
 header('location: ../index.php');
 ?>

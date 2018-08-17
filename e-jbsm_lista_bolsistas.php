@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 
 if (isset($_GET["info"]) and $_GET["info"] == "editado") {
     echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";

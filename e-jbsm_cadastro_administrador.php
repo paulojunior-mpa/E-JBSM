@@ -1,12 +1,12 @@
 <?
 $permissao = array("administrador");
-include 'Func/permitir.php';
+include 'functions/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
 }
 ?>
-<form action="Servlet/Controller.php" method="post">
+<form action="controller/Controller.php" method="post">
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de administrador</h3>
