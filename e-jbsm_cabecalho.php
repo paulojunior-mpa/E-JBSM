@@ -26,13 +26,6 @@
         </li>
     </ul>
 </div>
-<?
-function LinkAberto($user_permissao)
-{
-    echo '<li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-RAZ</a></li>';
-}
-
-?>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,7 +62,7 @@ function LinkAberto($user_permissao)
                     <li><a href="e-jbsm_cadastro_usuario.php"><span
                                 class="glyphicon glyphicon-pencil"></span> Cadastro</a>
                     </li>
-                    <? LinkAberto($user_permissao);?>
+                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-RAZ</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://w3.ufsm.br/jbsm/" target="_blank"><span
@@ -186,12 +179,8 @@ function LinkAberto($user_permissao)
                     }
                     $result = $link->query($sql2) or die(mysqli_error($link));
                     $contagem_visitas = mysqli_num_rows($result);
-
-                    //echo '<li><a href="forum_index.php"><span class="glyphicon glyphicon-envelope"></span> Fórum</a></li>';
-
-                    LinkAberto($user_permissao);
-
                     ?>
+                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-RAZ</a></li>
                     <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>
                             Lixeira
                             <span class="badge"><?= $contagem_visitas ?></span></a></li>

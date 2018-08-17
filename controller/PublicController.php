@@ -1,6 +1,6 @@
 <?php
 
-include '../connection/connection.php';
+include '../connection/Connection.php';
 include '../constantes/Constantes.php';
 include '../helpers/Helper.php';
 

@@ -7,7 +7,7 @@ include '../helpers/Helper.php';
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];
 
-    include "../connection/connection.php";
+    include "../connection/Connection.php";
 
     switch ($opcao) {
         case "":

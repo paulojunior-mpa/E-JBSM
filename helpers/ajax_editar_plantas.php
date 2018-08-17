@@ -1,5 +1,5 @@
 <?php
-include '../connection/connection.php';
+include '../connection/Connection.php';
 
 // get the q parameter from URL
 $q = $_REQUEST["q"];

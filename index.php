@@ -1,5 +1,5 @@
 <?
-include 'connection/connection.php';
+
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"])) {
@@ -130,8 +130,7 @@ if (isset($_GET["info"])) {
                 <div class="col-md-6">
                     Não possui uma conta?
                     <a href="e-jbsm_cadastro_usuario.php">
-                        <button class='btn btn-info' class="form-control" name="opcao"
-                                value="Cadastro">
+                        <button class='btn btn-info form-control' name="opcao" value="Cadastro">
                             <span class="glyphicon glyphicon-pencil"></span>
                             Clique aqui para se cadastrar.
                         </button>

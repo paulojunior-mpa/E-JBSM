@@ -1,5 +1,5 @@
 <?
-include 'connection/connection.php';
+
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">

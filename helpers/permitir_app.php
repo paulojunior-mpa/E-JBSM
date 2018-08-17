@@ -9,7 +9,7 @@ if (isset($_SESSION["dono_sessao"])) {
                 $user_login = $_SESSION['user_login'];
                 $user_permissao = $_SESSION['user_permissao'];
 
-                include "connection/connection.php";
+                include "connection/Connection.php";
                 include 'e-jbsm_cabecalho.php';
                 break;
             }

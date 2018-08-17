@@ -1,1 +1,5 @@
 ErrorDocument 404 /E-JBSM/index.php
+RewriteEngine on
+RewriteBase /ejbsm/
+RewriteCond $1 !^(resources|robots\.txt)
+RewriteRule ^(.*)$ eJBSM.php?ejbsm_uri=$1 [QSA,L]
