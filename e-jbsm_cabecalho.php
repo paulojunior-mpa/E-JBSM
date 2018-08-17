@@ -214,7 +214,7 @@ function LinkAberto($user_permissao)
                             </li>
                             <? if ($user_permissao == "administrador") { ?>
                                 <li>
-                                    <a href="connection/adminer-4.2.0.php" target="_blank">
+                                    <a href="connection/adminer-4.6.3-mysql.php" target="_blank">
                                         <button type="button" class="btn btn-default btn-lg">
                                             <span class="glyphicon glyphicon-hdd"></span> Banco
                                         </button>
