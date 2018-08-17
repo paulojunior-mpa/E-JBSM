@@ -1,5 +1,5 @@
 <?
-include 'DBConnection/Conexao.php';
+include 'connection/connection.php';
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"])) {

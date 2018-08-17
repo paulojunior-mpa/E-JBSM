@@ -1,5 +1,5 @@
 <?php
-include 'DBConnection/Conexao.php';
+include 'connection/connection.php';
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"])) {
@@ -85,9 +85,8 @@ if (isset($_REQUEST["usuario"])) {
                        name="usuario_confirma_senha">
             </div>
             <div class="form-group col-md-6"><br>
-                <button class='btn btn-success' type="submit" style="width: 100%" class="form-control"
-                        name="opcao" value="Cadastrar usuario"
-                        name="usuario_nome">
+                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_USUARIO?>">
+                <button class='btn btn-success form-control' type="submit" style="width: 100%" name="usuario_nome">
                     <span class="glyphicon glyphicon-save"></span>
                     Cadastrar
                 </button>

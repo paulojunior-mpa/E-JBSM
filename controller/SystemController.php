@@ -1,8 +1,9 @@
 <?php
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include 'Helper.php';
-include '../functions/permitir.php';
+include '../constantes/Constantes.php';
+include '../helpers/Helper.php';
+include '../helpers/permitir.php';
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
@@ -15,37 +16,37 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     switch ($opcao) {
 
         case "":
-            Deslogar($link);
+            deslogar($link);
             break;
 
-        case "Cadastrar bolsista":
+        case Constantes::CADASTRAR_BOLSISTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            CadastrarIntegrante("bolsista", $link);
+            cadastrarIntegrante("bolsista", $link);
 
             header('location: ../e-jbsm_cadastro_bolsista.php?info=cadastrado');
             break;
 
-        case "Cadastrar Orientador":
+        case Constantes::CADASTRAR_ORIENTADOR:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            CadastrarIntegrante("orientador", $link);
+            cadastrarIntegrante("orientador", $link);
 
             header('location: ../e-jbsm_cadastro_orientador.php?info=cadastrado');
             break;
 
-        case "Cadastrar Administrador":
+        case Constantes::CADASTRAR_ADMINISTRADOR:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            CadastrarIntegrante("administrador", $link);
+            cadastrarIntegrante("administrador", $link);
 
             header('location: ../e-jbsm_cadastro_administrador.php?info=cadastrado');
             break;
 
-        case "Cadastrar visita":
+        case Constantes::CADASTRAR_VISITA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -80,7 +81,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 
             break;
 
-        case "Editar visita":
+        case Constantes::EDITAR_VISITA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -173,7 +174,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             header('location: ../e-jbsm_lista_visitas.php?info=editada');
             break;
 
-        case "Excluir visita":
+        case Constantes::EXCLUIR_VISITA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -187,7 +188,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 
             break;
 
-        case "Restaurar visita":
+        case Constantes::RESTAURAR_VISITA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -200,7 +201,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 
             break;
 
-        case "Deletar visita":
+        case Constantes::DELETAR_VISITA:
             $user_login = $_SESSION["user_login"];
 
             $user_permissao = $_SESSION["user_permissao"];
@@ -214,7 +215,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 
             break;
 
-        case "Cadastrar frequencia":
+        case Constantes::CADASTRAR_FREQUENCIA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -230,7 +231,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             header('location: ../e-jbsm_frequencia.php');
             break;
 
-        case "Cadastrar Programação":
+        case Constantes::CADASTRAR_PROGRAMACAO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -261,7 +262,7 @@ material_necessario, sugestao, prioridades, segunda, terca, quarta, quinta, sext
 
             break;
 
-        case "Editar programacao":
+        case Constantes::EDITAR_PROGRAMACAO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -299,7 +300,7 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
 
             break;
 
-        case "Deletar programacao":
+        case Constantes::DELETAR_PROGRAMACAO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -312,7 +313,7 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
 
             break;
 
-        case "Cadastrar plano":
+        case Constantes::CADASTRAR_PLANO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -339,7 +340,7 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
 
             break;
 
-        case "Editar plano":
+        case Constantes::EDITAR_PLANO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -373,7 +374,7 @@ login =  '$user_login' WHERE  id ='$id';";
 
             break;
 
-        case "Deletar plano":
+        case Constantes::DELETAR_PLANO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -386,7 +387,7 @@ login =  '$user_login' WHERE  id ='$id';";
 
             break;
 
-        case "Cadastrar oficina":
+        case Constantes::CADASTRAR_OFICINA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -405,7 +406,7 @@ VALUES ('$user_login', '$monitor', '$orientador',  '$nome',  '$descricao', '$mat
 
             break;
 
-        case "Editar oficina":
+        case Constantes::EDITAR_OFICINA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -431,7 +432,7 @@ anexo =  '$anexo' WHERE  id = $id;";
 
             break;
 
-        case "Deletar oficina":
+        case Constantes::DELETAR_OFICINA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -444,7 +445,7 @@ anexo =  '$anexo' WHERE  id = $id;";
 
             break;
 
-        case "Editar bolsista":
+        case Constantes::EDITAR_OFICINA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -549,7 +550,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             header('location: ../e-jbsm_lista_bolsistas.php?info=editado');
             break;
 
-        case "Enviar mensagem":
+        case Constantes::ENVIAR_MENSAGEM:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -565,7 +566,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
 
             break;
 
-        case "Apagar mensagem":
+        case Constantes::APAGAR_MENSAGEM:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -585,7 +586,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
 
             break;
 
-        case "Enviar resposta":
+        case Constantes::ENVIAR_RESPOSTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -601,7 +602,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
 
             break;
 
-        case "Apagar resposta":
+        case Constantes::APAGAR_RESPOSTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -614,7 +615,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
 
             break;
 
-        case "Alterar imagem":
+        case Constantes::ALTERAR_IMAGEM:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -626,7 +627,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
 
             break;
 
-        case "Editar perfil":
+        case Constantes::EDITAR_PERFIL:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -730,7 +731,7 @@ sex1617 =  '$sex1617' WHERE login =  '$user_login'";
 
             break;
 
-        case "Alterar disponibilidade":
+        case Constantes::ALTERAR_DISPONIBILIDADE:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -755,7 +756,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             header('location: ../e-jbsm_administracao.php');
             break;
 
-        case "Ativar Desativar";
+        case Constantes::ATIVAR_DESATIVAR;
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -769,7 +770,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
 
             break;
 
-        case "Alterar logo";
+        case Constantes::ALTERAR_LOGO;
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -791,7 +792,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             header('location: ../e-jbsm_administracao.php');
             break;
 
-        case "Alterar fundo";
+        case Constantes::ALTERAR_FUNDO;
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -813,7 +814,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             header('location: ../e-jbsm_administracao.php');
             break;
 
-        case "Alterar titulo";
+        case Constantes::ALTERAR_TITULO;
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -825,7 +826,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             header('location: ../e-jbsm_administracao.php');
             break;
 
-        case "Alterar informações";
+        case Constantes::ALTERAR_INFORMACOES;
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -847,6 +848,6 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             break;
     }
 } else {
-    Deslogar($link);
+    deslogar($link);
 }
 ?>

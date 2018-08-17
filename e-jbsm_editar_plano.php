@@ -1,7 +1,7 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
-if(isset($_POST["id"])){
+include 'helpers/permitir.php';
+if (isset($_POST["id"])) {
     $id = $_POST["id"];
 }
 $sql = "select * from ejbsm_plano where id = $id";
@@ -16,12 +16,14 @@ $r = mysqli_fetch_object($qr);
             <table class="table">
                 <tr>
                     <td>Nome
-                        <input type="text" class="form-control" placeholder="Nome do Plano" name="nome" value="<?= $r->nome ?>" required>
+                        <input type="text" class="form-control" placeholder="Nome do Plano" name="nome"
+                               value="<?= $r->nome ?>" required>
                     </td>
                 </tr>
                 <tr>
                     <td>Público alvo
-                        <input type="text" class="form-control" placeholder="Público alvo" name="publicoAlvo" value="<?= $r->publico_alvo ?>"
+                        <input type="text" class="form-control" placeholder="Público alvo" name="publicoAlvo"
+                               value="<?= $r->publico_alvo ?>"
                                required>
                     </td>
                 </tr>
@@ -43,56 +45,57 @@ $r = mysqli_fetch_object($qr);
                 </tr>
                 <tr>
                     <td>Objetivo
-                            <textarea class="form-control" cols="80" rows="3" placeholder="Objetivo" name="objetivo"
-                                      required><?= $r->objetivo ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Objetivo" name="objetivo"
+                                  required><?= $r->objetivo ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Assuntos
-                             <textarea class="form-control" cols="80" rows="3" placeholder="Assuntos para abordar"
-                                       name="assunto"
-                                       required><?= $r->assunto ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Assuntos para abordar"
+                                  name="assunto"
+                                  required><?= $r->assunto ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Estratégias cognitivas
-                            <textarea class="form-control" cols="80" rows="3" placeholder="Estratégias cognitivas"
-                                      name="estrategia"
-                                      required><?= $r->estrategia ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Estratégias cognitivas"
+                                  name="estrategia"
+                                  required><?= $r->estrategia ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Recursos
-                            <textarea class="form-control" cols="80" rows="3" placeholder="Recursos extras"
-                                      name="recursos"
-                                      required><?= $r->recursos ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Recursos extras"
+                                  name="recursos"
+                                  required><?= $r->recursos ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Locais para visitar
-                            <textarea class="form-control" cols="80" rows="3" placeholder="Locais a serem visitados"
-                                      name="locais"
-                                      required><?= $r->locais ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Locais a serem visitados"
+                                  name="locais"
+                                  required><?= $r->locais ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Relevancia de locais
-                            <textarea class="form-control" cols="80" rows="3" placeholder="Relevância de cada local"
-                                      name="relevancia"
-                                      required><?= $r->relevancia ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3" placeholder="Relevância de cada local"
+                                  name="relevancia"
+                                  required><?= $r->relevancia ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Instrumentos de coleta de dados
-                            <textarea class="form-control" cols="80" rows="3"
-                                      placeholder="Instrumento de coleta de dados"
-                                      name="instrumento" required><?= $r->instrumento ?></textarea>
+                        <textarea class="form-control" cols="80" rows="3"
+                                  placeholder="Instrumento de coleta de dados"
+                                  name="instrumento" required><?= $r->instrumento ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="hidden" name="id" value="<?= $r->id ?>">
-                        <button class="btn btn-success" type="submit" name="opcao" value="Editar plano">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PLANO?>">
+                        <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar edição
                         </button>

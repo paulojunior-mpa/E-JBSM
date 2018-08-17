@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $info = "";
 if(isset($_GET["info"])){
     $info = $_GET["info"];
@@ -101,7 +101,8 @@ if ($user_permissao != "usuario") { ?>
                     </tr>
                     <tr>
                         <td>
-                            <button class="btn btn-success" type="submit" name="opcao" value="Cadastrar plano">
+                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANO?>">
+                            <button class="btn btn-success" type="submit">
                                 <span class="glyphicon glyphicon-save"></span>
                                 Cadastrar
                             </button>
@@ -212,10 +213,9 @@ if ($user_permissao != "usuario") { ?>
                                                                     <button type="button" class="btn btn-default"
                                                                             data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <input type="hidden" value="<?= $r->id ?>"
-                                                                           name="codigo">
-                                                                    <button type="submit" value="Deletar plano"
-                                                                            class="btn btn-danger" name="opcao">
+                                                                    <input type="hidden" value="<?= $r->id ?>" name="codigo">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_PLANO?>">
+                                                                    <button type="submit" class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Excluir plano
                                                                     </button>

@@ -1,5 +1,5 @@
 <?php
-include 'DBConnection/Conexao.php';
+include 'connection/connection.php';
 include 'e-jbsm_cabecalho.php';
 
 $info = "";
@@ -55,8 +55,8 @@ if (isset($_GET["email"])) {
                     </tr>
                     <tr>
                         <td>
-                            <button class='btn btn-warning' type="submit" class="form-control" name="opcao"
-                                    value="Redefinir senha">
+                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::REDEFINIR_SENHA?>">
+                            <button class='btn btn-warning' type="submit">
                                 <span class="glyphicon glyphicon-retweet"></span>
                                 Redefinir senha
                             </button>

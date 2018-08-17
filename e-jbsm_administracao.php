@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -49,14 +49,14 @@ include 'functions/permitir.php';
             <table class="table" style="text-align: center;">
                 <tr>
                     <td style="width: 10%;"></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Segunda</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Terça</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Quarta</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Quinta</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Sexta</font></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Segunda</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Terça</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Quarta</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Quinta</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Sexta</div></td>
                 </tr>
                 <tr>
-                    <td><font size="4" color="#556b2f">Manhã</font></td>
+                    <td><div size="4" color="#556b2f">Manhã</div></td>
                     <td>
                         <? if ($r->manha_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
@@ -94,7 +94,7 @@ include 'functions/permitir.php';
                     </td>
                 </tr>
                 <tr>
-                    <td><font size="4" color="#556b2f">Tarde</font></td>
+                    <td><div size="4" color="#556b2f">Tarde</div></td>
                     <td>
                         <? if ($r->tarde_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
@@ -211,7 +211,8 @@ include 'functions/permitir.php';
                         <input type="file" class="form-control" name="logo" required="">
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-warning" name="opcao" value="Alterar logo">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_LOGO?>">
+                        <button type="submit" class="btn btn-warning" value="Alterar logo">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
                         </button>

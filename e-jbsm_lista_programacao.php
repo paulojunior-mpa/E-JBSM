@@ -1,6 +1,6 @@
 <?
 $permissao = array("bolsista", "orientador", "administrador");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 ?>
 <ul class="nav nav-tabs" role="tablist" id="cadastro_programacao" xmlns="http://www.w3.org/1999/html">
     <li role="presentation">
@@ -51,9 +51,9 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                     <li class='active has-sub'>
                         <a>
                         <span>
-                            <font color="green"><b>Login: </b></font><? echo "{$r->login}"; ?>
-                            <font color="green"><b>Data: </b></font><? echo "{$r->data}"; ?>
-                            <font color="green"><b>Código: </b></font><? echo "{$r->id}"; ?>
+                            <div style="color: green"><b>Login: </b></div><? echo "{$r->login}"; ?>
+                            <div style="color: green"><b>Data: </b></div><? echo "{$r->data}"; ?>
+                            <div style="color: green"><b>Código: </b></div><? echo "{$r->id}"; ?>
                         </span>
                         </a>
                         <ul>
@@ -62,7 +62,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                     <table class="table table-hover">
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Motivação:</font>
+                                                <div style="color: green"><b>Motivação:</div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->emocional}"; ?>
@@ -70,9 +70,9 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green">
+                                                <div style="color: green">
                                                     <b>Fato significativo:</b>
-                                                </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->fato_significativo}"; ?>
@@ -80,11 +80,11 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green">
+                                                <div style="color: green">
                                                     <b>
                                                         Pontos produtivos:
                                                     </b>
-                                                </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->produtivos}"; ?>
@@ -92,11 +92,11 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green">
+                                                <div style="color: green">
                                                     <b>
                                                         Pontos improdutivos:
                                                     </b>
-                                                </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->improdutivos}"; ?>
@@ -104,11 +104,11 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green">
+                                                <div style="color: green">
                                                     <b>
                                                         Material necessário:
                                                     </b>
-                                                </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->material_necessario}"; ?>
@@ -116,7 +116,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Sugestão:</b></font>
+                                                <div style="color: green"><b>Sugestão:</b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->sugestao}"; ?>
@@ -124,11 +124,11 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green">
+                                                <div style="color: green">
                                                     <b>
                                                         Atividades prioritárias para a próxima semana:
                                                     </b>
-                                                </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->prioridades}"; ?>
@@ -136,7 +136,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Segunda: </b></font>
+                                                <div style="color: green"><b>Segunda: </b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->segunda}"; ?>
@@ -144,7 +144,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Terça: </b></font>
+                                                <div style="color: green"><b>Terça: </b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->terca}"; ?>
@@ -152,7 +152,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Quarta: </b></font>
+                                                <div style="color: green"><b>Quarta: </b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->quarta}"; ?>
@@ -160,7 +160,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Quinta: </b></font>
+                                                <div style="color: green"><b>Quinta: </b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->quinta}"; ?>
@@ -168,7 +168,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <font color="green"><b>Sexta: </b></font>
+                                                <div style="color: green"><b>Sexta: </b></div>
                                             </td>
                                             <td>
                                                 <? echo "{$r->sexta}"; ?>
@@ -215,13 +215,10 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                                                     <h5></h5>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button"
-                                                                            class="btn btn-default"
-                                                                            data-dismiss="modal">Cancelar
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <button type="submit"
-                                                                            value="Deletar programacao"
-                                                                            class="btn btn-danger" name="opcao">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_PROGRAMACAO?>">
+                                                                    <button type="submit"  class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Deletar programação
                                                                     </button>

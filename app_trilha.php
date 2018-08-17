@@ -1,5 +1,5 @@
 <?
-include 'DBConnection/Conexao.php';
+include 'connection/connection.php';
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
@@ -43,7 +43,7 @@ include 'e-jbsm_cabecalho.php';
                 $trilha_info = mysqli_fetch_object($result);
                 echo "<h3>Nome da trilha: $trilha_info->nome</h3><h3>Descrição: $trilha_info->descricao</h3>";
 
-                include 'functions/mapa_trilhas.php';
+                include 'helpers/mapa_trilhas.php';
                 $o=0;
                 $sql = "select * from ejbsm_associa_planta WHERE id_trilha = $id_trilha";
                 $result = $link->query($sql);

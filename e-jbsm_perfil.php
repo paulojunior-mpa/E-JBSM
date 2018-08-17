@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 if ($user_permissao == "usuario")
     $sql = "select * from ejbsm_usuario where login = '$user_login'";
@@ -47,8 +47,8 @@ $user = mysqli_fetch_object($result);
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                     </button>
-                                    <button type="submit" class="btn btn-success" value="Alterar imagem"
-                                            name="opcao">
+                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_IMAGEM?>">
+                                    <button type="submit" class="btn btn-success">
                                         <span class="glyphicon glyphicon-camera"></span>
                                         Alterar imagem
                                     </button>
@@ -134,7 +134,8 @@ $user = mysqli_fetch_object($result);
                 include 'e-jbsm_bolsista_horario.php'; ?>
             <? } ?>
             <hr>
-            <button type="submit" class="btn btn-success" value="Editar perfil" name="opcao">
+            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PERFIL?>">
+            <button type="submit" class="btn btn-success">
                 <span class="glyphicon glyphicon-save"></span>
                 Salvar alterações
             </button>

@@ -10,7 +10,7 @@
             <ul>
                 <li class='has-sub'>
                     <a>
-                        <form action="controller/Forum_Controller.php" method="post">
+                        <form action="controller/ForumController.php" method="post">
                             <table class="table">
                                 <tr>
                                     <td>Área

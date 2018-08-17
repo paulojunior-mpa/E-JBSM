@@ -38,7 +38,7 @@
         ?>
     </div>
     <div id="forum_texto_texto">
-        <font color="white">
+        <div color="white">
             <?
             if (isset ($_GET["subarea"])) {
                 $id_subarea = $_GET["subarea"];
@@ -60,6 +60,6 @@
             entre JBSM e comunidade.";
             }
             ?>
-        </font>
+        </div>
     </div>
 </div>

@@ -4,9 +4,8 @@
  * @param $permissao
  * @param $link
  */
-function CadastrarIntegrante($permissao, $link)
+function cadastrarIntegrante($permissao, $link)
 {
-
     $login = "";
     $senha = "";
     $nome = "";
@@ -78,16 +77,14 @@ function CadastrarIntegrante($permissao, $link)
         $agencia = $_POST["agencia"];
     }
 
-    $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao) VALUES ('$login', '$senha', '$nome', '$email',
-'$fixo', '$celular', 'Ativo', '$permissao');";
+    $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao) VALUES ('$login', '$senha', '$nome', '$email', '$fixo', '$celular', 'Ativo', '$permissao');";
     $link->query($sql) or die(mysqli_error($link));
 
-    $sql = "INSERT INTO ejbsm_integrante(login, id, cpf, rg, orgao, area, subarea, projeto, banco, conta, tipo_conta, agencia, bolsa) VALUES (
-'$login', '$id', '$cpf', '$rg', '$orgao', '$area', '$subarea', '$projeto', '$banco', '$conta', '$tipo_conta', '$agencia', '$bolsa');";
+    $sql = "INSERT INTO ejbsm_integrante(login, id, cpf, rg, orgao, area, subarea, projeto, banco, conta, tipo_conta, agencia, bolsa) VALUES ('$login', '$id', '$cpf', '$rg', '$orgao', '$area', '$subarea', '$projeto', '$banco', '$conta', '$tipo_conta', '$agencia', '$bolsa');";
     $link->query($sql) or die(mysqli_error($link));
 }
 
-function Deslogar($link)
+function deslogar($link)
 {
     $previous_encoding = mb_internal_encoding();
     mb_internal_encoding('UTF-8');
@@ -103,11 +100,4 @@ function Deslogar($link)
     setcookie("senha_e-jbsm", null, time() + (86400 * 30), "/");
     session_destroy();
     header('location: ../index.php');
-}
-
-//E-mail de confirmação de visita
-
-function Enviar_email($visita, $link)
-{
-
 }

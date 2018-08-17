@@ -1,8 +1,8 @@
 <?php
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir_app.php';
+include 'helpers/permitir_app.php';
 
-include "functions/phpqrcode/qrlib.php";
+include "helpers/phpqrcode/qrlib.php";
 
 $info = "";
 if (isset($_POST["info"]))
@@ -69,7 +69,7 @@ if (isset($_POST["info"]))
                                 document.getElementById("QR_planta").innerHTML = xmlhttp.responseText;
                             }
                         }
-                        xmlhttp.open("GET", "functions/ajax_gerar_qrcode.php?q=" + str + "&p=" + prefix.value, true);
+                        xmlhttp.open("GET", "helpers/ajax_gerar_qrcode.php?q=" + str + "&p=" + prefix.value, true);
                         xmlhttp.send();
                     }
                 </script>

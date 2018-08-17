@@ -1,8 +1,9 @@
 ﻿<?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include 'Helper.php';
-include '../functions/permitir.php';
+include '../constantes/Constantes.php';
+include '../helpers/Helper.php';
+include '../helpers/permitir.php';
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
@@ -15,10 +16,10 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     switch ($opcao) {
 
         case "":
-            Deslogar($link);
+            deslogar($link);
             break;
 
-        case "Pesquisar":
+        case Constantes::PESQUISAR:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -54,7 +55,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header("location: ../forum_index.php?consulta=$pesquisa_sql");
             break;
 
-        case "Cadastrar area":
+        case Constantes::CADASTRAR_AREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_POST["user_permissao"];
 
@@ -74,7 +75,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             }
             break;
 
-        case "Cadastrar subárea":
+        case Constantes::CADASTRAR_SUBAREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_POST["user_permissao"];
 
@@ -94,7 +95,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             }
             break;
 
-        case "Sugerir área":
+        case Constantes::SUGERIR_AREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -107,7 +108,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header('location: ../forum_sugestao.php?info=area_sugerida');
             break;
 
-        case "Sugerir subárea":
+        case Constantes::SUGERIR_SUBAREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -121,7 +122,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header('location: ../forum_sugestao.php?info=subarea_sugerida');
             break;
 
-        case "Editar área":
+        case Constantes::EDITAR_AREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_POST["user_permissao"];
 
@@ -134,7 +135,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header('location: ../forum_info_area.php?info=alterada');
             break;
 
-        case "Editar subárea":
+        case Constantes::EDITAR_SUBAREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -148,7 +149,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header('location: ../forum_info_subarea.php?info=alterada');
             break;
 
-        case "Deletar área":
+        case Constantes::DELETAR_AREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -169,7 +170,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             header('location: ../forum_info_area.php?info=area_deletada');
             break;
 
-        case "Deletar subárea":
+        case Constantes::DELETAR_SUBAREA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -186,7 +187,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
             break;
 
-        case "Cadastrar tópico":
+        case Constantes::CADASTRAR_TOPICO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -221,7 +222,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
             break;
 
-        case "Cadastrar resposta":
+        case Constantes::CADASTRAR_RESPOSTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -251,7 +252,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
             break;
 
-        case "Deletar topico":
+        case Constantes::DELETAR_TOPICO:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -278,7 +279,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
             break;
 
-        case "Deletar resposta":
+        case Constantes::DELETAR_RESPOSTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 

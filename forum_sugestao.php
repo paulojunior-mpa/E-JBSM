@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -13,7 +13,7 @@ if (isset($_GET["info"])) {
     <?php if ($info == "area_sugerida") { ?>
         <div class="alert alert-success" role="alert">Sua sugestão de área foi cadastrada</div>
     <?php } ?>
-    <form action="controller/Forum_Controller.php" method="post">
+    <form action="controller/ForumController.php" method="post">
         <table class="table">
             <tr>
                 <td>Nome da área
@@ -22,13 +22,13 @@ if (isset($_GET["info"])) {
             </tr>
             <tr>
                 <td>Descrição da área
-                    <textarea class="form-control" cols="80" name="descricao" placeholder="Descrição da nova área"
-                              required=""></textarea>
+                    <textarea class="form-control" cols="80" name="descricao" placeholder="Descrição da nova área" required=""></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="submit" class="btn btn-success" name="opcao" value="Sugerir área">
+                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::SUGERIR_AREA?>">
+                    <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar sugestão
                     </button>
@@ -40,7 +40,7 @@ if (isset($_GET["info"])) {
     <?php if ($info == "subarea_sugerida") { ?>
         <div class="alert alert-success" role="alert">Sua sugestão de subárea foi cadastrada</div>
     <?php } ?>
-    <form action="controller/Forum_Controller.php" method="post">
+    <form action="controller/ForumController.php" method="post">
         <table class="table">
             <tr>
                 <td style="width: 30%">Área
@@ -66,7 +66,8 @@ if (isset($_GET["info"])) {
             </tr>
             <tr>
                 <td>
-                    <button type="submit" class="btn btn-success" name="opcao" value="Sugerir subárea">
+                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::SUGERIR_SUBAREA?>">
+                    <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar sugestão
                     </button>
@@ -89,8 +90,8 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <font color="green"><b>Nome da área: </b></font> <? echo $area->nome ?><br><br>
-                            <font color="green"><b>Descrição da área: </b></font> <? echo $area->descricao ?>
+                            <div style="color: green"><b>Nome da área: </b></div> <? echo $area->nome ?><br><br>
+                            <div style="color: green"><b>Descrição da área: </b></div> <? echo $area->descricao ?>
                         </span>
                     </a>
                     <? if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
@@ -98,7 +99,7 @@ if (isset($_GET["info"])) {
                             <li class='has-sub'>
                                 <a>
                                     <table class="table">
-                                        <form action="controller/Forum_Controller.php" method="post">
+                                        <form action="controller/ForumController.php" method="post">
                                             <tr>
                                                 <td colspan="2">Nome da área
                                                     <input type="text" class="form-control" name="area_nome"
@@ -124,15 +125,12 @@ if (isset($_GET["info"])) {
                                                     </button>
                                                 </td>
                                         </form>
-                                        <form action="controller/Forum_Controller.php" method="post">
+                                        <form action="controller/ForumController.php" method="post">
                                             <td>
-
                                                 <input type="hidden" value="forum_sugestao" name="local">
-                                                <input type="hidden" value="<?= $area->id ?>"
-                                                       name="id">
-                                                <button type="submit" class="btn btn-danger"
-                                                        value="Deletar área"
-                                                        name="opcao">
+                                                <input type="hidden" value="<?= $area->id ?>" name="id">
+                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_AREA?>">
+                                                <button type="submit" class="btn btn-danger">
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                     Excluir esta sugestão
                                                 </button>
@@ -167,14 +165,14 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <font color="green"><b>Nome da subárea: </b></font> <? echo $subarea->nome ?><br><br>
-                            <font color="green"><b>Descrição da área: </b></font> <? echo $subarea->descricao ?><br><br>
+                            <div style="color: green"><b>Nome da subárea: </b></div> <? echo $subarea->nome ?><br><br>
+                            <div style="color: green"><b>Descrição da área: </b></div> <? echo $subarea->descricao ?><br><br>
                             <?
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
                             ?>
-                            <font color="green"><b>Área: </b></font> <? echo $nome_area ?>
+                            <div style="color: green"><b>Área: </b></div> <? echo $nome_area ?>
                         </span>
                     </a>
                     <? if ($user_permissao != "usuario") { ?>
@@ -182,7 +180,7 @@ if (isset($_GET["info"])) {
                             <li class='has-sub'>
                                 <a>
                                     <table class="table">
-                                        <form action="controller/Forum_Controller.php" method="post">
+                                        <form action="controller/ForumController.php" method="post">
                                             <tr>
                                                 <td style="width:30%;">
                                                     <select name="subarea_area" class="form-control">

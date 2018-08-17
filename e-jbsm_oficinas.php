@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -78,7 +78,8 @@ if ($user_permissao != "usuario") { ?>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <button class="btn btn-success" type="submit" name="opcao" value="Cadastrar oficina">
+                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_OFICINA?>">
+                            <button class="btn btn-success" type="submit">
                                 <span class="glyphicon glyphicon-save"></span>
                                 Cadastrar
                             </button>

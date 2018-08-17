@@ -1,6 +1,6 @@
 <?php
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir_app.php';
+include 'helpers/permitir_app.php';
 
 $info = "";
 if (isset($_GET["info"]))
@@ -37,7 +37,7 @@ if (isset($_GET["info"]))
                                 document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                             }
                         }
-                        xmlhttp.open("GET", "functions/ajax_editar_plantas.php?q=" + str, true);
+                        xmlhttp.open("GET", "helpers/ajax_editar_plantas.php?q=" + str, true);
                         xmlhttp.send();
                     }
                 </script>
@@ -55,7 +55,7 @@ if (isset($_GET["info"]))
                     ?>
                     Visualizações: <?=$planta->visualizada?><br>
                     Ultima visualização: <?=$planta->ult_visualizada?><hr>
-                    <form action="controller/app_controll.php" method="post" enctype="multipart/form-data">
+                    <form action="controller/AppControll.php" method="post" enctype="multipart/form-data">
                         <div class="col-md-4">
                             Nome popular
                             <input class="form-control" type="text" value="<?= $planta->nome_popular ?>"
@@ -128,12 +128,11 @@ if (isset($_GET["info"]))
                             <br>
                             Nova imagem (máximo 2mb)
                             <img id="imagem_preview" src="" height="120">
-                            <input id="preview_file" class="form-control" type="file" onchange="previewFile()"
-                                   name="file">
+                            <input id="preview_file" class="form-control" type="file" onchange="previewFile()" name="file">
                             <br>
                             <input type="hidden" name="id" value="<?= $planta->id ?>">
-                            <button class="btn btn-warning" name="opcao" value="Cadastrar planta"
-                                    style="margin-bottom: 10px">
+                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANTA?>">
+                            <button class="btn btn-warning" value="Cadastrar planta" style="margin-bottom: 10px">
                                 <span class="glyphicon glyphicon-edit"></span>
                                 Salvar edição
                             </button>
@@ -141,7 +140,7 @@ if (isset($_GET["info"]))
                     </form>
                     <div class="row">
                         <div class="col-md-offset-8">
-                            <form action="controller/app_controll.php" method="post">
+                            <form action="controller/AppControll.php" method="post">
                                 <button type="button" class="btn btn-danger"
                                         data-toggle="modal"
                                         data-target="#myModal" style="margin-left: 10px;">

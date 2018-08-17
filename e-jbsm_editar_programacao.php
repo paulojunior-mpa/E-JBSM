@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $id = "";
 if (isset($_POST["id"])) {
     $id = $_POST["id"];
@@ -115,8 +115,8 @@ $r = mysqli_fetch_object($result);
                 <tr>
                     <td>
                         <input type="hidden" name="id" value="<?= $r->id ?>">
-                        <button class="btn btn-success" type="submit" name="opcao"
-                                value="Editar programacao">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PROGRAMACAO?>">
+                        <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar edição
                         </button>

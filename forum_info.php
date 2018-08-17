@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -115,14 +115,11 @@ if (isset($_GET["info"])) {
                                     <? } ?>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">
                                         Cancelar
                                     </button>
-                                    <input type="hidden" value="<?= $row->login ?>"
-                                           name="login">
-                                    <input type="hidden" value="Ativar Desativar"
-                                           name="opcao">
+                                    <input type="hidden" value="<?= $row->login ?>" name="login">
+                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ATIVAR_DESATIVAR?>">
                                     <? if ($row->status == "Ativo") { ?>
                                         <button type="submit" class="btn btn-danger" name="op"
                                                 value="Inativo">

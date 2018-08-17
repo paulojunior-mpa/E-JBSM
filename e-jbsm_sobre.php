@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -12,18 +12,18 @@ include 'functions/permitir.php';
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql);
             $linha = mysqli_fetch_object($result);
-            echo "<font color='green'><b>Unidade/Empresa: </font>" . $linha->nome . "<br>";
-            echo "<font color='green'><b>Instituição: </font>" . $linha->instituicao . "<br>";
-            echo "<font color='green'><b>Fone: </font>" . $linha->fone1 . "<br>";
-            echo "<font color='green'><b>Fone alternativo: </font>" . $linha->fone2 . "<br>";
-            echo "<font color='green'><b>E-mail: </font>" . $linha->email . "<br>";
-            echo "<font color='green'><b>Endereco: </font>" . $linha->endereco . "<br>";
-            echo "<font color='green'><b>Descrição: </font>" . $linha->descricao . "<br>";
+            echo "<div style='color: green'><b>Unidade/Empresa: </div>" . $linha->nome . "<br>";
+            echo "<div style='color: green'><b>Instituição: </div>" . $linha->instituicao . "<br>";
+            echo "<div style='color: green'><b>Fone: </div>" . $linha->fone1 . "<br>";
+            echo "<div style='color: green'><b>Fone alternativo: </div>" . $linha->fone2 . "<br>";
+            echo "<div style='color: green'><b>E-mail: </div>" . $linha->email . "<br>";
+            echo "<div style='color: green'><b>Endereco: </div>" . $linha->endereco . "<br>";
+            echo "<div style='color: green'><b>Descrição: </div>" . $linha->descricao . "<br>";
             ?>
         </div>
         <div class="panel-heading">
-            <h3 class="panel-title"><font color='green'><b>Localização: </b><? echo "Latitude " . $linha->latitude;
-                    echo " Longitude " . $linha->longitude; ?></font></h3>
+            <h3 class="panel-title"><div style='color: green'><b>Localização: </b><? echo "Latitude " . $linha->latitude;
+                    echo " Longitude " . $linha->longitude; ?></div></h3>
         </div>
         <div class="panel-body" id="local">
             <script src="https://maps.googleapis.com/maps/api/js"></script>

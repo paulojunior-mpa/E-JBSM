@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -33,15 +33,15 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <font color="green"><b>Nome: </b></font> <? echo $area->nome ?><br><br>
-                            <font color="green"><b>Descrição: </b></font> <? echo $area->descricao ?>
+                            <div style="color: green"><b>Nome: </b></div> <? echo $area->nome ?><br><br>
+                            <div style="color: green"><b>Descrição: </b></div> <? echo $area->descricao ?>
                         </span>
                     </a>
                     <? if ($user_permissao != "usuario") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
-                                    <form action="controller/Forum_Controller.php" method="post">
+                                    <form action="controller/ForumController.php" method="post">
                                         <table class="table">
                                             <tr>
                                                 <td>Nome da área
@@ -60,8 +60,8 @@ if (isset($_GET["info"])) {
                                             <tr>
                                                 <td>
                                                     <input type="hidden" value="<?= $area->id ?>" name="id">
-                                                    <button type="submit" class="btn btn-warning" value="Editar área"
-                                                            name="opcao">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_AREA?>">
+                                                    <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Salvar edição
                                                     </button>
@@ -70,7 +70,7 @@ if (isset($_GET["info"])) {
                                         </table>
                                     </form>
                                     <? if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
-                                        <form action="controller/Forum_Controller.php" method="post">
+                                        <form action="controller/ForumController.php" method="post">
                                             <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -96,20 +96,18 @@ if (isset($_GET["info"])) {
                                                                 Cancelar
                                                             </button>
                                                             <?if($area->id!=1){?>
-                                                            <button type="submit" class="btn btn-danger" name="opcao"
-                                                                    value="Deletar área">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                                Deletar área
-                                                            </button>
+                                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_AREA?>">
+                                                                <button type="submit" class="btn btn-danger">
+                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                    Deletar área
+                                                                </button>
                                                             <?}?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger"
-                                                    data-toggle="modal"
-                                                    data-target="#myModal<?=$j?>">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?=$j?>">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 Deletar Área
                                             </button>

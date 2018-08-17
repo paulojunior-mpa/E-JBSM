@@ -1,23 +1,23 @@
 <?php
 
-include '../DBConnection/Conexao.php';
-include 'Helper.php';
+include '../connection/connection.php';
+include '../constantes/Constantes.php';
+include '../helpers/Helper.php';
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
     switch ($opcao) {
-
         case "":
             header('location: ../index.php');
             break;
 
-        case "Logar":
+        case Constantes::LOGAR:
             session_start();
             $user_login = htmlspecialchars($_POST["user_login"], ENT_QUOTES, 'UTF-8');
             $user_senha = htmlspecialchars($_POST["user_senha"], ENT_QUOTES, 'UTF-8');
 
             if ($user_login == "" || $user_senha == "") {
-                Deslogar($link);
+                deslogar($link);
             }
             $sql = "select * from ejbsm_usuario where login = '$user_login';";
             $user = mysqli_fetch_object($link->query($sql));
@@ -70,7 +70,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             }
             break;
 
-        case "Cadastrar usuario":
+        case Constantes::CADASTRAR_USUARIO:
 
             $usuario['nome']=(htmlspecialchars($_POST["usuario_nome"], ENT_QUOTES, 'UTF-8'));
             $usuario['email']=(htmlspecialchars($_POST["usuario_email"], ENT_QUOTES, 'UTF-8'));
@@ -105,7 +105,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             }
             break;
 
-        case "Redefinir senha":
+        case Constantes::REDEFINIR_SENHA:
 
             $login = htmlspecialchars($_POST["login"], ENT_QUOTES, 'UTF-8');
 
@@ -156,10 +156,6 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
                 header('location: ../e-jbsm_redefinir_senha.php?info=nao');
             }
             break;
-
-        case "teste":
-            break;
-
     }
 } else {
     header('location: ../index.php');

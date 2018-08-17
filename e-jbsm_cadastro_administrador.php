@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -49,7 +49,8 @@ if (isset($_GET["info"])) {
                         <input class="form-control" type="text" name="senha" placeholder="Senha" required>
                     </td>
                     <td><br>
-                        <button class="btn btn-success" type="submit" value="Cadastrar Administrador" name="opcao">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_ADMINISTRADOR?>">
+                        <button class="btn btn-success" type="submit" value="Cadastrar Administrador">
                             <span class="glyphicon glyphicon-save"></span>
                             Cadastrar
                         </button>

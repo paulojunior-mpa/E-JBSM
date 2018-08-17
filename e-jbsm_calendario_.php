@@ -12,19 +12,19 @@
     </tr>
 </table>
 <?php
-function MostreSemanas()
+function mostrarSemanas()
 {
     $semanas = "DSTQQSS";
 
     for ($i = 0; $i < 7; $i++)
         if ($i == 0 or $i == 6) {
-            echo "<td><div style='text-align: center'>" . "<b><font color='red'>" . $semanas{$i} . "</font></b>" . "</div></td>";
+            echo "<td><div style='text-align: center'>" . "<b><div STYLE='color: red'>" . $semanas{$i} . "</div></b>" . "</div></td>";
         } else {
             echo "<td><b><div style='text-align: center'>" . $semanas{$i} . "</div></b></td>";
         }
 }
 
-function GetNumeroDias($mes)
+function getNumeroDias($mes)
 {
     $numero_dias = array(
         '01' => 31, '02' => 28, '03' => 31, '04' => 30, '05' => 31, '06' => 30,
@@ -38,7 +38,7 @@ function GetNumeroDias($mes)
     return $numero_dias[$mes];
 }
 
-function GetNomeMes($mes)
+function getNomeMes($mes)
 {
     $meses = array('01' => "Janeiro", '02' => "Fevereiro", '03' => "Março",
         '04' => "Abril", '05' => "Maio", '06' => "Junho",
@@ -53,11 +53,11 @@ function GetNomeMes($mes)
 
 }
 
-function MostreCalendario($mes, $link)
+function calendario($mes, $link)
 {
 
-    $numero_dias = GetNumeroDias($mes);    // retorna o número de dias que tem o mês desejado
-    $nome_mes = GetNomeMes($mes);
+    $numero_dias = getNumeroDias($mes);    // retorna o número de dias que tem o mês desejado
+    $nome_mes = getNomeMes($mes);
     $diacorrente = 0;
 
     $diasemana = jddayofweek(cal_to_jd(CAL_GREGORIAN, $mes, "01", date('Y')), 0);    // função que descobre o dia da semana
@@ -67,7 +67,7 @@ function MostreCalendario($mes, $link)
     echo "<td colspan = 5><h3 style='margin-left: 10%;'>" . $nome_mes . "</h3></td>";
     echo "</tr>";
     echo "<tr>";
-    MostreSemanas();    // função que mostra as semanas
+    mostrarSemanas();    // função que mostra as semanas
     echo "</tr>";
     for ($linha = 0; $linha < 6; $linha++) {
 
@@ -111,7 +111,7 @@ function MostreCalendario($mes, $link)
                     echo " ";
                 } else {
                     // echo "<input type = 'button' id = 'dia_comum' name = 'dia".($diacorrente+1)."'  value = '".++$diacorrente."' onclick = "acao(this.value)">";
-                    echo "<font size='2'><a href = " . $_SERVER["PHP_SELF"] . "?data=$data>" . ++$diacorrente . "</a></font>";
+                    echo "<div size='2'><a href = " . $_SERVER["PHP_SELF"] . "?data=$data>" . ++$diacorrente . "</a></div>";
 
                 }
             } else {
@@ -129,7 +129,7 @@ function MostreCalendario($mes, $link)
     echo "</table>";
 }
 
-function MostreCalendarioCompleto($link)
+function calendarioCompleto($link)
 {
     echo "<table>";
     $cont = 1;
@@ -142,7 +142,7 @@ function MostreCalendarioCompleto($link)
             } else {
                 echo "<td style='border-right: 1px solid #000000;'>";
             }
-            MostreCalendario(($cont < 10) ? "0" . $cont : $cont, $link);
+            calendario(($cont < 10) ? "0" . $cont : $cont, $link);
 
             $cont++;
             echo "</td>";
@@ -156,5 +156,5 @@ function MostreCalendarioCompleto($link)
 //$mes_atual = date('m');
 //MostreCalendario($mes_atual);
 echo "<br/>";
-MostreCalendarioCompleto($link);
+calendarioCompleto($link);
 ?>

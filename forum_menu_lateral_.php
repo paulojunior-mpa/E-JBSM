@@ -7,7 +7,7 @@
                 $row = mysqli_fetch_object($link->query($sql));
                 $nome = explode(" ", $row->nome);
                 $user_email = $row->email;
-                include 'functions/imagem_perfil.php';
+                include 'helpers/imagem_perfil.php';
                 function Imagem_Menu($login, $max)
                 {
                     $x = 100;

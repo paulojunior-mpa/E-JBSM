@@ -9,11 +9,11 @@ if($r["login"]==""){
 echo "<table style='text-align: center; text-align: center; width: 100%'>
         <tr style='width: 100%'>
             <td></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Seg</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Ter</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Qua</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Qui</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Sex</font></td>
+            <td style='width: 18%'><div>Seg</div></td>
+            <td style='width: 18%'><div>Ter</div></td>
+            <td style='width: 18%'><div>Qua</div></td>
+            <td style='width: 18%'><div>Qui</div></td>
+            <td style='width: 18%'><div>Sex</div></td>
         </tr>";
 echo "<tr><td colspan='6' style='text-align: center'><h4>Manhã</h4></td></tr>";
 $semana = array("seg", "ter", "qua", "qui", "sex");
@@ -28,7 +28,7 @@ for ($i = 0; $i < 8; $i++) {
         $h2++;
         echo "<td colspan='6' style='text-align: center'><h4>Tarde</h4></td></tr><tr>";
     }
-    echo "<td><font size='4' color='#556b2f'>$h:30-$h2:30</font></td>";
+    echo "<td><div size='4'>$h:30-$h2:30</div></td>";
     for ($j = 0; $j < 5; $j++) {
         $sql = "select * from ejbsm_horario_bolsista where $semana[$j]$h$h2 = '1' and login = '$login_usuario';";
         $result = $link->query($sql) or die (mysql_error());

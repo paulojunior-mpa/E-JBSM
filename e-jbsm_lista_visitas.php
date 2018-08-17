@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $inicio_consulta = "";
 $info = "";
 if (isset($_GET["inicio_consulta"])) {
@@ -63,7 +63,7 @@ if (isset($_GET["info"])) {
                         <a>
                         <span>
                             <div class="input-group">
-                                <b>ID: </b> <font color="green"><?php echo "$visita->id " ?></font>
+                                <b>ID: </b> <div style="color: green"><?php echo "$visita->id " ?></div>
 
                                 <? if ($visita->status == "Confirmada") {
                                     echo "<span class='glyphicon glyphicon-ok'>";
@@ -74,10 +74,10 @@ if (isset($_GET["info"])) {
                                 }
                                 echo " $visita->status</span>";
                                 ?>
-                                <b> Data: </b><font color="green"><?php echo "{$visita->data}"; ?></font>
-                                <b> Hora: </b><font color="green"><?php echo "{$visita->hora}"; ?></font>
+                                <b> Data: </b><div style="color: green"><?php echo "{$visita->data}"; ?></div>
+                                <b> Hora: </b><div style="color: green"><?php echo "{$visita->hora}"; ?></div>
                                 <b> Insituicao/Grupo: </b><font
-                                    color="green"><?php echo "{$visita->instituicao}"; ?></font>
+                                    color="green"><?php echo "{$visita->instituicao}"; ?></div>
                             </div>
                         </span>
                         </a>
@@ -118,9 +118,7 @@ if (isset($_GET["info"])) {
                                                 <? if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
                                                         <form action="controller/Controller.php" method="post">
-                                                            <button type="button" class="btn btn-danger"
-                                                                    data-toggle="modal"
-                                                                    data-target="#myModal<?= $j ?>">
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?= $j ?>">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                 Excluir visita
                                                             </button>
@@ -154,10 +152,9 @@ if (isset($_GET["info"])) {
                                                                             <input type="hidden"
                                                                                    value="<?= $visita->id ?>"
                                                                                    name="id">
-                                                                            <button type="submit" value="Excluir visita"
-                                                                                    class="btn btn-danger" name="opcao">
-                                                                                <span
-                                                                                    class="glyphicon glyphicon-remove"></span>
+                                                                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EXCLUIR_VISITA?>">
+                                                                            <button type="submit" class="btn btn-danger">
+                                                                                <span class="glyphicon glyphicon-remove"></span>
                                                                                 Excluir visita
                                                                             </button>
                                                                         </div>

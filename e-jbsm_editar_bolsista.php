@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -164,7 +164,8 @@ include 'functions/permitir.php';
                 <tr>
                     <td>
                         <input type="hidden" name="loginBolsista" value="<?= $bolsista_login ?>">
-                        <button type="submit" class="btn btn-success" name="opcao" value="Editar bolsista">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_BOLSISTA?>">
+                        <button type="submit" class="btn btn-success">
                             Salvar
                         </button>
                     </td>

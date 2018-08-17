@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir_app.php';
+include 'helpers/permitir_app.php';
 
 $inicio_consulta = "";
 $info = "";
@@ -20,15 +20,12 @@ if (isset($_GET["info"])) {
         </div>
         <div class="col-md-9">
             <? if ($info == "cadastrada") {
-                echo '<div class="alert alert-success">
-<span class="glyphicon glyphicon-saved"></span>
-            Planta cadastrada!
-        </div>';
+                echo '<div class="alert alert-success"> <span class="glyphicon glyphicon-saved"></span> Planta cadastrada! </div>';
             }
             ?>
             <h4>Cadastro manual</h4>
 
-            <form action="controller/app_controll.php" enctype="multipart/form-data" method="post">
+            <form action="controller/AppControll.php" enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="col-md-4">
                         Nome popular
@@ -77,13 +74,15 @@ if (isset($_GET["info"])) {
                                     }
                                 }
                             }
+
                             previewFile();
                         </script>
                         Imagem (máximo 2mb)
                         <img id="imagem_preview" src="" height="120">
                         <input id="preview_file" class="form-control" type="file" onchange="previewFile()" name="file">
                         <br>
-                        <button class="btn btn-success btn-block" name="opcao" value="Cadastrar planta">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANTA?>">
+                        <button class="btn btn-success btn-block" value="Cadastrar planta">
                             <span class="glyphicon glyphicon-save"></span>
                             Cadastrar
                         </button>
@@ -109,7 +108,7 @@ if (isset($_GET["info"])) {
         </div>
         <?
         if (isset($_POST["xls"])) {
-            include 'functions/excel_reader/excel_reader2.php';
+            include 'helpers/excel_reader/excel_reader2.php';
             $arquivo = $_FILES["file"]["tmp_name"];
             $data = new Spreadsheet_Excel_Reader($arquivo);
             ?>
@@ -136,7 +135,7 @@ if (isset($_GET["info"])) {
                             $descricao = $data->val($i, 5);
                             ?>
                             <tr>
-                                <td><?= $nome?></td>
+                                <td><?= $nome ?></td>
                                 <td><?= $genero ?></td>
                                 <td><?= $especie ?></td>
                                 <td><?= $familia ?></td>
@@ -152,7 +151,7 @@ if (isset($_GET["info"])) {
                     ?>
                 </table>
             </div>
-        <?
+            <?
         }
         ?>
     </div>

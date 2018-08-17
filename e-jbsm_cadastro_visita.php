@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $inicio_consulta = "";
 $info = "";
@@ -46,14 +46,14 @@ if (isset($_GET["info"])) {
             <table class="table table-bordered">
                 <tr>
                     <td style="width: 10%;">#</td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Segunda</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Terça</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Quarta</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Quinta</font></td>
-                    <td style="width: 18%;"><font size="4" color="#556b2f">Sexta</font></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Segunda</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Terça</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Quarta</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Quinta</div></td>
+                    <td style="width: 18%;"><div size="4" color="#556b2f">Sexta</div></td>
                 </tr>
                 <tr>
-                    <td><font size="4" color="#556b2f">Manhã</font></td>
+                    <td><div size="4" color="#556b2f">Manhã</div></td>
                     <td>
                         <? if ($r->manha_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
@@ -91,7 +91,7 @@ if (isset($_GET["info"])) {
                     </td>
                 </tr>
                 <tr>
-                    <td><font size="4" color="#556b2f">Tarde</font></td>
+                    <td><div size="4" color="#556b2f">Tarde</div></td>
                     <td>
                         <? if ($r->tarde_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
@@ -292,8 +292,8 @@ if (isset($_GET["info"])) {
                     <hr>
                 </div>
             </div>
-            <button class='btn btn-success' type="submit" class="form-control" name="opcao"
-                    value="Cadastrar visita">
+            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_VISITA?>">
+            <button class='btn btn-success' type="submit" class="form-control">
                 <span class="glyphicon glyphicon-save"></span>
                 Cadastrar visita
             </button>

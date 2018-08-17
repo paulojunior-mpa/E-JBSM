@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $pesquisa = "";
 if (isset($_POST["pesquisa"])) {
@@ -22,7 +22,7 @@ if (isset($_POST["pesquisa"])) {
                             document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                         }
                     }
-                    xmlhttp.open("GET", "functions/ajax_pesquisar_usuarios.php?q=" + str, true);
+                    xmlhttp.open("GET", "helpers/ajax_pesquisar_usuarios.php?q=" + str, true);
                     xmlhttp.send();
                 }
             }

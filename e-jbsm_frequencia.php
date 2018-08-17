@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 if ($user_permissao == "orientador" or $user_permissao == "administrador") {
     $loginBolsista = "";

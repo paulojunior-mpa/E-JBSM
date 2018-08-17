@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir_app.php';
+include 'helpers/permitir_app.php';
 
 $inicio_consulta = "";
 $info = "";
@@ -33,13 +33,14 @@ if (isset($_GET["info"])) {
 
                 <h4>Cadastro de trilha</h4>
 
-                <form action="controller/app_controll.php" method="post">
+                <form action="controller/AppControll.php" method="post">
                     Nome da trilha
                     <input class="form-control" type="text" name="nome" placeholder="nome" required="">
                     Descrição da trilha
                     <input class="form-control" type="text" name="descricao" placeholder="descricao" required="">
                     <br>
-                    <button class="btn btn-success" name="opcao" value="Cadastrar trilha">
+                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_TRILHA?>">
+                    <button class="btn btn-success" value="Cadastrar trilha">
                         <span class="glyphicon glyphicon-save"></span>
                         Cadastrar
                     </button>

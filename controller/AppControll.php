@@ -1,19 +1,20 @@
 <?php
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include 'Helper.php';
+include '../constantes/Constantes.php';
+include '../helpers/Helper.php';
 
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];
 
-    include "../DBConnection/Conexao.php";
+    include "../connection/connection.php";
 
     switch ($opcao) {
         case "":
             header('location: app.php');
             break;
 
-        case "Pesquisar por planta":
+        case Constantes::PESQUISAR_PLANTA:
 
             $sql = "select * from ejbsm_planta where id > 0";
 
@@ -34,7 +35,7 @@ if (isset($_POST["opcao"])) {
 
             break;
 
-        case "Cadastrar planta":
+        case Constantes::CADASTRAR_PLANTA:
             $popular = $_POST["popular"];
             $genero = $_POST["gênero"];
             $especie = $_POST["espécie"];
@@ -77,7 +78,7 @@ if (isset($_POST["opcao"])) {
             }
             break;
 
-        case "Cadastrar trilha":
+        case Constantes::CADASTRAR_TRILHA:
 
             $nome_trilha = "";
             $descricao_trilha = "";
@@ -102,7 +103,7 @@ if (isset($_POST["opcao"])) {
 
             break;
 
-        case "Deletar planta":
+        case Constantes::DELETAR_PLANTA:
             $id_planta = $_POST["id"];
 
             $sql = "delete from ejbsm_planta where id = $id_planta";
@@ -114,7 +115,7 @@ if (isset($_POST["opcao"])) {
             header("location: ../app_editar_planta.php?info=deletada");
             break;
 
-        case "Deletar trilha":
+        case Constantes::DELETAR_TRILHA:
             $id = $_POST["id"];
 
             $sql = "delete from ejbsm_associa_planta where id_trilha = $id";

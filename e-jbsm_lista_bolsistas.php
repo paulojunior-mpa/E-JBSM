@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 if (isset($_GET["info"]) and $_GET["info"] == "editado") {
     echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";
@@ -10,11 +10,11 @@ function PegaHorarios($condicao, $login, $link)
     echo "<table style='text-align: center; text-align: center;'>
         <tr style='width: 100%'>
             <td></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Seg</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Ter</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Qua</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Qui</font></td>
-            <td style='width: 18%'><font size='5' color='#556b2f'>Sex</font></td>
+            <td style='width: 18%'><div>Seg</div></td>
+            <td style='width: 18%'><div>Ter</div></td>
+            <td style='width: 18%'><div>Qua</div></td>
+            <td style='width: 18%'><div>Qui</div></td>
+            <td style='width: 18%'><div>Sex</div></td>
         </tr>";
     $semana = array("seg", "ter", "qua", "qui", "sex");
     $h = 8;
@@ -25,7 +25,7 @@ function PegaHorarios($condicao, $login, $link)
             $h++;
             $h2++;
         }
-        echo "<td><font size='4' color='#556b2f'>$h:30-$h2:30</font></td>";
+        echo "<td><div size='4'>$h:30-$h2:30</div></td>";
         for ($j = 0; $j < 5; $j++) {
             echo "<td style='width: 18%'><div style='border: 1px solid #556b2f; background-color: #66cdaa; margin-left: 3px; margin-bottom: 3px;'>";
             if ($condicao == 1)
@@ -37,7 +37,7 @@ function PegaHorarios($condicao, $login, $link)
                 $sql2 = "select nome from ejbsm_usuario where login = '$r->login';";
                 $res = $link->query($sql2);
                 $nome = mysqli_fetch_object($res);
-                echo "<font color='white'>$nome->nome</font><br>";
+                echo "<div style='color: white'>$nome->nome</div><br>";
             }
             echo "</div></td>";
         }
@@ -53,8 +53,7 @@ function PegaHorarios($condicao, $login, $link)
     <div class="panel-body">
         <div class="alert alert-info">Horário completo de bolsistas.</div>
         <!-- Button trigger modal -->
-        <button type="button" title="Ver horários" class="btn btn-info btn-block"
-                data-toggle="modal" data-target="#ModalHorarioCompleto">
+        <button type="button" title="Ver horários" class="btn btn-info btn-block" data-toggle="modal" data-target="#ModalHorarioCompleto">
             <span class="glyphicon glyphicon-eye-open"></span> Ver horários
         </button>
         <!-- Modal -->
@@ -110,7 +109,6 @@ function PegaHorarios($condicao, $login, $link)
                         <ul>
                             <li class='has-sub'>
                                 <a>
-                            <span>
                                 <table class="table">
                                     <tr>
                                         <td style="width: 15%;"><b>Celular: </b><?= $bolsista->celular; ?></td>
@@ -137,10 +135,8 @@ function PegaHorarios($condicao, $login, $link)
                                             <td>
                                                 <form action="e-jbsm_editar_bolsista.php" method="post">
                                                     <div class="input-group">
-                                                        <input type="hidden" name="bolsista_login"
-                                                               value="<?= $bolsista->login ?>">
-                                                        <button class="btn btn-warning" type="submit"
-                                                                value="Editar Informações">
+                                                        <input type="hidden" name="bolsista_login" value="<?= $bolsista->login ?>">
+                                                        <button class="btn btn-warning" type="submit" value="Editar Informações">
                                                             <span class="glyphicon glyphicon-edit"></span>
                                                             Editar informações
                                                         </button>
@@ -152,7 +148,6 @@ function PegaHorarios($condicao, $login, $link)
                                     }
                                     ?>
                                 </table>
-                            </span>
                                 </a>
                             </li>
                         </ul>
@@ -195,7 +190,6 @@ function PegaHorarios($condicao, $login, $link)
                         <ul>
                             <li class='has-sub'>
                                 <a>
-                            <span>
                                 <table class="table">
                                     <tr>
                                         <td style="width: 15%;"><b>Celular: </b><?= $bolsista->celular; ?></td>
@@ -216,16 +210,11 @@ function PegaHorarios($condicao, $login, $link)
                                             <table>
                                                 <tr>
                                                     <td></td>
-                                                    <td style='width: 18%'><font size='5' color='#556b2f'>Seg</font>
-                                                    </td>
-                                                    <td style='width: 18%'><font size='5' color='#556b2f'>Ter</font>
-                                                    </td>
-                                                    <td style='width: 18%'><font size='5' color='#556b2f'>Qua</font>
-                                                    </td>
-                                                    <td style='width: 18%'><font size='5' color='#556b2f'>Qui</font>
-                                                    </td>
-                                                    <td style='width: 18%'><font size='5' color='#556b2f'>Sex</font>
-                                                    </td>
+                                                    <td style='width: 18%'><div>Seg</div> </td>
+                                                    <td style='width: 18%'><div>Ter</div> </td>
+                                                    <td style='width: 18%'><div>Qua</div> </td>
+                                                    <td style='width: 18%'><div>Qui</div> </td>
+                                                    <td style='width: 18%'><div>Sex</div> </td>
                                                 </tr>
                                                 <? PegaHorarios(2, $bolsista->login, $link); ?>
                                             </table>
@@ -237,10 +226,8 @@ function PegaHorarios($condicao, $login, $link)
                                             <td>
                                                 <form action="e-jbsm_editar_bolsista.php" method="post">
                                                     <div class="input-group">
-                                                        <input type="hidden" name="bolsista_login"
-                                                               value="<?= $bolsista->login ?>">
-                                                        <button class="btn btn-warning" type="submit"
-                                                                value="Editar Informações">Editar informações
+                                                        <input type="hidden" name="bolsista_login" value="<?= $bolsista->login ?>">
+                                                        <button class="btn btn-warning" type="submit" value="Editar Informações">Editar informações
                                                         </button>
                                                     </div>
                                                 </form>
@@ -250,7 +237,6 @@ function PegaHorarios($condicao, $login, $link)
                                     }
                                     ?>
                                 </table>
-                            </span>
                                 </a>
                             </li>
                         </ul>

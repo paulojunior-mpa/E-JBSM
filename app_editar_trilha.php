@@ -1,6 +1,6 @@
 <?php
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir_app.php';
+include 'helpers/permitir_app.php';
 
 $info = "";
 if (isset($_GET["info"]))
@@ -65,10 +65,10 @@ if (isset($_GET["info"]))
                             ?>
                         </div>
                         <div class="col-md-12" id="trilha">
-                            <form action="controller/app_controll.php" method="post">
+                            <form action="controller/AppControll.php" method="post">
                                 <h4>Trilha <input type="text" class="form-control" name="nome"
                                                   value="<?= $trilha->nome ?>"></h4><h5>Descrição: <textarea
-                                        class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
+                                            class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
                                 </h5>
                                 <input type="hidden" name="id" value="<?= $trilha->id ?>">
                                 <button class="btn btn-warning" name="opcao" value="Cadastrar trilha">
@@ -77,7 +77,7 @@ if (isset($_GET["info"]))
                                 </button>
                             </form>
                             <div class="col-md-offset-3">
-                                <form action="controller/app_controll.php" method="post">
+                                <form action="controller/AppControll.php" method="post">
                                     <button type="button" class="btn btn-danger"
                                             data-toggle="modal"
                                             data-target="#myModal">
@@ -91,13 +91,12 @@ if (isset($_GET["info"]))
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <button type="button" class="close"
-                                                            data-dismiss="modal"
-                                                            aria-label="Close"><span
-                                                            aria-hidden="true">&times;</span>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                        Confirmar exclusão.</h4>
+                                                        Confirmar exclusão.
+                                                    </h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <h3>Deseja mesmo excluir esta trilha?
@@ -105,13 +104,12 @@ if (isset($_GET["info"]))
                                                     <h5>Ao excluir a trilha, as plantas permanecerão.</h5>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">Cancelar
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Cancelar
                                                     </button>
-                                                    <input type="hidden" value="<?= $trilha_id ?>"
-                                                           name="id">
-                                                    <button type="submit" value="Deletar trilha"
-                                                            class="btn btn-danger" name="opcao">
+                                                    <input type="hidden" value="<?= $trilha_id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_TRILHA?>">
+                                                    <button type="submit" value="Deletar trilha" class="btn btn-danger">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                         Deletar trilha
                                                     </button>
@@ -153,11 +151,11 @@ if (isset($_GET["info"]))
                         <div class="media alert alert-info">
                             <div class="media-left">
                                 <?
-                                if ($planta->img!=null) {
-                                    list($largura, $altura) = getimagesize("data:image/jpeg;base64,".base64_encode($planta->img));
+                                if ($planta->img != null) {
+                                    list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($planta->img));
                                     $max = 80;
                                     $x = ($altura * $max) / $largura;
-                                    echo "<img src='data:image/jpeg;base64,".base64_encode($planta->img)."' width='$max' height='$x'>";
+                                    echo "<img src='data:image/jpeg;base64," . base64_encode($planta->img) . "' width='$max' height='$x'>";
                                 } else {
                                     echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
                                 }
@@ -177,7 +175,7 @@ if (isset($_GET["info"]))
                                 </a>
                             </div>
                         </div>
-                    <?
+                        <?
                     }
                     ?>
                 </div>
@@ -196,7 +194,7 @@ if (isset($_GET["info"]))
                                     }
                                 }
                                 var trilha_id = "";
-                                xmlhttp.open("GET", "functions/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?=$trilha_id?>, true);
+                                xmlhttp.open("GET", "helpers/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?=$trilha_id?>, true);
                                 xmlhttp.send();
                             }
                         }

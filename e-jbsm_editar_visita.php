@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 if(isset($_POST["id"])) {
     $id = $_POST["id"];
@@ -181,7 +181,8 @@ if(isset($_POST["id"])) {
                     <td colspan="3">
                         <input type="hidden" class="form-control" name="visita_login" value="<?= $visita->login ?>">
                         <input type="hidden" class="form-control" name="visita_id" value="<?= $visita->id ?>">
-                        <button type="submit" class="btn btn-success btn-block" name="opcao" value="Editar visita">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_VISITA?>">
+                        <button type="submit" class="btn btn-success btn-block">
                             Salvar
                         </button>
                     </td>

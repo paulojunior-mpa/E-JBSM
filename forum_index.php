@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $inicio_consulta = 0;
 $consulta = "";
@@ -63,15 +63,15 @@ if (isset($_GET["info"])) {
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading"><? echo $topico->assunto ?></h4>
-                    <font color="green" style="margin-left: 10px;"><b>
-                            ID </b></font><? echo $topico->id ?>.
-                    <font color="green"><b>Por </b></font>
+                    <div style="color: green; margin-left: 10px;"><b>
+                            ID </b></div><? echo $topico->id ?>.
+                    <div style="color: green"><b>Por </b></div>
                     <a href="forum_info.php?info=login&login=<?= $topico->login ?>"><? echo $topico->login ?></a>
-                    <font color="green"><b>dia </b></font><? echo $topico->data; ?>
-                    <font color="green"><b>as </b></font><? echo $topico->hora; ?>
-                    <font color="green"><b>na área </b></font><a
+                    <div style="color: green"><b>dia </b></div><? echo $topico->data; ?>
+                    <div style="color: green"><b>as </b></div><? echo $topico->hora; ?>
+                    <div style="color: green"><b>na área </b></div><a
                         href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
-                    <font color="green"><b>e subárea </b></font><a
+                    <div style="color: green"><b>e subárea </b></div><a
                         href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>.
 
                 </div>

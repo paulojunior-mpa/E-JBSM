@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -30,12 +30,12 @@ if ($info == "deletada") {
                         <a>
                         <span>
                             <div class="input-group">
-                                <b>ID </b> <font color="green"><?php echo $visita->id ?></font>
-                                <b> Excluida por:</b><font color="green"><?php echo $visita->excluida ?></font>
-                                <b> Data: </b><font color="green"><?php echo "{$visita->data}"; ?></font>
-                                <b> Hora: </b><font color="green"><?php echo "{$visita->hora}"; ?></font>
+                                <b>ID </b> <div style="color: green"><?php echo $visita->id ?></div>
+                                <b> Excluida por:</b><div style="color: green"><?php echo $visita->excluida ?></div>
+                                <b> Data: </b><div style="color: green"><?php echo "{$visita->data}"; ?></div>
+                                <b> Hora: </b><div style="color: green"><?php echo "{$visita->hora}"; ?></div>
                                 <b> Insituicao/Grupo: </b><font
-                                    color="green"><?php echo "{$visita->instituicao}"; ?></font>
+                                    color="green"><?php echo "{$visita->instituicao}"; ?></div>
                             </div>
                         </span>
                         </a>
@@ -99,24 +99,16 @@ if ($info == "deletada") {
                                                                                 Confirmar exclusão.</h4>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <h3>Deseja mesmo excluir esta visita?
-                                                                                (ID: <?= $visita->id ?>)</h3>
-                                                                            <h5>Ao excluir a visita, ela poderá ser
-                                                                                recuperada através da lixeira.</h5>
+                                                                            <h3>Deseja mesmo excluir esta visita? (ID: <?= $visita->id ?>)</h3>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancelar
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                                                             </button>
-                                                                            <input type="hidden"
-                                                                                   value="<?= $visita->id ?>"
-                                                                                   name="id">
-                                                                            <button type="submit" value="Excluir visita"
-                                                                                    class="btn btn-danger" name="opcao">
-                                                                                <span
-                                                                                    class="glyphicon glyphicon-remove"></span>
-                                                                                Excluir visita
+                                                                            <input type="hidden" value="<?= $visita->id ?>" name="id">
+                                                                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_VISITA?>">
+                                                                            <button type="submit" class="btn btn-danger">
+                                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                                                Deletar visita
                                                                             </button>
                                                                         </div>
                                                                     </div>
@@ -129,11 +121,8 @@ if ($info == "deletada") {
                                                     <div class="col-md-3">
                                                         <form action="e-jbsm_editar_visita.php" method="post">
                                                             <div class="input-group">
-                                                                <input type="hidden" value="<?= $visita->id ?>"
-                                                                       name="id">
-                                                                <button type="submit" class="btn btn-warning"
-                                                                        value="Editar visita"
-                                                                        name="opcao">
+                                                                <input type="hidden" value="<?= $visita->id ?>" name="id">
+                                                                <button type="submit" class="btn btn-warning" value="Editar visita" name="opcao">
                                                                     <span class="glyphicon glyphicon-edit"></span>
                                                                     Editar
                                                                 </button>

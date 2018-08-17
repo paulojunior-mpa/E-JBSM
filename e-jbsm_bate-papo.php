@@ -1,6 +1,6 @@
 <?
 $permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $inicio_consulta = "";
 if (isset($_GET["inicio_consulta"])) {
@@ -39,7 +39,8 @@ if (isset($_GET["inicio_consulta"])) {
                     </select>
                 </div>
                 <div class="col-md-4"><br>
-                    <button type="submit" class="btn btn-success btn-block" name="opcao" value="Enviar mensagem">
+                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ENVIAR_MENSAGEM?>">
+                    <button type="submit" class="btn btn-success btn-block" value="Enviar mensagem">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar
                     </button>
@@ -66,9 +67,9 @@ while ($r = mysqli_fetch_object($qr)) {
     ?>
     <div class="panel panel-default" id="primeiro_topico">
         <div class="panel-body">
-            <font color="green"><b>Dia </b></font><? echo $r->data; ?>
-            <font color="green"><b>as </b></font><? echo $r->hora; ?>
-            <font color="green"><b>ID </b></font><? echo $r->id ?>
+            <div style="color: green"><b>Dia </b></div><? echo $r->data; ?>
+            <div style="color: green"><b>as </b></div><? echo $r->hora; ?>
+            <div style="color: green"><b>ID </b></div><? echo $r->id ?>
             <table class="table">
                 <tr>
                     <td style="text-align: center; width: 7%;">
@@ -77,7 +78,7 @@ while ($r = mysqli_fetch_object($qr)) {
                         ?>
                         <? echo $r->login ?></b>
                     </td>
-                    <td style="text-align: center; width: 5%;"><font color="green"><b>Para</b></font></td>
+                    <td style="text-align: center; width: 5%;"><div style="color: green"><b>Para</b></div></td>
                     <td style="text-align: center; width: 7%;">
                         <?
                         Imagem($r->para, 50);
@@ -96,9 +97,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                         $result = $link->query($sql) or die(mysqli_error($link));
                                         $contagem_mensagens = mysqli_num_rows($result);
                                         ?>
-                                        <font color="green"
-                                              style="margin-left: 10px;"><b>Respostas<span
-                                                    class="badge"><?= $contagem_mensagens ?></span></b></font>
+                                        <div style="color: green; margin-left: 10px;"><b>Respostas<span class="badge"><?= $contagem_mensagens ?></span></b></div>
                                     </span>
                                     </a>
                                     <ul>
@@ -116,10 +115,10 @@ while ($r = mysqli_fetch_object($qr)) {
                                                                 ?>
                                                             </td>
                                                             <td> dia <font
-                                                                    color="green"><b><?php echo "$resposta->data"; ?> </b></font>
+                                                                    color="green"><b><?php echo "$resposta->data"; ?> </b></div>
                                                             </td>
                                                             <td> as <font
-                                                                    color="green"><b><?php echo "$resposta->hora"; ?></b></font>
+                                                                    color="green"><b><?php echo "$resposta->hora"; ?></b></div>
                                                             </td>
                                                             <? if ($resposta->login == $user_login) { ?>
                                                                 <td>
@@ -140,7 +139,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                                         </tr>
                                                         <tr>
                                                             <td colspan='3'><font
-                                                                    color='green'><b>diz: </b></font><?= $resposta->resposta ?>
+                                                                    color='green'><b>diz: </b></div><?= $resposta->resposta ?>
                                                             </td>
                                                         </tr>
                                                     </table>

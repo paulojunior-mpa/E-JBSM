@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador", "orientador", "bolsista");
-include 'functions/permitir.php';
+include 'helpers/permitir.php';
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -31,21 +31,21 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <font color="green"><b>Nome: </b></font> <? echo $subarea->nome ?><br><br>
-                            <font color="green"><b>Descrição: </b></font> <? echo $subarea->descricao ?><br><br>
+                            <div style="color: green"><b>Nome: </b></div> <? echo $subarea->nome ?><br><br>
+                            <div style="color: green"><b>Descrição: </b></div> <? echo $subarea->descricao ?><br><br>
                             <?
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
                             ?>
-                            <font color="green"><b>Área: </b></font> <? echo $nome_area ?>
+                            <div style="color: green"><b>Área: </b></div> <? echo $nome_area ?>
                         </span>
                     </a>
                     <? if ($user_permissao != "usuario") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
-                                    <form action="controller/Forum_Controller.php" method="post">
+                                    <form action="controller/ForumController.php" method="post">
                                         <table class="table">
                                             <tr>
                                                 <td>
@@ -76,10 +76,9 @@ if (isset($_GET["info"])) {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $subarea->id ?>"
-                                                           name="id">
-                                                    <button type="submit" class="btn btn-warning" value="Editar subárea"
-                                                            name="opcao">
+                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_SUBAREA?>">
+                                                    <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Salvar edição
                                                     </button>
@@ -88,7 +87,7 @@ if (isset($_GET["info"])) {
                                         </table>
                                     </form>
                                     <? if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
-                                        <form action="controller/Forum_Controller.php" method="post">
+                                        <form action="controller/ForumController.php" method="post">
                                             <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -114,26 +113,23 @@ if (isset($_GET["info"])) {
                                                                 Cancelar
                                                             </button>
                                                             <?if($subarea->id!=1){?>
-                                                            <button type="submit" class="btn btn-danger" name="opcao"
-                                                                    value="Deletar subárea">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                                Deletar subárea
-                                                            </button>
+                                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_SUBAREA?>">
+                                                                <button type="submit" class="btn btn-danger">
+                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                    Deletar subárea
+                                                                </button>
                                                             <?}?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger"
-                                                    data-toggle="modal"
-                                                    data-target="#myModal<?=$j?>">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?=$j?>">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 Deletar Subárea
                                             </button>
                                             <div class="input-group">
-                                                <input type="hidden" value="<?= $subarea->id ?>"
-                                                       name="id">
+                                                <input type="hidden" value="<?= $subarea->id ?>" name="id">
                                             </div>
                                         </form>
                                     <? } ?>
