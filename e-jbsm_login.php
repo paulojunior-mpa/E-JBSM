@@ -12,7 +12,7 @@ if (isset($_GET["info"])) {
                 visibility: hidden;
             }
         </style>
-        <form action="controller/Controller_public.php" method="post" id="form_login">
+        <form action="controller/PublicController.php" method="post" id="form_login">
             <input type="text" value="<?= $_COOKIE["login_e-jbsm"] ?>" name="user_login">
             <input type="text" value="<?= $_COOKIE["senha_e-jbsm"] ?>" name="user_senha">
             <input type="hidden" value="sim" name="sha1">
@@ -62,7 +62,7 @@ if (isset($_GET["info"])) {
                     no cadastro.
                 </div>
             <? } ?>
-            <form class="form-horizontal" action="controller/Controller_public.php" method="post">
+            <form class="form-horizontal" action="controller/PublicController.php" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Login</label>
 
@@ -84,14 +84,6 @@ if (isset($_GET["info"])) {
                 <? if ($info == "senha") { ?>
                 <div class="alert alert-danger" role="alert">
                     A senha informada é invalida.
-                    <script>
-                        redefinir = confirm("Aviso aos usuários: o sistema de senhas foi alterado por questões de segurança " +
-                            "Caso você ainda não tenha realizado o seguinte processo a partir de 12/06/2015 " +
-                            "você deve redefinir sua senha para acessar o sistema.\n\n Clique em OK para redefinir ou Cancelar para tentar novamente.");
-                        if (redefinir) {
-                            window.location = "e-jbsm_redefinir_senha.php";
-                        }
-                    </script>
                     <?
                     if (isset($_GET["tentativas"])) {
                         $t = $_GET["tentativas"];
@@ -118,8 +110,8 @@ if (isset($_GET["info"])) {
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <button class='btn btn-success' type="submit" name="opcao"
-                                value="Logar">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::LOGAR?>">
+                        <button class='btn btn-success' type="submit">
                             <span class="glyphicon glyphicon-log-in"></span>
                             Entrar
                         </button>

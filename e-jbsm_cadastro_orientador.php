@@ -1,6 +1,6 @@
 <?
 $permissao = array("administrador");
-include 'helpers/permitir.php';
+;
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -10,7 +10,7 @@ if (isset($_GET["info"])) {
     <div class="panel-body">
         <h3>Cadastro de orientador</h3>
 
-        <form action="controller/Controller.php" method="post">
+        <form action="controller/SystemController.php" method="post">
             <? if ($info == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Orientador cadastrado!</div>
             <? } elseif ($info == "login") { ?>

@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 ?>
 <div class="panel panel-default">
     <div class="panel-body">

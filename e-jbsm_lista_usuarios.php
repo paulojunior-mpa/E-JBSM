@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $pesquisa = "";
 if (isset($_POST["pesquisa"])) {
@@ -62,7 +62,7 @@ if (isset($_POST["pesquisa"])) {
                 ?>
                 <tr>
                     <td>
-                        <?Imagem($r->login, 80) ?>
+                        <?imagem($r->login, 80) ?>
                     </td>
                     <td><? echo "{$r->nome}"; ?></td>
                     <td><? echo "{$r->login}"; ?></td>

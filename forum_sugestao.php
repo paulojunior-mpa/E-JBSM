@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -90,8 +90,8 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <div style="color: green"><b>Nome da área: </b></div> <? echo $area->nome ?><br><br>
-                            <div style="color: green"><b>Descrição da área: </b></div> <? echo $area->descricao ?>
+                            <span style="color: green"><b>Nome da área: </b></span> <? echo $area->nome ?><br><br>
+                            <span style="color: green"><b>Descrição da área: </b></span> <? echo $area->descricao ?>
                         </span>
                     </a>
                     <? if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
@@ -165,14 +165,14 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <div style="color: green"><b>Nome da subárea: </b></div> <? echo $subarea->nome ?><br><br>
-                            <div style="color: green"><b>Descrição da área: </b></div> <? echo $subarea->descricao ?><br><br>
+                            <span style="color: green"><b>Nome da subárea: </b></span> <? echo $subarea->nome ?><br><br>
+                            <span style="color: green"><b>Descrição da área: </b></span> <? echo $subarea->descricao ?><br><br>
                             <?
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
                             ?>
-                            <div style="color: green"><b>Área: </b></div> <? echo $nome_area ?>
+                            <span style="color: green"><b>Área: </b></span> <? echo $nome_area ?>
                         </span>
                     </a>
                     <? if ($user_permissao != "usuario") { ?>

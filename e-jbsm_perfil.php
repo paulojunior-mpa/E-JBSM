@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 
 if ($user_permissao == "usuario")
     $sql = "select * from ejbsm_usuario where login = '$user_login'";
@@ -16,11 +16,11 @@ $user = mysqli_fetch_object($result);
         <div class="row">
             <div class="col-md-4">
                 <?
-                Imagem($user_login, 200);
+                imagem($user_login, 200);
                 ?>
             </div>
             <div class="col-md-4">
-                <form action="controller/Controller.php" enctype="multipart/form-data" method="post">
+                <form action="controller/SystemController.php" enctype="multipart/form-data" method="post">
                     <button type="button" data-toggle="modal" data-target="#myModal">
                         Clique para alterar a imagem
                         <img src="arquivos_imagem_sistema/imagem.png" width="50" height="50">
@@ -33,14 +33,12 @@ $user = mysqli_fetch_object($result);
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Alterar imagem (max 2mb)</h4>
                                 </div>
                                 <div class="modal-body" style="margin-left: 20px">
                                     <?
-                                    Imagem($user_login, 200);
+                                    imagem($user_login, 200);
                                     ?>
                                     <input type="file" class="form-control" name="arquivo" required>
                                 </div>
@@ -61,7 +59,7 @@ $user = mysqli_fetch_object($result);
         </div>
         <h3>Dados pessoais</h3>
 
-        <form action="controller/Controller.php" method="post" autocomplete="off">
+        <form action="controller/SystemController.php" method="post" autocomplete="off">
             <div class="row">
                 <div class="col-md-6">
                     Senha

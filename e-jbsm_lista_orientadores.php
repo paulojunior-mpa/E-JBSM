@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -30,7 +30,7 @@ include 'helpers/permitir.php';
                         } else {
                             echo "<div>";
                         }
-                        Imagem($r->login, 80);
+                        imagem($r->login, 80);
                         ?>
                     </td>
                     <td><? echo "{$r->nome}"; ?></td>

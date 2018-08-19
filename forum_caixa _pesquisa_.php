@@ -10,7 +10,7 @@
             <ul>
                 <li class='has-sub'>
                     <a>
-                        <form action="controller/ForumController.php" method="post">
+                        <form action="forum_index.php" method="post">
                             <table class="table">
                                 <tr>
                                     <td>Área
@@ -18,11 +18,11 @@
                                                 id='option1'>
                                             <option value="">Todas</option>
                                             <?php
-                                            $sql = "select * from ejbsm_forum_area  where status = 'ativa';";
+                                            $sql = "select * from ejbsm_forum_area  where status = 'ativa' order by nome asc;";
                                             $qr = $link->query($sql) or die(mysqli_error($link));
                                             while ($area = mysqli_fetch_object($qr)) {
                                                 ?>
-                                                <option value="<?= $area->nome ?>"><?php echo $area->nome ?></option>
+                                                <option value="<?= $area->id ?>"><?php echo $area->nome ?></option>
                                             <?php
                                             }
                                             ?>
@@ -32,12 +32,12 @@
                                         <select name="pesquisa_subarea" class="form-control" id="subarea">
                                             <option value="">Todas</option>
                                             <?php
-                                            $sql = "select * from ejbsm_forum_subarea  where status = 'ativa';";
+                                            $sql = "select * from ejbsm_forum_subarea  where status = 'ativa' order by nome asc;";
                                             $qr = $link->query($sql) or die(mysqli_error($link));
                                             while ($subarea = mysqli_fetch_object($qr)) {
                                                 ?>
                                                 <option
-                                                    value="<?= $subarea->nome ?>"><?php echo $subarea->nome ?></option>
+                                                    value="<?= $subarea->id ?>"><?php echo $subarea->nome ?></option>
                                             <?php
                                             }
                                             ?>
@@ -65,7 +65,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button type="submit" class="btn btn-info" name="opcao" value="Pesquisar">
+                                        <input type="hidden" name="consulta" id="consulta" value="<?=Constantes::PESQUISAR?>">
+                                        <button type="submit" class="btn btn-info">
                                             <span class="glyphicon glyphicon-search"></span>
                                             Pesquisar
                                         </button>

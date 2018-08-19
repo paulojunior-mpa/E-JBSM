@@ -1,58 +1,12 @@
 ﻿<?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-
-include '../constantes/Constantes.php';
-include '../helpers/Helper.php';
-include '../helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
-
-    $user_hash = sha1($_SESSION['user_permissao']. $_SESSION['user_login']);
-    $nome_sessao = sha1('seg' . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $user_hash);
-    if ($_SESSION["dono_sessao"] != $nome_sessao) {
-        header('location:index.php?info=senha');
-    }
     switch ($opcao) {
 
         case "":
-            deslogar($link);
-            break;
-
-        case Constantes::PESQUISAR:
-            $user_login = $_SESSION["user_login"];
-            $user_permissao = $_SESSION["user_permissao"];
-
-            $pesquisa_area = htmlspecialchars($_POST["pesquisa_area"]);
-            $pesquisa_subarea = htmlspecialchars($_POST["pesquisa_subarea"]);
-            $pesquisa_nome = htmlspecialchars($_POST["pesquisa_nomeUser"]);
-            $pesquisa_assunto = htmlspecialchars($_POST["pesquisa_assunto"]);
-            $pesquisa_conteudo = htmlspecialchars($_POST["pesquisa_conteudo"]);
-            $pesquisa_data = htmlspecialchars($_POST["pesquisa_data"]);
-
-
-            $pesquisa_sql = "select * from ejbsm_forum_topico where id > 0";
-            if ($pesquisa_area != "") {
-                $pesquisa_sql .= " and area like '$pesquisa_area'";
-            }
-            if ($pesquisa_subarea != "") {
-                $pesquisa_sql .= " and subarea like '$pesquisa_subarea'";
-            }
-            if ($pesquisa_nome != "") {
-                $pesquisa_sql .= " and login like '%$pesquisa_nome%'";
-            }
-            if ($pesquisa_assunto != "") {
-                $pesquisa_sql .= " and assunto like '%$pesquisa_assunto%'";
-            }
-            if ($pesquisa_conteudo != "") {
-                $pesquisa_sql .= " and msg like '%$pesquisa_conteudo%'";
-            }
-            if ($pesquisa_data != "") {
-                $pesquisa_sql .= " and data like '$pesquisa_data'";
-            }
-            $pesquisa_sql .= " order by id desc";
-
-            header("location: ../forum_index.php?consulta=$pesquisa_sql");
+            logout();
             break;
 
         case Constantes::CADASTRAR_AREA:
@@ -200,9 +154,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
                 $ext = $_FILES['anexo']['name'];
                 $ext = end(explode(".", $ext));
                 $nome_anexo = $user_login . 'T' . $maxid . '.' . $ext;
-                move_uploaded_file($_FILES['anexo']['tmp_name'], '../arquivos_forum_anexo/' . $nome_anexo);
+                move_uploaded_file($_FILES['anexo']['tmp_name'], 'arquivos_forum_anexo/' . $nome_anexo);
             }
-            if (!file_exists("../arquivos_forum_anexo/$nome_anexo")) {
+            if (!file_exists("arquivos_forum_anexo/$nome_anexo")) {
                 $nome_anexo = "Sem anexo";
             }
 
@@ -238,9 +192,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
                 $ext = $_FILES['anexo']['name'];
                 $ext = end(explode(".", $ext));
                 $nome_anexo = $user_login . 'T' . $topico_id . 'R' . $maxid . '.' . $ext;
-                move_uploaded_file($_FILES['anexo']['tmp_name'], '../arquivos_forum_anexo/' . $nome_anexo);
+                move_uploaded_file($_FILES['anexo']['tmp_name'], 'arquivos_forum_anexo/' . $nome_anexo);
             }
-            if (!file_exists("../arquivos_forum_anexo/$nome_anexo")) {
+            if (!file_exists("arquivos_forum_anexo/$nome_anexo")) {
                 $nome_anexo = "Sem anexo";
             }
 
@@ -249,6 +203,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $result = $link->query($sql) or die(mysqli_error($link));
 
             header("location: ../forum_topico.php?topico=$topico_id");
+            exit;
 
             break;
 
@@ -262,8 +217,8 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $sql = "select * from ejbsm_forum_resposta where id_topico = '$id'";
             $result = $link->query($sql) or die(mysqli_error($link));
             while ($r = mysqli_fetch_object($result)) {
-                if (file_exists("../arquivos_forum_anexo/$r->anexo"))
-                    unlink("../arquivos_forum_anexo/$r->anexo");
+                if (file_exists("arquivos_forum_anexo/$r->anexo"))
+                    unlink("arquivos_forum_anexo/$r->anexo");
                 $sql = "delete from ejbsm_forum_resposta where id = '$r->id'";
                 $link->query($sql) or die(mysqli_error($link));
             }
@@ -271,8 +226,8 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $sql = "delete from ejbsm_forum_topico where id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
 
-            if (file_exists('../arquivos_forum_anexo/' . $topico_anexo)) {
-                unlink("../arquivos_forum_anexo/$topico_anexo");
+            if (file_exists('arquivos_forum_anexo/' . $topico_anexo)) {
+                unlink("arquivos_forum_anexo/$topico_anexo");
             }
 
             header("location: ../forum_index.php?info=topico_deletado");
@@ -290,8 +245,8 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $sql = "delete from ejbsm_forum_resposta where id = '$resposta_id'";
             $link->query($sql) or die(mysqli_error($link));
 
-            if (file_exists('../arquivos_forum_anexo/' . $resposta_anexo)) {
-                unlink("../arquivos_forum_anexo/$resposta_anexo");
+            if (file_exists('arquivos_forum_anexo/' . $resposta_anexo)) {
+                unlink("arquivos_forum_anexo/$resposta_anexo");
             }
 
             header("location: ../forum_topico.php?topico=$topico_id&info=resposta_deletada#respostas");

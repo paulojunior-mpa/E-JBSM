@@ -1,5 +1,5 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
+isUserInRole(array("administrador", "orientador", "bolsista"));
 include 'helpers/permitir_app.php';
 
 $inicio_consulta = "";

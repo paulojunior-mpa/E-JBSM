@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 if(isset($_POST["id"])) {
     $id = $_POST["id"];
@@ -9,7 +9,7 @@ if(isset($_POST["id"])) {
     $visita = mysqli_fetch_object($result);
 }
 ?>
-<form action="controller/Controller.php" method="post">
+<form action="controller/SystemController.php" method="post">
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Edição de visita</h3>

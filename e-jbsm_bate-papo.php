@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 
 $inicio_consulta = "";
 if (isset($_GET["inicio_consulta"])) {
@@ -18,7 +18,7 @@ if (isset($_GET["inicio_consulta"])) {
         </div>
         <h4>Nova mensagem</h4>
 
-        <form action="controller/Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/SystemController.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-12">
             <textarea class="form-control" id="htmlbox_silk_icon_set_blue" rows="5"
@@ -67,21 +67,21 @@ while ($r = mysqli_fetch_object($qr)) {
     ?>
     <div class="panel panel-default" id="primeiro_topico">
         <div class="panel-body">
-            <div style="color: green"><b>Dia </b></div><? echo $r->data; ?>
-            <div style="color: green"><b>as </b></div><? echo $r->hora; ?>
-            <div style="color: green"><b>ID </b></div><? echo $r->id ?>
+            <span style="color: green"><b>Dia </b></span><? echo $r->data; ?>
+            <span style="color: green"><b>as </b></span><? echo $r->hora; ?>
+            <span style="color: green"><b>ID </b></span><? echo $r->id ?>
             <table class="table">
                 <tr>
                     <td style="text-align: center; width: 7%;">
                         <?
-                        Imagem($r->login, 50);
+                        imagem($r->login, 50);
                         ?>
                         <? echo $r->login ?></b>
                     </td>
-                    <td style="text-align: center; width: 5%;"><div style="color: green"><b>Para</b></div></td>
+                    <td style="text-align: center; width: 5%;"><span style="color: green"><b>Para</b></span></td>
                     <td style="text-align: center; width: 7%;">
                         <?
-                        Imagem($r->para, 50);
+                        imagem($r->para, 50);
                         ?>
                         <?= $r->para ?>
                     </td>
@@ -97,7 +97,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                         $result = $link->query($sql) or die(mysqli_error($link));
                                         $contagem_mensagens = mysqli_num_rows($result);
                                         ?>
-                                        <div style="color: green; margin-left: 10px;"><b>Respostas<span class="badge"><?= $contagem_mensagens ?></span></b></div>
+                                        <span style="color: green; margin-left: 10px;"><b>Respostas<span class="badge"><?= $contagem_mensagens ?></span></b></span>
                                     </span>
                                     </a>
                                     <ul>
@@ -111,35 +111,27 @@ while ($r = mysqli_fetch_object($qr)) {
                                                         <tr>
                                                             <td rowspan='2' style="width: 40px">
                                                                 <?
-                                                                Imagem($resposta->login, 50);
+                                                                imagem($resposta->login, 50);
                                                                 ?>
                                                             </td>
-                                                            <td> dia <font
-                                                                    color="green"><b><?php echo "$resposta->data"; ?> </b></div>
+                                                            <td> dia <span STYLE="color: green"><b><?php echo "$resposta->data"; ?> </b></span>
                                                             </td>
-                                                            <td> as <font
-                                                                    color="green"><b><?php echo "$resposta->hora"; ?></b></div>
+                                                            <td> as <span STYLE="color: green"><b><?php echo "$resposta->hora"; ?></b></span>
                                                             </td>
                                                             <? if ($resposta->login == $user_login) { ?>
                                                                 <td>
-                                                                    <form action="controller/Controller.php" method="post">
-                                                                        <input type="hidden"
-                                                                               value="<?= $resposta->id ?>"
-                                                                               name="id">
-                                                                        <button type="submit" class="btn btn-danger"
-                                                                                name="opcao"
-                                                                                value="Apagar resposta"
-                                                                                style="border-radius: 2px;">
-                                                                            <span
-                                                                                class="glyphicon glyphicon-remove"></span>
+                                                                    <form action="controller/SystemController.php" method="post">
+                                                                        <input type="hidden" value="<?= $resposta->id ?>" name="id">
+                                                                        <input type="hidden" value="<?=Constantes::APAGAR_RESPOSTA?>" name="opcao" id="opcao">
+                                                                        <button type="submit" class="btn btn-danger" style="border-radius: 2px;">
+                                                                            <span class="glyphicon glyphicon-remove"></span>
                                                                         </button>
                                                                     </form>
                                                                 </td>
                                                             <? } ?>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan='3'><font
-                                                                    color='green'><b>diz: </b></div><?= $resposta->resposta ?>
+                                                            <td colspan='3'><span STYLE="color: green"><b>diz: </b></span><?= $resposta->resposta ?>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -150,34 +142,28 @@ while ($r = mysqli_fetch_object($qr)) {
 
                                     <ul>
                                         <li class='has-sub'>
-                                            <a>
-                                            <span>
-                                                <form action="controller/Controller.php" method="post">
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td>Responder
-                                                                <textarea class="form-control" cols="80"
-                                                                          placeholder="resposta..."
-                                                                          name="topico_resposta"
-                                                                          required=""></textarea>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="hidden" value="<?= $r->id ?>"
-                                                                       name="id">
-                                                                <button type="submit" class="btn btn-success"
-                                                                        name="opcao"
-                                                                        value="Enviar resposta">
-                                                                    <span class="glyphicon glyphicon-send"></span>
-                                                                    Enviar
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </span>
-                                            </a>
+                                            <form action="controller/SystemController.php" method="post">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>Responder
+                                                            <textarea class="form-control" cols="80"
+                                                                      placeholder="resposta..."
+                                                                      name="topico_resposta"
+                                                                      required=""></textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="hidden" value="<?= $r->id ?>" name="id">
+                                                            <input type="hidden" value="<?=Constantes::ENVIAR_RESPOSTA?>" name="opcao" id="opcao">
+                                                            <button type="submit" class="btn btn-success">
+                                                                <span class="glyphicon glyphicon-send"></span>
+                                                                Enviar
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </form>
                                         </li>
                                     </ul>
                                 </li>
@@ -186,7 +172,7 @@ while ($r = mysqli_fetch_object($qr)) {
                     </td>
                     <td>
                         <? if ($r->login == $user_login) { ?>
-                            <form action="controller/Controller.php" method="post">
+                            <form action="controller/SystemController.php" method="post">
                                 <button type="button" style="width: 100%;" class="btn btn-danger btn-block"
                                         data-toggle="modal"
                                         data-target="#myModal<?= $j ?>">
@@ -213,10 +199,8 @@ while ($r = mysqli_fetch_object($qr)) {
                                                     Cancelar
                                                 </button>
                                                 <input type="hidden" value="<?=$r->id ?>" name="id">
-                                                <input type="hidden" value="<?=$r->anexo?>" name="anexo">
-                                                <button type="submit" value="Apagar mensagem" class="btn btn-danger"
-                                                        name="opcao">
-
+                                                <input type="hidden" value="<?=Constantes::APAGAR_MENSAGEM?>" name="opcao" id="opcao">
+                                                <button type="submit" class="btn btn-danger">
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                     Apagar mensagem
                                                 </button>

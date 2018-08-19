@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 if (isset($_GET["addmonitor"])) {
     $login_monitor = $_GET["addmonitor"];
@@ -16,7 +16,7 @@ if (isset($_GET["addmonitor"])) {
     <div class="panel-body">
         <div class="list-group">
             <a class="list-group-item badge">
-                Integrantes / <div style="color: blue" ">Monitores</div>
+                Integrantes / <span style="color: blue" ">Monitores</div>
             </a>
             <?
             $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao != 'usuario' and status != 'Inativo' and ejbsm_integrante.login=ejbsm_usuario.login";

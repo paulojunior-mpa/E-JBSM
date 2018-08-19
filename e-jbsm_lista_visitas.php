@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 $inicio_consulta = "";
 $info = "";
 if (isset($_GET["inicio_consulta"])) {
@@ -63,8 +63,7 @@ if (isset($_GET["info"])) {
                         <a>
                         <span>
                             <div class="input-group">
-                                <b>ID: </b> <div style="color: green"><?php echo "$visita->id " ?></div>
-
+                                <b>ID: </b> <span style="color: green"><?php echo "$visita->id " ?></span>
                                 <? if ($visita->status == "Confirmada") {
                                     echo "<span class='glyphicon glyphicon-ok'>";
                                 } elseif ($visita->status == "Em espera") {
@@ -72,12 +71,11 @@ if (isset($_GET["info"])) {
                                 } else {
                                     echo "<span class='glyphicon glyphicon-remove'>";
                                 }
-                                echo " $visita->status</span>";
+                                echo " $visita->status";
                                 ?>
-                                <b> Data: </b><div style="color: green"><?php echo "{$visita->data}"; ?></div>
-                                <b> Hora: </b><div style="color: green"><?php echo "{$visita->hora}"; ?></div>
-                                <b> Insituicao/Grupo: </b><font
-                                    color="green"><?php echo "{$visita->instituicao}"; ?></div>
+                                <b> Data: </b><span style="color: green"><?php echo "{$visita->data}"; ?></span>
+                                <b> Hora: </b><span style="color: green"><?php echo "{$visita->hora}"; ?></span>
+                                <b> Instituicao/Grupo: </b><span style="color: green"><?php echo "{$visita->instituicao}"; ?></span>
                             </div>
                         </span>
                         </a>
@@ -117,7 +115,7 @@ if (isset($_GET["info"])) {
                                             <div class="row">
                                                 <? if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
-                                                        <form action="controller/Controller.php" method="post">
+                                                        <form action="controller/SystemController.php" method="post">
                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?= $j ?>">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                 Excluir visita

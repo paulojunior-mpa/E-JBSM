@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 
 if ($user_permissao == "orientador" or $user_permissao == "administrador") {
     $loginBolsista = "";
@@ -103,7 +103,7 @@ if ($user_permissao == "bolsista") {
             <h3>Cadastro de Frequência</h3>
             <h4>Seu total de horas é: <? echo "$total_horas"; ?> horas</h4>
 
-            <form action="controller/Controller.php" method="post">
+            <form action="controller/SystemController.php" method="post">
                 <table class="table">
                     <tr>
                         <td>
@@ -121,7 +121,8 @@ if ($user_permissao == "bolsista") {
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-success" name="opcao" value="Cadastrar frequencia">
+                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_FREQUENCIA?>">
+                            <button type="submit" class="btn btn-success">
                                 Cadastrar
                             </button>
                         </td>

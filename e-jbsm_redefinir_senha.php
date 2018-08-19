@@ -42,7 +42,7 @@ if (isset($_GET["email"])) {
     </div>
     <div class="panel panel-default col-md-6" style="margin-top: 2%">
         <div class="panel-body" style="margin-bottom: 2%">
-            <form action="controller/Controller_public.php" method="post">
+            <form action="controller/PublicController.php" method="post">
                 <table class="table">
                     <tr>
                         <td>Para redefinir sua senha insira o 'login' cadastrado no campo abaixo.</td>
@@ -77,7 +77,7 @@ if (isset($_GET["email"])) {
                                     seu
                                     perfil.<br>
                                     Verifique sua caixa de spans.
-                                    <br><a href="index.php">Voltar ao login.</a>
+                                    <br><a href="e-jbsm_login.php">Voltar ao login.</a>
                                 </div>
                             </td>
                         </tr>

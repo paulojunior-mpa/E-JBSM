@@ -38,7 +38,7 @@ function PegaUsuarios($sql, $link)
             ?>
             <tr>
                 <td>
-                    <?Imagem($r->login, 80) ?>
+                    <?imagem($r->login, 80) ?>
                 </td>
                 <td><? echo "{$r->nome}"; ?></td>
                 <td><? echo "{$r->login}"; ?></td>

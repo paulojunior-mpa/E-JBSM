@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 $info = "";
 if(isset($_GET["info"])){
     $info = $_GET["info"];
@@ -22,7 +22,7 @@ if ($user_permissao != "usuario") { ?>
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de Plano de Visitas.</h3>
-            <form action="controller/Controller.php" method="post">
+            <form action="controller/SystemController.php.php" method="post">
                 <table class="table">
                     <tr>
                         <td>Nome
@@ -178,7 +178,7 @@ if ($user_permissao != "usuario") { ?>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="controller/Controller.php" method="post">
+                                                <form action="controller/SystemController.php" method="post">
                                                     <input class="form-control" type="hidden" name="id"
                                                            value="<?= $r->id ?>">
                                                     <!-- Modal -->

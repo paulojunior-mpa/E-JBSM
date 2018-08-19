@@ -1,12 +1,12 @@
 <?
 $permissao = array("administrador");
-include 'helpers/permitir.php';
+;
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Tabela de edição de disponibilidade de monitores</h3>
 
-        <form action="controller/Controller.php" method="post">
+        <form action="controller/SystemController.php" method="post">
             <table class="table table-bordered" style="text-align: center">
                 <tr>
                     <td>#</td>
@@ -135,7 +135,7 @@ include 'helpers/permitir.php';
         <? } ?>
         <h3>Informações</h3>
 
-        <form action="controller/Controller.php" method="post">
+        <form action="controller/SystemController.php" method="post">
             <?
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql);
@@ -201,7 +201,7 @@ include 'helpers/permitir.php';
         </form>
         <h3>Alterar logo do sistema (recomendado: 245x335)</h3>
 
-        <form action="controller/Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/SystemController.php" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>
@@ -222,7 +222,7 @@ include 'helpers/permitir.php';
         </form>
         <h3>Alterar "fundo" do sistema (recomendado: 1920x720)</h3>
 
-        <form action="controller/Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/SystemController.php" method="post" enctype="multipart/form-data">
             <table class="table">
                 <tr>
                     <td colspan="2">
@@ -244,7 +244,7 @@ include 'helpers/permitir.php';
         </form>
         <h3>Alterar título de entrada do sistema</h3>
 
-        <form action="controller/Controller.php" method="post" enctype="multipart/form-data">
+        <form action="controller/SystemController.php" method="post" enctype="multipart/form-data">
             <table class="table">
                 <tr>
                     <td>

@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <title>E-JBSM</title>
     <!--Font Awesome-->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="resources/css/font-awesome/css/font-awesome.min.css">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <script src="js/min.js" type="text/javascript"></script>
-    <script src="js/script.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/styles.css" rel="stylesheet">
+    <script src="resources/js/min.js" type="text/javascript"></script>
+    <script src="resources/js/script.js"></script>
+    <script src="resources/js/jquery.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
     <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
 </head>
 <body>
@@ -58,7 +58,7 @@
             ?>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Login</a></li>
+                    <li><a href="e-jbsm_login.php"><span class="glyphicon glyphicon-home"></span> Login</a></li>
                     <li><a href="e-jbsm_cadastro_usuario.php"><span
                                 class="glyphicon glyphicon-pencil"></span> Cadastro</a>
                     </li>
@@ -229,7 +229,7 @@
                             <? } ?>
                             <li class="divider"></li>
                             <li>
-                                <a href="controller/Controller.php" methods="post">
+                                <a href="controller/SystemController.php" methods="post">
                                     <button type="button" class="btn btn-danger btn-lg">
                                         <span class="glyphicon glyphicon-off"></span>Sair
                                     </button>

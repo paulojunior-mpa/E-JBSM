@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -56,7 +56,7 @@ if (isset($_GET["info"])) {
             <table>
                 <tr>
                     <td rowspan="7" style="width: 210px">
-                        <?Imagem($row->login, 100)?>
+                        <?imagem($row->login, 100)?>
                     </td>
                     <td>
                         Nome: <? echo $row->nome; ?><br>
@@ -91,7 +91,7 @@ if (isset($_GET["info"])) {
                 <?}?>
             </table>
             <? if ($user_permissao == "administrador") { ?>
-                <form action="controller/Controller.php" method="post">
+                <form action="controller/ForumController.php" method="post">
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

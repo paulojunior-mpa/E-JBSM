@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 $id = "";
 if (isset($_POST["id"])) {
     $id = $_POST["id"];
@@ -13,7 +13,7 @@ $r = mysqli_fetch_object($result);
     <div class="panel-body">
         <h3>Editar programação</h3>
 
-        <form action="controller/Controller.php" method="post">
+        <form action="controller/SystemController.php" method="post">
             <table class="table">
                 <tr>
                     <td>

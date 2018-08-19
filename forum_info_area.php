@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -33,8 +33,8 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <div style="color: green"><b>Nome: </b></div> <? echo $area->nome ?><br><br>
-                            <div style="color: green"><b>Descrição: </b></div> <? echo $area->descricao ?>
+                            <span="color: green"><b>Nome: </b></div> <? echo $area->nome ?><br><br>
+                            <span style="color: green"><b>Descrição: </b></span> <? echo $area->descricao ?>
                         </span>
                     </a>
                     <? if ($user_permissao != "usuario") { ?>

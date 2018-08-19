@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 if (isset($_GET["info"]) and $_GET["info"] == "editado") {
     echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";
@@ -97,7 +97,7 @@ function PegaHorarios($condicao, $login, $link)
                         <table>
                             <tr>
                                 <td rowspan="3" style="width: 15%;" colspan="2">
-                                    <? Imagem($bolsista->login, 80) ?>
+                                    <? imagem($bolsista->login, 80) ?>
                                 </td>
                                 <td style="width: 35%;"><b>Nome: </b><? echo "{$bolsista->nome}"; ?></td>
                                 <td style="width: 25%;"><b>Login: </b><? echo "{$bolsista->login}"; ?></td>
@@ -178,7 +178,7 @@ function PegaHorarios($condicao, $login, $link)
                         <table>
                             <tr>
                                 <td rowspan="3" style="width: 15%;" colspan="2">
-                                    <? Imagem($bolsista->login, 80); ?>
+                                    <? imagem($bolsista->login, 80); ?>
                                 </td>
                                 <td style="width: 35%;"><b>Nome: </b><? echo "{$bolsista->nome}"; ?></td>
                                 <td style="width: 25%;"><b>Login: </b><? echo "{$bolsista->login}"; ?></td>

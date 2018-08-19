@@ -1,18 +1,18 @@
 ﻿<?
 class Connection
 {
-    private $con;
+    private static $con;
 
     public function __construct()
     {
-        $this->con = new mysqli("localhost", "root", "", "jbsm") or die("Sem conexao");
-        $this->con->set_charset('latin1');
-        $this->con->autocommit(true);
+        self::$con = new mysqli("localhost", "root", "", "jbsm") or die("Sem conexao");
+        self::$con->set_charset('latin1');
+        self::$con->autocommit(true);
     }
 
-    public function getInstance()
+    public static function getInstance()
     {
-        return $this->con;
+        return self::$con;
     }
 }
 ?>

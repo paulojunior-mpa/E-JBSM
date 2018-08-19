@@ -111,7 +111,7 @@ function calendario($mes, $link)
                     echo " ";
                 } else {
                     // echo "<input type = 'button' id = 'dia_comum' name = 'dia".($diacorrente+1)."'  value = '".++$diacorrente."' onclick = "acao(this.value)">";
-                    echo "<div size='2'><a href = " . $_SERVER["PHP_SELF"] . "?data=$data>" . ++$diacorrente . "</a></div>";
+                    echo "<div size='2'><a href ='e-jbsm_cadastro_visita.php?data=$data'>" . ++$diacorrente . "</a></div>";
 
                 }
             } else {

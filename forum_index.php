@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $inicio_consulta = 0;
 $consulta = "";
@@ -8,10 +8,37 @@ $info = "";
 if (isset($_GET["inicio_consulta"])) {
     $inicio_consulta = $_GET["inicio_consulta"];
     $consulta = "select * from ejbsm_forum_topico order by id DESC limit 10 offset $inicio_consulta;";
+} elseif (isset($_POST["consulta"])) {
+    $user_login = $_SESSION["user_login"];
+    $user_permissao = $_SESSION["user_permissao"];
 
-} elseif (isset($_GET["consulta"])) {
-    $consulta = $_GET["consulta"];
+    $pesquisa_area = htmlspecialchars($_POST["pesquisa_area"]);
+    $pesquisa_subarea = htmlspecialchars($_POST["pesquisa_subarea"]);
+    $pesquisa_nome = htmlspecialchars($_POST["pesquisa_nomeUser"]);
+    $pesquisa_assunto = htmlspecialchars($_POST["pesquisa_assunto"]);
+    $pesquisa_conteudo = htmlspecialchars($_POST["pesquisa_conteudo"]);
+    $pesquisa_data = htmlspecialchars($_POST["pesquisa_data"]);
 
+    $consulta = "select * from ejbsm_forum_topico where id > 0";
+    if ($pesquisa_area != "") {
+        $consulta .= " and id_area like '$pesquisa_area'";
+    }
+    if ($pesquisa_subarea != "") {
+        $consulta .= " and id_subarea like '$pesquisa_subarea'";
+    }
+    if ($pesquisa_nome != "") {
+        $consulta .= " and login like '%$pesquisa_nome%'";
+    }
+    if ($pesquisa_assunto != "") {
+        $consulta .= " and assunto like '%$pesquisa_assunto%'";
+    }
+    if ($pesquisa_conteudo != "") {
+        $consulta .= " and msg like '%$pesquisa_conteudo%'";
+    }
+    if ($pesquisa_data != "") {
+        $consulta .= " and data like '$pesquisa_data'";
+    }
+    $consulta .= " order by id desc";
 } elseif (isset ($_GET["subarea"])) {
     $sub_area = $_GET["subarea"];
     $consulta = "select * from ejbsm_forum_topico where id_subarea = '$sub_area' order by id DESC limit 10 offset $inicio_consulta;";
@@ -58,22 +85,18 @@ if (isset($_GET["info"])) {
             <div class="alert alert-info">
                 <div class="media-left">
                     <a href="#">
-                        <?Imagem($topico->login, 40) ?>
+                        <?imagem($topico->login, 40);?>
                     </a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading"><? echo $topico->assunto ?></h4>
-                    <div style="color: green; margin-left: 10px;"><b>
-                            ID </b></div><? echo $topico->id ?>.
-                    <div style="color: green"><b>Por </b></div>
+                    <span style="color: green; margin-left: 10px;"><b> ID </b></span><? echo $topico->id ?>.
+                    <span style="color: green"><b>Por </b></span>
                     <a href="forum_info.php?info=login&login=<?= $topico->login ?>"><? echo $topico->login ?></a>
-                    <div style="color: green"><b>dia </b></div><? echo $topico->data; ?>
-                    <div style="color: green"><b>as </b></div><? echo $topico->hora; ?>
-                    <div style="color: green"><b>na área </b></div><a
-                        href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
-                    <div style="color: green"><b>e subárea </b></div><a
-                        href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>.
-
+                    <span style="color: green"><b>dia </b></span><? echo $topico->data; ?>
+                    <span style="color: green"><b>as </b></span><? echo $topico->hora; ?>
+                    <span style="color: green"><b>na área </b></span><a href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
+                    <span style="color: green"><b>e subárea </b></span><a href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>.
                 </div>
                 <div class="media-right">
                     <a href="forum_topico.php?topico=<?= $topico->id ?>">

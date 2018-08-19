@@ -1,6 +1,6 @@
 <?
 $permissao = array("bolsista");
-include 'helpers/permitir.php';
+;
 ?>
 <ul class="nav nav-tabs" role="tablist" id="cadastro_programacao" xmlns="http://www.w3.org/1999/html">
     <li role="presentation" class="active"><a href="">Cadastro de programação</a></li>
@@ -10,7 +10,7 @@ include 'helpers/permitir.php';
 if (isset($_GET["info"]) and $_GET["info"] == "cadastrada") {
     echo '<div class="alert alert-success" role="alert">Programação cadastrada!</div>';
 } ?>
-<form action="controller/Controller.php" method="post">
+<form action="controller/SystemController.php" method="post">
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de programação</h3>

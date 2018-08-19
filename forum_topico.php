@@ -1,6 +1,6 @@
 <?
-$permissao = array("administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("administrador", "orientador", "bolsista"));
+;
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -33,7 +33,7 @@ if (isset($_GET["topico"])) {
         <? include 'forum_texto.php'; ?>
         <div class="row">
             <div class="col-md-12">
-                <div style="color: green">Visualizado por </div><? echo $topico->visualizado ?>.
+                <span style="color: green">Visualizado por </span><? echo $topico->visualizado ?>.
             </div>
             <div class="col-md-12">
                 <br>
@@ -45,28 +45,25 @@ if (isset($_GET["topico"])) {
                 $pega_nome = mysqli_fetch_object($link->query($sql));
                 $nome_subarea = $pega_nome->nome;
                 ?>
-                <h3 class="panel-title"><div style="color: green"><b>Assunto: </b></div><? echo $topico->assunto ?></h3>
-                <br>
-                <div style="color: green"><b>Dia </b></div><? echo $topico->data; ?>
-                <div style="color: green"><b>as </b></div><? echo $topico->hora; ?>
-                <div style="color: green"><b>na área </b></div><a target="_blank"
-                                                             href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
-                <div style="color: green"><b>e subárea </b></div><a target="_blank"
-                                                               href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>
-                <div style="color: green"><b>ID </b></div><? echo $topico->id ?>
+                <h3 class="panel-title"><span style="color: green"><b>Assunto: </b></span><? echo $topico->assunto ?></h3> <br>
+                <span style="color: green"><b>Dia </b></span><? echo $topico->data; ?>
+                <span style="color: green"><b>as </b></span><? echo $topico->hora; ?>
+                <span style="color: green"><b>na área </b></span><a target="_blank" href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
+                <span style="color: green"><b>e subárea </b></span><a target="_blank" href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>
+                <span style="color: green"><b>ID </b></span><? echo $topico->id ?>
                 <br>
             </div>
             <div class="col-md-3">
                 <?
-                Imagem($topico->login, 100);
+                imagem($topico->login, 100);
                 $sql = "select * from ejbsm_usuario WHERE login = '$topico->login'";
                 $result = $link->query($sql);
                 $row = mysqli_fetch_object($result);
                 ?>
                 <br>
-                <div style="color: green">Nome:</div> <? echo $row->nome; ?><br>
-                <div style="color: green">Permissões:</div> <? echo $row->permissao; ?><br>
-                <div style="color: green">E-mail:</div> <? echo $row->email; ?><br>
+                <span style="color: green">Nome:</span> <? echo $row->nome; ?><br>
+                <span style="color: green">Permissões:</span> <? echo $row->permissao; ?><br>
+                <span style="color: green">E-mail:</span> <? echo $row->email; ?><br>
                 <? if ($topico->login == $user_login or $user_permissao == "administrador") { ?>
                     <form action="controller/ForumController.php" method="post">
                         <input type="hidden" value="<?= $topico->id ?>" name="id">
@@ -118,7 +115,7 @@ if (isset($_GET["topico"])) {
                     echo $mensagem = str_replace("\n", "<br />", $topico->mensagem) . "<br>";
                     ?>
                 </div>
-                <div style="color: green">Anexo:</div>
+                <span style="color: green">Anexo:</span>
                 <? if (file_exists("arquivos_forum_anexo/$topico->anexo")) {
                     chmod("arquivos_forum_anexo/$topico->anexo", 0755);
                     echo "<a target='_blank' href='arquivos_forum_anexo/$topico->anexo'><span>$topico->anexo</span></a>";
@@ -145,7 +142,8 @@ if (isset($_GET["topico"])) {
                     </td>
                     <td>
                         <input type="hidden" value="<?= $topico->id ?>" name="id">
-                        <button type="submit" style="width: 100%" class="btn btn-success" name="opcao" value="Cadastrar resposta">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_RESPOSTA?>">
+                        <button type="submit" style="width: 100%" class="btn btn-success">
                             <span class="glyphicon glyphicon-send"></span>
                             Enviar
                         </button>
@@ -178,14 +176,14 @@ if (isset($_GET["topico"])) {
                 </div>
                 <div class="col-md-3">
                     <?
-                    Imagem($resposta->login, 150);
+                    imagem($resposta->login, 150);
                     $sql2 = "select * from ejbsm_usuario where login = '$resposta->login'";
                     $row = mysqli_fetch_object($link->query($sql2));
                     ?>
                     <br>
-                    <div style="color: green">Nome: </div><? echo $row->nome; ?><br>
-                    <div style="color: green">Permissões: </div><? echo $row->permissao; ?><br>
-                    <div style="color: green">E-mail: </div><? echo $row->email; ?><br>
+                    <span style="color: green">Nome: </span><? echo $row->nome; ?><br>
+                    <span style="color: green">Permissões: </span><? echo $row->permissao; ?><br>
+                    <span style="color: green">E-mail: </span><? echo $row->email; ?><br>
                     <? if ($resposta->login == $user_login or $user_permissao == "administrador") { ?>
                         <form action="controller/ForumController.php" method="post">
                             <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -232,7 +230,7 @@ if (isset($_GET["topico"])) {
                         echo $resposta->resposta = str_replace("\n", "<br />", $resposta->resposta) . "<br>";
                         ?>
                     </div>
-                    <div style="color: green">Anexo:</div>
+                    <span style="color: green">Anexo:</span>
                     <?
                     if (file_exists("arquivos_forum_anexo/$resposta->anexo")) {
                         chmod("arquivos_forum_anexo/$resposta->anexo", 0755);

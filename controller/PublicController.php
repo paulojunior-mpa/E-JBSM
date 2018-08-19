@@ -1,9 +1,5 @@
 <?php
 
-include '../connection/Connection.php';
-include '../constantes/Constantes.php';
-include '../helpers/Helper.php';
-
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
     switch ($opcao) {
@@ -17,7 +13,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_senha = htmlspecialchars($_POST["user_senha"], ENT_QUOTES, 'UTF-8');
 
             if ($user_login == "" || $user_senha == "") {
-                deslogar($link);
+                logout($link);
             }
             $sql = "select * from ejbsm_usuario where login = '$user_login';";
             $user = mysqli_fetch_object($link->query($sql));
@@ -43,13 +39,6 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
                         }
                         $sql = "update ejbsm_usuario set  tentativas_login = 0 where login = '$user_login'";
                         $link->query($sql) or die(mysqli_error($link));
-
-                        //DEFINE UM NOME PARA O DONO DA SESSÃO
-                        $user_hash = sha1($_SESSION['user_permissao']. $_SESSION['user_login']);
-                        $nome_sessao = sha1('seg' . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $user_hash);
-                        session_name($nome_sessao);
-                        ini_set('session.cookie_httponly', 1);
-                        $_SESSION["dono_sessao"] = $nome_sessao;
 
                         header('location: ../e-jbsm_home.php');
                     }

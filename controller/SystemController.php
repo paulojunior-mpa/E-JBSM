@@ -1,22 +1,14 @@
 <?php
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
 
-include '../constantes/Constantes.php';
-include '../helpers/Helper.php';
-include '../helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
 
 if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     $opcao = htmlspecialchars($_POST["opcao"]);
 
-    $user_hash = sha1($_SESSION['user_permissao'] . $_SESSION['user_login']);
-    $nome_sessao = sha1('seg' . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $user_hash);
-    if ($_SESSION["dono_sessao"] != $nome_sessao) {
-        header('location:index.php?info=senha');
-    }
     switch ($opcao) {
 
         case "":
-            deslogar($link);
+            logout();
             break;
 
         case Constantes::CADASTRAR_BOLSISTA:
@@ -61,9 +53,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $visita_duracao = htmlspecialchars($_POST["visita_duracao"], ENT_QUOTES, 'UTF-8');
             $visita_monitor = htmlspecialchars($_POST["visita_monitor"], ENT_QUOTES, 'UTF-8');
             $visita_auxilio_conteudo = htmlspecialchars($_POST["visita_auxilio_conteudo"], ENT_QUOTES, 'UTF-8');
-            $visita_conteudo = htmlspecialchars($_POST["visita_conteudo"], ENT_QUOTES, 'UTF-8');
+            $visita_conteudo = getParameter("visita_conteudo");
             $visita_responsavel = htmlspecialchars($_POST["visita_responsavel"], ENT_QUOTES, 'UTF-8');
-            $visita_fone = htmlspecialchars($_POST["visita_fone"], ENT_QUOTES, 'UTF-8');
+            $visita_fone = getParameter("visita_fone");
             if (isset($_POST["visita_plano"])) {
                 $visita_plano = htmlspecialchars($_POST["visita_plano"], ENT_QUOTES, 'UTF-8');
             } else {
@@ -579,9 +571,6 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $sql = "delete from ejbsm_batepapo_resposta where id_mensagem = '$id'";
             $link->query($sql) or die(mysqli_error($link));
 
-            //chmod("../arquivos_batepapo_anexo/.$anexo", 0777);
-            //unlink("../arquivos_batepapo_anexo/.$anexo");
-
             header('location: ../e-jbsm_bate-papo.php#primeiro_topico');
 
             break;
@@ -620,7 +609,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $user_permissao = $_SESSION["user_permissao"];
 
             if (isset($_FILES['arquivo'])) {
-                move_uploaded_file($_FILES['arquivo']['tmp_name'], '../arquivos_imagem_perfil/' . $user_login . ".jpg");
+                move_uploaded_file($_FILES['arquivo']['tmp_name'], 'arquivos_imagem_perfil/' . $user_login . ".jpg");
             }
 
             header('location: ../e-jbsm_perfil.php');
@@ -848,6 +837,86 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             break;
     }
 } else {
-    deslogar($link);
+    logout();
+}
+
+function cadastrarIntegrante($permissao, $link)
+{
+    $login = "";
+    $senha = "";
+    $nome = "";
+    $id = "";
+    $email = "";
+    $fixo = "";
+    $celular = "";
+    $rg = "";
+    $orgao = "";
+    $cpf = "";
+    $area = "";
+    $subarea = "";
+    $projeto = "";
+    $bolsa = "";
+    $conta = "";
+    $tipo_conta = "";
+    $banco = "";
+    $agencia = "";
+
+    if (isset($_POST["login"])) {
+        $login = $_POST["login"];
+    }
+    if (isset($_POST["senha"])) {
+        $senha = sha1($_POST["senha"]);
+    }
+    if (isset($_POST["nome"])) {
+        $nome = $_POST["nome"];
+    }
+    if (isset($_POST["email"])) {
+        $email = $_POST["email"];
+    }
+    if (isset($_POST["fixo"])) {
+        $fixo = $_POST["fixo"];
+    }
+    if (isset($_POST["celular"])) {
+        $celular = $_POST["celular"];
+    }
+    if (isset($_POST["rg"])) {
+        $rg = $_POST["rg"];
+    }
+    if (isset($_POST["orgao"])) {
+        $orgao = $_POST["orgao"];
+    }
+    if (isset($_POST["cpf"])) {
+        $cpf = $_POST["cpf"];
+    }
+    if (isset($_POST["area"])) {
+        $area = $_POST["area"];
+    }
+    if (isset($_POST["subarea"])) {
+        $subarea = $_POST["subarea"];
+    }
+    if (isset($_POST["projeto"])) {
+        $projeto = $_POST["projeto"];
+    }
+    if (isset($_POST["bolsa"])) {
+        $bolsa = $_POST["bolsa"];
+    }
+    if (isset($_POST["conta"])) {
+        $conta = $_POST["conta"];
+    }
+    if (isset($_POST["tipo_conta"])) {
+        $tipo_conta = $_POST["tipo_conta"];
+    }
+    if (isset($_POST["banco"])) {
+        $banco = $_POST["banco"];
+    }
+    if (isset($_POST["agencia"])) {
+        $agencia = $_POST["agencia"];
+    }
+
+    $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao) VALUES ('$login', '$senha', '$nome', '$email', '$fixo', '$celular', 'Ativo', '$permissao');";
+    $link->query($sql) or die(mysqli_error($link));
+
+    $sql = "INSERT INTO ejbsm_integrante(login, id, cpf, rg, orgao, area, subarea, projeto, banco, conta, tipo_conta, agencia, bolsa) VALUES ('$login', '$id', '$cpf', '$rg', '$orgao', '$area', '$subarea', '$projeto', '$banco', '$conta', '$tipo_conta', '$agencia', '$bolsa');";
+    $link->query($sql) or die(mysqli_error($link));
 }
 ?>

@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];
@@ -30,12 +30,11 @@ if ($info == "deletada") {
                         <a>
                         <span>
                             <div class="input-group">
-                                <b>ID </b> <div style="color: green"><?php echo $visita->id ?></div>
-                                <b> Excluida por:</b><div style="color: green"><?php echo $visita->excluida ?></div>
-                                <b> Data: </b><div style="color: green"><?php echo "{$visita->data}"; ?></div>
-                                <b> Hora: </b><div style="color: green"><?php echo "{$visita->hora}"; ?></div>
-                                <b> Insituicao/Grupo: </b><font
-                                    color="green"><?php echo "{$visita->instituicao}"; ?></div>
+                                <b>ID </b> <span style="color: green"><?php echo $visita->id ?></span>
+                                <b> Excluida por:</b><span style="color: green"><?php echo $visita->excluida ?></span>
+                                <b> Data: </b><span style="color: green"><?php echo "{$visita->data}"; ?></span>
+                                <b> Hora: </b><span style="color: green"><?php echo "{$visita->hora}"; ?></span>
+                                <b> Insituicao/Grupo: </b><span style="color: green"><?php echo "{$visita->instituicao}"; ?></div>
                             </div>
                         </span>
                         </a>
@@ -75,7 +74,7 @@ if ($info == "deletada") {
                                             <div class="row">
                                                 <? if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
-                                                        <form action="controller/Controller.php" method="post">
+                                                        <form action="controller/SystemController.php" method="post">
                                                             <button type="button" class="btn btn-danger"
                                                                     data-toggle="modal"
                                                                     data-target="#myModal<?= $j ?>">

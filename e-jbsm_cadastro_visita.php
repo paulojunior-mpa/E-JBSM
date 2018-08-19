@@ -1,6 +1,6 @@
 <?
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-include 'helpers/permitir.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
+;
 
 $inicio_consulta = "";
 $info = "";
@@ -191,7 +191,7 @@ if (isset($_GET["info"])) {
                 <div class="alert alert-info" role="alert">Visita cadastrada!</div>
             <? } ?>
         </div>
-        <form action="controller/Controller.php" method="post">
+        <form action="controller/SystemController.php" method="post">
             <h4>1º - Dados dos visitantes</h4>
 
             <div class="row">

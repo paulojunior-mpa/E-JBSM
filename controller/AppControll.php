@@ -1,8 +1,5 @@
 <?php
-$permissao = array("usuario", "administrador", "orientador", "bolsista");
-
-include '../constantes/Constantes.php';
-include '../helpers/Helper.php';
+isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
 
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];

@@ -7,8 +7,7 @@
                 $row = mysqli_fetch_object($link->query($sql));
                 $nome = explode(" ", $row->nome);
                 $user_email = $row->email;
-                include 'helpers/imagem_perfil.php';
-                function Imagem_Menu($login, $max)
+                function imagemMenu($login, $max)
                 {
                     $x = 100;
                     if (file_exists("arquivos_imagem_perfil/$login.jpg")) {
@@ -25,7 +24,7 @@
                 ?>
                 <div class="row">
                     <div class="col-md-4">
-                        <?Imagem_Menu($user_login, 80);?>
+                        <?imagemMenu($user_login, 80);?>
                     </div>
                     <div class="col-md-8">
                         Nome: <?=$nome[0];?><br>
