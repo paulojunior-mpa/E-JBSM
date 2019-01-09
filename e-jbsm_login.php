@@ -57,7 +57,7 @@ if (isset($_GET["info"])) {
     </div>
     <div class="panel panel-default col-md-6" style="margin-top: 2%">
         <div class="panel-body" style="margin-bottom: 2%">
-            <? if ($info == "cadastrado") { ?>
+            <? if (getParameter('info') == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Usuario cadastrado! Utilize o login e senha informados
                     no cadastro.
                 </div>
@@ -78,15 +78,15 @@ if (isset($_GET["info"])) {
                                placeholder="senha">
                     </div>
                 </div>
-                <? if ($info == "login") { ?>
+                <? if (getParameter('info') == "login") { ?>
                     <div class="alert alert-danger" role="alert">Este login não está cadastrado</div>
                 <? } ?>
-                <? if ($info == "senha") { ?>
+                <? if (getParameter('info') == "senha") { ?>
                 <div class="alert alert-danger" role="alert">
                     A senha informada é invalida.
                     <?
-                    if (isset($_GET["tentativas"])) {
-                        $t = $_GET["tentativas"];
+                    if (!empty(getParameter("tentativas"))) {
+                        $t = getParameter("tentativas");
                         $r = (5 - $t);
                         if ($r <= 0) {
                             echo "Você errou 5 vezes seguidas, sua conta foi bloqueada, para desbloquear redefina sua senha";
@@ -96,7 +96,7 @@ if (isset($_GET["info"])) {
                     }
                     } ?>
                 </div>
-                <? if ($info == "inativo") { ?>
+                <? if (getParameter('info') == "inativo") { ?>
                     <div class="alert alert-danger" role="alert">Esta conta foi desativada.</div>
                 <? } ?>
                 <div class="form-group">

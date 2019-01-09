@@ -1,6 +1,7 @@
 <?php
-isUserInRole(array("administrador", "orientador", "bolsista"));
-include 'helpers/permitir_app.php';
+isUserInRole(array("administrador", "orientador", "bolsista"), false);
+
+include 'e-jbsm_cabecalho.php';
 
 include "helpers/phpqrcode/qrlib.php";
 

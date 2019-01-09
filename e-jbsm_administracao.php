@@ -1,6 +1,5 @@
 <?
-$permissao = array("administrador");
-;
+isUserInRole(array("administrador"));
 ?>
 <div class="panel panel-default">
     <div class="panel-body">

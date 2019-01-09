@@ -31,7 +31,7 @@ if (isset($_REQUEST["usuario"])) {
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="nome">Nome completo</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome completo" required=""
+                    <input type="text" class="form-control" id="usuario_nome" placeholder="Nome completo" required=""
                            name="usuario_nome" value="<?= $usuario['nome']; ?>">
                 </div>
                 <div class="form-group">
@@ -43,7 +43,7 @@ if (isset($_REQUEST["usuario"])) {
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="celular">Telefone celular</label>
-                    <input type="tel" id="celular" OnKeyPress="formatar('##-####-####', this)" maxlength="12"
+                    <input type="tel" id="celular" OnKeyPress="formatar('##-####-#####', this)" maxlength="13"
                            class="form-control" required placeholder="xx-xxxx-xxxx"
                            name="usuario_celular"
                            value="<?= $usuario['celular']; ?>">
@@ -51,7 +51,7 @@ if (isset($_REQUEST["usuario"])) {
                 </div>
                 <div class="form-group">
                     <label for="fixo">Telefone fixo</label>
-                    <input type="tel" OnKeyPress="formatar('##-####-####', this)" maxlength="12"
+                    <input type="tel" OnKeyPress="formatar('##-####-#####', this)" maxlength="13"
                            class="form-control" placeholder="xx-xxxx-xxxx" required name="usuario_fixo" id="fixo"
                            value="<?= $usuario['fixo']; ?>">
                 </div>
@@ -86,7 +86,7 @@ if (isset($_REQUEST["usuario"])) {
             </div>
             <div class="form-group col-md-6"><br>
                 <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_USUARIO?>">
-                <button class='btn btn-success form-control' type="submit" style="width: 100%" name="usuario_nome">
+                <button class='btn btn-success form-control' type="submit" style="width: 100%">
                     <span class="glyphicon glyphicon-save"></span>
                     Cadastrar
                 </button>

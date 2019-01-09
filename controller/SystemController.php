@@ -63,10 +63,10 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             }
 
             $sql = "insert into ejbsm_visita(login, oficina, data, hora, visitantes, fone, instituicao, tipo_instituicao, cidade,
-curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida)
-            values('$user_login', '$visita_oficina', '$visita_data', '$visita_hora', $visita_visitantes, $visita_fone,
+curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida, ano)
+            values('$user_login', '$visita_oficina', '$visita_data', '$visita_hora', '$visita_visitantes', '$visita_fone',
             '$visita_instituicao', '$visita_tipo_instituicao', '$visita_cidade', '$visita_curso',
-            '$visita_conteudo', '$visita_auxilio_conteudo', '$visita_monitor', '$visita_duracao', '$visita_responsavel', '$visita_plano', 'Em espera', 'nao');";
+            '$visita_conteudo', '$visita_auxilio_conteudo', '$visita_monitor', '$visita_duracao', '$visita_responsavel', '$visita_plano', 'Em espera', 'nao', '');";
             $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_cadastro_visita.php?info=cadastrada#cadastrada');
@@ -105,7 +105,6 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $link->query($sql) or die(mysqli_error($link));
 
             if ($visita_status == "Confirmada") {
-                echo "Enviando e-mail...";
                 $sql = "select * from ejbsm_usuario where login = '$visita_login';";
 
                 $result = $link->query($sql);
@@ -155,7 +154,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 	<strong>Site JBSM:</strong> http://www.ufsm.br/jbsm<br>
 	<strong>Agendamentos:</strong> http://www.ufsm.br/jbsm/visitas<br>
 	";
-                $sql = "select email from ejbsm_usuario where login = $visita_monitor";
+                $sql = "select email from ejbsm_usuario where login = '$visita_monitor'";
                 $dados = $link->query($sql);
                 $guia_email = mysqli_fetch_object($dados);
                 mail("jardimbotanico@mail.ufsm.br", "$email_assunto", "$email_mensagem", $headers);
@@ -437,7 +436,7 @@ anexo =  '$anexo' WHERE  id = $id;";
 
             break;
 
-        case Constantes::EDITAR_OFICINA:
+        case Constantes::EDITAR_BOLSISTA:
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
@@ -861,6 +860,12 @@ function cadastrarIntegrante($permissao, $link)
     $banco = "";
     $agencia = "";
 
+    if (isset($_POST["matricula"])) {
+        $id = $_POST["matricula"];
+    }elseif(isset($_POST["siape"])) {
+        $id = $_POST["siape"];
+    }
+
     if (isset($_POST["login"])) {
         $login = $_POST["login"];
     }
@@ -913,7 +918,7 @@ function cadastrarIntegrante($permissao, $link)
         $agencia = $_POST["agencia"];
     }
 
-    $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao) VALUES ('$login', '$senha', '$nome', '$email', '$fixo', '$celular', 'Ativo', '$permissao');";
+    $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao, cidade, tentativas_login) VALUES ('$login', '$senha', '$nome', '$email', '$fixo', '$celular', 'Ativo', '$permissao', '', 0);";
     $link->query($sql) or die(mysqli_error($link));
 
     $sql = "INSERT INTO ejbsm_integrante(login, id, cpf, rg, orgao, area, subarea, projeto, banco, conta, tipo_conta, agencia, bolsa) VALUES ('$login', '$id', '$cpf', '$rg', '$orgao', '$area', '$subarea', '$projeto', '$banco', '$conta', '$tipo_conta', '$agencia', '$bolsa');";

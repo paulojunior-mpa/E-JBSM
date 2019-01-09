@@ -1,6 +1,5 @@
 <?
 isUserInRole(array("administrador", "orientador", "bolsista"));
-;
 
 if(isset($_POST["id"])) {
     $id = $_POST["id"];
@@ -106,7 +105,7 @@ if(isset($_POST["id"])) {
                     <td>
                         <select name="visita_monitor" class="form-control" required>
                             <?
-                            $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor = 'sim' AND status != 'Inativo'";
+                            $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                             $result = $link->query($sql);
                             while ($row = mysqli_fetch_object($result)) {
                                 $nome = explode(" ", $row->nome);

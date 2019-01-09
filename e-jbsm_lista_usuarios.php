@@ -12,19 +12,14 @@ if (isset($_POST["pesquisa"])) {
         <h3>Pesquisa de usuarios</h3>
         <script>
             function showHint(str) {
-                if (str.length == 0) {
-                    document.getElementById("txtHint").innerHTML = "";
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-                        }
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
-                    xmlhttp.open("GET", "helpers/ajax_pesquisar_usuarios.php?q=" + str, true);
-                    xmlhttp.send();
                 }
+                xmlhttp.open("GET", "helpers/ajax_pesquisar_usuarios.php?q=" + str, true);
+                xmlhttp.send();
             }
         </script>
         <p><b>Digite o início do nome, login ou e-mail do usuário</b></p>

@@ -34,7 +34,7 @@ if ($info == "deletada") {
                                 <b> Excluida por:</b><span style="color: green"><?php echo $visita->excluida ?></span>
                                 <b> Data: </b><span style="color: green"><?php echo "{$visita->data}"; ?></span>
                                 <b> Hora: </b><span style="color: green"><?php echo "{$visita->hora}"; ?></span>
-                                <b> Insituicao/Grupo: </b><span style="color: green"><?php echo "{$visita->instituicao}"; ?></div>
+                                <b> Insituicao/Grupo: </b><span style="color: green"><?php echo "{$visita->instituicao}"; ?></span>
                             </div>
                         </span>
                         </a>

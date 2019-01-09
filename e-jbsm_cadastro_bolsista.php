@@ -1,6 +1,5 @@
 <?
-$permissao = array("administrador", "orientador");
-;
+isUserInRole(array("administrador", "orientador"));
 $info = "";
 if (isset($_GET["info"])) {
     $info = $_GET["info"];

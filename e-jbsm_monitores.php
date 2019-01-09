@@ -19,7 +19,7 @@ if (isset($_GET["addmonitor"])) {
                 Integrantes / <span style="color: blue" ">Monitores</div>
             </a>
             <?
-            $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao != 'usuario' and status != 'Inativo' and ejbsm_integrante.login=ejbsm_usuario.login";
+            $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao != 'usuario' and status != 0 and ejbsm_integrante.login=ejbsm_usuario.login";
             $result = $link->query($sql) or die(mysqli_error($link));
             while ($row = mysqli_fetch_object($result) or die(mysqli_error($link))) {
                 if ($row->monitor == "sim")

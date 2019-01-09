@@ -1,14 +1,13 @@
 <?
-isUserInRole(array("administrador", "orientador", "bolsista"));
-include 'helpers/permitir_app.php';
-
+isUserInRole(array("administrador", "orientador", "bolsista"), false);
+include 'e-jbsm_cabecalho.php';
 $inicio_consulta = "";
 $info = "";
 if (isset($_GET["inicio_consulta"])) {
     $inicio_consulta = $_GET["inicio_consulta"];
 }
-if (isset($_GET["info"])) {
-    $info = $_GET["info"];
+if (!empty(getParameter("info"))) {
+    $info = getParameter("info");
 }
 ?>
 <div class="panel panel-default">
@@ -26,6 +25,13 @@ if (isset($_GET["info"])) {
                     <div class="alert alert-danger">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                         Trilha deletada.
+                    </div>
+                <?
+                }else if($info=="editada"){
+                    ?>
+                    <div class="alert alert-success">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                        Trilha alterada.
                     </div>
                 <?
                 }

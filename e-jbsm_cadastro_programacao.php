@@ -1,5 +1,5 @@
 <?
-$permissao = array("bolsista");
+isUserInRole(array("bolsista"));
 ;
 ?>
 <ul class="nav nav-tabs" role="tablist" id="cadastro_programacao" xmlns="http://www.w3.org/1999/html">

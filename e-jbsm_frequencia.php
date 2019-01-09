@@ -1,6 +1,5 @@
 <?
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
-;
 
 if ($user_permissao == "orientador" or $user_permissao == "administrador") {
     $loginBolsista = "";
@@ -44,7 +43,7 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
                             Slecione o bolsista
                             <select name="login" required class="form-control">
                                 <?
-                                $sql = "select * from ejbsm_usuario where permissao = 'bolsista' and status != 'Inativo';";
+                                $sql = "select * from ejbsm_usuario where permissao = 'bolsista' and status != 0;";
                                 $qr = $link->query($sql);
                                 while ($r = mysqli_fetch_object($qr)) {
                                     ?>

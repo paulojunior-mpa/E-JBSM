@@ -102,24 +102,21 @@ if (isset($_GET["info"])) {
                                         <form action="controller/ForumController.php" method="post">
                                             <tr>
                                                 <td colspan="2">Nome da área
-                                                    <input type="text" class="form-control" name="area_nome"
-                                                           value="<?= $area->nome ?>" required="">
+                                                    <input type="text" class="form-control" name="area_nome" value="<?= $area->nome ?>" required="">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">Descrição da área
-                                                    <textarea name="area_descricao" class="form-control"
-                                                              required=""><?= $area->descricao ?></textarea>
+                                                    <textarea name="area_descricao" class="form-control" required=""><?= $area->descricao ?></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $area->id ?>"
-                                                           name="id">
-                                                    <input type="hidden" value="<?= $area->nome ?>"
-                                                           name="area_nome_antigo">
-                                                    <button type="submit" class="btn btn-success" value="Editar área"
-                                                            name="opcao">
+                                                    <input type="hidden" value="<?= $area->id ?>" name="id">
+                                                    <input type="hidden" value="<?= $area->nome ?>" name="area_nome_antigo">
+
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_AREA?>">
+                                                    <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-save"></span>
                                                         Aceitar esta sugestão
                                                     </button>
@@ -132,7 +129,7 @@ if (isset($_GET["info"])) {
                                                 <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_AREA?>">
                                                 <button type="submit" class="btn btn-danger">
                                                     <span class="glyphicon glyphicon-remove"></span>
-                                                    Excluir esta sugestão
+                                                    Deletar área
                                                 </button>
                                             </td>
                                         </form>
@@ -208,22 +205,25 @@ if (isset($_GET["info"])) {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $subarea->id ?>"
-                                                           name="id">
-                                                    <button type="submit" class="btn btn-success" value="Editar subárea"
-                                                            name="opcao">Aceitar esta sugestão
+                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_SUBAREA?>">
+                                                    <button type="submit" class="btn btn-warning">
+                                                        <span class="glyphicon glyphicon-save"></span>
+                                                        Aceitar esta sugestão
                                                     </button>
                                                 </td>
+                                            </tr>
                                         </form>
-                                        <form action="../sistema_servlet/forum_controller.php" method="post">
-                                            <td>
-                                                <input type="hidden" value="<?= $subarea->id ?>"
-                                                       name="id">
-                                                <button type="submit" class="btn btn-danger"
-                                                        value="Deletar subárea"
-                                                        name="opcao">Excluir esta sugestão
-                                                </button>
-                                            </td>
+                                        <form action="controller/ForumController.php" method="post">
+                                            <tr>
+                                                <td>
+                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_SUBAREA?>">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                        Deletar subárea
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </form>
                                     </table>

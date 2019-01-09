@@ -1,5 +1,4 @@
 <?php
-include '../connection/Connection.php';
 
 // get the q parameter from URL
 $q = htmlspecialchars($_REQUEST["q"]);

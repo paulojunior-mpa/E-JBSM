@@ -4,8 +4,6 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false)
 if (isset($_POST["opcao"])) {
     $opcao = $_POST["opcao"];
 
-    include "../connection/Connection.php";
-
     switch ($opcao) {
         case "":
             header('location: app.php');
@@ -45,14 +43,8 @@ if (isset($_POST["opcao"])) {
 
             $img = "";
 
-            if (isset($_FILES["file"])) {
-                if (!empty($_FILES["file"])) {
-                    if ($_FILES["file"]["size"] <= 2000000) {
-                        $img = addslashes(file_get_contents($_FILES['file']['tmp_name']));
-                    } else {
-
-                    }
-                }
+            if (isset($_FILES["file"]) and !empty($_FILES["file"]) and $_FILES["file"]["size"] <= 2000000 and !empty($_FILES['file']['tmp_name'])) {
+                $img = addslashes(file_get_contents($_FILES['file']['tmp_name']));
             }
 
             if (isset($_POST["id"])) {
@@ -66,8 +58,8 @@ if (isset($_POST["opcao"])) {
 
                 header("location: ../app_editar_planta.php?info=editada&id=$id");
             } else {
-                $sql = "insert into ejbsm_planta(nome_popular, descricao, latitude, longitude, especie, genero, familia, origem, exotica, img) VALUES
-('$popular', '$descricao', '$latitude', '$longitude', '$especie', '$genero', '$familia', '$origem', '$exotica', '$img')";
+                $sql = "insert into ejbsm_planta(nome_popular, descricao, latitude, longitude, especie, genero, familia, origem, exotica, img, florescimento_inicio, florescimento_fim) VALUES
+('$popular', '$descricao', '$latitude', '$longitude', '$especie', '$genero', '$familia', '$origem', '$exotica', '$img', null, null)";
 
                 $link->query($sql) or die(mysqli_error($link));
 

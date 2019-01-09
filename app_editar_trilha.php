@@ -1,6 +1,6 @@
 <?php
-isUserInRole(array("administrador", "orientador", "bolsista"));
-include 'helpers/permitir_app.php';
+isUserInRole(array("administrador", "orientador", "bolsista"), false);
+include 'e-jbsm_cabecalho.php';
 
 $info = "";
 if (isset($_GET["info"]))
@@ -67,12 +67,13 @@ if (isset($_GET["info"]))
                         <div class="col-md-12" id="trilha">
                             <form action="controller/AppControll.php" method="post">
                                 <h4>Trilha <input type="text" class="form-control" name="nome"
-                                                  value="<?= $trilha->nome ?>"></h4><h5>Descrição: <textarea
-                                            class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
+                                                  value="<?= $trilha->nome ?>"></h4><h5>Descrição:
+                                    <textarea class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
                                 </h5>
                                 <input type="hidden" name="id" value="<?= $trilha->id ?>">
-                                <button class="btn btn-warning" name="opcao" value="Cadastrar trilha">
-                                    <span class="glyphicon glyphicon-edit"></span>
+                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_TRILHA?>">
+                                <button type="submit" value="Cadastrar trilha" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-save"></span>
                                     Salvar
                                 </button>
                             </form>
@@ -111,7 +112,7 @@ if (isset($_GET["info"]))
                                                     <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_TRILHA?>">
                                                     <button type="submit" value="Deletar trilha" class="btn btn-danger">
                                                         <span class="glyphicon glyphicon-remove"></span>
-                                                        Deletar trilha
+                                                        Deletar
                                                     </button>
                                                 </div>
                                             </div>
@@ -151,14 +152,7 @@ if (isset($_GET["info"]))
                         <div class="media alert alert-info">
                             <div class="media-left">
                                 <?
-                                if ($planta->img != null) {
-                                    list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($planta->img));
-                                    $max = 80;
-                                    $x = ($altura * $max) / $largura;
-                                    echo "<img src='data:image/jpeg;base64," . base64_encode($planta->img) . "' width='$max' height='$x'>";
-                                } else {
-                                    echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
-                                }
+                                imagemPlanta($planta->img)
                                 ?>
                             </div>
                             <div class="media-body">

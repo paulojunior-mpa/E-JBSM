@@ -1,5 +1,4 @@
 <?php
-include '../connection/Connection.php';
 
 // get the q parameter from URL
 $q = htmlspecialchars($_REQUEST["q"]);
@@ -19,18 +18,7 @@ if ($q !== "") {
             <div class="media">
                 <div class="media-left">
                     <?
-                    if (file_exists("../arquivos_imagem_planta/$planta->id.jpg")) {
-                        chmod("../arquivos_imagem_planta/$planta->id.jpg", 0755);
-                        list($largura, $altura) = getimagesize("../arquivos_imagem_planta/$planta->id.jpg");
-                        //regra de 3
-                        $max = 80;
-
-                        $x = ($altura * $max) / $largura;
-
-                        echo "<img src='arquivos_imagem_planta/$planta->id.jpg' width='$max' height='$x'>";
-                    } else {
-                        echo "<img src='arquivos_imagem_planta/planta_default.png' width='80px' height='80px'>";
-                    }
+                    imagemPlanta($planta->img)
                     ?>
                 </div>
                 <div class="media-body">

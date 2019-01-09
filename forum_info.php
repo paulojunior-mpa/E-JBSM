@@ -91,7 +91,7 @@ if (isset($_GET["info"])) {
                 <?}?>
             </table>
             <? if ($user_permissao == "administrador") { ?>
-                <form action="controller/ForumController.php" method="post">
+                <form action="controller/SystemController.php" method="post">
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

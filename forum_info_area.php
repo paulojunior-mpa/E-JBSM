@@ -1,6 +1,5 @@
 <?
 isUserInRole(array("administrador", "orientador", "bolsista"));
-;
 
 $info = "";
 if (isset($_GET["info"])) {
@@ -33,7 +32,7 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <span="color: green"><b>Nome: </b></div> <? echo $area->nome ?><br><br>
+                            <span="color: green"><b>Nome: </b></span> <? echo $area->nome ?><br><br>
                             <span style="color: green"><b>Descrição: </b></span> <? echo $area->descricao ?>
                         </span>
                     </a>

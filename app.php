@@ -32,7 +32,7 @@ if (isset($_GET["info"])) {
                             document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                         }
                     }
-                    xmlhttp.open("GET", "Func/ajax_pesquisar_plantas.php?q=" + str, true);
+                    xmlhttp.open("GET", "helpers/ajax_pesquisar_plantas.php?q=" + str, true);
                     xmlhttp.send();
                 }
             </script>
@@ -65,14 +65,7 @@ if (isset($_GET["info"])) {
                             <tr>
                                 <td>
                                     <?
-                                    if ($planta->img != "") {
-                                        list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($planta->img));
-                                        $max = 80;
-                                        $x = ($altura * $max) / $largura;
-                                        echo "<img src='data:image/jpeg;base64," . base64_encode($planta->img) . "' width='$max' height='$x'>";
-                                    } else {
-                                        echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
-                                    }
+                                    imagemPlanta($planta->img)
                                     ?>
                                 </td>
                                 <td id="popular"><?= $planta->nome_popular ?></td>
@@ -95,14 +88,14 @@ if (isset($_GET["info"])) {
                     <div id="planta_latitude"><?= $planta->latitude ?></div>
                     Longitude:
                     <div id="planta_longitude"><?= $planta->longitude ?></div>
-                    <script src="js/jquery.min.js"></script>
+                    <script src="resources/js/jquery.min.js"></script>
 
                     <!-- Maps API Javascript -->
                     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
                     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
                     <!-- Arquivo de inicialização do mapa -->
-                    <script src="js/mapa_planta.js"></script>
+                    <script src="resources/js/mapa_planta.js"></script>
                 <?
                 }
                     $sql = "update ejbsm_planta set visualizada = (ejbsm_planta.visualizada+1), ult_visualizada = now()";

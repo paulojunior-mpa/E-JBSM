@@ -62,7 +62,7 @@
                     <li><a href="e-jbsm_cadastro_usuario.php"><span
                                 class="glyphicon glyphicon-pencil"></span> Cadastro</a>
                     </li>
-                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-RAZ</a></li>
+                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-GEA</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://w3.ufsm.br/jbsm/" target="_blank"><span
@@ -180,7 +180,7 @@
                     $result = $link->query($sql2) or die(mysqli_error($link));
                     $contagem_visitas = mysqli_num_rows($result);
                     ?>
-                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-RAZ</a></li>
+                    <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-GEA</a></li>
                     <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>
                             Lixeira
                             <span class="badge"><?= $contagem_visitas ?></span></a></li>

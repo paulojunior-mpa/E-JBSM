@@ -33,7 +33,7 @@ class eJBSM
                 exit;
             }
         }
-        include 'e-jbsm_login.php';
+        header('location: /ejbsm/e-jbsm_login.php');
     }
 
     private function import()
@@ -105,6 +105,20 @@ function imagem($login, $max)
         echo "<a href='forum_info.php?info=login&login=$login'><img src='arquivos_imagem_perfil/user.png' width='$max' height='$x'></a>";
     }
     echo '</div>';
+}
+
+function imagemPlanta($img){
+    if ($img!=null) {
+        list($largura, $altura) = getimagesize("data:image/jpeg;base64,".base64_encode($img));
+        if($largura != null and $altura != null) {
+            $max = 80;
+            $x = ($altura * $max) / $largura;
+            echo "<img src='data:image/jpeg;base64," . base64_encode($img) . "' width='$max' height='$x'>";
+        }else
+            echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
+    } else {
+        echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
+    }
 }
 
 new eJBSM();

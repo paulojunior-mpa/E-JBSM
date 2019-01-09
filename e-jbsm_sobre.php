@@ -27,9 +27,9 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
         </div>
         <div class="panel-body" id="local">
             <script src="https://maps.googleapis.com/maps/api/js"></script>
-            <script src="js/jquery.min.js"></script>
+            <script src="resources/js/jquery.min.js"></script>
             <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-            <script src="js/mapa_sobre.js"></script>
+            <script src="resources/js/mapa_sobre.js"></script>
             <legend>Gerar rota</legend>
             <button class="btn btn-info" onclick="getLocation()">Quais minhas coordenadas?</button>
             <form method="post" action="">
@@ -43,13 +43,13 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
                        id="txtEnderecoChegada" name="txtEnderecoChegada"/>
             </form>
             <div id="mapa" style="height: 350px; width: 100%"></div>
-            <script src="js/jquery.min.js"></script>
+            <script src="resources/js/jquery.min.js"></script>
 
             <!-- Maps API Javascript -->
             <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
             <!-- Arquivo de inicialização do mapa -->
-            <script src="js/mapa_sobre.js"></script>
+            <script src="resources/js/mapa_sobre.js"></script>
             <div class="panel-heading">
                 <h3 class="panel-title">Sobre o sistema e-JBSM</h3>
             </div>

@@ -8,55 +8,10 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             break;
 
         case Constantes::LOGAR:
-            session_start();
             $user_login = htmlspecialchars($_POST["user_login"], ENT_QUOTES, 'UTF-8');
             $user_senha = htmlspecialchars($_POST["user_senha"], ENT_QUOTES, 'UTF-8');
 
-            if ($user_login == "" || $user_senha == "") {
-                logout($link);
-            }
-            $sql = "select * from ejbsm_usuario where login = '$user_login';";
-            $user = mysqli_fetch_object($link->query($sql));
-
-            if (isset($_POST["sha1"])) {
-                $user_senha_sha1 = $user_senha;
-            } else {
-                $user_senha_sha1 = sha1($user_senha);
-            }
-
-            if ($user->senha == $user_senha_sha1) {
-
-                $_SESSION["user_login"] = $user_login;
-                $_SESSION["user_permissao"] = $user->permissao;
-
-                if ($user->status != 'Inativo') {
-                    if ($user->tentativas_login >= 5) {
-                        header("location: ../index.php?info=senha&tentativas=$user->tentativas_login");
-                    } else {
-                        if (isset ($_POST["manter"])) {
-                            setcookie("login_e-jbsm", $user->login, time() + (86400 * 30), "/");
-                            setcookie("senha_e-jbsm", $user->senha, time() + (86400 * 30), "/");
-                        }
-                        $sql = "update ejbsm_usuario set  tentativas_login = 0 where login = '$user_login'";
-                        $link->query($sql) or die(mysqli_error($link));
-
-                        header('location: ../e-jbsm_home.php');
-                    }
-                } else {
-                    header('location: ../index.php?info=inativo');
-                }
-
-            } else if ($user->login == $user_login) {
-                $sql = "update ejbsm_usuario set tentativas_login = tentativas_login+1 where login = '$user_login'";
-                $link->query($sql) or die(mysqli_error($link));
-                $sql = "select tentativas_login from ejbsm_usuario where login = '$user_login'";
-                $result = $link->query($sql) or die(mysqli_error($link));
-                $tentativas = mysqli_fetch_object($result);
-                header("location: ../index.php?info=senha&tentativas=$tentativas->tentativas_login");
-            } else {
-                session_destroy();
-                header('location: ../index.php?info=login');
-            }
+            login($user_login, $user_senha, $link);
             break;
 
         case Constantes::CADASTRAR_USUARIO:
@@ -90,7 +45,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
                 $link->query($sql) or die(header("location: ../e-jbsm_cadastro_usuario.php?info=login&usuario=$usuario"));
 
-                header('location: ../e-jbsm_cadastro_usuario.php?info=cadastrado');
+                login($login, $_POST["usuario_senha"], $link);
             }
             break;
 
@@ -148,4 +103,52 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
     }
 } else {
     header('location: ../index.php');
+}
+
+function login($user_login, $user_senha, $link){
+    if ($user_login == "" || $user_senha == "")
+        logout();
+
+    $sql = "select * from ejbsm_usuario where login = '$user_login';";
+    $user = mysqli_fetch_object($link->query($sql));
+
+    if (isset($_POST["sha1"])) {
+        $user_senha_sha1 = $user_senha;
+    } else {
+        $user_senha_sha1 = sha1($user_senha);
+    }
+
+    if ($user->senha == $user_senha_sha1) {
+
+        $_SESSION["user_login"] = $user_login;
+        $_SESSION["user_permissao"] = $user->permissao;
+
+        if ($user->status != 0) {
+            if ($user->tentativas_login >= 5) {
+                header("location: ../e-jbsm_login.php?info=senha&tentativas=$user->tentativas_login");
+            } else {
+                if (isset ($_POST["manter"])) {
+                    setcookie("login_e-jbsm", $user->login, time() + (86400 * 30), "/");
+                    setcookie("senha_e-jbsm", $user->senha, time() + (86400 * 30), "/");
+                }
+                $sql = "update ejbsm_usuario set  tentativas_login = 0 where login = '$user_login'";
+                $link->query($sql) or die(mysqli_error($link));
+
+                header('location: ../e-jbsm_home.php');
+            }
+        } else {
+            header('location: ../e-jbsm_login.php?info=inativo');
+        }
+
+    } else if ($user->login == $user_login) {
+        $sql = "update ejbsm_usuario set tentativas_login = tentativas_login+1 where login = '$user_login'";
+        $link->query($sql) or die(mysqli_error($link));
+        $sql = "select tentativas_login from ejbsm_usuario where login = '$user_login'";
+        $result = $link->query($sql) or die(mysqli_error($link));
+        $tentativas = mysqli_fetch_object($result);
+        header("location: ../e-jbsm_login.php?info=senha&tentativas=$tentativas->tentativas_login");
+    } else {
+        session_destroy();
+        header('location: ../index.php?info=login');
+    }
 }

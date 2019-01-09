@@ -39,7 +39,7 @@ if ($user_permissao != "usuario") { ?>
                         <td>Guia
                             <select name="nomeGuia" class="form-control" required>
                                 <?
-                                $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor = 'sim' AND status != 'Inativo'";
+                                $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                                 $result = $link->query($sql);
                                 while ($r = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $r->nome);

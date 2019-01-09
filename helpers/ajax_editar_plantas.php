@@ -1,5 +1,4 @@
 <?php
-include '../connection/Connection.php';
 
 // get the q parameter from URL
 $q = $_REQUEST["q"];
@@ -21,14 +20,7 @@ if ($q !== null) {
             <div class="media alert alert-info">
                 <div class="media-left">
                     <?
-                    if ($a->img!=null) {
-                        list($largura, $altura) = getimagesize("data:image/jpeg;base64,".base64_encode($a->img));
-                        $max = 80;
-                        $x = ($altura * $max) / $largura;
-                        echo "<img src='data:image/jpeg;base64,".base64_encode($a->img)."' width='$max' height='$x'>";
-                    } else {
-                        echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
-                    }
+                    imagemPlanta($a->img)
                     ?>
                 </div>
                 <div class="media-body">

@@ -1,7 +1,6 @@
 <?
-isUserInRole(array("administrador", "orientador", "bolsista"));
-include 'helpers/permitir_app.php';
-
+isUserInRole(array("administrador", "orientador", "bolsista"), false);
+include 'e-jbsm_cabecalho.php';
 $inicio_consulta = "";
 $info = "";
 if (isset($_GET["inicio_consulta"])) {

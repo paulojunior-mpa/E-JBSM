@@ -1,6 +1,6 @@
 <div id="map-canvas" style="height: 350px; width: 100%"></div>
 <hr>
-<script src="js/jquery.min.js"></script>
+<script src="../resources/js/jquery.min.js"></script>
 <!-- Maps API Javascript -->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>

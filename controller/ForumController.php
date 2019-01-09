@@ -166,9 +166,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $topico_assunto = htmlspecialchars($_POST["assunto"], ENT_QUOTES, 'UTF-8');
             $topico_mensagem = htmlspecialchars($_POST['mensagem'], ENT_QUOTES, 'UTF-8');
 
-            $sql = "insert into ejbsm_forum_topico(id, assunto, id_area, id_subarea, data, hora, login, mensagem, anexo) values("
+            $sql = "insert into ejbsm_forum_topico(id, assunto, id_area, id_subarea, data, hora, login, mensagem, anexo, visualizado) values("
                 . "'$maxid', '$topico_assunto', '$topico_area', '$topico_subarea', curdate(), curtime(), "
-                . "'$user_login', '$topico_mensagem', '$nome_anexo');";
+                . "'$user_login', '$topico_mensagem', '$nome_anexo', '');";
 
             $result = $link->query($sql) or die(mysqli_error($link));
 

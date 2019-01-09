@@ -30,7 +30,7 @@ if (isset($_GET["inicio_consulta"])) {
                     <select name="topico_para" required class="form-control">
                         <option value="todos">Todos</option>
                         <?
-                        $sql = "select * from ejbsm_usuario where ejbsm_usuario.permissao != 'usuario' and login != '$user_login' and status != 'Inativo';";
+                        $sql = "select * from ejbsm_usuario where ejbsm_usuario.permissao != 'usuario' and login != '$user_login' and status != 0;";
                         $qr = $link->query($sql);
                         while ($r = mysqli_fetch_object($qr)) {
                             ?>

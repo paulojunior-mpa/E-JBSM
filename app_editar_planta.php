@@ -1,7 +1,6 @@
 <?php
-isUserInRole(array("administrador", "orientador", "bolsista"));
-include 'helpers/permitir_app.php';
-
+isUserInRole(array("administrador", "orientador", "bolsista"), false);
+include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"]))
     $info = $_GET["info"];
@@ -97,12 +96,7 @@ if (isset($_GET["info"]))
                         <div class="col-md-4">
                             Editar imagem <input type="checkbox" name="edit_img" value="1"><br>
                             <?
-                            if ($planta->img != null) {
-                                list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($planta->img));
-                                $max = 240;
-                                $x = ($altura * $max) / $largura;
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($planta->img) . "' width='$max' height='$x'>";
-                            }
+                            imagemPlanta($planta->img)
                             ?>
                             <script>
                                 function previewFile() {
@@ -201,14 +195,7 @@ if (isset($_GET["info"]))
                         <div class="media alert alert-info">
                             <div class="media-left">
                                 <?
-                                if ($a->img != null) {
-                                    list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($a->img));
-                                    $max = 80;
-                                    $x = ($altura * $max) / $largura;
-                                    echo "<img src='data:image/jpeg;base64," . base64_encode($a->img) . "' width='$max' height='$x'>";
-                                } else {
-                                    echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
-                                }
+                                imagemPlanta($a->img)
                                 ?>
                             </div>
                             <div class="media-body">

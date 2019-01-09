@@ -32,7 +32,7 @@ if ($user_permissao != "usuario") { ?>
                         <td>Monitor
                             <select name="nome_monitor" class="form-control" required>
                                 <?
-                                $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor = 'sim' AND status != 'Inativo'";
+                                $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                                 $result = $link->query($sql);
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);
@@ -46,7 +46,7 @@ if ($user_permissao != "usuario") { ?>
                         <td colspan="2">Orientador
                             <select name="orientador" class="form-control" required>
                                 <?
-                                $sql = "select * from ejbsm_usuario where permissao = 'orientador' or permissao = 'administrador' and status != 'Inativo';";
+                                $sql = "select * from ejbsm_usuario where permissao = 'orientador' or permissao = 'administrador' and status != 0;";
                                 $result = $link->query($sql);
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);

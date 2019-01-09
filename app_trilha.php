@@ -1,5 +1,4 @@
 <?
-
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
@@ -10,7 +9,6 @@ include 'e-jbsm_cabecalho.php';
             <? include "app_menu.php"; ?>
         </div>
         <div class="col-md-9">
-            <!--BOAS VINDAS-->
             <div class="alert alert-info">
                 Olá, aqui você pode ver as trilhas disponíveis.
             </div>
@@ -57,14 +55,7 @@ include 'e-jbsm_cabecalho.php';
                         <div class="media">
                             <div class="media-left">
                                 <?
-                                if ($planta->img != null) {
-                                    list($largura, $altura) = getimagesize("data:image/jpeg;base64," . base64_encode($planta->img));
-                                    $max = 80;
-                                    $x = ($altura * $max) / $largura;
-                                    echo "<img src='data:image/jpeg;base64," . base64_encode($planta->img) . "' width='$max' height='$x'>";
-                                } else {
-                                    echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80px'>";
-                                }
+                                imagemPlanta($planta->img)
                                 ?>
                             </div>
                             <div class="media-body">
