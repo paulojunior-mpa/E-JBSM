@@ -12,15 +12,16 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql);
             $linha = mysqli_fetch_object($result);
-            echo "<div style='color: green'><b>Unidade/Empresa: </div>" . $linha->nome . "<br>";
-            echo "<div style='color: green'><b>Instituição: </div>" . $linha->instituicao . "<br>";
-            echo "<div style='color: green'><b>Fone: </div>" . $linha->fone1 . "<br>";
-            echo "<div style='color: green'><b>Fone alternativo: </div>" . $linha->fone2 . "<br>";
-            echo "<div style='color: green'><b>E-mail: </div>" . $linha->email . "<br>";
-            echo "<div style='color: green'><b>Endereco: </div>" . $linha->endereco . "<br>";
-            echo "<div style='color: green'><b>Descrição: </div>" . $linha->descricao . "<br>";
+            echo "<b style='color: green'>Unidade/Empresa: </b>" . $linha->nome . "<br>";
+            echo "<b style='color: green'>Instituição: </b>" . $linha->instituicao . "<br>";
+            echo "<b style='color: green'>Fone: </b>" . $linha->fone1 . "<br>";
+            echo "<b style='color: green'>Fone alternativo: </b>" . $linha->fone2 . "<br>";
+            echo "<b style='color: green'>E-mail: </b>" . $linha->email . "<br>";
+            echo "<b style='color: green'>Endereco: </b>" . $linha->endereco . "<br>";
+            echo "<b style='color: green'>Descrição: </b>" . $linha->descricao . "<br>";
             ?>
         </div>
+        <? /*
         <div class="panel-heading">
             <h3 class="panel-title"><div style='color: green'><b>Localização: </b><? echo "Latitude " . $linha->latitude;
                     echo " Longitude " . $linha->longitude; ?></div></h3>
@@ -59,5 +60,6 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
                 RS.
             </div>
         </div>
+        */?>
     </div>
 </div>

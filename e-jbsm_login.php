@@ -1,30 +1,12 @@
 <?
-
+if (isset($_COOKIE["login_e-jbsm"]) and isset($_COOKIE["senha_e-jbsm"]) and $_COOKIE["login_e-jbsm"] != "" and $_COOKIE["senha_e-jbsm"] != "") {
+    header('location: controller/PublicController.php?opcao='.Constantes::LOGAR.'&user_login='.$_COOKIE["login_e-jbsm"].'&user_senha='.$_COOKIE["senha_e-jbsm"].'&sha1=0');
+    exit;
+}
 include 'e-jbsm_cabecalho.php';
 $info = "";
-if (isset($_GET["info"])) {
+if (isset($_GET["info"]))
     $info = $_GET["info"];
-} elseif (isset($_COOKIE["login_e-jbsm"]) and isset($_COOKIE["senha_e-jbsm"])) {
-    if ($_COOKIE["login_e-jbsm"] != "" and $_COOKIE["senha_e-jbsm"] != "") {
-        ?>
-        <style>
-            #form_login {
-                visibility: hidden;
-            }
-        </style>
-        <form action="controller/PublicController.php" method="post" id="form_login">
-            <input type="text" value="<?= $_COOKIE["login_e-jbsm"] ?>" name="user_login">
-            <input type="text" value="<?= $_COOKIE["senha_e-jbsm"] ?>" name="user_senha">
-            <input type="hidden" value="sim" name="sha1">
-            <input type="hidden" name="opcao" value="Logar">
-            <input type="submit" name="opcao" value="Logar">
-        </form>
-        <script>
-            document.getElementById("form_login").submit();
-        </script>
-        <?
-    }
-}
 ?>
 <style>
     #tela {
@@ -71,7 +53,7 @@ if (isset($_GET["info"])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" name="user_senha" class="col-sm-2 control-label">Senha</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
 
                     <div class="col-sm-10">
                         <input type="password" class="form-control" name="user_senha" id="inputPassword3"

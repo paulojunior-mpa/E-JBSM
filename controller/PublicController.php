@@ -1,15 +1,17 @@
 <?php
 
-if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
-    $opcao = htmlspecialchars($_POST["opcao"]);
+if (getParameter('opcao') != null) {
+    $opcao = getParameter("opcao");
     switch ($opcao) {
         case "":
             header('location: ../index.php');
             break;
 
         case Constantes::LOGAR:
-            $user_login = htmlspecialchars($_POST["user_login"], ENT_QUOTES, 'UTF-8');
-            $user_senha = htmlspecialchars($_POST["user_senha"], ENT_QUOTES, 'UTF-8');
+            $user_login = getParameter("user_login");
+            $user_senha = getParameter("user_senha");
+
+            $encriptar = getParameter('encriptar', false);
 
             login($user_login, $user_senha, $link);
             break;
@@ -112,7 +114,7 @@ function login($user_login, $user_senha, $link){
     $sql = "select * from ejbsm_usuario where login = '$user_login';";
     $user = mysqli_fetch_object($link->query($sql));
 
-    if (isset($_POST["sha1"])) {
+    if (isset($_REQUEST["sha1"])) {
         $user_senha_sha1 = $user_senha;
     } else {
         $user_senha_sha1 = sha1($user_senha);
