@@ -723,23 +723,23 @@ sex1617 =  '$sex1617' WHERE login =  '$user_login'";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $manha_segunda = $_POST["manha_segunda"];
-            $manha_terca = $_POST["manha_terca"];
-            $manha_quarta = $_POST["manha_quarta"];
-            $manha_quinta = $_POST["manha_quinta"];
-            $manha_sexta = $_POST["manha_sexta"];
+            $manha_segunda = getParameter("manha_segunda", true);
+            $manha_terca = getParameter("manha_terca", true);
+            $manha_quarta = getParameter("manha_quarta", true);
+            $manha_quinta = getParameter("manha_quinta", true);
+            $manha_sexta = getParameter("manha_sexta", true);
 
-            $tarde_segunda = $_POST["tarde_segunda"];
-            $tarde_terca = $_POST["tarde_terca"];
-            $tarde_quarta = $_POST["tarde_quarta"];
-            $tarde_quinta = $_POST["tarde_quinta"];
-            $tarde_sexta = $_POST["tarde_sexta"];
+            $tarde_segunda = getParameter("tarde_segunda", true);
+            $tarde_terca = getParameter("tarde_terca", true);
+            $tarde_quarta = getParameter("tarde_quarta", true);
+            $tarde_quinta = getParameter("tarde_quinta", true);
+            $tarde_sexta = getParameter("tarde_sexta", true);
 
             $sql = "update ejbsm_horarios_monitores set manha_segunda = '$manha_segunda', manha_terca = '$manha_terca', manha_quarta = '$manha_quarta',
 manha_quinta = '$manha_quinta', manha_sexta = '$manha_sexta', tarde_segunda = '$tarde_segunda', tarde_terca = '$tarde_terca',
 tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$tarde_sexta';";
 
-            $link->query($sql);
+            $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_administracao.php');
             break;
@@ -763,18 +763,18 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             $user_permissao = $_SESSION["user_permissao"];
 
             if (isset($_FILES["logo"])) {
-                if (file_exists('../arquivos_imagem_sistema/logo.png')) {
-                    unlink('../arquivos_imagem_sistema/logo.png');
+                if (file_exists('arquivos_imagem_sistema/logo.png')) {
+                    unlink('arquivos_imagem_sistema/logo.png');
                 }
-                if (file_exists('../arquivos_imagem_sistema/logo.jpeg')) {
-                    unlink('../arquivos_imagem_sistema/logo.jpeg');
+                if (file_exists('arquivos_imagem_sistema/logo.jpeg')) {
+                    unlink('arquivos_imagem_sistema/logo.jpeg');
                 }
-                if (file_exists('../arquivos_imagem_sistema/logo.jpg')) {
-                    unlink('../arquivos_imagem_sistema/logo.jpeg');
+                if (file_exists('arquivos_imagem_sistema/logo.jpg')) {
+                    unlink('arquivos_imagem_sistema/logo.jpeg');
                 }
                 $ext = $_FILES['logo']['type'];
                 $ext = explode("/", $ext);;
-                move_uploaded_file($_FILES['logo']['tmp_name'], '../arquivos_imagem_sistema/logo' . '.' . 'png');
+                move_uploaded_file($_FILES['logo']['tmp_name'], 'arquivos_imagem_sistema/logo' . '.' . 'png');
             }
 
             header('location: ../e-jbsm_administracao.php');
@@ -785,18 +785,18 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             $user_permissao = $_SESSION["user_permissao"];
 
             if (isset($_FILES["fundo"])) {
-                if (file_exists('../arquivos_imagem_sistema/fundo.png')) {
-                    unlink('../arquivos_imagem_sistema/fundo.png');
+                if (file_exists('arquivos_imagem_sistema/fundo.png')) {
+                    unlink('arquivos_imagem_sistema/fundo.png');
                 }
-                if (file_exists('../arquivos_imagem_sistema/fundo.jpeg')) {
-                    unlink('../arquivos_imagem_sistema/fundo.jpeg');
+                if (file_exists('arquivos_imagem_sistema/fundo.jpeg')) {
+                    unlink('arquivos_imagem_sistema/fundo.jpeg');
                 }
-                if (file_exists('../arquivos_imagem_sistema/fundo.jpg')) {
-                    unlink('../arquivos_imagem_sistema/fundo.jpeg');
+                if (file_exists('arquivos_imagem_sistema/fundo.jpg')) {
+                    unlink('arquivos_imagem_sistema/fundo.jpeg');
                 }
                 $ext = $_FILES['fundo']['type'];
                 $ext = explode("/", $ext);;
-                move_uploaded_file($_FILES['fundo']['tmp_name'], '../arquivos_imagem_sistema/fundo' . '.' . 'png');
+                move_uploaded_file($_FILES['fundo']['tmp_name'], 'arquivos_imagem_sistema/fundo' . '.' . 'png');
             }
 
             header('location: ../e-jbsm_administracao.php');

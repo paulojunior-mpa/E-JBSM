@@ -276,8 +276,8 @@
                                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                                             document.getElementById("ComandoADM").innerHTML = xmlhttp.responseText;
                                         }
-                                    }
-                                    xmlhttp.open("GET", "Func/ajax_comando_adm.php?q=" + str, true);
+                                    };
+                                    xmlhttp.open("GET", "helpers/ajax_comando_adm.php?q=" + str, true);
                                     xmlhttp.send();
                                 }
                             }

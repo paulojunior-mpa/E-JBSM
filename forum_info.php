@@ -49,7 +49,7 @@ if (isset($_GET["info"])) {
         ?>
         <h3>Informações do usuário <? echo $login; ?></h3>
 
-        <div class="alert <? if ($row->status == "Ativo") {
+        <div class="alert <? if ($row->status == 1) {
         } else {
             echo "alert-danger";
         } ?>" role="alert">
@@ -104,7 +104,7 @@ if (isset($_GET["info"])) {
                                     <h4 class="modal-title" id="myModalLabel">Comfirmação</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <? if ($row->status == "Ativo") { ?>
+                                    <? if ($row->status == 1) { ?>
                                         <h3>Deseja mesmo desativar este usuário?</h3>
                                         <h5>Ao desativar este usuário, ele não será excluído, más será impedido de logar
                                             novamente no sistema.</h5>
@@ -120,15 +120,15 @@ if (isset($_GET["info"])) {
                                     </button>
                                     <input type="hidden" value="<?= $row->login ?>" name="login">
                                     <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ATIVAR_DESATIVAR?>">
-                                    <? if ($row->status == "Ativo") { ?>
+                                    <? if ($row->status == 1) { ?>
                                         <button type="submit" class="btn btn-danger" name="op"
-                                                value="Inativo">
+                                                value="0">
                                             <span class="glyphicon glyphicon-remove"></span>
                                             Desativar usuário
                                         </button>
                                     <? } else { ?>
                                         <button type="submit" class="btn btn-warning" name="op"
-                                                value="Ativo">
+                                                value="1">
                                             <span class="glyphicon glyphicon-repeat"></span>
                                             Reativar usuário
                                         </button>
@@ -142,7 +142,7 @@ if (isset($_GET["info"])) {
                 <button type="button" style="width: 20%;" class="btn btn-warning"
                         data-toggle="modal"
                         data-target="#myModal">
-                    <? if ($row->status == "Ativo") { ?>
+                    <? if ($row->status == 1) { ?>
                         <span class="glyphicon glyphicon-remove-sign"></span>
                         Desativar usuário
                     <? } else { ?>

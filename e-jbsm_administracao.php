@@ -4,7 +4,6 @@ isUserInRole(array("administrador"));
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Tabela de edição de disponibilidade de monitores</h3>
-
         <form action="controller/SystemController.php" method="post">
             <table class="table table-bordered" style="text-align: center">
                 <tr>
@@ -15,7 +14,8 @@ isUserInRole(array("administrador"));
                     <td>Quinta</td>
                     <td>Sexta</td>
                     <td rowspan="3">
-                        <button type="submit" class="btn btn-warning" name="opcao" value="Alterar disponibilidade">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_DISPONIBILIDADE?>">
+                        <button type="submit" class="btn btn-warning" value="Alterar">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
                         </button>

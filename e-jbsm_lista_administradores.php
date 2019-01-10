@@ -25,7 +25,7 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                 <tr>
                     <td>
                         <?
-                        if ($r->status == "Inativo") {
+                        if ($r->status == 0) {
                             echo "<div style='box-shadow: 1px 1px 5px 1px #c9302c;'>";
                         } else {
                             echo "<div>";

@@ -43,11 +43,15 @@ class eJBSM
     }
 }
 
-function getParameter($key)
+function getParameter($key, $boolean = false)
 {
-    if (isset($_REQUEST[$key]))
-        return htmlspecialchars($_REQUEST[$key], ENT_QUOTES, 'UTF-8');
-    return '';
+    if (isset($_REQUEST[$key])) {
+        $return = htmlspecialchars($_REQUEST[$key], ENT_QUOTES, 'UTF-8');
+        if($boolean)
+            return ($return == 1 or $return == '1' or $return) ? 1 : 0;
+        return $return;
+    }
+    return $boolean? 0 : '';
 }
 
 

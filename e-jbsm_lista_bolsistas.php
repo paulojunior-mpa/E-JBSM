@@ -1,6 +1,5 @@
 <?
 isUserInRole(array("administrador", "orientador", "bolsista"));
-;
 
 if (isset($_GET["info"]) and $_GET["info"] == "editado") {
     echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";
