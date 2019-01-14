@@ -13,8 +13,8 @@ if (isset($_GET["inicio_consulta"])) {
 
         <div class="alert alert-info">
             Bem vindo ao bate-papo para integrantes do e-jbsm.
-            Este espaço é destinado a trocar comunicações, como avisos e lembretes, entre os membros.
-            Para discussões mais pontuais, aconselhamos a utilização do fórum.
+            <br>Este espaço é destinado a trocar comunicações, como avisos e lembretes, entre os membros.
+            <br>Para discussões mais pontuais, aconselhamos a utilização do fórum.
         </div>
         <h4>Nova mensagem</h4>
 

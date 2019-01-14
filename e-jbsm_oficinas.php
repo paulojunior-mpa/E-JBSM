@@ -106,7 +106,7 @@ if ($user_permissao != "usuario") { ?>
                         <span>
                             <table>
                                 <tr>
-                                    <td><b>ID: </b><?= $row->id ?></td>
+                                    <td><b>ID: </b><?= $row->id ?> </td>
                                     <td><b>Nome: </b><?= $row->nome ?></td>
                                     <td><b>Monitor: </b><?= $row->monitor ?></td>
                                     <td><b>Orientador: </b><?= $row->orientador ?></td>
@@ -196,10 +196,9 @@ if ($user_permissao != "usuario") { ?>
                                                                     <button type="button" class="btn btn-default"
                                                                             data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <input type="hidden" value="<?= $row->id ?>"
-                                                                           name="codigo">
-                                                                    <button type="submit" value="Deletar oficina"
-                                                                            class="btn btn-danger" name="opcao">
+                                                                    <input type="hidden" value="<?= $row->id ?>" name="codigo">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_OFICINA?>">
+                                                                    <button type="submit" value="Deletar oficina" class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Excluir oficina
                                                                     </button>

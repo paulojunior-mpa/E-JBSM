@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: willian.manucello
  * Date: 17/08/2018
  * Time: 17:16
@@ -47,9 +46,7 @@ function getParameter($key, $boolean = false)
 {
     if (isset($_REQUEST[$key])) {
         $return = htmlspecialchars($_REQUEST[$key], ENT_QUOTES, 'UTF-8');
-        if($boolean)
-            return ($return == 1 or $return == '1' or $return) ? 1 : 0;
-        return $return;
+        return $boolean? (($return == 1 or $return == '1' or $return) ? 1 : 0) : $return;
     }
     return $boolean? 0 : '';
 }
@@ -101,9 +98,7 @@ function imagem($login, $max)
     if (file_exists("arquivos_imagem_perfil/$login.jpg")) {
         chmod("arquivos_imagem_perfil/$login.jpg", 0755);
         list($largura, $altura) = getimagesize("arquivos_imagem_perfil/$login.jpg");
-
         $x = ($altura * $max) / $largura;
-
         echo "<a href='forum_info.php?info=login&login=$login'><img src='arquivos_imagem_perfil/$login.jpg' width='$max' height='$x'></a>";
     } else {
         echo "<a href='forum_info.php?info=login&login=$login'><img src='arquivos_imagem_perfil/user.png' width='$max' height='$x'></a>";
@@ -118,12 +113,14 @@ function imagemPlanta($img){
             $max = 80;
             $x = ($altura * $max) / $largura;
             echo "<img src='data:image/jpeg;base64," . base64_encode($img) . "' width='$max' height='$x'>";
-        }else
-            echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
-    } else {
-        echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
+        }
     }
+    echo "<img src='arquivos_imagem_sistema/planta_default.png' width='80px' height='80'>";
+}
+
+function date_($date, $time = true)
+{
+    return date('d/m/Y' . ($time ? ' h:i:s' : ''), strtotime($date));
 }
 
 new eJBSM();
-

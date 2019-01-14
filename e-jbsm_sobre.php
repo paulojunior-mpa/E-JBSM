@@ -1,6 +1,5 @@
 <?
-isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
-;
+include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
     <div class="panel-body">

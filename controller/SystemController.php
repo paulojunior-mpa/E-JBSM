@@ -1,12 +1,14 @@
 <?php
 
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
+$opcao = getParameter("opcao");
+if (!empty($opcao)) {
 
-if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
-    $opcao = htmlspecialchars($_POST["opcao"]);
+    /**
+     * @var $link mysqli
+     */
 
     switch ($opcao) {
-
         case "":
             logout();
             break;
@@ -133,7 +135,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 	<br>
 	<strong>Caso você não tenha feito este agendamento nos comunique para que possamos verificar o incidente,  obrigado.</strong><br>
 
-	<strong> Descrição:</strong> Agendamento de vsita no Jardim Botânico da Uiversidade Federal de Santa Maria.<br>
+	<strong> Descrição:</strong> Agendamento de visita no Jardim Botânico da Universidade Federal de Santa Maria.<br>
 
 	<strong>Unidade:</strong> CCNE - Centro de Ciências Naturais e Exatas.<br>
 	<strong>Telefone:</strong> (55)3220-8339 - ramal 222 ou 225. <br>
@@ -169,7 +171,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "update ejbsm_visita set excluida = '$user_login' where id = $id;";
 
@@ -183,7 +185,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "update ejbsm_visita set excluida = 'nao' where id = $id;";
             $link->query($sql);
@@ -197,7 +199,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
 
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_visita where id = $id;";
             $link->query($sql);
@@ -210,11 +212,9 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $data = $_POST["data"];
-            $entrada = $_POST["entrada"];
-            $saida = $_POST["saida"];
-
-            include("sistemaDadosServidor.php");
+            $data = getParameter("data");
+            $entrada = getParameter("entrada");
+            $saida = getParameter("saida");
 
             $sql = "insert into ejbsm_frequencia(data, entrada, saida, login) values('$data', '$entrada', '$saida', '$user_login');";
             $link->query($sql) or die(mysqli_error($link));
@@ -230,7 +230,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $programacao_status = htmlspecialchars($_POST["programacao_status"], ENT_QUOTES, 'UTF-8');
             $programacao_fato = htmlspecialchars($_POST["programacao_fato"], ENT_QUOTES, 'UTF-8');
             $programacao_pontos_produtivos = htmlspecialchars($_POST["programacao_pontos_produtivos"], ENT_QUOTES, 'UTF-8');
-            $programacao_pontos_inprodutivos = htmlspecialchars($_POST["programacao_pontos_inprodutivos"], ENT_QUOTES, 'UTF-8');
+            $programacao_pontos_improdutivos = htmlspecialchars($_POST["programacao_pontos_improdutivos"], ENT_QUOTES, 'UTF-8');
             $programacao_sugestao = htmlspecialchars($_POST["programacao_sugestao"], ENT_QUOTES, 'UTF-8');
             $programacao_material = htmlspecialchars($_POST["programacao_material"], ENT_QUOTES, 'UTF-8');
             $programacao_prioritaria = htmlspecialchars($_POST["programacao_prioritaria"], ENT_QUOTES, 'UTF-8');
@@ -243,7 +243,7 @@ curso, conteudo, auxilio, monitor, duracao, responsavel, plano, status, excluida
             $sql = "insert into ejbsm_programacao(data, login, emocional, fato_significativo, produtivos, improdutivos,
 material_necessario, sugestao, prioridades, segunda, terca, quarta, quinta, sexta) values
 ('$programacao_data', '$user_login', '$programacao_status', '$programacao_fato', '$programacao_pontos_produtivos', "
-                . "'$programacao_pontos_inprodutivos', '$programacao_material', '$programacao_sugestao', "
+                . "'$programacao_pontos_improdutivos', '$programacao_material', '$programacao_sugestao', "
                 . "'$programacao_prioritaria', '$programacao_segunda', '$programacao_terca', '$programacao_quarta', "
                 . "'$programacao_quinta', '$programacao_sexta');";
 
@@ -257,12 +257,12 @@ material_necessario, sugestao, prioridades, segunda, terca, quarta, quinta, sext
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
             $programacao_data = htmlspecialchars($_POST["programacao_data"]);
             $programacao_status = htmlspecialchars($_POST["programacao_status"]);
             $programacao_fato = htmlspecialchars($_POST["programacao_fato"]);
             $programacao_pontos_produtivos = htmlspecialchars($_POST["programacao_pontos_produtivos"]);
-            $programacao_pontos_inprodutivos = htmlspecialchars($_POST["programacao_pontos_inprodutivos"]);
+            $programacao_pontos_improdutivos = htmlspecialchars($_POST["programacao_pontos_improdutivos"]);
             $programacao_sugestao = htmlspecialchars($_POST["programacao_sugestao"]);
             $programacao_material = htmlspecialchars($_POST["programacao_material"]);
             $programacao_prioritaria = htmlspecialchars($_POST["programacao_prioritaria"]);
@@ -276,7 +276,7 @@ material_necessario, sugestao, prioridades, segunda, terca, quarta, quinta, sext
 emocional = '$programacao_status',
 fato_significativo = '$programacao_fato',
 produtivos = '$programacao_pontos_produtivos',
-improdutivos = '$programacao_pontos_inprodutivos',
+improdutivos = p$programacao_pontos_improdutivosrogramacao_pontos_improdutivos,
 material_necessario = '$programacao_material',
 sugestao = '$programacao_sugestao',
 prioridades = '$programacao_prioritaria',
@@ -295,7 +295,7 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_programacao WHERE id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -322,12 +322,11 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
             $sql = "INSERT INTO ejbsm_plano "
                 . "(nome, publico_alvo, monitor, objetivo, assunto, estrategia, "
                 . "recursos, locais, relevancia, instrumento, login) VALUES ("
-                . "'$nome', '$publicoAlvo', '$nomeGuia', '$instituicao', "
-                . "'$objetivo', '$assunto', '$estrategia', '$recursos', '$locais', "
+                . "'$nome', '$publicoAlvo', '$nomeGuia', '$objetivo', '$assunto', '$estrategia', '$recursos', '$locais', "
                 . "'$relevancia', '$instrumento', '$user_login');";
             $link->query($sql) or die(mysqli_error($link));
 
-            header('location: e-jbsm_planos.php?info=cadastrado');
+            header('location: ../e-jbsm_planos.php?info=cadastrado');
 
             break;
 
@@ -335,17 +334,17 @@ sexta = '$programacao_sexta' WHERE id = '$id';";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
-            $nome = $_POST["nome"];
-            $publicoAlvo = $_POST["publicoAlvo"];
-            $objetivo = $_POST["objetivo"];
-            $assunto = $_POST["assunto"];
-            $estrategia = $_POST["estrategia"];
-            $recursos = $_POST["recursos"];
-            $locais = $_POST["locais"];
-            $relevancia = $_POST["relevancia"];
-            $instrumento = $_POST["instrumento"];
-            $nomeGuia = $_POST["nomeGuia"];
+            $id = getParameter("id");
+            $nome = getParameter("nome");
+            $publicoAlvo = getParameter("publicoAlvo");
+            $objetivo = getParameter("objetivo");
+            $assunto = getParameter("assunto");
+            $estrategia = getParameter("estrategia");
+            $recursos = getParameter("recursos");
+            $locais = getParameter("locais");
+            $relevancia = getParameter("relevancia");
+            $instrumento = getParameter("instrumento");
+            $nomeGuia = getParameter("nomeGuia");
 
             $sql = "UPDATE  ejbsm_plano SET  nome =  '$nome',
 publico_alvo =  '$publicoAlvo',
@@ -369,7 +368,7 @@ login =  '$user_login' WHERE  id ='$id';";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_plano WHERE id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -389,8 +388,7 @@ login =  '$user_login' WHERE  id ='$id';";
             $material = htmlspecialchars($_POST["material"]);
             $anexo = htmlspecialchars($_POST["link"]);
 
-            $sql = "INSERT INTO  ejbsm_oficina (login, monitor, orientador, nome, descricao, material, anexo)
-VALUES ('$user_login', '$monitor', '$orientador',  '$nome',  '$descricao', '$material',  '$anexo');";
+            $sql = "INSERT INTO  ejbsm_oficina (login, monitor, orientador, nome, descricao, material, anexo) VALUES ('$user_login', '$monitor', '$orientador',  '$nome',  '$descricao', '$material',  '$anexo');";
             $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_oficinas.php?info=cadastrada');
@@ -407,15 +405,9 @@ VALUES ('$user_login', '$monitor', '$orientador',  '$nome',  '$descricao', '$mat
             $orientador = htmlspecialchars($_POST["orientador"]);
             $material = htmlspecialchars($_POST["material"]);
             $anexo = htmlspecialchars($_POST["link"]);
-            $id = htmlspecialchars($_POST["id"]);
+            $id = getParameter("id");
 
-            $sql = "UPDATE  ejbsm_oficina SET  nome =  '$nome',
-monitor =  '$nome_monitor',
-login =  '$user_login',
-descricao =  '$descricao',
-orientador =  '$orientador',
-material =  '$material',
-anexo =  '$anexo' WHERE  id = $id;";
+            $sql = "UPDATE  ejbsm_oficina SET  nome =  '$nome', monitor =  '$nome_monitor', login =  '$user_login', descricao =  '$descricao', orientador =  '$orientador', material =  '$material', anexo =  '$anexo' WHERE  id = $id;";
 
             $link->query($sql) or die(mysqli_error($link));
 
@@ -427,7 +419,7 @@ anexo =  '$anexo' WHERE  id = $id;";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_oficina WHERE id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -440,9 +432,9 @@ anexo =  '$anexo' WHERE  id = $id;";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $nome = $_POST["nome"];
-            $matricula = $_POST["matricula"];
-            $loginBolsista = $_POST["loginBolsista"];
+            $nome = getParameter("nome");
+            $matricula = getParameter("matricula");
+            $loginBolsista = getParameter("loginBolsista");
             if (isset($_POST["senha"])) {
                 $senha = sha1($_POST["senha"]);
                 $sql = "update ejbsm_usuario set senha = '$senha' where login = '$loginBolsista'";
@@ -482,7 +474,7 @@ anexo =  '$anexo' WHERE  id = $id;";
                 for ($j = 0; $j < 5; $j++) {
                     ${$semana[$j] . $h . $h2} = 0;
                     if (isset($_POST["$semana[$j]$h$h2"])) {
-                        ${$semana[$j] . $h . $h2} = $_POST["$semana[$j]$h$h2"];
+                        ${$semana[$j] . $h . $h2} = getParameter("$semana[$j]$h$h2");
                     }
                 }
                 $h++;
@@ -549,8 +541,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $topico_para = htmlspecialchars($_POST["topico_para"]);
             //
 
-            $sql = "insert into ejbsm_batepapo_mensagem(data, hora, login, para, mensagem) values("
-                . "curdate(), curtime(), '$user_login', '$topico_para', '$topico_mensagem');";
+            $sql = "insert into ejbsm_batepapo_mensagem(data, hora, login, para, mensagem) values(curdate(), curtime(), '$user_login', '$topico_para', '$topico_mensagem');";
             $result = $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_bate-papo.php#primeiro_topico');
@@ -561,8 +552,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
-            $anexo = $_POST["anexo"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_batepapo_mensagem where id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -578,12 +568,11 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
             $topico_resposta = htmlspecialchars($_POST["topico_resposta"], ENT_QUOTES, 'UTF-8');
             //
 
-            $sql = "insert into ejbsm_batepapo_resposta(data, hora, login, resposta, id_mensagem) values("
-                . "curdate(), curtime(), '$user_login', '$topico_resposta', '$id');";
+            $sql = "insert into ejbsm_batepapo_resposta(data, hora, login, resposta, id_mensagem) values(curdate(), curtime(), '$user_login', '$topico_resposta', '$id');";
             $link->query($sql) or die(mysqli_error($link));
 
             header('location: ../e-jbsm_bate-papo.php#primeiro_topico');
@@ -594,7 +583,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_batepapo_resposta where id = '$id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -656,7 +645,7 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
                 for ($j = 0; $j < 5; $j++) {
                     ${$semana[$j] . $h . $h2} = 0;
                     if (isset($_POST["$semana[$j]$h$h2"])) {
-                        ${$semana[$j] . $h . $h2} = $_POST["$semana[$j]$h$h2"];
+                        ${$semana[$j] . $h . $h2} = getParameter("$semana[$j]$h$h2");
                     }
                 }
                 $h++;
@@ -748,8 +737,8 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $login = $_POST["login"];
-            $op = $_POST["op"];
+            $login = getParameter("login");
+            $op = getParameter("op");
 
             $sql = "update ejbsm_usuario set status = '$op' where login = '$login'";
             $link->query($sql) or die(mysqli_error($link));
@@ -806,7 +795,7 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $sistema_titulo = $_POST["titulo"];
+            $sistema_titulo = getParameter("titulo");
 
             $sql = "update ejbsm_informacao set titulo = '$sistema_titulo'";
             $link->query($sql) or die(mysqli_error($link));
@@ -818,15 +807,15 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $nome = $_POST["nome"];
-            $instituicao = $_POST["instituicao"];
-            $fone1 = $_POST["fone1"];
-            $fone2 = $_POST["fone2"];
-            $email = $_POST["email"];
-            $endereco = $_POST["endereco"];
-            $descricao = $_POST["descricao"];
-            $latitude = $_POST["latitude"];
-            $longitude = $_POST["longitude"];
+            $nome = getParameter("nome");
+            $instituicao = getParameter("instituicao");
+            $fone1 = getParameter("fone1");
+            $fone2 = getParameter("fone2");
+            $email = getParameter("email");
+            $endereco = getParameter("endereco");
+            $descricao = getParameter("descricao");
+            $latitude = getParameter("latitude");
+            $longitude = getParameter("longitude");
 
             $sql = "insert ignore into ejbsm_informacao(id, nome, instituicao, fone1, fone2, email, endereco, descricao, latitude, longitude) values(1, '$nome', '$instituicao', '$fone1', '$fone2', '$email', '$endereco', '$descricao', '$latitude', '$longitude')
  on duplicate key update nome = '$nome', instituicao = '$instituicao', fone1 = '$fone1', fone2 = '$fone2', email = '$email', endereco  = '$endereco', descricao = '$descricao', latitude = '$latitude', longitude = '$longitude'";
@@ -841,6 +830,10 @@ tarde_quarta = '$tarde_quarta', tarde_quinta = '$tarde_quinta', tarde_sexta = '$
 
 function cadastrarIntegrante($permissao, $link)
 {
+    /**
+     * @var $link mysqli
+     */
+
     $login = "";
     $senha = "";
     $nome = "";
@@ -860,62 +853,62 @@ function cadastrarIntegrante($permissao, $link)
     $banco = "";
     $agencia = "";
 
-    if (isset($_POST["matricula"])) {
-        $id = $_POST["matricula"];
-    }elseif(isset($_POST["siape"])) {
-        $id = $_POST["siape"];
+    if (!empty(getParameter("matricula"))) {
+        $id = getParameter("matricula");
+    }elseif(!empty(getParameter("siape"))) {
+        $id = getParameter("siape");
     }
 
-    if (isset($_POST["login"])) {
-        $login = $_POST["login"];
+    if (!empty(getParameter("login"))) {
+        $login = getParameter("login");
     }
-    if (isset($_POST["senha"])) {
-        $senha = sha1($_POST["senha"]);
+    if (!empty(getParameter("senha"))) {
+        $senha = sha1(getParameter("senha"));
     }
-    if (isset($_POST["nome"])) {
-        $nome = $_POST["nome"];
+    if (!empty(getParameter("nome"))) {
+        $nome = getParameter("nome");
     }
-    if (isset($_POST["email"])) {
-        $email = $_POST["email"];
+    if (!empty(getParameter("email"))) {
+        $email = getParameter("email");
     }
-    if (isset($_POST["fixo"])) {
-        $fixo = $_POST["fixo"];
+    if (!empty(getParameter("fixo"))) {
+        $fixo = getParameter("fixo");
     }
-    if (isset($_POST["celular"])) {
-        $celular = $_POST["celular"];
+    if (!empty(getParameter("celular"))) {
+        $celular = getParameter("celular");
     }
-    if (isset($_POST["rg"])) {
-        $rg = $_POST["rg"];
+    if (!empty(getParameter("rg"))) {
+        $rg = getParameter("rg");
     }
-    if (isset($_POST["orgao"])) {
-        $orgao = $_POST["orgao"];
+    if (!empty(getParameter("orgao"))) {
+        $orgao = getParameter("orgao");
     }
-    if (isset($_POST["cpf"])) {
-        $cpf = $_POST["cpf"];
+    if (!empty(getParameter("cpf"))) {
+        $cpf = getParameter("cpf");
     }
-    if (isset($_POST["area"])) {
-        $area = $_POST["area"];
+    if (!empty(getParameter("area"))) {
+        $area = getParameter("area");
     }
-    if (isset($_POST["subarea"])) {
-        $subarea = $_POST["subarea"];
+    if (!empty(getParameter("subarea"))) {
+        $subarea = getParameter("subarea");
     }
-    if (isset($_POST["projeto"])) {
-        $projeto = $_POST["projeto"];
+    if (!empty(getParameter("projeto"))) {
+        $projeto = getParameter("projeto");
     }
-    if (isset($_POST["bolsa"])) {
-        $bolsa = $_POST["bolsa"];
+    if (!empty(getParameter("bolsa"))) {
+        $bolsa = getParameter("bolsa");
     }
-    if (isset($_POST["conta"])) {
-        $conta = $_POST["conta"];
+    if (!empty(getParameter("conta"))) {
+        $conta = getParameter("conta");
     }
-    if (isset($_POST["tipo_conta"])) {
-        $tipo_conta = $_POST["tipo_conta"];
+    if (!empty(getParameter("tipo_conta"))) {
+        $tipo_conta = getParameter("tipo_conta");
     }
-    if (isset($_POST["banco"])) {
-        $banco = $_POST["banco"];
+    if (!empty(getParameter("banco"))) {
+        $banco = getParameter("banco");
     }
-    if (isset($_POST["agencia"])) {
-        $agencia = $_POST["agencia"];
+    if (!empty(getParameter("agencia"))) {
+        $agencia = getParameter("agencia");
     }
 
     $sql = "INSERT INTO ejbsm_usuario(login, senha, nome, email, fixo, celular, status, permissao, cidade, tentativas_login) VALUES ('$login', '$senha', '$nome', '$email', '$fixo', '$celular', 'Ativo', '$permissao', '', 0);";
@@ -924,4 +917,3 @@ function cadastrarIntegrante($permissao, $link)
     $sql = "INSERT INTO ejbsm_integrante(login, id, cpf, rg, orgao, area, subarea, projeto, banco, conta, tipo_conta, agencia, bolsa) VALUES ('$login', '$id', '$cpf', '$rg', '$orgao', '$area', '$subarea', '$projeto', '$banco', '$conta', '$tipo_conta', '$agencia', '$bolsa');";
     $link->query($sql) or die(mysqli_error($link));
 }
-?>

@@ -1,7 +1,12 @@
 <?php
 
-if (getParameter('opcao') != null) {
-    $opcao = getParameter("opcao");
+$opcao = getParameter("opcao");
+if (!empty($opcao)) {
+
+    /**
+     * @var $link mysqli
+     */
+
     switch ($opcao) {
         case "":
             header('location: ../index.php');
@@ -41,13 +46,13 @@ if (getParameter('opcao') != null) {
                 $login  = $usuario['login'];
 
                 $sql = "insert into ejbsm_usuario(login, nome, email, senha, cidade, celular, fixo, permissao, status) values"
-                    . "('$login', '$nome', '$email', '$senha_encriptada', '$cidade', $celular, $fixo, 'usuario', 'Ativo');";
+                    . "('$login', '$nome', '$email', '$senha_encriptada', '$cidade', $celular, $fixo, 'usuario', 1);";
 
                 $usuario = json_encode($usuario);
 
                 $link->query($sql) or die(header("location: ../e-jbsm_cadastro_usuario.php?info=login&usuario=$usuario"));
 
-                login($login, $_POST["usuario_senha"], $link);
+                login($login, getParameter("usuario_senha"), $link);
             }
             break;
 
@@ -85,10 +90,10 @@ if (getParameter('opcao') != null) {
                 $headers .= "Return-Path: <adm.jbsm@gmail.com>\n";
                 $headers .= "MIME-Version: 1.0\n";
                 $email_mensagem = "
-	Olá $linha->nome, você solictou a redefinição de senha em nosso sistema com o login '$login'.<br>
+	Olá $linha->nome, você solicitou a redefinição de senha em nosso sistema com o login '$login'.<br>
 	<b>Senha:</b> $nova_senha.<br>
 
-	<strong> Descrição:</strong> Recuperação de senha do sistema de agendamentos do Jardim Botânico da Uiversidade Federal de Santa Maria.<br>
+	<strong> Descrição:</strong> Recuperação de senha do sistema de agendamentos do Jardim Botânico da Universidade Federal de Santa Maria.<br>
 
 	<strong>Unidade:</strong> CCNE - Centro de Ciências Naturais e Exatas.<br>
 	<strong>Telefone:</strong> (55)3220-8339 - ramal 222 ou 225. <br>
@@ -110,6 +115,10 @@ if (getParameter('opcao') != null) {
 function login($user_login, $user_senha, $link){
     if ($user_login == "" || $user_senha == "")
         logout();
+
+    /**
+     * @var $link mysqli
+     */
 
     $sql = "select * from ejbsm_usuario where login = '$user_login';";
     $user = mysqli_fetch_object($link->query($sql));

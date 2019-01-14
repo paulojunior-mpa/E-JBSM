@@ -151,7 +151,7 @@ if ($user_permissao == "bolsista") {
                 <table class="table">
                     <tr>
                         <td><b>ID: </b><?= $r->id ?></td>
-                        <td><b>Data: </b><?= $r->data ?></td>
+                        <td><b>Data: </b><?= date_($r->data, false) ?></td>
                         <td><b>Entrada: </b><?= $r->entrada ?></td>
                         <td><b>Saída: </b><?= $r->saida ?></td>
                     </tr>
@@ -163,16 +163,16 @@ if ($user_permissao == "bolsista") {
                     if ($inicio_consulta != "" and $inicio_consulta != 0) {
                         ?>
                         <li>
-                            <a href="e-jbsm_programacoes.php?inicio_consulta=<?= $inicio_consulta - 10 ?>">&laquo;</a>
+                            <a href="e-jbsm_frequencia.php?inicio_consulta=<?= $inicio_consulta - 10 ?>">&laquo;</a>
                         </li>
                     <?php } ?>
-                    <li><a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= 0 ?>">1</a></li>
-                    <li><a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= 10 ?>">2</a></li>
-                    <li><a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= 20 ?>">3</a></li>
-                    <li><a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= 30 ?>">4</a></li>
-                    <li><a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= 40 ?>">5</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 0 ?>">1</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 10 ?>">2</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 20 ?>">3</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 30 ?>">4</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 40 ?>">5</a></li>
                     <li>
-                        <a href="e-jbsm_bolsista_frequencia.php?inicio_consulta=<?= $inicio_consulta + 10 ?>">&raquo;</a>
+                        <a href="e-jbsm_frequencia.php?inicio_consulta=<?= $inicio_consulta + 10 ?>">&raquo;</a>
                     </li>
                 </ul>
             </nav>

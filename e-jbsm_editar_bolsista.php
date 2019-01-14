@@ -146,11 +146,11 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td><?= $user->status; ?></td>
+                    <td><?= $user->status == 1? 'Ativo':'Inativo'; ?></td>
                     <td>
                         <select name="status" class="form-control" required>
-                            <option value="Ativo">Ativo</option>
-                            <option value="Inativo">Inativo</option>
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
                         </select>
                     </td>
                 </tr>

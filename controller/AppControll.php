@@ -1,8 +1,11 @@
 <?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
+$opcao = getParameter("opcao");
+if (!empty($opcao)) {
 
-if (isset($_POST["opcao"])) {
-    $opcao = $_POST["opcao"];
+    /**
+     * @var $link mysqli
+     */
 
     switch ($opcao) {
         case "":
@@ -31,15 +34,15 @@ if (isset($_POST["opcao"])) {
             break;
 
         case Constantes::CADASTRAR_PLANTA:
-            $popular = $_POST["popular"];
-            $genero = $_POST["gênero"];
-            $especie = $_POST["espécie"];
-            $familia = $_POST["família"];
-            $origem = $_POST["origem"];
-            $exotica = $_POST["exotica"];
-            $latitude = $_POST["latitude"];
-            $longitude = $_POST["longitude"];
-            $descricao = $_POST["descricao"];
+            $popular = getParameter("popular");
+            $genero = getParameter("gênero");
+            $especie = getParameter("espécie");
+            $familia = getParameter("família");
+            $origem = getParameter("origem");
+            $exotica = getParameter("exotica");
+            $latitude = getParameter("latitude");
+            $longitude = getParameter("longitude");
+            $descricao = getParameter("descricao");
 
             $img = "";
 
@@ -48,7 +51,7 @@ if (isset($_POST["opcao"])) {
             }
 
             if (isset($_POST["id"])) {
-                $id = $_POST["id"];
+                $id = getParameter("id");
                 $sql = "update ejbsm_planta set nome_popular = '$popular', descricao = '$descricao', latitude='$latitude', longitude='$longitude', especie='$especie', genero='$genero', familia='$familia', origem='$origem', exotica='$exotica'";
                 if(isset($_POST["edit_img"]) and $_POST["edit_img"]==1){
                     $sql.=", img = '$img'";
@@ -72,12 +75,12 @@ if (isset($_POST["opcao"])) {
             $nome_trilha = "";
             $descricao_trilha = "";
             if (isset($_POST["nome"]))
-                $nome_trilha = $_POST["nome"];
+                $nome_trilha = getParameter("nome");
             if (isset($_POST["descricao"]))
-                $descricao_trilha = $_POST["descricao"];
+                $descricao_trilha = getParameter("descricao");
 
             if (isset($_POST["id"])) {
-                $id = $_POST["id"];
+                $id = getParameter("id");
                 $sql = "update ejbsm_trilha set nome = '$nome_trilha', descricao = '$descricao_trilha' WHERE id = '$id'";
                 $link->query($sql);
 
@@ -93,7 +96,7 @@ if (isset($_POST["opcao"])) {
             break;
 
         case Constantes::DELETAR_PLANTA:
-            $id_planta = $_POST["id"];
+            $id_planta = getParameter("id");
 
             $sql = "delete from ejbsm_planta where id = $id_planta";
             $link->query($sql) or die(mysqli_error($link));
@@ -105,7 +108,7 @@ if (isset($_POST["opcao"])) {
             break;
 
         case Constantes::DELETAR_TRILHA:
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             $sql = "delete from ejbsm_associa_planta where id_trilha = $id";
             $link->query($sql) or die(mysqli_error($link));

@@ -28,3 +28,7 @@ update ejbsm_usuario set status = 1 where status = 'Ativo';
 update ejbsm_usuario set status = 0 where status = 'Inativo';
 
 ALTER TABLE ejbsm_usuario MODIFY status boolean NOT NULL DEFAULT 1;
+
+alter table ejbsm_plano
+  drop column descricao;
+

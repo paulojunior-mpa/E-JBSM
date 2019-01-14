@@ -44,7 +44,6 @@
                     list($largura, $altura) = getimagesize('../arquivos_imagem_sistema/logo.png');
                     $caminho = "../arquivos_imagem_sistema";
                 }
-                //regra de 3
                 $max = 30;
                 $x = ($altura * $max) / $largura;
                 echo "<img src='$caminho/logo.png' style='margin-top: -30%;' width='$max' height='$x'>";
@@ -65,10 +64,9 @@
                     <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-GEA</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://w3.ufsm.br/jbsm/" target="_blank"><span
-                                class="glyphicon glyphicon-share-alt"></span>Site JBSM</a></li>
-                    <li><a href="http://www.ufsm.br/smdb" target="_blank"><span
-                                class="glyphicon glyphicon-share-alt"></span> Herbário SMDB</a></li>
+                    <li><a href="http://w3.ufsm.br/jbsm/" target="_blank"><span class="glyphicon glyphicon-share-alt"></span>Site JBSM</a></li>
+                    <li><a href="http://www.ufsm.br/smdb" target="_blank"><span class="glyphicon glyphicon-share-alt"></span> Herbário SMDB</a></li>
+                    <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                 </ul>
             </div>
         <?
@@ -113,6 +111,7 @@
                                         class="glyphicon glyphicon-filter"></span> Relatórios
                                 </a>
                             </li>
+                            <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                         </ul>
                     </li>
                     <?
@@ -181,11 +180,8 @@
                     $contagem_visitas = mysqli_num_rows($result);
                     ?>
                     <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-GEA</a></li>
-                    <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>
-                            Lixeira
-                            <span class="badge"><?= $contagem_visitas ?></span></a></li>
-                    <li><a href="e-jbsm_sobre.php"><span
-                                class="glyphicon glyphicon-info-sign"></span> Sobre</a>
+                    <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>Lixeira <span class="badge"><?= $contagem_visitas ?></span></a></li>
+                    <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -22,7 +22,7 @@ if ($user_permissao != "usuario") { ?>
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de Plano de Visitas.</h3>
-            <form action="controller/SystemController.php.php" method="post">
+            <form action="controller/SystemController.php" method="post">
                 <table class="table">
                     <tr>
                         <td>Nome

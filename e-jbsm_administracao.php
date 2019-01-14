@@ -142,7 +142,7 @@ isUserInRole(array("administrador"));
             ?>
             <table class="table">
                 <tr>
-                    <td>Neome da unidade/empresa
+                    <td>Nome da unidade/empresa
                         <input type="text" class="form-control" name="nome" placeholder="Nome"
                                value="<?= $linha->nome ?>" required="">
                     </td>
@@ -190,7 +190,8 @@ isUserInRole(array("administrador"));
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" class="btn btn-success" name="opcao" value="Alterar informações">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_INFORMACOES?>">
+                        <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar
                         </button>
@@ -233,7 +234,8 @@ isUserInRole(array("administrador"));
                         <input class="form-control" type="file" name="fundo" required="">
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-warning" name="opcao" value="Alterar fundo">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_FUNDO?>">
+                        <button type="submit" class="btn btn-warning">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
                         </button>
@@ -250,7 +252,8 @@ isUserInRole(array("administrador"));
                         <input class="form-control" type="text" name="titulo" value="<?= $linha->titulo ?>" required="">
                     </td>
                     <td>
-                        <button class="btn btn-warning" type="submit" name="opcao" value="Alterar titulo">
+                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_TITULO?>">
+                        <button class="btn btn-warning" type="submit">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
                         </button>

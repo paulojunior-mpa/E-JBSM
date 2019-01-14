@@ -1,23 +1,27 @@
 ﻿<?
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"), false);
+$opcao = getParameter("opcao");
 
-if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
-    $opcao = htmlspecialchars($_POST["opcao"]);
+if (!empty($opcao)) {
+
+    /**
+     * @var $link mysqli
+     */
+
     switch ($opcao) {
-
         case "":
             logout();
             break;
 
         case Constantes::CADASTRAR_AREA:
             $user_login = $_SESSION["user_login"];
-            $user_permissao = $_POST["user_permissao"];
+            $user_permissao = getParameter("user_permissao");
 
             $area_nome = htmlspecialchars($_POST["nome"]);
             $area_descricao = htmlspecialchars($_POST["descricao"]);
 
             $sql = "select nome from ejbsm_forum_area where nome = '$area_nome'";
-            $row = mysqli_fetch_object($link->query($sql) or die(mysqli_error($link)));
+            $row = mysqli_fetch_object($link->query($sql)) or die(mysqli_error($link));
 
             if ($row->nome) {
                 header('location: ../forum_cadastro_topico.php?info=area_ja_cadastrada#area');
@@ -31,7 +35,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
         case Constantes::CADASTRAR_SUBAREA:
             $user_login = $_SESSION["user_login"];
-            $user_permissao = $_POST["user_permissao"];
+            $user_permissao = getParameter("user_permissao");
 
             $subarea_nome = htmlspecialchars($_POST["nome"]);
             $id_area = htmlspecialchars($_POST["id_area"]);
@@ -78,9 +82,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
 
         case Constantes::EDITAR_AREA:
             $user_login = $_SESSION["user_login"];
-            $user_permissao = $_POST["user_permissao"];
+            $user_permissao = getParameter("user_permissao");
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
             $area_nome = htmlspecialchars($_POST["area_nome"], ENT_QUOTES, 'UTF-8');
             $area_descricao = htmlspecialchars($_POST["area_descricao"], ENT_QUOTES, 'UTF-8');
 
@@ -93,7 +97,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
             $subarea_nome = htmlspecialchars($_POST["subarea_nome"], ENT_QUOTES, 'UTF-8');
             $subarea_descricao = htmlspecialchars($_POST["subarea_descricao"], ENT_QUOTES, 'UTF-8');
             $subarea_area = htmlspecialchars($_POST["subarea_area"], ENT_QUOTES, 'UTF-8');
@@ -107,7 +111,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             if ($id != 1) {
 
@@ -128,7 +132,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
+            $id = getParameter("id");
 
             if ($id != 1) {
                 $sql = "update ejbsm_forum_topico set id_subarea = '1' where id_subarea = '$id'";
@@ -160,7 +164,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
                 $nome_anexo = "Sem anexo";
             }
 
-            $topico_area_subarea = explode(" / ", $_POST["area_subarea"]);
+            $topico_area_subarea = explode(" / ", getParameter("area_subarea"));
             $topico_area = $topico_area_subarea[0];
             $topico_subarea = $topico_area_subarea[1];
             $topico_assunto = htmlspecialchars($_POST["assunto"], ENT_QUOTES, 'UTF-8');
@@ -180,7 +184,7 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $topico_id = $_POST["id"];
+            $topico_id = getParameter("id");
             $topico_resposta = htmlspecialchars($_POST["topico_resposta"], ENT_QUOTES, 'UTF-8');
             //
             $sql = "select max(id) as maxid from ejbsm_forum_resposta";
@@ -211,8 +215,8 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $id = $_POST["id"];
-            $topico_anexo = $_POST["topico_anexo"];
+            $id = getParameter("id");
+            $topico_anexo = getParameter("topico_anexo");
 
             $sql = "select * from ejbsm_forum_resposta where id_topico = '$id'";
             $result = $link->query($sql) or die(mysqli_error($link));
@@ -238,9 +242,9 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             $user_login = $_SESSION["user_login"];
             $user_permissao = $_SESSION["user_permissao"];
 
-            $resposta_id = $_POST["id"];
-            $resposta_anexo = $_POST["resposta_anexo"];
-            $topico_id = $_POST["topico_id"];
+            $resposta_id = getParameter("id");
+            $resposta_anexo = getParameter("resposta_anexo");
+            $topico_id = getParameter("topico_id");
 
             $sql = "delete from ejbsm_forum_resposta where id = '$resposta_id'";
             $link->query($sql) or die(mysqli_error($link));
@@ -254,4 +258,3 @@ if (isset($_POST["opcao"]) and $_POST["opcao"] != null) {
             break;
     }
 }
-?>

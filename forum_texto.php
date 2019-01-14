@@ -26,19 +26,13 @@
     <div id="forum_texto_imagem">
         <?
         list($largura, $altura) = getimagesize("arquivos_imagem_sistema/logo.png");
-        //regra de 3
         $max = 80;
-        $largura;
-        $x;
-        $altura;
-
         $x = ($altura * $max) / $largura;
-
         echo "<img src='arquivos_imagem_sistema/logo.png' style='margin-left: 10px; margin-top: 10px;' width='$max' height='$x'>";
         ?>
     </div>
     <div id="forum_texto_texto">
-        <div color="white">
+        <div style="color: white">
             <?
             if (isset ($_GET["subarea"])) {
                 $id_subarea = $_GET["subarea"];
@@ -56,8 +50,7 @@
                 Descrição: <?= $subarea->descricao ?>
             <?
             } else {
-                echo "Fórum do Jardim Botânico da Universidade Federal de Santa Maria. Local destinado a troca de informações
-            entre JBSM e comunidade.";
+                echo "Fórum do Jardim Botânico da Universidade Federal de Santa Maria.<br> Local destinado a troca de informações entre JBSM e comunidade.";
             }
             ?>
         </div>

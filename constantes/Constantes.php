@@ -19,7 +19,7 @@ class Constantes
     const CADASTRAR_FREQUENCIA = 9;
     const EDITAR_PROGRAMACAO = 10;
     const CADASTRAR_PROGRAMACAO = 11;
-    const DELETAR_PROGRAMACAO = 12;
+    const DELETAR_PROGRAMACAO = 120;
     const CADASTRAR_PLANO = 12;
     const EDITAR_PLANO = 13;
     const DELETAR_PLANO = 15;
