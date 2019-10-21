@@ -42,7 +42,7 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
                         <td>
                             Slecione o bolsista
                             <select name="login" required class="form-control">
-                                <?
+                                <?php
                                 $sql = "select * from ejbsm_usuario where permissao = 'bolsista' and status != 0;";
                                 $qr = $link->query($sql);
                                 while ($r = mysqli_fetch_object($qr)) {
@@ -76,22 +76,22 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
             <?php
             if (isset($_POST["login"])) {
                 ?>
-        <h4>O total de horas de '<?php echo "$loginBolsista"; ?>' é de <?php echo "$total"; ?> horas.<br>
+            <h4>O total de horas de '<?php echo "$loginBolsista"; ?>' é de <?php echo "$total"; ?> horas.<br>
             No período de <?php echo $inicio ?> até <?php echo $fim ?> foram <?php echo "$total2"; ?> horas.</h4>
-        <?php
+                <?php
                 $sql = "select * from ejbsm_frequencia where login = '$loginBolsista' and data >= '$inicio' and data <= '$fim' order by data DeSC, saida asc;";
                 $qr = $link->query($sql);
                 while ($r = mysqli_fetch_object($qr)) {
                     ?>
-        Data: </b><?php echo "{$r->data}"; ?>
-        Entrada: </b><?php echo "{$r->entrada}"; ?>
-        Saída: </b><?php echo "{$r->saida}"; ?><br>
-        <?php }
+                    Data: </b><?php echo "{$r->data}"; ?>
+                    Entrada: </b><?php echo "{$r->entrada}"; ?>
+                    Saída: </b><?php echo "{$r->saida}"; ?><br>
+                    <?php
+                }
             } ?>
         </div>
     </div>
-<?php
-}
+<?php }
 if ($user_permissao == "bolsista") {
     $sql = "select sum(saida-entrada) as soma from ejbsm_frequencia where login ='$user_login'";
     $total = mysqli_fetch_object($link->query($sql));

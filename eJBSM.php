@@ -36,7 +36,7 @@ class eJBSM
                 exit;
             }
         }
-        header('location: /e-jbsm_login.php');
+        header('location: /ejbsm/e-jbsm_login.php');
     }
 
     private function import()
