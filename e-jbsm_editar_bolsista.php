@@ -1,11 +1,11 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador"));
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Editar dados de bolsista</h3>
         <form action="controller/SystemController.php" method="post">
-            <?
+            <?php
             if(isset($_POST["bolsista_login"])) {
                 $bolsista_login = $_POST["bolsista_login"];
             }
@@ -156,7 +156,7 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <?$login_usuario=$user->login;
+                        <?php $login_usuario=$user->login;
                         include 'e-jbsm_bolsista_horario.php';?>
                     </td>
                 </tr>

@@ -13,7 +13,7 @@ if ($q !== "") {
     ?>
     <div class="table-responsive" style="max-height: 400px">
         <table class="table table-responsive" style="max-height: 400px">
-            <?
+            <?php
             while ($linha = mysqli_fetch_row($result)) {
                 echo "<tr>";
                 foreach ($linha as $row) {
@@ -24,6 +24,6 @@ if ($q !== "") {
             ?>
         </table>
     </div>
-<?
+<?php
 }
 ?>

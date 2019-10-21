@@ -17,18 +17,18 @@ if ($q !== "") {
         <a href='app.php?id=<?php echo $planta->id ?>'>
             <div class="media">
                 <div class="media-left">
-                    <?
+                    <?php
                     imagemPlanta($planta->img)
                     ?>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading"><?php echo $planta->nome_popular ?></h4>
-                    <label>Nome científico: </label><?php echo $planta->nome_cientifico ?>
+                    <label>Nome científico: </label><?echo $planta->nome_cientifico ?>
                 </div>
             </div>
         </a>
         <hr>
-    <?
+    <?php
     }
 }
 if ($j == 0)

@@ -9,7 +9,7 @@
     // This example creates a 2-pixel-wide red polyline showing
     // the path of William Kingsford Smith's first trans-Pacific flight between
     // Oakland, CA, and Brisbane, Australia.
-    <?
+    <?php
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql) or die(mysqli_error($link));
             $inst = mysqli_fetch_object($result);
@@ -26,7 +26,7 @@
             mapOptions);
 
         var flightPlanCoordinates = [
-            <?
+            <?php
             $sql = "select * from ejbsm_associa_planta WHERE id_trilha = $id_trilha_select";
             $result = $link->query($sql) or die(mysqli_error($link));
             while ($trilha = mysqli_fetch_object($result)) {
@@ -67,7 +67,7 @@
         google.maps.event.addListener(marker, 'click', function () {
             infowindow.open(map, marker);
         });
-        <?
+        <?php
             $sql = "select * from ejbsm_associa_planta WHERE id_trilha = $id_trilha_select";
             $result = $link->query($sql) or die(mysqli_error($link));
             $j=1;
@@ -97,7 +97,7 @@
         google.maps.event.addListener(marker<?php echo $j?>, 'click', function () {
             infowindow<?php echo $j?>.open(map, marker<?php echo $j?>);
         });
-        <?
+        <?php
         $j++;
             }
         ?>

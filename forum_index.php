@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -56,7 +56,7 @@ if (isset($_GET["info"])) {
     <?php include 'forum_texto.php'; ?>
     <h3>Pesquisas personalizadas de tópicos</h3>
     <?php include 'forum_caixa _pesquisa_.php'; ?>
-    <?
+    <?php
     $result = $link->query($consulta) or die(mysqli_error($link));
     $cont = 0;
     if ($result) {
@@ -65,13 +65,13 @@ if (isset($_GET["info"])) {
         }
         ?>
         <h3>Resultados <span class="badge"><?php echo $cont; ?></span></h3>
-        <?
+        <?php
         if ($info == "topico_deletado") {
             ?>
             <div class="alert alert-warning" role="alert">
                 Seu tópico foi deletado
             </div>
-        <?
+        <?php
         }
         $result = $link->query($consulta);
         while ($topico = mysqli_fetch_object($result)) {
@@ -85,7 +85,7 @@ if (isset($_GET["info"])) {
             <div class="alert alert-info">
                 <div class="media-left">
                     <a href="#">
-                        <?imagem($topico->login, 40);?>
+                        <?php imagem($topico->login, 40);?>
                     </a>
                 </div>
                 <div class="media-body">

@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 ?>

@@ -23,7 +23,7 @@ if (isset($_GET["email"])) {
             Bem vindo(a) ao sistema de gerencia do Jardim Botânico da Universidade Federal de Santa Maria.
         </div>
         <div class="col-md-offset-7" style="font-size: 40px">
-            <?
+            <?php
             $sql = "select titulo from ejbsm_informacao";
             $row = mysqli_fetch_object($link->query($sql)) or die(mysqli_error($link));
             echo $row->titulo;
@@ -33,7 +33,7 @@ if (isset($_GET["email"])) {
 </div>
 <div class="row" style="background-image: url(arquivos_imagem_sistema/fundo.png);">
     <div class="col-md-6">
-        <?
+        <?php
         list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png');
         $max = 245;
         $x = ($altura * $max) / $largura;

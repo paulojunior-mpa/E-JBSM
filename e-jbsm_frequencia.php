@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 
 if ($user_permissao == "orientador" or $user_permissao == "administrador") {
@@ -73,12 +73,12 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
                     </tr>
                 </table>
             </form>
-            <?
+            <?php
             if (isset($_POST["login"])) {
                 ?>
         <h4>O total de horas de '<?php echo "$loginBolsista"; ?>' é de <?php echo "$total"; ?> horas.<br>
             No período de <?php echo $inicio ?> até <?php echo $fim ?> foram <?php echo "$total2"; ?> horas.</h4>
-        <?
+        <?php
                 $sql = "select * from ejbsm_frequencia where login = '$loginBolsista' and data >= '$inicio' and data <= '$fim' order by data DeSC, saida asc;";
                 $qr = $link->query($sql);
                 while ($r = mysqli_fetch_object($qr)) {
@@ -90,7 +90,7 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
             } ?>
         </div>
     </div>
-<?
+<?php
 }
 if ($user_permissao == "bolsista") {
     $sql = "select sum(saida-entrada) as soma from ejbsm_frequencia where login ='$user_login'";
@@ -133,7 +133,7 @@ if ($user_permissao == "bolsista") {
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Lista de horários cadastrados</h3>
-            <?
+            <?php
             $inicio_consulta="";
             if(isset($_GET["inicio_consulta"])){
                 $inicio_consulta=$_GET["inicio_consulta"];

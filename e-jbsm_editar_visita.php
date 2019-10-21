@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 
 if(isset($_POST["id"])) {
@@ -65,7 +65,7 @@ if(isset($_POST["id"])) {
                     <td>
                         <select name="visita_oficina" required="" class="form-control">
                             <option value="Não">Não</option>
-                            <?
+                            <?php
                             $sql = "select * from ejbsm_oficina";
                             $result = $link->query($sql);
                             while ($row = mysqli_fetch_object($result)) {
@@ -104,7 +104,7 @@ if(isset($_POST["id"])) {
                     <td><?php echo $visita->monitor?></td>
                     <td>
                         <select name="visita_monitor" class="form-control" required>
-                            <?
+                            <?php
                             $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                             $result = $link->query($sql);
                             while ($row = mysqli_fetch_object($result)) {

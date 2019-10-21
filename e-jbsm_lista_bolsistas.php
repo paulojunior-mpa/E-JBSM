@@ -161,7 +161,7 @@ function PegaHorarios($condicao, $login, $link)
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Lista de bolsistas inativos</h3>
-        <?
+        <?php
         if (isset($_GET["info"]) and $_GET["info"] == "editado") {
             echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";
         }

@@ -19,7 +19,7 @@ if ($q !== null) {
         <a href='app_editar_planta.php?id=<?php echo $a->id?>'>
             <div class="media alert alert-info">
                 <div class="media-left">
-                    <?
+                    <?php
                     imagemPlanta($a->img)
                     ?>
                 </div>
@@ -30,7 +30,7 @@ if ($q !== null) {
                 </div>
             </div>
         </a>
-        <?
+        <?php
         $j++;
     }
 }

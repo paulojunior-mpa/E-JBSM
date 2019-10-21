@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 ?>
@@ -17,14 +17,14 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                 <td><b>E-mail</b></td>
                 <td><b>Mais</b></td>
             </tr>
-            <?
+            <?php
             $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao = 'administrador' and ejbsm_usuario.login=ejbsm_integrante.login";
             $qr = $link->query($sql);
             while ($r = mysqli_fetch_object($qr)) {
                 ?>
                 <tr>
                     <td>
-                        <?
+                        <?php
                         if ($r->status == 0) {
                             echo "<div style='box-shadow: 1px 1px 5px 1px #c9302c;'>";
                         } else {
@@ -39,7 +39,7 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                     <td><?php echo "{$r->email}"; ?></td>
                     <td class="active"><a href="forum_info.php?info=login&login=<?php echo  $r->login ?>">Mais</a></td>
                 </tr>
-            <?
+            <?php
             }
             ?>
         </table>

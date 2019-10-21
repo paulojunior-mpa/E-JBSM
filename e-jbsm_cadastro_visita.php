@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 
@@ -37,7 +37,7 @@ if (isset($_GET["info"])) {
                 </tr>
             </table>
         </div>
-        <?
+        <?php
         $sql = "select * from ejbsm_horarios_monitores where id = 1";
         $result = $link->query($sql);
         while ($r = mysqli_fetch_object($result)) {
@@ -224,7 +224,7 @@ if (isset($_GET["info"])) {
                         Oficinas</a>)
                     <select name="visita_oficina" required="" class="form-control">
                         <option value="Não">Não</option>
-                        <?
+                        <?php
                         $sql = "select * from ejbsm_oficina";
                         $result = $link->query($sql);
                         while ($row = mysqli_fetch_object($result)) {

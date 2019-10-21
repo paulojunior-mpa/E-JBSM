@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -33,7 +33,7 @@ if (isset($_GET["info"])) {
                         <span>
                             <span style="color: green"><b>Nome: </b></span> <?php echo $subarea->nome ?><br><br>
                             <span style="color: green"><b>Descrição: </b></span> <?php echo $subarea->descricao ?><br><br>
-                            <?
+                            <?php
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
@@ -101,24 +101,24 @@ if (isset($_GET["info"])) {
                                                         </div>
                                                         <div class="modal-body">
                                                             <h3>Deseja mesmo deletar a subárea <?php echo $subarea->nome?></h3>
-                                                            <?if($subarea->id!=1){?>
+                                                            <?php if($subarea->id!=1){?>
                                                             <h5>Ao deletar, todos os topicos relacionados serão movidos para a subárea padrão 'Outros'.</h5>
-                                                            <?}else{?>
+                                                            <?php }else{?>
                                                                 <h5>Esta subárea não pode ser excluída.</h5>
-                                                            <?}?>
+                                                            <?php }?>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default"
                                                                     data-dismiss="modal">
                                                                 Cancelar
                                                             </button>
-                                                            <?if($subarea->id!=1){?>
+                                                            <?php if($subarea->id!=1){?>
                                                                 <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_SUBAREA?>">
                                                                 <button type="submit" class="btn btn-danger">
                                                                     <span class="glyphicon glyphicon-remove"></span>
                                                                     Deletar subárea
                                                                 </button>
-                                                            <?}?>
+                                                            <?php }?>
                                                         </div>
                                                     </div>
                                                 </div>

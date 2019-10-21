@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("bolsista"));
 ;
 ?>
@@ -6,7 +6,7 @@ isUserInRole(array("bolsista"));
     <li role="presentation" class="active"><a href="">Cadastro de programação</a></li>
     <li role="presentation"><a href="e-jbsm_lista_programacao.php">Lista de programações</a></li>
 </ul>
-<?
+<?php
 if (isset($_GET["info"]) and $_GET["info"] == "cadastrada") {
     echo '<div class="alert alert-success" role="alert">Programação cadastrada!</div>';
 } ?>

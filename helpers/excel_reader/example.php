@@ -10,7 +10,7 @@ $data = new Spreadsheet_Excel_Reader("export brahms livro 8.XLS");
         <td>Familia</td>
         <td>Origem</td>
     </tr>
-    <?
+    <?php
     for ($i = 2; $i <= $data->rowcount($sheet_index = 0); $i++) {
         ?>
         <tr>
@@ -20,7 +20,7 @@ $data = new Spreadsheet_Excel_Reader("export brahms livro 8.XLS");
             <td><?php echo $data->val($i, 2)?></td>
             <td><?php echo $data->val($i, 11).", ".$data->val($i, 12).", ".$data->val($i, 13).", ".$data->val($i, 14)?></td>
         </tr>
-    <?
+    <?php
         //$sql = "insert into ejbsm_planta(nome_popular, especie, genero, familia, origem) VALUES ('Não definido', '$data->val($i, 3)', '$data->val($i, 3) $data->val($i, 4)', '$data->val($i, 2)', '$data->val($i, 11) $data->val($i, 12) $data->val($i, 13) $data->val($i, 14)')";
         //$link->query($sql)or die(mysqli_error($link));
     }

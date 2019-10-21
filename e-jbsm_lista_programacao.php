@@ -1,9 +1,9 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ?>
 <ul class="nav nav-tabs" role="tablist" id="cadastro_programacao" xmlns="http://www.w3.org/1999/html">
     <li role="presentation">
-        <?
+        <?php
         if ($user_permissao == "bolsista") {
             echo '<a href="e-jbsm_cadastro_programacao.php">';
         } else {
@@ -14,7 +14,7 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
     </li>
     <li role="presentation" class="active"><a href="">Lista de programações</a></li>
 </ul>
-<?
+<?php
 if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
     echo '<div class="alert alert-danger" role="alert">Programação excluída!</div>';
 }elseif (isset($_GET["info"]) and $_GET["info"] == "editada") {
@@ -24,7 +24,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Lista de programações</h3>
-        <?
+        <?php
         if ($user_permissao == "bolsista") {
             $condicao = " where login = '$user_login'";
         } else {
@@ -239,7 +239,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
         <?php } ?>
         <nav>
             <ul class="pagination">
-                <?
+                <?php
                 if ($inicio_consulta != "" and $inicio_consulta != 0) {
                     ?>
                     <li>

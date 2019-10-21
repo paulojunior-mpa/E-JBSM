@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -9,7 +9,7 @@ if (isset($_GET["info"])) {
 ?>
 <div class="panel-body">
     <?php include 'forum_texto.php'; ?>
-    <?
+    <?php
     if ($info == "area") {
         $area = "";
         if (isset($_GET["area"])) {
@@ -27,7 +27,7 @@ if (isset($_GET["info"])) {
                 Descrição: <?php echo $row->descricao; ?>
             </div>
         </div>
-    <?
+    <?php
     } elseif ($info == "subarea") {
         $subarea = "";
         if (isset($_GET["subarea"])) {
@@ -41,7 +41,7 @@ if (isset($_GET["info"])) {
             Nome: <?php echo $row->nome; ?><br>
             Descrição: <?php echo $row->descricao; ?>
         </div>
-    <?
+    <?php
     } elseif ($info == "login") {
         $login = $_GET["login"];
         $sql = "select * from ejbsm_usuario where login = '$login'";
@@ -88,7 +88,7 @@ if (isset($_GET["info"])) {
                         Status: <?php echo $row->status; ?>
                     </td>
                 </tr>
-                <?}?>
+                <?php }?>
             </table>
             <?php if ($user_permissao == "administrador") { ?>
                 <form action="controller/SystemController.php" method="post">

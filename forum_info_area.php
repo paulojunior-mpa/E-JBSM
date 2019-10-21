@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 
 $info = "";
@@ -83,24 +83,24 @@ if (isset($_GET["info"])) {
                                                         </div>
                                                         <div class="modal-body">
                                                             <h3>Deseja mesmo deletar a área <?php echo $area->nome?></h3>
-                                                            <?if($area->id!=1){?>
+                                                            <?php if($area->id!=1){?>
                                                             <h5>Ao deletar, todas as subáreas e topicos relacionados serão movidos para a área padrão 'Outros'.</h5>
-                                                            <?}else{?>
+                                                            <?php }else{?>
                                                                 <h5>Esta área não pode ser exlcuída.</h5>
-                                                            <?}?>
+                                                            <?php }?>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default"
                                                                     data-dismiss="modal">
                                                                 Cancelar
                                                             </button>
-                                                            <?if($area->id!=1){?>
+                                                            <?php if($area->id!=1){?>
                                                                 <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_AREA?>">
                                                                 <button type="submit" class="btn btn-danger">
                                                                     <span class="glyphicon glyphicon-remove"></span>
                                                                     Deletar área
                                                                 </button>
-                                                            <?}?>
+                                                            <?php }?>
                                                         </div>
                                                     </div>
                                                 </div>

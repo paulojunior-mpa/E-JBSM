@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 
@@ -15,7 +15,7 @@ $user = mysqli_fetch_object($result);
 
         <div class="row">
             <div class="col-md-4">
-                <?
+                <?php
                 imagem($user_login, 200);
                 ?>
             </div>
@@ -37,7 +37,7 @@ $user = mysqli_fetch_object($result);
                                     <h4 class="modal-title" id="myModalLabel">Alterar imagem (max 2mb)</h4>
                                 </div>
                                 <div class="modal-body" style="margin-left: 20px">
-                                    <?
+                                    <?php
                                     imagem($user_login, 200);
                                     ?>
                                     <input type="file" class="form-control" name="arquivo" required>

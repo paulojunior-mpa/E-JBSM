@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 if(isset($_POST["id"])){
@@ -21,7 +21,7 @@ $r = mysqli_fetch_object($qr);
                     </td>
                     <td>Monitor
                         <select name="nome_monitor" class="form-control" required>
-                            <?
+                            <?php
                             $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                             $qr = $link->query($sql);
                             while ($row = mysqli_fetch_object($qr)) {
@@ -35,7 +35,7 @@ $r = mysqli_fetch_object($qr);
                     </td>
                     <td colspan="2">Orientador
                         <select name="orientador" class="form-control" required>
-                            <?
+                            <?php
                             $sql = "select * from ejbsm_usuario where permissao = 'orientador' or permissao = 'administrador' and status != 0;";
                             $result = $link->query($sql);
                             while ($row = mysqli_fetch_object($result)) {

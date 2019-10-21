@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -18,7 +18,7 @@ if (isset($_GET["addmonitor"])) {
             <a class="list-group-item badge">
                 Integrantes / <span style="color: blue" ">Monitores</div>
             </a>
-            <?
+            <?php
             $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao != 'usuario' and status != 0 and ejbsm_integrante.login=ejbsm_usuario.login";
             $result = $link->query($sql) or die(mysqli_error($link));
             while ($row = mysqli_fetch_object($result) or die(mysqli_error($link))) {

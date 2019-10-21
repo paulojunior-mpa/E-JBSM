@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -77,7 +77,7 @@ if (isset($_GET["info"])) {
     </form>
     <?php if ($info == "area_deletada") { ?>
         <div class="alert alert-success" role="alert">Sugestão de área deletada</div>
-    <?
+    <?php
     }
     $sql = "select * from ejbsm_forum_area where status != 'ativa'";
     $result = $link->query($sql);
@@ -143,13 +143,13 @@ if (isset($_GET["info"])) {
             </ul>
         </div>
         <hr>
-    <?
+    <?php
     }
     ?>
     <?php if ($info == "subarea_deletada") { ?>
         <hr>
         <div class="alert alert-success" role="alert">Sugestão de subárea deletada</div>
-    <?
+    <?php
     }
     $sql = "select * from ejbsm_forum_subarea where status != 'ativa'";
     $result = $link->query($sql);
@@ -164,7 +164,7 @@ if (isset($_GET["info"])) {
                         <span>
                             <span style="color: green"><b>Nome da subárea: </b></span> <?php echo $subarea->nome ?><br><br>
                             <span style="color: green"><b>Descrição da área: </b></span> <?php echo $subarea->descricao ?><br><br>
-                            <?
+                            <?php
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;

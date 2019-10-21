@@ -1,4 +1,4 @@
-<?
+<?php
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
@@ -7,7 +7,7 @@ include 'e-jbsm_cabecalho.php';
             <h3 class="panel-title">Informações gerais e contato</h3>
         </div>
         <div class="panel-body">
-            <?
+            <?php
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql);
             $linha = mysqli_fetch_object($result);

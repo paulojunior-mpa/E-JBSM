@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 $info = "";
@@ -31,7 +31,7 @@ if ($user_permissao != "usuario") { ?>
                         </td>
                         <td>Monitor
                             <select name="nome_monitor" class="form-control" required>
-                                <?
+                                <?php
                                 $sql = "select * from ejbsm_usuario, ejbsm_integrante WHERE ejbsm_usuario.login = ejbsm_integrante.login and monitor AND status != 0";
                                 $result = $link->query($sql);
                                 while ($row = mysqli_fetch_object($result)) {
@@ -45,7 +45,7 @@ if ($user_permissao != "usuario") { ?>
                         </td>
                         <td colspan="2">Orientador
                             <select name="orientador" class="form-control" required>
-                                <?
+                                <?php
                                 $sql = "select * from ejbsm_usuario where permissao = 'orientador' or permissao = 'administrador' and status != 0;";
                                 $result = $link->query($sql);
                                 while ($row = mysqli_fetch_object($result)) {
@@ -92,7 +92,7 @@ if ($user_permissao != "usuario") { ?>
 <?php } ?>
 <div class="panel panel-default">
     <div class="panel-body">
-        <?
+        <?php
         $sql = "select * from ejbsm_oficina order by id desc;";
         $result = $link->query($sql);
         $numero = mysqli_num_rows($result);

@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 ?>
@@ -63,7 +63,7 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
                 </tr>
             </table>
         </form>
-        <?
+        <?php
         $sql = "SELECT SUM(visitantes) as soma from ejbsm_visita where status = 'Confirmada'";
         $sql2 = "select id, login, data, hora, instituicao, visitantes from ejbsm_visita where status = 'Confirmada' order by id desc";
         if (isset($_POST["login"])) {
@@ -109,7 +109,7 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
                     <td><?php echo $visita->visitantes?></td>
                     <td><?php echo $visita->login?></td>
                 </tr>
-            <?}?>
+            <?php }?>
         </table>
     </div>
 </div>

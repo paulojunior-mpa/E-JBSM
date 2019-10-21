@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -41,7 +41,7 @@ if (isset($_POST["pesquisa"])) {
             <td><b>E-mail</b></td>
             <td><b>Mais detalhes</b></td>
             </tr>
-            <?
+            <?php
             $inicio_consulta = "";
             if ($pesquisa != "") {
                 $sql = "select * from ejbsm_usuario where permissao = 'usuario' and login like '%$pesquisa%' or nome like '$pesquisa%'";
@@ -57,7 +57,7 @@ if (isset($_POST["pesquisa"])) {
                 ?>
                 <tr>
                     <td>
-                        <?imagem($r->login, 80) ?>
+                        <?php imagem($r->login, 80) ?>
                     </td>
                     <td><?php echo "{$r->nome}"; ?></td>
                     <td><?php echo "{$r->login}"; ?></td>
@@ -65,7 +65,7 @@ if (isset($_POST["pesquisa"])) {
                     <td><?php echo "{$r->email}"; ?></td>
                     <td class="active"><a href="forum_info.php?info=login&login=<?php echo $r->login ?>">Mais</a></td>
                 </tr>
-            <?
+            <?php
             }
             ?>
         </table>

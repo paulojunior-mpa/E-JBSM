@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ;
 
@@ -37,7 +37,7 @@ if (isset($_GET["topico"])) {
             </div>
             <div class="col-md-12">
                 <br>
-                <?
+                <?php
                 $sql = "select nome from ejbsm_forum_area where id = $topico->id_area";
                 $pega_nome = mysqli_fetch_object($link->query($sql));
                 $nome_area = $pega_nome->nome;
@@ -111,7 +111,7 @@ if (isset($_GET["topico"])) {
                     }
                 </style>
                 <div id="mensagem">
-                    <?
+                    <?php
                     echo $mensagem = str_replace("\n", "<br />", $topico->mensagem) . "<br>";
                     ?>
                 </div>
@@ -151,7 +151,7 @@ if (isset($_GET["topico"])) {
                 </tr>
             </table>
         </form>
-        <?
+        <?php
         $sql_respostas = "select * from ejbsm_forum_resposta where id_topico = '$topico->id' order by id desc;";
         $result = $link->query($sql_respostas) or die(mysqli_error($link));
         $contagem_respostas = mysqli_num_rows($result);
@@ -164,7 +164,7 @@ if (isset($_GET["topico"])) {
             $j++; ?>
             <div class="row">
                 <div class="col-md-12">
-                    <?
+                    <?php
                     echo "<hr>";
                     echo "<a target='_blank' href='forum_info.php?info=login&login=$resposta->login'>$resposta->login</a>";
                     echo " Respondeu";
@@ -175,7 +175,7 @@ if (isset($_GET["topico"])) {
                     ?>
                 </div>
                 <div class="col-md-3">
-                    <?
+                    <?php
                     imagem($resposta->login, 150);
                     $sql2 = "select * from ejbsm_usuario where login = '$resposta->login'";
                     $row = mysqli_fetch_object($link->query($sql2));
@@ -226,12 +226,12 @@ if (isset($_GET["topico"])) {
                 </div>
                 <div class="col-md-9">
                     <div id="mensagem">
-                        <?
+                        <?php
                         echo $resposta->resposta = str_replace("\n", "<br />", $resposta->resposta) . "<br>";
                         ?>
                     </div>
                     <span style="color: green">Anexo:</span>
-                    <?
+                    <?php
                     if (file_exists("arquivos_forum_anexo/$resposta->anexo")) {
                         chmod("arquivos_forum_anexo/$resposta->anexo", 0755);
                         echo "<a target='_blank' href='arquivos_forum_anexo/$resposta->anexo'><span>$resposta->anexo</span></a>";
@@ -243,7 +243,7 @@ if (isset($_GET["topico"])) {
             </div>
         <?php } ?>
     </div>
-<?
+<?php
 } else {
     echo "nenhum tópico selecionado";
 }

@@ -16,7 +16,7 @@ if ($q !== "") {
         ?>
         <div class="media alert alert-info">
             <div class="media-left">
-                <?
+                <?php
                 imagemPlanta($a->img)
                 ?>
             </div>
@@ -34,7 +34,7 @@ if ($q !== "") {
                 </a>
             </div>
         </div>
-        <?
+        <?php
         $j++;
     }
 }

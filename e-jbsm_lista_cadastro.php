@@ -1,11 +1,11 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Lista de cadastros</h3>
 
-        <?
+        <?php
         if (isset($_GET["info"])) {
             $info = $_GET["info"];
             if ($info == "deletado") {
@@ -13,7 +13,7 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                 <div class="alert alert-warning">
                     Deletado.
                 </div>
-                <?
+                <?php
             }
         }
         ?>
@@ -33,7 +33,7 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                     <th>ID</th>
                     <th></th>
                 </tr>
-                <?
+                <?php
                 $sql = "select * from ejbsm_cadastro";
                 if($result = $link->query($sql)) {
                     while ($row = mysqli_fetch_object($result)) {
@@ -58,7 +58,7 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                                 </form>
                             </td>
                         </tr>
-                        <?
+                        <?php
                     }
                 }
                 ?>

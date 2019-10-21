@@ -30,14 +30,14 @@ function getUsuarios($sql, $link)
             <td><b>E-mail</b></td>
             <td><b>Mais detalhes</b></td>
         </tr>
-        <?
+        <?php
         $qr = $link->query($sql) or die(mysqli_error($link));
         $j = 0;
         while ($r = mysqli_fetch_object($qr)) {
             ?>
             <tr>
                 <td>
-                    <?imagem($r->login, 80) ?>
+                    <?php imagem($r->login, 80) ?>
                 </td>
                 <td><?php echo "{$r->nome}"; ?></td>
                 <td><?php echo "{$r->login}"; ?></td>
@@ -45,11 +45,11 @@ function getUsuarios($sql, $link)
                 <td><?php echo "{$r->email}"; ?></td>
                 <td class="active"><a href="forum_info.php?info=login&login=<?php echo $r->login ?>">Mais</a></td>
             </tr>
-            <?
+            <?php
             $j++;
         }
         ?>
     </table>
-<?
+<?php
 }
 ?>
