@@ -55,7 +55,7 @@ if (isset($_GET["email"])) {
                     </tr>
                     <tr>
                         <td>
-                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::REDEFINIR_SENHA?>">
+                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::REDEFINIR_SENHA?>">
                             <button class='btn btn-warning' type="submit">
                                 <span class="glyphicon glyphicon-retweet"></span>
                                 Redefinir senha

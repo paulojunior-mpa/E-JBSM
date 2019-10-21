@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"), false);
 include 'e-jbsm_cabecalho.php';
 $inicio_consulta = "";
@@ -45,7 +45,7 @@ if (!empty(getParameter("info"))) {
                     Descrição da trilha
                     <input class="form-control" type="text" name="descricao" placeholder="descricao" required="">
                     <br>
-                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_TRILHA?>">
+                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_TRILHA?>">
                     <button class="btn btn-success" value="Cadastrar trilha">
                         <span class="glyphicon glyphicon-save"></span>
                         Cadastrar
@@ -54,7 +54,7 @@ if (!empty(getParameter("info"))) {
             </div>
             <div class="col-md-9">
                 <h4>Trilhas cadastradas. Slecione para editar</h4>
-                <?
+                <?php
                 $sql = "select * from ejbsm_trilha";
                 $result = $link->query($sql) or die(mysqli_error($link));
                 while ($trilha = mysqli_fetch_object($result)) {

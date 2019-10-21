@@ -114,7 +114,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "cadastrada") {
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PROGRAMACAO?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_PROGRAMACAO?>">
                         <button class="btn btn-success" type="submit" value="Cadastrar Programação">Cadastrar
                         </button>
                     </td>

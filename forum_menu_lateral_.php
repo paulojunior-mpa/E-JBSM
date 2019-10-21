@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <?
+                <?php
                 $sql = "select nome, email from ejbsm_usuario where login = '$user_login'";
                 $row = mysqli_fetch_object($link->query($sql));
                 $nome = explode(" ", $row->nome);
@@ -24,14 +24,14 @@
                 ?>
                 <div class="row">
                     <div class="col-md-4">
-                        <?imagemMenu($user_login, 80);?>
+                        <?php imagemMenu($user_login, 80);?>
                     </div>
                     <div class="col-md-8">
-                        Nome: <?=$nome[0];?><br>
-                        Permissões: <?=$user_permissao?>
+                        Nome: <?php echo$nome[0];?><br>
+                        Permissões: <?php echo $user_permissao?>
                     </div>
                 </div>
-                <?if ($user_permissao != "usuario") { ?>
+                <?php if ($user_permissao != "usuario") { ?>
                 <h4>Links</h4>
                 <ul id="sidebar" class="nav nav-pills nav-stacked" style="max-width: 200px;">
                     <li><a href="forum_index.php"><span class="glyphicon glyphicon-tag"></span> Tópicos</a></li>
@@ -45,7 +45,7 @@
                 </ul>
 
                 <h4>Pesquisa por áreas e subareas</h4>
-                <?
+                <?php
                 $sql = "select * from ejbsm_forum_area where status = 'ativa' ORDER by nome;";
                 $qr = $link->query($sql) or die(mysqli_error($link));
                 while ($area = mysqli_fetch_object($qr)) {
@@ -57,14 +57,14 @@
                             <?php echo $area->nome; ?>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                            <?
+                            <?php
                             $sql2 = "select * from ejbsm_forum_subarea where id_area = '$area->id' and status = 'ativa' order by nome;";
                             $qr2 = $link->query($sql2) or die(mysqli_error($link));
                             while ($sub = mysqli_fetch_object($qr2)) {
                                 ?>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="forum_index.php?subarea=<?= $sub->id ?>">
+                                       href="forum_index.php?subarea=<?php echo $sub->id ?>">
                                         <?php echo $sub->nome ?>
                                     </a>
                                 </li>

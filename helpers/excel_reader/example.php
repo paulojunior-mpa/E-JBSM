@@ -15,10 +15,10 @@ $data = new Spreadsheet_Excel_Reader("export brahms livro 8.XLS");
         ?>
         <tr>
             <td>Nao definido</td>
-            <td><?=$data->val($i, 3)?></td>
-            <td><?=$data->val($i, 3)." ".$data->val($i, 4)?></td>
-            <td><?=$data->val($i, 2)?></td>
-            <td><?=$data->val($i, 11).", ".$data->val($i, 12).", ".$data->val($i, 13).", ".$data->val($i, 14)?></td>
+            <td><?php echo $data->val($i, 3)?></td>
+            <td><?php echo $data->val($i, 3)." ".$data->val($i, 4)?></td>
+            <td><?php echo $data->val($i, 2)?></td>
+            <td><?php echo $data->val($i, 11).", ".$data->val($i, 12).", ".$data->val($i, 13).", ".$data->val($i, 14)?></td>
         </tr>
     <?
         //$sql = "insert into ejbsm_planta(nome_popular, especie, genero, familia, origem) VALUES ('Não definido', '$data->val($i, 3)', '$data->val($i, 3) $data->val($i, 4)', '$data->val($i, 2)', '$data->val($i, 11) $data->val($i, 12) $data->val($i, 13) $data->val($i, 14)')";

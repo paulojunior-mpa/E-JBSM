@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ?>
 <div class="panel panel-default">
@@ -16,7 +16,7 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
                 color: #080808;
             }
         </style>
-        <?
+        <?php
         $title = array("Cadastrar visita", "Listar visitas", "Seu perfil", "Lixeira", "Sobre");
         $image = array("cadastro", "lista", "usuario", "lixeira", "identificar");
         $link = array("e-jbsm_cadastro_visita", "e-jbsm_lista_visitas", "e-jbsm_perfil", "e-jbsm_lixeira", "e-jbsm_sobre");

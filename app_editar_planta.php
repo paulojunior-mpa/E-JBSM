@@ -45,35 +45,35 @@ if (isset($_GET["info"]))
                 <hr>
             </div>
             <div class="col-md-9">
-                <?
+                <?php
                 if (isset($_GET["id"])) {
                     $id_planta = $_GET["id"];
                     $sql = "select * from ejbsm_planta WHERE id = $id_planta";
                     $result = $link->query($sql);
                     $planta = mysqli_fetch_object($result);
                     ?>
-                    Visualizações: <?=$planta->visualizada?><br>
-                    Ultima visualização: <?=$planta->ult_visualizada?><hr>
+                    Visualizações: <?php echo $planta->visualizada?><br>
+                    Ultima visualização: <?php echo $planta->ult_visualizada?><hr>
                     <form action="controller/AppControll.php" method="post" enctype="multipart/form-data">
                         <div class="col-md-4">
                             Nome popular
-                            <input class="form-control" type="text" value="<?= $planta->nome_popular ?>"
+                            <input class="form-control" type="text" value="<?php echo $planta->nome_popular ?>"
                                    name="popular" placeholder="popular" required="">
                             Gênero
-                            <input class="form-control" type="text" value="<?= $planta->genero ?>" name="gênero"
+                            <input class="form-control" type="text" value="<?php echo $planta->genero ?>" name="gênero"
                                    placeholder="gênero" required="">
                             Espécie
-                            <input class="form-control" type="text" value="<?= $planta->especie ?>" name="espécie"
+                            <input class="form-control" type="text" value="<?php echo $planta->especie ?>" name="espécie"
                                    placeholder="espécie"
                                    required="">
                             Família
-                            <input class="form-control" type="text" value="<?= $planta->familia ?>" name="família"
+                            <input class="form-control" type="text" value="<?php echo $planta->familia ?>" name="família"
                                    placeholder="família"
                                    required="">
                         </div>
                         <div class="col-md-4">
                             Origem
-                            <input class="form-control" type="text" value="<?= $planta->origem ?>" name="origem"
+                            <input class="form-control" type="text" value="<?php echo $planta->origem ?>" name="origem"
                                    placeholder="origem" required="">
                             Exótica
                             <select name="exotica" class="form-control">
@@ -81,21 +81,21 @@ if (isset($_GET["info"]))
                                 <option value="não">NÃO</option>
                             </select>
                             Descrição
-                            <input class="form-control" type="text" value="<?= $planta->descricao ?>"
+                            <input class="form-control" type="text" value="<?php echo $planta->descricao ?>"
                                    name="descricao" placeholder="descricao"
                                    required="">
                             Latitude
-                            <input class="form-control" type="text" value="<?= $planta->latitude ?>"
+                            <input class="form-control" type="text" value="<?php echo $planta->latitude ?>"
                                    name="latitude" placeholder="latitude"
                                    required="">
                             Longitude
-                            <input class="form-control" type="text" value="<?= $planta->longitude ?>"
+                            <input class="form-control" type="text" value="<?php echo $planta->longitude ?>"
                                    name="longitude" placeholder="longitude"
                                    required="">
                         </div>
                         <div class="col-md-4">
                             Editar imagem <input type="checkbox" name="edit_img" value="1"><br>
-                            <?
+                            <?php
                             imagemPlanta($planta->img)
                             ?>
                             <script>
@@ -124,8 +124,8 @@ if (isset($_GET["info"]))
                             <img id="imagem_preview" src="" height="120">
                             <input id="preview_file" class="form-control" type="file" onchange="previewFile()" name="file">
                             <br>
-                            <input type="hidden" name="id" value="<?= $planta->id ?>">
-                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANTA?>">
+                            <input type="hidden" name="id" value="<?php echo $planta->id ?>">
+                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_PLANTA?>">
                             <button class="btn btn-warning" value="Cadastrar planta" style="margin-bottom: 10px">
                                 <span class="glyphicon glyphicon-edit"></span>
                                 Salvar edição
@@ -158,7 +158,7 @@ if (isset($_GET["info"]))
                                             </div>
                                             <div class="modal-body">
                                                 <h3>Deseja mesmo excluir esta planta?
-                                                    (ID: <?= $planta->id ?>)</h3>
+                                                    (ID: <?php echo $planta->id ?>)</h3>
                                                 <h5>Ao excluir a planta, ela será deletada permanentemente e removidas
                                                     das
                                                     trilhas as quais foi incluída.</h5>
@@ -167,7 +167,7 @@ if (isset($_GET["info"]))
                                                 <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">Cancelar
                                                 </button>
-                                                <input type="hidden" value="<?= $planta->id ?>"
+                                                <input type="hidden" value="<?php echo $planta->id ?>"
                                                        name="id">
                                                 <button type="submit" value="Deletar planta"
                                                         class="btn btn-danger" name="opcao">
@@ -182,30 +182,30 @@ if (isset($_GET["info"]))
                         </div>
                     </div>
                     <hr>
-                <?
+                <?php
                 }
                 ?>
                 <span id="txtHint">
-                <?
+                <?php
                 $sql = "select * from ejbsm_planta ORDER BY id limit 10";
                 $result = $link->query($sql);
                 while ($a = mysqli_fetch_object($result)) {
                     ?>
-                    <a href='app_editar_planta.php?id=<?= $a->id ?>'>
+                    <a href='app_editar_planta.php?id=<?php echo $a->id ?>'>
                         <div class="media alert alert-info">
                             <div class="media-left">
-                                <?
+                                <?php
                                 imagemPlanta($a->img)
                                 ?>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading"><?= $a->nome_popular ?></h4>
-                                Espécie: <?= $a->especie ?><br>
-                                Descrição: <?= $a->descricao ?>
+                                <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
+                                Espécie: <?php echo $a->especie ?><br>
+                                Descrição: <?php echo $a->descricao ?>
                             </div>
                         </div>
                     </a>
-                <?
+                <?php
                 }
                 ?>
                     </span>

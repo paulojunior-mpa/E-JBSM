@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador"));
 ?>
 <div class="panel panel-default">
@@ -40,7 +40,7 @@ isUserInRole(array("administrador"));
             </table>
         </form>
         <h3>Tabela de disponibilidade de monitores</h3>
-        <?
+        <?php
         $sql = "select * from ejbsm_horarios_monitores where id = '1'";
         $result = $link->query($sql);
         while ($r = mysqli_fetch_object($result)) {
@@ -135,7 +135,7 @@ isUserInRole(array("administrador"));
         <h3>Informações</h3>
 
         <form action="controller/SystemController.php" method="post">
-            <?
+            <?php
             $sql = "select * from ejbsm_informacao WHERE id = 1";
             $result = $link->query($sql);
             $linha = mysqli_fetch_object($result);

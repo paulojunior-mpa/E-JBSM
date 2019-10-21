@@ -14,7 +14,7 @@
             $result = $link->query($sql) or die(mysqli_error($link));
             $inst = mysqli_fetch_object($result);
     ?>
-    var myLatlng = new google.maps.LatLng(<?=$inst->latitude?>, <?=$inst->longitude?>);
+    var myLatlng = new google.maps.LatLng(<?php echo $inst->latitude?>, <?php echo $inst->longitude?>);
     function initialize() {
         var mapOptions = {
             zoom: 17,
@@ -48,10 +48,10 @@
         var contentString = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
-            '<h1 id="firstHeading" class="firstHeading"><?=$inst->nome?></h1>' +
+            '<h1 id="firstHeading" class="firstHeading"><?php echo $inst->nome?></h1>' +
             '<div id="bodyContent">' +
-            '<p><?=$inst->titulo?>.</p>' +
-            '<p>Fone: <?=$inst->fone1?>. Adicional: <?=$inst->fone2?>. E-mail: <?=$inst->email?>.</p>' +
+            '<p><?php echo $inst->titulo?>.</p>' +
+            '<p>Fone: <?php echo $inst->fone1?>. Adicional: <?php echo $inst->fone2?>. E-mail: <?php echo $inst->email?>.</p>' +
             '</div>' +
             '</div>';
 
@@ -61,7 +61,7 @@
         var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: '<?=$inst->titulo?>'
+            title: '<?php echo $inst->titulo?>'
         });
         marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
         google.maps.event.addListener(marker, 'click', function () {
@@ -76,26 +76,26 @@
                 $result2 = $link->query($sql) or die(mysqli_error($link));
                 $planta = mysqli_fetch_object($result2) or die(mysqli_error($link));
                 ?>
-        var contentString<?=$j?> = '<div id="content">' +
+        var contentString<?php echo $j?> = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
-            '<h1 id="firstHeading" class="firstHeading"><?=$planta->nome_popular?></h1>' +
+            '<h1 id="firstHeading" class="firstHeading"><?php echo $planta->nome_popular?></h1>' +
             '<div id="bodyContent">' +
-            '<p><?=$planta->especie?>.</p>' +
-            '<p>Descrição: <?=$planta->descricao?>.' +
+            '<p><?php echo $planta->especie?>.</p>' +
+            '<p>Descrição: <?php echo $planta->descricao?>.' +
             '</div>' +
             '</div>';
 
-        var infowindow<?=$j?> = new google.maps.InfoWindow({
-            content: contentString<?=$j?>
+        var infowindow<?php echo $j?> = new google.maps.InfoWindow({
+            content: contentString<?php echo $j?>
         });
-        var marker<?=$j?> = new google.maps.Marker({
-            position: new google.maps.LatLng(<?=$planta->latitude?>, <?=$planta->longitude?>),
+        var marker<?php echo $j?> = new google.maps.Marker({
+            position: new google.maps.LatLng(<?php echo $planta->latitude?>, <?php echo $planta->longitude?>),
             map: map,
-            title: '<?=$planta->nome_popular?>'
+            title: '<?php echo $planta->nome_popular?>'
         });
-        google.maps.event.addListener(marker<?=$j?>, 'click', function () {
-            infowindow<?=$j?>.open(map, marker<?=$j?>);
+        google.maps.event.addListener(marker<?php echo $j?>, 'click', function () {
+            infowindow<?php echo $j?>.open(map, marker<?php echo $j?>);
         });
         <?
         $j++;

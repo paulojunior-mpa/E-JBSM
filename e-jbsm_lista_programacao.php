@@ -176,7 +176,7 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                         <tr>
                                             <td>
                                                 <form action="e-jbsm_editar_programacao.php" method="post">
-                                                    <input type="hidden" value="<?= $r->id ?>" name="id">
+                                                    <input type="hidden" value="<?php echo $r->id ?>" name="id">
                                                     <button class="btn btn-warning" value="Editar" name="opcao">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Editar
@@ -187,14 +187,14 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                                 <form action="controller/SystemController.php" method="post">
                                                     <button type="button" class="btn btn-danger"
                                                             data-toggle="modal"
-                                                            data-target="#myModal<?= $j ?>">
+                                                            data-target="#myModal<?php echo $j ?>">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                         Deletar programação
                                                     </button>
-                                                    <input type="hidden" value="<?= $r->id ?>"
+                                                    <input type="hidden" value="<?php echo $r->id ?>"
                                                            name="id">
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1"
+                                                    <div class="modal fade" id="myModal<?php echo $j ?>" tabindex="-1"
                                                          role="dialog" aria-labelledby="myModalLabel"
                                                          aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -210,13 +210,13 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <h3>Deseja mesmo excluir esta programação?
-                                                                        (ID: <?= $r->id ?>)</h3>
+                                                                        (ID: <?php echo $r->id ?>)</h3>
                                                                     <h5></h5>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_PROGRAMACAO?>">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_PROGRAMACAO?>">
                                                                     <button type="submit"  class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Deletar programação
@@ -243,26 +243,26 @@ if (isset($_GET["info"]) and $_GET["info"] == "excluida") {
                 if ($inicio_consulta != "" and $inicio_consulta != 0) {
                     ?>
                     <li>
-                        <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= $inicio_consulta - 10 ?>">&laquo;</a>
+                        <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo $inicio_consulta - 10 ?>">&laquo;</a>
                     </li>
                 <?php } ?>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= 0 ?>#primeira_programacao">1</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo 0 ?>#primeira_programacao">1</a>
                 </li>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= 10 ?>#primeira_programacao">2</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo 10 ?>#primeira_programacao">2</a>
                 </li>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= 20 ?>#primeira_programacao">3</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo 20 ?>#primeira_programacao">3</a>
                 </li>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= 30 ?>#primeira_programacao">4</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo 30 ?>#primeira_programacao">4</a>
                 </li>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= 40 ?>#primeira_programacao">5</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo 40 ?>#primeira_programacao">5</a>
                 </li>
                 <li>
-                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?= $inicio_consulta + 10 ?>">&raquo;</a>
+                    <a href="e-jbsm_lista_programacao.php?inicio_consulta=<?php echo $inicio_consulta + 10 ?>">&raquo;</a>
                 </li>
             </ul>
         </nav>

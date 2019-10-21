@@ -284,7 +284,7 @@ if (isset($_GET["info"])) {
                             $qr = $link->query($sql);
                             while ($r = mysqli_fetch_object($qr)) {
                                 ?>
-                                <option value="<?= $r->nome ?>"><?php echo "$r->nome"; ?>
+                                <option value="<?php echo $r->nome ?>"><?php echo "$r->nome"; ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -292,7 +292,7 @@ if (isset($_GET["info"])) {
                     <hr>
                 </div>
             </div>
-            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_VISITA?>">
+            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_VISITA?>">
             <button class='btn btn-success' type="submit" class="form-control">
                 <span class="glyphicon glyphicon-save"></span>
                 Cadastrar visita

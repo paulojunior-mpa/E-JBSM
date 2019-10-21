@@ -146,7 +146,7 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td><?= $user->status == 1? 'Ativo':'Inativo'; ?></td>
+                    <td><?php echo $user->status == 1? 'Ativo':'Inativo'; ?></td>
                     <td>
                         <select name="status" class="form-control" required>
                             <option value="1">Ativo</option>
@@ -162,8 +162,8 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="loginBolsista" value="<?= $bolsista_login ?>">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_BOLSISTA?>">
+                        <input type="hidden" name="loginBolsista" value="<?php echo $bolsista_login ?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_BOLSISTA?>">
                         <button type="submit" class="btn btn-success">
                             Salvar
                         </button>

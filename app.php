@@ -1,4 +1,4 @@
-<?
+<?php
 
 include 'e-jbsm_cabecalho.php';
 
@@ -42,7 +42,7 @@ if (isset($_GET["info"])) {
             <hr>
             <span id="txtHint"></span>
             <!--RECEPÇÂO DE ID-->
-            <?
+            <?php
             if (isset($_GET["id"]) and $_GET["id"] != "") {
                 $id = htmlspecialchars($_GET["id"]);
                 $sql = "select * from ejbsm_planta where id = $id";
@@ -64,30 +64,30 @@ if (isset($_GET["info"])) {
                             </tr>
                             <tr>
                                 <td>
-                                    <?
+                                    <?php
                                     imagemPlanta($planta->img)
                                     ?>
                                 </td>
-                                <td id="popular"><?= $planta->nome_popular ?></td>
-                                <td rowspan="2" id="descricao"><?= $planta->descricao ?></td>
-                                <td id="especie"><?= $planta->especie ?></td>
-                                <td id="genero"><?= $planta->genero ?></td>
-                                <td id="familia"><?= $planta->familia ?></td>
-                                <td id="origem"><?= $planta->origem ?></td>
+                                <td id="popular"><?php echo $planta->nome_popular ?></td>
+                                <td rowspan="2" id="descricao"><?php echo $planta->descricao ?></td>
+                                <td id="especie"><?php echo $planta->especie ?></td>
+                                <td id="genero"><?php echo $planta->genero ?></td>
+                                <td id="familia"><?php echo $planta->familia ?></td>
+                                <td id="origem"><?php echo $planta->origem ?></td>
                             </tr>
                         </table>
                     </div>
                     <hr>
-                <?
+                <?php
                 if (!$planta->latitude == "" or !$planta->longitude == ""){
                 ?>
                     <h4>Localização</h4>
                     <div id="map-canvas" style="height: 350px; width: 100%"></div>
 
                     Latitude:
-                    <div id="planta_latitude"><?= $planta->latitude ?></div>
+                    <div id="planta_latitude"><?php echo $planta->latitude ?></div>
                     Longitude:
-                    <div id="planta_longitude"><?= $planta->longitude ?></div>
+                    <div id="planta_longitude"><?php echo $planta->longitude ?></div>
                     <script src="resources/js/jquery.min.js"></script>
 
                     <!-- Maps API Javascript -->
@@ -96,7 +96,7 @@ if (isset($_GET["info"])) {
 
                     <!-- Arquivo de inicialização do mapa -->
                     <script src="resources/js/mapa_planta.js"></script>
-                <?
+                <?php
                 }
                     $sql = "update ejbsm_planta set visualizada = (ejbsm_planta.visualizada+1), ult_visualizada = now()";
                     $link->query($sql) or die(mysqli_error($link));

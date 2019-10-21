@@ -45,7 +45,7 @@ $user = mysqli_fetch_object($result);
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                     </button>
-                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_IMAGEM?>">
+                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_IMAGEM?>">
                                     <button type="submit" class="btn btn-success">
                                         <span class="glyphicon glyphicon-camera"></span>
                                         Alterar imagem
@@ -67,22 +67,22 @@ $user = mysqli_fetch_object($result);
                            placeholder="Digite novamente sua senha ou crie uma nova"
                            required>
                     Nome
-                    <input type="text" name="nome" class="form-control" value="<?= $user->nome ?>"
+                    <input type="text" name="nome" class="form-control" value="<?php echo $user->nome ?>"
                            placeholder="Nome completo"
                            required>
                     E-mail
-                    <input type="email" class="form-control" name="email" value="<?= $user->email ?>"
+                    <input type="email" class="form-control" name="email" value="<?php echo $user->email ?>"
                            placeholder="E-mail"
                            required>
                     Cidade
-                    <input type="text" class="form-control" name="cidade" value="<?= $user->cidade ?>"
+                    <input type="text" class="form-control" name="cidade" value="<?php echo $user->cidade ?>"
                            placeholder="Cidade"
                            required>
                     Telefone fixo
-                    <input type="number" class="form-control" name="fixo" value="<?= $user->fixo ?>"
+                    <input type="number" class="form-control" name="fixo" value="<?php echo $user->fixo ?>"
                            placeholder="Fixo">
                     Celular
-                    <input type="number" class="form-control" name="celular" value="<?= $user->celular ?>"
+                    <input type="number" class="form-control" name="celular" value="<?php echo $user->celular ?>"
                            placeholder="Celular">
                 </div>
                 <div class="col-md-6">
@@ -93,14 +93,14 @@ $user = mysqli_fetch_object($result);
                             echo "SIAPE";
                         }
                         ?>
-                        <input type="number" class="form-control" name="id" value="<?= $user->id ?>" required>
+                        <input type="number" class="form-control" name="id" value="<?php echo $user->id ?>" required>
                         CPF
-                        <input type="text" class="form-control" name="cpf" value="<?= $user->cpf ?>" placeholder="CPF">
+                        <input type="text" class="form-control" name="cpf" value="<?php echo $user->cpf ?>" placeholder="CPF">
                         Registro Geral
-                        <input type="number" class="form-control" name="rg" value="<?= $user->rg ?>"
+                        <input type="number" class="form-control" name="rg" value="<?php echo $user->rg ?>"
                                placeholder="Registro Geral">
                         Órgão expedidor
-                        <input type="text" class="form-control" name="orgao" value="<?= $user->orgao ?>"
+                        <input type="text" class="form-control" name="orgao" value="<?php echo $user->orgao ?>"
                                placeholder="Órgão">
                     <?php } ?>
                 </div>
@@ -110,15 +110,15 @@ $user = mysqli_fetch_object($result);
                 <div class="row">
                     <div class="col-md-6">
                         Conta bancária
-                        <input type="text" class="form-control" name="conta" value="<?= $user->conta ?>"
+                        <input type="text" class="form-control" name="conta" value="<?php echo $user->conta ?>"
                                placeholder="Conta">
                         Banco
-                        <input type="text" class="form-control" name="banco" value="<?= $user->banco ?>"
+                        <input type="text" class="form-control" name="banco" value="<?php echo $user->banco ?>"
                                placeholder="Banco">
                     </div>
                     <div class="col-md-6">
                         Agência bancária
-                        <input type="text" class="form-control" name="agencia" value="<?= $user->agencia ?>"
+                        <input type="text" class="form-control" name="agencia" value="<?php echo $user->agencia ?>"
                                placeholder="Agência">
                         Tipo de conta
                         <select name="tipoConta" class="form-control">
@@ -132,7 +132,7 @@ $user = mysqli_fetch_object($result);
                 include 'e-jbsm_bolsista_horario.php'; ?>
             <?php } ?>
             <hr>
-            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PERFIL?>">
+            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_PERFIL?>">
             <button type="submit" class="btn btn-success">
                 <span class="glyphicon glyphicon-save"></span>
                 Salvar alterações

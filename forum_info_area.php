@@ -45,21 +45,21 @@ if (isset($_GET["info"])) {
                                             <tr>
                                                 <td>Nome da área
                                                     <input type="text" class="form-control" name="area_nome"
-                                                           value="<?= $area->nome ?>" required="">
+                                                           value="<?php echo $area->nome ?>" required="">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Descrição da área
                                                     <textarea name="area_descricao" class="form-control"
-                                                              placeholder="<?= $area->descricao ?>"
-                                                              required=""><?= $area->descricao ?>
+                                                              placeholder="<?php echo $area->descricao ?>"
+                                                              required=""><?php echo $area->descricao ?>
                                                 </textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $area->id ?>" name="id">
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_AREA?>">
+                                                    <input type="hidden" value="<?php echo $area->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_AREA?>">
                                                     <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Salvar edição
@@ -70,7 +70,7 @@ if (isset($_GET["info"])) {
                                     </form>
                                     <?php if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <form action="controller/ForumController.php" method="post">
-                                            <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="myModal<?php echo $j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -82,7 +82,7 @@ if (isset($_GET["info"])) {
                                                             <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h3>Deseja mesmo deletar a área <?=$area->nome?></h3>
+                                                            <h3>Deseja mesmo deletar a área <?php echo $area->nome?></h3>
                                                             <?if($area->id!=1){?>
                                                             <h5>Ao deletar, todas as subáreas e topicos relacionados serão movidos para a área padrão 'Outros'.</h5>
                                                             <?}else{?>
@@ -95,7 +95,7 @@ if (isset($_GET["info"])) {
                                                                 Cancelar
                                                             </button>
                                                             <?if($area->id!=1){?>
-                                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_AREA?>">
+                                                                <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_AREA?>">
                                                                 <button type="submit" class="btn btn-danger">
                                                                     <span class="glyphicon glyphicon-remove"></span>
                                                                     Deletar área
@@ -106,11 +106,11 @@ if (isset($_GET["info"])) {
                                                 </div>
                                             </div>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?=$j?>">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?php echo $j?>">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 Deletar Área
                                             </button>
-                                            <input type="hidden" value="<?= $area->id ?>" name="id">
+                                            <input type="hidden" value="<?php echo $area->id ?>" name="id">
                                         </form>
                                     <?php } ?>
                                 </a>

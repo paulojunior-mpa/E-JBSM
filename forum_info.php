@@ -118,8 +118,8 @@ if (isset($_GET["info"])) {
                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                         Cancelar
                                     </button>
-                                    <input type="hidden" value="<?= $row->login ?>" name="login">
-                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ATIVAR_DESATIVAR?>">
+                                    <input type="hidden" value="<?php echo $row->login ?>" name="login">
+                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ATIVAR_DESATIVAR?>">
                                     <?php if ($row->status == 1) { ?>
                                         <button type="submit" class="btn btn-danger" name="op"
                                                 value="0">

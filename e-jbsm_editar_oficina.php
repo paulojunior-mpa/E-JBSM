@@ -17,7 +17,7 @@ $r = mysqli_fetch_object($qr);
                 <tr>
                     <td>Nome
                         <input type="text" class="form-control" placeholder="Nome da oficina" name="nome"
-                               value="<?= $r->nome ?>" required>
+                               value="<?php echo $r->nome ?>" required>
                     </td>
                     <td>Monitor
                         <select name="nome_monitor" class="form-control" required>
@@ -27,7 +27,7 @@ $r = mysqli_fetch_object($qr);
                             while ($row = mysqli_fetch_object($qr)) {
                                 $Pnome = explode(" ", $row->nome);
                                 ?>
-                                <option value="<?= $Pnome[0] ?>"><?php echo "$row->login / ";
+                                <option value="<?php echo $Pnome[0] ?>"><?php echo "$row->login / ";
                                     echo "$Pnome[0]"; ?>
                                 </option>
                             <?php } ?>
@@ -41,7 +41,7 @@ $r = mysqli_fetch_object($qr);
                             while ($row = mysqli_fetch_object($result)) {
                                 $Pnome = explode(" ", $row->nome);
                                 ?>
-                                <option value="<?= $row->nome ?>"><?php echo "$row->login / ";
+                                <option value="<?php echo $row->nome ?>"><?php echo "$row->login / ";
                                     echo "$Pnome[0]"; ?>
                                 </option>
                             <?php } ?>
@@ -51,25 +51,25 @@ $r = mysqli_fetch_object($qr);
                 <tr>
                     <td colspan="3">Descrição
                             <textarea class="form-control" cols="80" rows="3" placeholder="Descrição" name="descricao"
-                                      required><?= $r->descricao ?></textarea>
+                                      required><?php echo $r->descricao ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">Material utilizado
                             <textarea class="form-control" cols="80" rows="3" placeholder="Material" name="material"
-                                      required><?= $r->material ?></textarea>
+                                      required><?php echo $r->material ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">Link para mais informações
                             <textarea class="form-control" cols="80" rows="3" placeholder="Link" name="link"
-                                      required><?= $r->anexo ?></textarea>
+                                      required><?php echo $r->anexo ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input class="form-control" type="hidden" name="id" value="<?= $r->id ?>">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_OFICINA?>">
+                        <input class="form-control" type="hidden" name="id" value="<?php echo $r->id ?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_OFICINA?>">
                         <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar edição

@@ -101,7 +101,7 @@ if ($user_permissao != "usuario") { ?>
                     </tr>
                     <tr>
                         <td>
-                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANO?>">
+                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_PLANO?>">
                             <button class="btn btn-success" type="submit">
                                 <span class="glyphicon glyphicon-save"></span>
                                 Cadastrar
@@ -214,7 +214,7 @@ if ($user_permissao != "usuario") { ?>
                                                                             data-dismiss="modal">Cancelar
                                                                     </button>
                                                                     <input type="hidden" value="<?php echo $r->id ?>" name="codigo">
-                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_PLANO?>">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_PLANO?>">
                                                                     <button type="submit" class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Excluir plano

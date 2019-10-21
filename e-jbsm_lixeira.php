@@ -45,27 +45,27 @@ if ($info == "deletada") {
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <b>Usuário: </b><?= $visita->login ?><br>
-                                                    <b>Data: </b><?= $visita->data ?><br>
-                                                    <b>Hora: </b><?= $visita->hora ?><br>
-                                                    <b>Oficina:</b><?= $visita->oficina; ?><br>
+                                                    <b>Usuário: </b><?php echo $visita->login ?><br>
+                                                    <b>Data: </b><?php echo $visita->data ?><br>
+                                                    <b>Hora: </b><?php echo $visita->hora ?><br>
+                                                    <b>Oficina:</b><?php echo $visita->oficina; ?><br>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Duração de visita:</b><?= $visita->duracao; ?><br>
-                                                    <b>Insituicao/Grupo:</b><?= $visita->instituicao; ?><br>
-                                                    <b>Tipo de Instituicao:</b><?= $visita->tipo_instituicao; ?><br>
-                                                    <b>Monitor:</b><?= $visita->monitor ?>
+                                                    <b>Duração de visita:</b><?php echo $visita->duracao; ?><br>
+                                                    <b>Insituicao/Grupo:</b><?php echo $visita->instituicao; ?><br>
+                                                    <b>Tipo de Instituicao:</b><?php echo $visita->tipo_instituicao; ?><br>
+                                                    <b>Monitor:</b><?php echo $visita->monitor ?>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Responsável: </b><?= $visita->responsavel; ?><br>
-                                                    <b>Cidade: </b><?= $visita->cidade; ?><br>
-                                                    <b>Curso / Ano: </b><?= $visita->curso; ?><br>
-                                                    <b>Numero de Visitantes: </b><?= $visita->visitantes; ?>
+                                                    <b>Responsável: </b><?php echo $visita->responsavel; ?><br>
+                                                    <b>Cidade: </b><?php echo $visita->cidade; ?><br>
+                                                    <b>Curso / Ano: </b><?php echo $visita->curso; ?><br>
+                                                    <b>Numero de Visitantes: </b><?php echo $visita->visitantes; ?>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Telefone: </b><?= $visita->fone; ?><br>
-                                                    <b>Conteudo: </b><?= $visita->conteudo; ?><br>
-                                                    <b>Auxilio para desenvolver conteudo: </b><?= $visita->auxilio; ?>
+                                                    <b>Telefone: </b><?php echo $visita->fone; ?><br>
+                                                    <b>Conteudo: </b><?php echo $visita->conteudo; ?><br>
+                                                    <b>Auxilio para desenvolver conteudo: </b><?php echo $visita->auxilio; ?>
                                                     <br>.
                                                 </div>
                                             </div>
@@ -77,12 +77,12 @@ if ($info == "deletada") {
                                                         <form action="controller/SystemController.php" method="post">
                                                             <button type="button" class="btn btn-danger"
                                                                     data-toggle="modal"
-                                                                    data-target="#myModal<?= $j ?>">
+                                                                    data-target="#myModal<?php echo $j ?>">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                 Excluir visita
                                                             </button>
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1"
+                                                            <div class="modal fade" id="myModal<?php echo $j ?>" tabindex="-1"
                                                                  role="dialog"
                                                                  aria-labelledby="myModalLabel"
                                                                  aria-hidden="true">
@@ -98,13 +98,13 @@ if ($info == "deletada") {
                                                                                 Confirmar exclusão.</h4>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <h3>Deseja mesmo excluir esta visita? (ID: <?= $visita->id ?>)</h3>
+                                                                            <h3>Deseja mesmo excluir esta visita? (ID: <?php echo $visita->id ?>)</h3>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                                                             </button>
-                                                                            <input type="hidden" value="<?= $visita->id ?>" name="id">
-                                                                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_VISITA?>">
+                                                                            <input type="hidden" value="<?php echo $visita->id ?>" name="id">
+                                                                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_VISITA?>">
                                                                             <button type="submit" class="btn btn-danger">
                                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                                 Deletar visita
@@ -120,7 +120,7 @@ if ($info == "deletada") {
                                                     <div class="col-md-3">
                                                         <form action="e-jbsm_editar_visita.php" method="post">
                                                             <div class="input-group">
-                                                                <input type="hidden" value="<?= $visita->id ?>" name="id">
+                                                                <input type="hidden" value="<?php echo $visita->id ?>" name="id">
                                                                 <button type="submit" class="btn btn-warning" value="Editar visita" name="opcao">
                                                                     <span class="glyphicon glyphicon-edit"></span>
                                                                     Editar

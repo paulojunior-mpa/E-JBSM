@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador"));
 $info = "";
 if (isset($_GET["info"])) {
@@ -107,7 +107,7 @@ if (isset($_GET["info"])) {
                         </select>
                     </td>
                     <td><br>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_BOLSISTA?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_BOLSISTA?>">
                         <button class="btn btn-success" type="submit" value="Cadastrar bolsista">
                             <span class="glyphicon glyphicon-save"></span>
                             Cadastrar

@@ -219,7 +219,7 @@ function PegaHorarios($condicao, $login, $link)
                                             </table>
                                         </td>
                                     </tr>
-                                    <?
+                                    <?php
                                     if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <tr>
                                             <td>
@@ -232,7 +232,7 @@ function PegaHorarios($condicao, $login, $link)
                                                 </form>
                                             </td>
                                         </tr>
-                                        <?
+                                        <?php
                                     }
                                     ?>
                                 </table>
@@ -242,7 +242,7 @@ function PegaHorarios($condicao, $login, $link)
                     </li>
                 </ul>
             </div>
-            <?
+            <?php
         }
         ?>
     </div>

@@ -102,12 +102,12 @@ isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
             </tr>
             <?while ($visita = mysqli_fetch_object($result)) {?>
                 <tr>
-                    <td><?=$visita->id?></td>
-                    <td><?=$visita->instituicao?></td>
-                    <td><?=$visita->data?></td>
-                    <td><?=$visita->hora?></td>
-                    <td><?=$visita->visitantes?></td>
-                    <td><?=$visita->login?></td>
+                    <td><?php echo $visita->id?></td>
+                    <td><?php echo $visita->instituicao?></td>
+                    <td><?php echo $visita->data?></td>
+                    <td><?php echo $visita->hora?></td>
+                    <td><?php echo $visita->visitantes?></td>
+                    <td><?php echo $visita->login?></td>
                 </tr>
             <?}?>
         </table>

@@ -85,7 +85,7 @@ if (isset($_REQUEST["usuario"])) {
                        name="usuario_confirma_senha">
             </div>
             <div class="form-group col-md-6"><br>
-                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_USUARIO?>">
+                <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_USUARIO?>">
                 <button class='btn btn-success form-control' type="submit" style="width: 100%">
                     <span class="glyphicon glyphicon-save"></span>
                     Cadastrar

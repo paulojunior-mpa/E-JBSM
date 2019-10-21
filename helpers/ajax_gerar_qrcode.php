@@ -20,11 +20,11 @@ if ($q !== null) {
                 ?>
             </div>
             <div class="media-body">
-                <h4 class="media-heading"><?= $a->nome_popular ?></h4>
-                Espécie: <?= $a->especie ?><br>
+                <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
+                Espécie: <?php echo $a->especie ?><br>
             </div>
             <div class="media-right">
-                <a href="app_qrcode.php?id=<?= $a->id ?>&p=<?=$p?>">
+                <a href="app_qrcode.php?id=<?php echo $a->id ?>&p=<?php echo $p?>">
                     <button class="btn btn-success" style="min-width: 0">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>

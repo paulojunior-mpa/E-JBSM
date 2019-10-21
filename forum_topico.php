@@ -48,8 +48,8 @@ if (isset($_GET["topico"])) {
                 <h3 class="panel-title"><span style="color: green"><b>Assunto: </b></span><?php echo $topico->assunto ?></h3> <br>
                 <span style="color: green"><b>Dia </b></span><?php echo $topico->data; ?>
                 <span style="color: green"><b>as </b></span><?php echo $topico->hora; ?>
-                <span style="color: green"><b>na área </b></span><a target="_blank" href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><?php echo $nome_area ?></a>
-                <span style="color: green"><b>e subárea </b></span><a target="_blank" href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><?php echo $nome_subarea ?></a>
+                <span style="color: green"><b>na área </b></span><a target="_blank" href="forum_info.php?info=area&area=<?php echo $topico->id_area ?>"><?php echo $nome_area ?></a>
+                <span style="color: green"><b>e subárea </b></span><a target="_blank" href="forum_info.php?info=subarea&subarea=<?php echo $topico->id_subarea ?>"><?php echo $nome_subarea ?></a>
                 <span style="color: green"><b>ID </b></span><?php echo $topico->id ?>
                 <br>
             </div>
@@ -66,8 +66,8 @@ if (isset($_GET["topico"])) {
                 <span style="color: green">E-mail:</span> <?php echo $row->email; ?><br>
                 <?php if ($topico->login == $user_login or $user_permissao == "administrador") { ?>
                     <form action="controller/ForumController.php" method="post">
-                        <input type="hidden" value="<?= $topico->id ?>" name="id">
-                        <input type="hidden" value="<?= $topico->anexo ?>" name="topico_anexo">
+                        <input type="hidden" value="<?php echo $topico->id ?>" name="id">
+                        <input type="hidden" value="<?php echo $topico->anexo ?>" name="topico_anexo">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal">
                             <span class="glyphicon glyphicon-remove"></span>
@@ -90,7 +90,7 @@ if (isset($_GET["topico"])) {
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
                                         </button>
-                                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_TOPICO?>">
+                                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_TOPICO?>">
                                         <button type="submit" class="btn btn-danger">
                                             <span class="glyphicon glyphicon-remove"></span>
                                             Deletar topico
@@ -141,8 +141,8 @@ if (isset($_GET["topico"])) {
                         <input type="file" class="form-control" name="anexo">
                     </td>
                     <td>
-                        <input type="hidden" value="<?= $topico->id ?>" name="id">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_RESPOSTA?>">
+                        <input type="hidden" value="<?php echo $topico->id ?>" name="id">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_RESPOSTA?>">
                         <button type="submit" style="width: 100%" class="btn btn-success">
                             <span class="glyphicon glyphicon-send"></span>
                             Enviar
@@ -186,7 +186,7 @@ if (isset($_GET["topico"])) {
                     <span style="color: green">E-mail: </span><?php echo $row->email; ?><br>
                     <?php if ($resposta->login == $user_login or $user_permissao == "administrador") { ?>
                         <form action="controller/ForumController.php" method="post">
-                            <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="myModal<?php echo $j ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -194,7 +194,7 @@ if (isset($_GET["topico"])) {
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             <h4 class="modal-title" id="myModalLabel">
-                                                Confirmação (ID: <?= $resposta->id ?>)
+                                                Confirmação (ID: <?php echo $resposta->id ?>)
                                             </h4>
                                         </div>
                                         <div class="modal-body">
@@ -205,10 +205,10 @@ if (isset($_GET["topico"])) {
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Cancelar
                                             </button>
-                                            <input type="hidden" value="<?= $resposta->id ?>" name="id">
-                                            <input type="hidden" value="<?= $topico->id ?>" name="topico_id">
-                                            <input type='hidden' value='<?= $resposta->anexo ?>' name='resposta_anexo'>
-                                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_RESPOSTA?>">
+                                            <input type="hidden" value="<?php echo $resposta->id ?>" name="id">
+                                            <input type="hidden" value="<?php echo $topico->id ?>" name="topico_id">
+                                            <input type='hidden' value='<?php echo $resposta->anexo ?>' name='resposta_anexo'>
+                                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_RESPOSTA?>">
                                             <button type="submit" class="btn btn-danger">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 Deletar resposta
@@ -217,7 +217,7 @@ if (isset($_GET["topico"])) {
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" style="width: 100%;" class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal<?= $j ?>">
+                            <button type="button" style="width: 100%;" class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal<?php echo $j ?>">
                                 <span class="glyphicon glyphicon-remove"></span>
                                 Deletar Resposta
                             </button>

@@ -1,4 +1,4 @@
-<?
+<?php
 $sql = "select login from ejbsm_horario_bolsista where login = '$login_usuario'";
 $result = $link->query($sql);
 $r = mysqli_fetch_assoc($result);

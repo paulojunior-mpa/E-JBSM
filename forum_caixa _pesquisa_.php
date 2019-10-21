@@ -22,7 +22,7 @@
                                             $qr = $link->query($sql) or die(mysqli_error($link));
                                             while ($area = mysqli_fetch_object($qr)) {
                                                 ?>
-                                                <option value="<?= $area->id ?>"><?php echo $area->nome ?></option>
+                                                <option value="<?php echo $area->id ?>"><?php echo $area->nome ?></option>
                                             <?php
                                             }
                                             ?>
@@ -37,7 +37,7 @@
                                             while ($subarea = mysqli_fetch_object($qr)) {
                                                 ?>
                                                 <option
-                                                    value="<?= $subarea->id ?>"><?php echo $subarea->nome ?></option>
+                                                    value="<?php echo $subarea->id ?>"><?php echo $subarea->nome ?></option>
                                             <?php
                                             }
                                             ?>
@@ -65,7 +65,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="consulta" id="consulta" value="<?=Constantes::PESQUISAR?>">
+                                        <input type="hidden" name="consulta" id="consulta" value="<?php echo Constantes::PESQUISAR?>">
                                         <button type="submit" class="btn btn-info">
                                             <span class="glyphicon glyphicon-search"></span>
                                             Pesquisar

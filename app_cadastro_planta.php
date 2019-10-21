@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"), false);
 include 'e-jbsm_cabecalho.php';
 $inicio_consulta = "";
@@ -80,7 +80,7 @@ if (isset($_GET["info"])) {
                         <img id="imagem_preview" src="" height="120">
                         <input id="preview_file" class="form-control" type="file" onchange="previewFile()" name="file">
                         <br>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_PLANTA?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_PLANTA?>">
                         <button class="btn btn-success btn-block" value="Cadastrar planta">
                             <span class="glyphicon glyphicon-save"></span>
                             Cadastrar
@@ -105,7 +105,7 @@ if (isset($_GET["info"])) {
                 </div>
             </form>
         </div>
-        <?
+        <?php
         if (isset($_POST["xls"])) {
             include 'helpers/excel_reader/excel_reader2.php';
             $arquivo = $_FILES["file"]["tmp_name"];
@@ -121,7 +121,7 @@ if (isset($_GET["info"])) {
                         <th>Origem</th>
                         <th>Descrição</th>
                     </tr>
-                    <?
+                    <?php
                     $j = 0;
                     for ($i = 0; $i <= $data->rowcount($sheet_index = 0); $i++) {
                         if (!$data->val($i, 2) == "") {
@@ -134,14 +134,14 @@ if (isset($_GET["info"])) {
                             $descricao = $data->val($i, 5);
                             ?>
                             <tr>
-                                <td><?= $nome ?></td>
-                                <td><?= $genero ?></td>
-                                <td><?= $especie ?></td>
-                                <td><?= $familia ?></td>
-                                <td><?= $origen ?></td>
-                                <td><?= $descricao ?></td>
+                                <td><?php echo $nome ?></td>
+                                <td><?php echo $genero ?></td>
+                                <td><?php echo $especie ?></td>
+                                <td><?php echo $familia ?></td>
+                                <td><?php echo $origen ?></td>
+                                <td><?php echo $descricao ?></td>
                             </tr>
-                            <?
+                            <?php
                             $sql = "insert into ejbsm_planta(nome_popular, genero, especie, familia, origem, descricao) VALUES ('$nome', '$genero', '$especie', '$familia', '$origen', '$descricao')";
                             $link->query($sql) or die(mysqli_error($link));
                         }
@@ -150,7 +150,7 @@ if (isset($_GET["info"])) {
                     ?>
                 </table>
             </div>
-            <?
+            <?php
         }
         ?>
     </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 $id = "";
@@ -115,7 +115,7 @@ $r = mysqli_fetch_object($result);
                 <tr>
                     <td>
                         <input type="hidden" name="id" value="<?php echo $r->id ?>">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PROGRAMACAO?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_PROGRAMACAO?>">
                         <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar edição

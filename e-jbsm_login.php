@@ -92,7 +92,7 @@ if (isset($_GET["info"]))
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::LOGAR?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::LOGAR?>">
                         <button class='btn btn-success' type="submit">
                             <span class="glyphicon glyphicon-log-in"></span>
                             Entrar

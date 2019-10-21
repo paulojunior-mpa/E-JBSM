@@ -26,7 +26,7 @@ if (isset($_GET["info"])) {
                             while ($subarea = mysqli_fetch_object($qr2)) {
                                 ?>
                                 <option
-                                    value="<?= $area->id ?> / <?= $subarea->id ?>"><?php echo $area->nome ?>
+                                    value="<?php echo $area->id ?> / <?php echo $subarea->id ?>"><?php echo $area->nome ?>
                                     / <?php echo $subarea->nome ?></option>
                             <?php
                             }
@@ -51,7 +51,7 @@ if (isset($_GET["info"])) {
                     <input type="file" class="form-control" name="anexo">
                 </td>
                 <td><br>
-                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_TOPICO?>">
+                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_TOPICO?>">
                     <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-save"></span>
                         Cadastrar tópico
@@ -111,7 +111,7 @@ if (isset($_GET["info"])) {
                             $exec = $link->query($sql) or die(mysqli_error($link));
                             while ($area = mysqli_fetch_object($exec)) {
                                 ?>
-                                <option value="<?= $area->id ?>"><?php echo $area->nome ?></option>
+                                <option value="<?php echo $area->id ?>"><?php echo $area->nome ?></option>
                             <?php } ?>
                         </select>
                     </td>

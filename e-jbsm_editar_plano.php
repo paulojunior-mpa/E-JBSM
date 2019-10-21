@@ -10,20 +10,20 @@ $r = mysqli_fetch_object($qr);
 ?>
 <div class="panel panel-default">
     <div class="panel-body">
-        <h3>Editar plano <?= $r->nome ?></h3>
+        <h3>Editar plano <?php echo $r->nome ?></h3>
 
         <form action="controller/SystemController.php" method="post">
             <table class="table">
                 <tr>
                     <td>Nome
                         <input type="text" class="form-control" placeholder="Nome do Plano" name="nome"
-                               value="<?= $r->nome ?>" required>
+                               value="<?php echo $r->nome ?>" required>
                     </td>
                 </tr>
                 <tr>
                     <td>Público alvo
                         <input type="text" class="form-control" placeholder="Público alvo" name="publicoAlvo"
-                               value="<?= $r->publico_alvo ?>"
+                               value="<?php echo $r->publico_alvo ?>"
                                required>
                     </td>
                 </tr>
@@ -36,7 +36,7 @@ $r = mysqli_fetch_object($qr);
                             while ($row = mysqli_fetch_object($result)) {
                                 $Pnome = explode(" ", $row->nome);
                                 ?>
-                                <option value="<?= $Pnome[0] ?>"><?php echo "$row->login / ";
+                                <option value="<?php echo $Pnome[0] ?>"><?php echo "$row->login / ";
                                     echo "$Pnome[0]"; ?>
                                 </option>
                             <?php } ?>
@@ -46,55 +46,55 @@ $r = mysqli_fetch_object($qr);
                 <tr>
                     <td>Objetivo
                         <textarea class="form-control" cols="80" rows="3" placeholder="Objetivo" name="objetivo"
-                                  required><?= $r->objetivo ?></textarea>
+                                  required><?php echo $r->objetivo ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Assuntos
                         <textarea class="form-control" cols="80" rows="3" placeholder="Assuntos para abordar"
                                   name="assunto"
-                                  required><?= $r->assunto ?></textarea>
+                                  required><?php echo $r->assunto ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Estratégias cognitivas
                         <textarea class="form-control" cols="80" rows="3" placeholder="Estratégias cognitivas"
                                   name="estrategia"
-                                  required><?= $r->estrategia ?></textarea>
+                                  required><?php echo $r->estrategia ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Recursos
                         <textarea class="form-control" cols="80" rows="3" placeholder="Recursos extras"
                                   name="recursos"
-                                  required><?= $r->recursos ?></textarea>
+                                  required><?php echo $r->recursos ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Locais para visitar
                         <textarea class="form-control" cols="80" rows="3" placeholder="Locais a serem visitados"
                                   name="locais"
-                                  required><?= $r->locais ?></textarea>
+                                  required><?php echo $r->locais ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Relevancia de locais
                         <textarea class="form-control" cols="80" rows="3" placeholder="Relevância de cada local"
                                   name="relevancia"
-                                  required><?= $r->relevancia ?></textarea>
+                                  required><?php echo $r->relevancia ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Instrumentos de coleta de dados
                         <textarea class="form-control" cols="80" rows="3"
                                   placeholder="Instrumento de coleta de dados"
-                                  name="instrumento" required><?= $r->instrumento ?></textarea>
+                                  name="instrumento" required><?php echo $r->instrumento ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="id" value="<?= $r->id ?>">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PLANO?>">
+                        <input type="hidden" name="id" value="<?php echo $r->id ?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_PLANO?>">
                         <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar edição

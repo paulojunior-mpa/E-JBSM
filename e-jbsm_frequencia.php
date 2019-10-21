@@ -47,7 +47,7 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
                                 $qr = $link->query($sql);
                                 while ($r = mysqli_fetch_object($qr)) {
                                     ?>
-                                    <option value="<?= $r->login ?>"><?php echo "$r->login / ";
+                                    <option value="<?php echo $r->login ?>"><?php echo "$r->login / ";
                                         $Pnome = explode(" ", $r->nome);
                                         echo "$Pnome[0]"; ?>
                                     </option>
@@ -120,7 +120,7 @@ if ($user_permissao == "bolsista") {
                     </tr>
                     <tr>
                         <td>
-                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_FREQUENCIA?>">
+                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_FREQUENCIA?>">
                             <button type="submit" class="btn btn-success">
                                 Cadastrar
                             </button>
@@ -150,10 +150,10 @@ if ($user_permissao == "bolsista") {
                 ?>
                 <table class="table">
                     <tr>
-                        <td><b>ID: </b><?= $r->id ?></td>
-                        <td><b>Data: </b><?= date_($r->data, false) ?></td>
-                        <td><b>Entrada: </b><?= $r->entrada ?></td>
-                        <td><b>Saída: </b><?= $r->saida ?></td>
+                        <td><b>ID: </b><?php echo $r->id ?></td>
+                        <td><b>Data: </b><?php echo date_($r->data, false) ?></td>
+                        <td><b>Entrada: </b><?php echo $r->entrada ?></td>
+                        <td><b>Saída: </b><?php echo $r->saida ?></td>
                     </tr>
                 </table>
             <?php } ?>
@@ -163,16 +163,16 @@ if ($user_permissao == "bolsista") {
                     if ($inicio_consulta != "" and $inicio_consulta != 0) {
                         ?>
                         <li>
-                            <a href="e-jbsm_frequencia.php?inicio_consulta=<?= $inicio_consulta - 10 ?>">&laquo;</a>
+                            <a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo $inicio_consulta - 10 ?>">&laquo;</a>
                         </li>
                     <?php } ?>
-                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 0 ?>">1</a></li>
-                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 10 ?>">2</a></li>
-                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 20 ?>">3</a></li>
-                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 30 ?>">4</a></li>
-                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?= 40 ?>">5</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo 0 ?>">1</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo 10 ?>">2</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo 20 ?>">3</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo 30 ?>">4</a></li>
+                    <li><a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo 40 ?>">5</a></li>
                     <li>
-                        <a href="e-jbsm_frequencia.php?inicio_consulta=<?= $inicio_consulta + 10 ?>">&raquo;</a>
+                        <a href="e-jbsm_frequencia.php?inicio_consulta=<?php echo $inicio_consulta + 10 ?>">&raquo;</a>
                     </li>
                 </ul>
             </nav>

@@ -1,4 +1,4 @@
-<?
+<?php
 include 'e-jbsm_cabecalho.php';
 ?>
 <div class="panel panel-default">
@@ -22,7 +22,7 @@ include 'e-jbsm_cabecalho.php';
             <p><b>Selecione uma trilha.</b></p>
             <select id="trilha" class="form-control" onchange="showHint()">
                 <option value="">Nenhuma</option>
-                <?
+                <?php
                 $sql = "select * from ejbsm_trilha";
                 $result = $link->query($sql);
                 while ($trilha = mysqli_fetch_object($result)) {
@@ -31,7 +31,7 @@ include 'e-jbsm_cabecalho.php';
                 ?>
             </select>
             <hr>
-            <?
+            <?php
             if (isset($_GET["id"])) {
                 $id_trilha = $_GET["id"];
                 $id_trilha_select = $id_trilha;
@@ -54,7 +54,7 @@ include 'e-jbsm_cabecalho.php';
                     <a href='app.php?id=<?php echo  $planta->id ?>'>
                         <div class="media">
                             <div class="media-left">
-                                <?
+                                <?php
                                 imagemPlanta($planta->img)
                                 ?>
                             </div>
@@ -65,7 +65,7 @@ include 'e-jbsm_cabecalho.php';
                         </div>
                     </a>
                     <hr>
-                <?
+                <?php
                 }
                 if($o==0){
                     echo "Nenhuma planta está cadastrada nesta trilha.";

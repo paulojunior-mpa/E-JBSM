@@ -42,7 +42,7 @@ if (isset($_POST["info"]))
                     </button>
                 </form>
                 Imagem:
-                <?
+                <?php
                 if (isset($_GET["id"]) and isset($_GET["p"])) {
                     $info = $_GET["p"] . $_GET["id"];
                     QRcode::png($info, 'arquivos_imagem_sistema/QR_atual.png', 'L', 20, 2);
@@ -54,7 +54,7 @@ if (isset($_POST["info"]))
                             Salvar arquivo
                         </button>
                     </a>
-                <?
+                <?php
                 }
                 echo "<h5>Resultado: <a href='$info' target='_blank'>$info</a></h5>";
                 ?>

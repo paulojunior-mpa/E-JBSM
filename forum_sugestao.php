@@ -200,13 +200,13 @@ if (isset($_GET["info"])) {
                                             <tr>
                                                 <td colspan="2">
                                                     <textarea name="subarea_descricao" class="form-control"
-                                                              required=""><?= $subarea->descricao ?></textarea>
+                                                              required=""><?php echo $subarea->descricao ?></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_SUBAREA?>">
+                                                    <input type="hidden" value="<?php echo $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_SUBAREA?>">
                                                     <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-save"></span>
                                                         Aceitar esta sugestão
@@ -217,8 +217,8 @@ if (isset($_GET["info"])) {
                                         <form action="controller/ForumController.php" method="post">
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_SUBAREA?>">
+                                                    <input type="hidden" value="<?php echo $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_SUBAREA?>">
                                                     <button type="submit" class="btn btn-danger">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                         Deletar subárea

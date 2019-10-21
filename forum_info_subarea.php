@@ -50,7 +50,7 @@ if (isset($_GET["info"])) {
                                             <tr>
                                                 <td>
                                                     <input type="text" class="form-control" name="subarea_nome"
-                                                           value="<?= $subarea->nome ?>" required="">
+                                                           value="<?php echo $subarea->nome ?>" required="">
                                                 </td>
                                                 <td>
                                                     <select name="subarea_area" class="form-control">
@@ -60,7 +60,7 @@ if (isset($_GET["info"])) {
                                                         while ($area = mysqli_fetch_object($qr2)) {
                                                             ?>
                                                             <option
-                                                                value="<?= $area->id ?>"><?php echo $area->nome ?></option>
+                                                                value="<?php echo $area->id ?>"><?php echo $area->nome ?></option>
                                                         <?php
                                                         }
                                                         ?>
@@ -70,14 +70,14 @@ if (isset($_GET["info"])) {
                                             <tr>
                                                 <td colspan="2">
                                                     <textarea name="subarea_descricao" class="form-control"
-                                                              placeholder="<?= $subarea->descricao ?>"
-                                                              required=""><?= $subarea->descricao ?></textarea>
+                                                              placeholder="<?php echo $subarea->descricao ?>"
+                                                              required=""><?php echo $subarea->descricao ?></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $subarea->id ?>" name="id">
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_SUBAREA?>">
+                                                    <input type="hidden" value="<?php echo $subarea->id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_SUBAREA?>">
                                                     <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Salvar edição
@@ -88,7 +88,7 @@ if (isset($_GET["info"])) {
                                     </form>
                                     <?php if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <form action="controller/ForumController.php" method="post">
-                                            <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="myModal<?php echo $j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -100,7 +100,7 @@ if (isset($_GET["info"])) {
                                                             <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h3>Deseja mesmo deletar a subárea <?=$subarea->nome?></h3>
+                                                            <h3>Deseja mesmo deletar a subárea <?php echo $subarea->nome?></h3>
                                                             <?if($subarea->id!=1){?>
                                                             <h5>Ao deletar, todos os topicos relacionados serão movidos para a subárea padrão 'Outros'.</h5>
                                                             <?}else{?>
@@ -113,7 +113,7 @@ if (isset($_GET["info"])) {
                                                                 Cancelar
                                                             </button>
                                                             <?if($subarea->id!=1){?>
-                                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_SUBAREA?>">
+                                                                <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_SUBAREA?>">
                                                                 <button type="submit" class="btn btn-danger">
                                                                     <span class="glyphicon glyphicon-remove"></span>
                                                                     Deletar subárea
@@ -124,12 +124,12 @@ if (isset($_GET["info"])) {
                                                 </div>
                                             </div>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?=$j?>">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?php echo $j?>">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                                 Deletar Subárea
                                             </button>
                                             <div class="input-group">
-                                                <input type="hidden" value="<?= $subarea->id ?>" name="id">
+                                                <input type="hidden" value="<?php echo $subarea->id ?>" name="id">
                                             </div>
                                         </form>
                                     <?php } ?>

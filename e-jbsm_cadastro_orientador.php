@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador"));
 $info = "";
 if (isset($_GET["info"])) {
@@ -49,7 +49,7 @@ if (isset($_GET["info"])) {
                         <input class="form-control" type="text" name="senha" placeholder="Senha" required>
                     </td>
                     <td><br>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_ORIENTADOR?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_ORIENTADOR?>">
                         <button class="btn btn-success" type="submit" value="Cadastrar Orientador">
                             <span class="glyphicon glyphicon-save"></span>
                             Cadastrar

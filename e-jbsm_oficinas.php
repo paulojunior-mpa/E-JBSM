@@ -37,7 +37,7 @@ if ($user_permissao != "usuario") { ?>
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);
                                     ?>
-                                    <option value="<?= $row->nome ?>"><?php echo "$row->login / ";
+                                    <option value="<?php echo $row->nome ?>"><?php echo "$row->login / ";
                                         echo "$Pnome[0]"; ?>
                                     </option>
                                 <?php } ?>
@@ -51,7 +51,7 @@ if ($user_permissao != "usuario") { ?>
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);
                                     ?>
-                                    <option value="<?= $row->nome ?>"><?php echo "$row->login / ";
+                                    <option value="<?php echo $row->nome ?>"><?php echo "$row->login / ";
                                         echo "$Pnome[0]"; ?>
                                     </option>
                                 <?php } ?>
@@ -78,7 +78,7 @@ if ($user_permissao != "usuario") { ?>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_OFICINA?>">
+                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_OFICINA?>">
                             <button class="btn btn-success" type="submit">
                                 <span class="glyphicon glyphicon-save"></span>
                                 Cadastrar
@@ -106,10 +106,10 @@ if ($user_permissao != "usuario") { ?>
                         <span>
                             <table>
                                 <tr>
-                                    <td><b>ID: </b><?= $row->id ?> </td>
-                                    <td><b>Nome: </b><?= $row->nome ?></td>
-                                    <td><b>Monitor: </b><?= $row->monitor ?></td>
-                                    <td><b>Orientador: </b><?= $row->orientador ?></td>
+                                    <td><b>ID: </b><?php echo $row->id ?> </td>
+                                    <td><b>Nome: </b><?php echo $row->nome ?></td>
+                                    <td><b>Monitor: </b><?php echo $row->monitor ?></td>
+                                    <td><b>Orientador: </b><?php echo $row->orientador ?></td>
                                 </tr>
                             </table>
                         </span>
@@ -119,32 +119,32 @@ if ($user_permissao != "usuario") { ?>
                                 <table class="table">
                                     <tr>
                                         <td colspan="2">
-                                            <b>Nome: </b><?= $row->nome ?>
+                                            <b>Nome: </b><?php echo $row->nome ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <b>Monitor: </b><?= $row->monitor ?>
+                                            <b>Monitor: </b><?php echo $row->monitor ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <b>Descrição da oficina: </b><?= $row->descricao ?>
+                                            <b>Descrição da oficina: </b><?php echo $row->descricao ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <b>Orientador: </b><?= $row->orientador ?>
+                                            <b>Orientador: </b><?php echo $row->orientador ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <b>Material utilizado: </b><?= $row->material ?>
+                                            <b>Material utilizado: </b><?php echo $row->material ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <b>Link para informações ou referências: </b><?= $row->anexo ?>
+                                            <b>Link para informações ou referências: </b><?php echo $row->anexo ?>
                                         </td>
                                     </tr>
                                     <?php if ($user_permissao != "usuario") { ?>
@@ -152,7 +152,7 @@ if ($user_permissao != "usuario") { ?>
                                             <td>
                                                 <form action="e-jbsm_editar_oficina.php" method="post">
                                                     <input class="form-control" type="hidden" name="id"
-                                                           value="<?= $row->id ?>">
+                                                           value="<?php echo $row->id ?>">
                                                     <button class="btn btn-warning" type="submit" name="opcao"
                                                             value="Editar">
                                                         <span class="glyphicon glyphicon-edit"></span>
@@ -163,7 +163,7 @@ if ($user_permissao != "usuario") { ?>
                                             <td>
                                                 <form action="controller/SystemController.php" method="post">
                                                     <input class="form-control" type="hidden" name="id"
-                                                           value="<?= $row->id ?>">
+                                                           value="<?php echo $row->id ?>">
                                                     <!-- Modal -->
                                                     </button>
                                                     <button type="button" class="btn btn-danger"
@@ -189,15 +189,15 @@ if ($user_permissao != "usuario") { ?>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <h3>Deseja mesmo excluir esta oficina?
-                                                                        (ID: <?= $row->id ?>)</h3>
+                                                                        (ID: <?php echo $row->id ?>)</h3>
                                                                     <h5></h5>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default"
                                                                             data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <input type="hidden" value="<?= $row->id ?>" name="codigo">
-                                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_OFICINA?>">
+                                                                    <input type="hidden" value="<?php echo $row->id ?>" name="codigo">
+                                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_OFICINA?>">
                                                                     <button type="submit" value="Deletar oficina" class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
                                                                         Excluir oficina

@@ -21,7 +21,7 @@ if ($q !== "") {
                 ?>
             </div>
             <div class="media-body">
-                <a href="app.php?id=<?=$a->id?>">
+                <a href="app.php?id=<?php echo $a->id?>">
                     <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
                     Espécie: <?php echo $a->especie ?><br>
                 </a>

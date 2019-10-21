@@ -63,7 +63,7 @@ if (isset($_POST["pesquisa"])) {
                     <td><?php echo "{$r->login}"; ?></td>
                     <td><?php echo "{$r->celular}"; ?></td>
                     <td><?php echo "{$r->email}"; ?></td>
-                    <td class="active"><a href="forum_info.php?info=login&login=<?= $r->login ?>">Mais</a></td>
+                    <td class="active"><a href="forum_info.php?info=login&login=<?php echo $r->login ?>">Mais</a></td>
                 </tr>
             <?
             }
@@ -76,16 +76,16 @@ if (isset($_POST["pesquisa"])) {
                 if ($inicio_consulta == number_format(0)) {
                     ?>
                     <li>
-                        <a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= $inicio_consulta - 10 ?>#visitas">&laquo;</a>
+                        <a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo $inicio_consulta - 10 ?>#visitas">&laquo;</a>
                     </li>
                 <?php } ?>
-                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= 0 ?>">1</a></li>
-                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= 10 ?>">2</a></li>
-                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= 20 ?>">3</a></li>
-                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= 30 ?>">4</a></li>
-                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= 40 ?>">5</a></li>
+                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo 0 ?>">1</a></li>
+                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo 10 ?>">2</a></li>
+                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo 20 ?>">3</a></li>
+                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo 30 ?>">4</a></li>
+                <li><a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo 40 ?>">5</a></li>
                 <li>
-                    <a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?= $inicio_consulta + 10 ?>#visitas">&raquo;</a>
+                    <a href="e-jbsm_lista_usuarios.php?inicio_consulta=<?php echo $inicio_consulta + 10 ?>#visitas">&raquo;</a>
                 </li>
             </ul>
         </nav>

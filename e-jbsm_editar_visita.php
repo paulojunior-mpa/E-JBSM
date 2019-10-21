@@ -20,13 +20,13 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Nome da insituição/Grupo</td>
-                    <td><?=$visita->instituicao?></td>
-                    <td><input type="text" class="form-control" value="<?=$visita->instituicao?>"
+                    <td><?php echo $visita->instituicao?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $visita->instituicao?>"
                                placeholder="Instituição" name="visita_instituicao" required=""></td>
                 </tr>
                 <tr>
                     <td>Tipo de instituição</td>
-                    <td><?=$visita->tipo_instituicao?></td>
+                    <td><?php echo $visita->tipo_instituicao?></td>
                     <td>
                         <select name="visita_tipo_instituicao" class="form-control" required>
                             <option value="Publica">Pública</option>
@@ -37,31 +37,31 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Cidade dos visitantes</td>
-                    <td><?=$visita->cidade?></td>
+                    <td><?php echo $visita->cidade?></td>
                     <td>
-                        <input type="text" class="form-control" value="<?=$visita->cidade?>" placeholder="Cidade"
+                        <input type="text" class="form-control" value="<?php echo $visita->cidade?>" placeholder="Cidade"
                                required="" name="visita_cidade">
                     </td>
                 </tr>
                 <tr>
                     <td>Número de visitantes</td>
-                    <td><?=$visita->visitantes?></td>
+                    <td><?php echo $visita->visitantes?></td>
                     <td>
-                        <input type="text" class="form-control" value="<?=$visita->visitantes; ?>"
+                        <input type="text" class="form-control" value="<?php echo $visita->visitantes; ?>"
                                placeholder="Número" required="" name="visita_numero_visitantes">
                     </td>
                 </tr>
                 <tr>
                     <td>Curso/Ano dos visitantes</td>
-                    <td><?=$visita->curso?></td>
+                    <td><?php echo $visita->curso?></td>
                     <td>
-                        <input type="text" class="form-control" value="<?=$visita->curso?>" placeholder="Curso/Ano"
+                        <input type="text" class="form-control" value="<?php echo $visita->curso?>" placeholder="Curso/Ano"
                                name="visita_curso">
                     </td>
                 </tr>
                 <tr>
                     <td>Oficina</td>
-                    <td><?=$visita->oficina?></td>
+                    <td><?php echo $visita->oficina?></td>
                     <td>
                         <select name="visita_oficina" required="" class="form-control">
                             <option value="Não">Não</option>
@@ -77,31 +77,31 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Data da visita</td>
-                    <td><?=$visita->data?></td>
+                    <td><?php echo $visita->data?></td>
                     <td>
-                        <input type="date" class="form-control" value="<?=$visita->data?>" required=""
+                        <input type="date" class="form-control" value="<?php echo $visita->data?>" required=""
                                name="visita_data">
                     </td>
                 </tr>
                 <tr>
                     <td>Hora da visita</td>
-                    <td><?=$visita->hora; ?></td>
+                    <td><?php echo $visita->hora; ?></td>
                     <td>
-                        <input type="time" class="form-control" value="<?=$visita->hora?>" required=""
+                        <input type="time" class="form-control" value="<?php echo $visita->hora?>" required=""
                                name="visita_hora">
                     </td>
                 </tr>
                 <tr>
                     <td>Duração da visita</td>
-                    <td><?=$visita->duracao?></td>
+                    <td><?php echo $visita->duracao?></td>
                     <td>
-                        <input type="time" class="form-control" value="<?=$visita->duracao?>" required=""
+                        <input type="time" class="form-control" value="<?php echo $visita->duracao?>" required=""
                                name="visita_duracao">
                     </td>
                 </tr>
                 <tr>
                     <td>Monitor</td>
-                    <td><?=$visita->monitor?></td>
+                    <td><?php echo $visita->monitor?></td>
                     <td>
                         <select name="visita_monitor" class="form-control" required>
                             <?
@@ -116,7 +116,7 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Deseja auxílio para desenvolver um conteudo?</td>
-                    <td><?=$visita->auxilio?></td>
+                    <td><?php echo $visita->auxilio?></td>
                     <td>
                         <select name="visita_auxilio_conteudo" class="form-control" required>
                             <option value="nao">Não</option>
@@ -126,32 +126,32 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Caso exista um conteúdo qual seria?</td>
-                    <td><?=$visita->conteudo?></td>
+                    <td><?php echo $visita->conteudo?></td>
                     <td>
-                        <input type="text" class="form-control" value="<?=$visita->conteudo?>"
+                        <input type="text" class="form-control" value="<?php echo $visita->conteudo?>"
                                placeholder="conteúdo..." required="" name="visita_conteudo">
                     </td>
                 </tr>
                 <tr>
                     <td>Nome do responsável pela visita</td>
-                    <td><?=$visita->responsavel?></td>
+                    <td><?php echo $visita->responsavel?></td>
                     <td>
-                        <input type="text" class="form-control" value="<?=$visita->responsavel?>"
+                        <input type="text" class="form-control" value="<?php echo $visita->responsavel?>"
                                placeholder="Nome"
                                required="" name="visita_responsavel">
                     </td>
                 </tr>
                 <tr>
                     <td>Telefone para contato</td>
-                    <td><?=$visita->fone?></td>
+                    <td><?php echo $visita->fone?></td>
                     <td>
-                        <input type="tel" class="form-control" value="<?=$visita->fone?>" placeholder="Telefone"
+                        <input type="tel" class="form-control" value="<?php echo $visita->fone?>" placeholder="Telefone"
                                name="visita_fone">
                     </td>
                 </tr>
                 <tr>
                     <td>Plano de visitação</td>
-                    <td><?=$visita->plano?></td>
+                    <td><?php echo $visita->plano?></td>
                     <td>
                         <select name="visita_plano" class="form-control" required>
                             <?php
@@ -159,7 +159,7 @@ if(isset($_POST["id"])) {
                             $qr = $link->query($sql);
                             while ($r = mysqli_fetch_object($qr)) {
                                 ?>
-                                <option value="<?= $r->nome ?>"><?php echo "$r->nome"; ?>
+                                <option value="<?php echo $r->nome ?>"><?php echo "$r->nome"; ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -167,7 +167,7 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td>Status da visita</td>
-                    <td><?=$visita->status?></td>
+                    <td><?php echo $visita->status?></td>
                     <td>
                         <select name="visita_status" class="form-control" required>
                             <option value="Confirmada">Confirmar</option>
@@ -178,9 +178,9 @@ if(isset($_POST["id"])) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="hidden" class="form-control" name="visita_login" value="<?= $visita->login ?>">
-                        <input type="hidden" class="form-control" name="visita_id" value="<?= $visita->id ?>">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_VISITA?>">
+                        <input type="hidden" class="form-control" name="visita_login" value="<?php echo $visita->login ?>">
+                        <input type="hidden" class="form-control" name="visita_id" value="<?php echo $visita->id ?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_VISITA?>">
                         <button type="submit" class="btn btn-success btn-block">
                             Salvar
                         </button>

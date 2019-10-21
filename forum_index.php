@@ -92,14 +92,14 @@ if (isset($_GET["info"])) {
                     <h4 class="media-heading"><?php echo $topico->assunto ?></h4>
                     <span style="color: green; margin-left: 10px;"><b> ID </b></span><?php echo $topico->id ?>.
                     <span style="color: green"><b>Por </b></span>
-                    <a href="forum_info.php?info=login&login=<?= $topico->login ?>"><?php echo $topico->login ?></a>
+                    <a href="forum_info.php?info=login&login=<?php echo $topico->login ?>"><?php echo $topico->login ?></a>
                     <span style="color: green"><b>dia </b></span><?php echo $topico->data; ?>
                     <span style="color: green"><b>as </b></span><?php echo $topico->hora; ?>
-                    <span style="color: green"><b>na área </b></span><a href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><?php echo $nome_area ?></a>
-                    <span style="color: green"><b>e subárea </b></span><a href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><?php echo $nome_subarea ?></a>.
+                    <span style="color: green"><b>na área </b></span><a href="forum_info.php?info=area&area=<?php echo $topico->id_area ?>"><?php echo $nome_area ?></a>
+                    <span style="color: green"><b>e subárea </b></span><a href="forum_info.php?info=subarea&subarea=<?php echo $topico->id_subarea ?>"><?php echo $nome_subarea ?></a>.
                 </div>
                 <div class="media-right">
-                    <a href="forum_topico.php?topico=<?= $topico->id ?>">
+                    <a href="forum_topico.php?topico=<?php echo $topico->id ?>">
                         <button type="button" class="btn btn-info">
                             <span class="glyphicon glyphicon-eye-open"></span>
                             Visualizar
@@ -114,15 +114,15 @@ if (isset($_GET["info"])) {
             <?php
             if ($inicio_consulta != "" and $inicio_consulta != 0) {
                 ?>
-                <li><a href="forum_cadastro_topico.php?inicio_consulta=<?= $inicio_consulta - 10 ?>">&laquo;</a>
+                <li><a href="forum_cadastro_topico.php?inicio_consulta=<?php echo $inicio_consulta - 10 ?>">&laquo;</a>
                 </li>
             <?php } ?>
-            <li><a href="forum_index.php?inicio_consulta=<?= 0 ?>">1</a></li>
-            <li><a href="forum_index.php?inicio_consulta=<?= 10 ?>">2</a></li>
-            <li><a href="forum_index.php?inicio_consulta=<?= 20 ?>">3</a></li>
-            <li><a href="forum_index.php?inicio_consulta=<?= 30 ?>">4</a></li>
-            <li><a href="forum_index.php?inicio_consulta=<?= 40 ?>">5</a></li>
-            <li><a href="forum_index.php?inicio_consulta=<?= $inicio_consulta + 10 ?>">&raquo;</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo 0 ?>">1</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo 10 ?>">2</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo 20 ?>">3</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo 30 ?>">4</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo 40 ?>">5</a></li>
+            <li><a href="forum_index.php?inicio_consulta=<?php echo $inicio_consulta + 10 ?>">&raquo;</a></li>
         </ul>
     </nav>
 </div>

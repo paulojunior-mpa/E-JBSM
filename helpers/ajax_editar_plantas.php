@@ -16,7 +16,7 @@ if ($q !== null) {
     echo "<br>";
     while ($a = mysqli_fetch_object($result)) {
         ?>
-        <a href='app_editar_planta.php?id=<?=$a->id?>'>
+        <a href='app_editar_planta.php?id=<?php echo $a->id?>'>
             <div class="media alert alert-info">
                 <div class="media-left">
                     <?
@@ -26,7 +26,7 @@ if ($q !== null) {
                 <div class="media-body">
                     <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
                     Espécie: <?php echo $a->especie ?><br>
-                    Descrição: <?=$a->descricao?>
+                    Descrição: <?php echo $a->descricao?>
                 </div>
             </div>
         </a>

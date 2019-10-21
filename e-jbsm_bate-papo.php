@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 
@@ -29,7 +29,7 @@ if (isset($_GET["inicio_consulta"])) {
                     Para
                     <select name="topico_para" required class="form-control">
                         <option value="todos">Todos</option>
-                        <?
+                        <?php
                         $sql = "select * from ejbsm_usuario where ejbsm_usuario.permissao != 'usuario' and login != '$user_login' and status != 0;";
                         $qr = $link->query($sql);
                         while ($r = mysqli_fetch_object($qr)) {
@@ -54,7 +54,7 @@ if (isset($_GET["inicio_consulta"])) {
         <h3>Lista de mensagens abaixo</h3>
     </div>
 </div>
-<?
+<?php
 if ($inicio_consulta != "" and $inicio_consulta > 0)
     $sql = "select * from ejbsm_batepapo_mensagem order by id desc limit 10 offset $inicio_consulta;";
 else
@@ -73,14 +73,14 @@ while ($r = mysqli_fetch_object($qr)) {
             <table class="table">
                 <tr>
                     <td style="text-align: center; width: 7%;">
-                        <?
+                        <?php
                         imagem($r->login, 50);
                         ?>
                         <?php echo $r->login ?></b>
                     </td>
                     <td style="text-align: center; width: 5%;"><span style="color: green"><b>Para</b></span></td>
                     <td style="text-align: center; width: 7%;">
-                        <?
+                        <?php
                         imagem($r->para, 50);
                         ?>
                         <?php echo  $r->para ?>
@@ -92,7 +92,7 @@ while ($r = mysqli_fetch_object($qr)) {
                                     <a>
                                         <?php echo  $r->mensagem ?><br><br>
                                     <span>
-                                        <?
+                                        <?php
                                         $sql = "select id from ejbsm_batepapo_resposta where id_mensagem = $r->id;";
                                         $result = $link->query($sql) or die(mysqli_error($link));
                                         $contagem_mensagens = mysqli_num_rows($result);
@@ -103,14 +103,14 @@ while ($r = mysqli_fetch_object($qr)) {
                                     <ul>
                                         <li class='has-sub'>
                                             <a>
-                                                <?
+                                                <?php
                                                 $sql_respostas = "select * from ejbsm_batepapo_resposta where id_mensagem = '$r->id' order by id asc limit 10;";
                                                 $qr_respostas = $link->query($sql_respostas);
                                                 while ($resposta = mysqli_fetch_object($qr_respostas)) { ?>
                                                     <table class="table">
                                                         <tr>
                                                             <td rowspan='2' style="width: 40px">
-                                                                <?
+                                                                <?php
                                                                 imagem($resposta->login, 50);
                                                                 ?>
                                                             </td>
@@ -219,7 +219,7 @@ while ($r = mysqli_fetch_object($qr)) {
             </table>
         </div>
     </div>
-    <?
+    <?php
 }
 ?>
 <div class="panel panel-default">
