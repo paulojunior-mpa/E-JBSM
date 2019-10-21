@@ -27,13 +27,13 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td>Nome:</td>
-                    <td><?= $user->nome; ?></td>
-                    <td colspan="2"><input type="text" class="form-control" value="<?= $user->nome; ?>" name="nome" required></td>
+                    <td><?php echo $user->nome; ?></td>
+                    <td colspan="2"><input type="text" class="form-control" value="<?php echo $user->nome; ?>" name="nome" required></td>
                 </tr>
                 <tr>
                     <td>Matricula:</td>
-                    <td><?= $user->id; ?></td>
-                    <td><input type="number" class="form-control" value="<?= $user->id; ?>" name="matricula" required></td>
+                    <td><?php echo $user->id; ?></td>
+                    <td><input type="number" class="form-control" value="<?php echo $user->id; ?>" name="matricula" required></td>
                 </tr>
                 <tr>
                     <script>
@@ -61,23 +61,23 @@ isUserInRole(array("administrador", "orientador"));
                 </tr>
                 <tr>
                     <td>Área de atuação:</td>
-                    <td><?= $user->area; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->area; ?>" name="area" required></td>
+                    <td><?php echo $user->area; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->area; ?>" name="area" required></td>
                 </tr>
                 <tr>
                     <td>Ênfase:</td>
-                    <td><?= $user->subarea; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->subarea; ?>" name="subarea" required></td>
+                    <td><?php echo $user->subarea; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->subarea; ?>" name="subarea" required></td>
                 </tr>
                 <tr>
                     <td>Projeto:</td>
-                    <td><?= $user->projeto; ?></td>
+                    <td><?php echo $user->projeto; ?></td>
                     <td><textarea cols="60" class="form-control" rows="3" name="projeto"
-                                  required><?= $user->projeto; ?></textarea></td>
+                                  required><?php echo $user->projeto; ?></textarea></td>
                 </tr>
                 <tr>
                     <td>Bolsa</td>
-                    <td><?= $user->bolsa; ?></td>
+                    <td><?php echo $user->bolsa; ?></td>
                     <td>
                         <select name="bolsa" class="form-control" required>
                             <option value="PRAE">PRAE</option>
@@ -90,52 +90,52 @@ isUserInRole(array("administrador", "orientador"));
                 <!-- sdds -->
                 <tr>
                     <td>E-mail:</td>
-                    <td><?= $user->email; ?></td>
-                    <td><input type="email" class="form-control" value="<?= $user->email; ?>" name="email" required></td>
+                    <td><?php echo $user->email; ?></td>
+                    <td><input type="email" class="form-control" value="<?php echo $user->email; ?>" name="email" required></td>
                 </tr>
                 <tr>
                     <td>Fixo:</td>
-                    <td><?= $user->fixo; ?></td>
-                    <td><input type="tel" class="form-control" value="<?= $user->fixo; ?>" name="fixo" required></td>
+                    <td><?php echo $user->fixo; ?></td>
+                    <td><input type="tel" class="form-control" value="<?php echo $user->fixo; ?>" name="fixo" required></td>
                 </tr>
                 <tr>
                     <td>Celular:</td>
-                    <td><?= $user->celular; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->celular; ?>" name="celular" required></td>
+                    <td><?php echo $user->celular; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->celular; ?>" name="celular" required></td>
                 </tr>
                 <tr>
                     <td>RG:</td>
-                    <td><?= $user->rg; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->rg; ?>" name="rg" required></td>
+                    <td><?php echo $user->rg; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->rg; ?>" name="rg" required></td>
                 </tr>
                 <tr>
                     <td>Orgão:</td>
-                    <td><?= $user->orgao; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->orgao; ?>" name="orgao" required></td>
+                    <td><?php echo $user->orgao; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->orgao; ?>" name="orgao" required></td>
                 </tr>
                 <tr>
                     <td>CPF:</td>
-                    <td><?= $user->cpf; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->cpf; ?>" name="cpf" required></td>
+                    <td><?php echo $user->cpf; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->cpf; ?>" name="cpf" required></td>
                 </tr>
                 <tr>
                     <td>Conta:</td>
-                    <td><?= $user->conta; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->conta; ?>" name="conta" required></td>
+                    <td><?php echo $user->conta; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->conta; ?>" name="conta" required></td>
                 </tr>
                 <tr>
                     <td>Banco:</td>
-                    <td><?= $user->banco; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->banco; ?>" name="banco" required></td>
+                    <td><?php echo $user->banco; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->banco; ?>" name="banco" required></td>
                 </tr>
                 <tr>
                     <td>Agência:</td>
-                    <td><?= $user->agencia; ?></td>
-                    <td><input type="text" class="form-control" value="<?= $user->agencia; ?>" name="agencia" required></td>
+                    <td><?php echo $user->agencia; ?></td>
+                    <td><input type="text" class="form-control" value="<?php echo $user->agencia; ?>" name="agencia" required></td>
                 </tr>
                 <tr>
                     <td>Tipo de Conta</td>
-                    <td><?= $user->tipo_conta; ?></td>
+                    <td><?php echo $user->tipo_conta; ?></td>
                     <td>
                         <select name="tipoconta" class="form-control" required>
                             <option value="Corrente">Corrente</option>

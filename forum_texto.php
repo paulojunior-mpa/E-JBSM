@@ -24,7 +24,7 @@
 </style>
 <div id="forum_texto_caixa">
     <div id="forum_texto_imagem">
-        <?
+        <?php
         list($largura, $altura) = getimagesize("arquivos_imagem_sistema/logo.png");
         $max = 80;
         $x = ($altura * $max) / $largura;
@@ -33,7 +33,7 @@
     </div>
     <div id="forum_texto_texto">
         <div style="color: white">
-            <?
+            <?php
             if (isset ($_GET["subarea"])) {
                 $id_subarea = $_GET["subarea"];
                 $sql = "select * from ejbsm_forum_subarea WHERE id = '$id_subarea'";
@@ -44,11 +44,11 @@
                 $result = $link->query($sql);
                 $area = mysqli_fetch_object($result);
                 ?>
-                Área: <?= $area->nome ?><br>
-                Descrição: <?= $area->descricao ?><br>
-                Subárea: <?= $subarea->nome ?><br>
-                Descrição: <?= $subarea->descricao ?>
-            <?
+                Área: <?php echo  $area->nome ?><br>
+                Descrição: <?php echo  $area->descricao ?><br>
+                Subárea: <?php echo  $subarea->nome ?><br>
+                Descrição: <?php echo  $subarea->descricao ?>
+            <?php
             } else {
                 echo "Fórum do Jardim Botânico da Universidade Federal de Santa Maria.<br> Local destinado a troca de informações entre JBSM e comunidade.";
             }

@@ -47,11 +47,11 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
                                 $qr = $link->query($sql);
                                 while ($r = mysqli_fetch_object($qr)) {
                                     ?>
-                                    <option value="<?= $r->login ?>"><? echo "$r->login / ";
+                                    <option value="<?= $r->login ?>"><?php echo "$r->login / ";
                                         $Pnome = explode(" ", $r->nome);
                                         echo "$Pnome[0]"; ?>
                                     </option>
-                                <? } ?>
+                                <?php } ?>
                             </select>
                         </td>
                         <td>
@@ -76,17 +76,17 @@ if ($user_permissao == "orientador" or $user_permissao == "administrador") {
             <?
             if (isset($_POST["login"])) {
                 ?>
-        <h4>O total de horas de '<? echo "$loginBolsista"; ?>' é de <? echo "$total"; ?> horas.<br>
-            No período de <? echo $inicio ?> até <? echo $fim ?> foram <? echo "$total2"; ?> horas.</h4>
+        <h4>O total de horas de '<?php echo "$loginBolsista"; ?>' é de <?php echo "$total"; ?> horas.<br>
+            No período de <?php echo $inicio ?> até <?php echo $fim ?> foram <?php echo "$total2"; ?> horas.</h4>
         <?
                 $sql = "select * from ejbsm_frequencia where login = '$loginBolsista' and data >= '$inicio' and data <= '$fim' order by data DeSC, saida asc;";
                 $qr = $link->query($sql);
                 while ($r = mysqli_fetch_object($qr)) {
                     ?>
-        Data: </b><? echo "{$r->data}"; ?>
-        Entrada: </b><? echo "{$r->entrada}"; ?>
-        Saída: </b><? echo "{$r->saida}"; ?><br>
-        <? }
+        Data: </b><?php echo "{$r->data}"; ?>
+        Entrada: </b><?php echo "{$r->entrada}"; ?>
+        Saída: </b><?php echo "{$r->saida}"; ?><br>
+        <?php }
             } ?>
         </div>
     </div>
@@ -100,7 +100,7 @@ if ($user_permissao == "bolsista") {
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de Frequência</h3>
-            <h4>Seu total de horas é: <? echo "$total_horas"; ?> horas</h4>
+            <h4>Seu total de horas é: <?php echo "$total_horas"; ?> horas</h4>
 
             <form action="controller/SystemController.php" method="post">
                 <table class="table">
@@ -156,7 +156,7 @@ if ($user_permissao == "bolsista") {
                         <td><b>Saída: </b><?= $r->saida ?></td>
                     </tr>
                 </table>
-            <? } ?>
+            <?php } ?>
             <nav>
                 <ul class="pagination">
                     <?php
@@ -178,4 +178,4 @@ if ($user_permissao == "bolsista") {
             </nav>
         </div>
     </div>
-<? } ?>
+<?php } ?>

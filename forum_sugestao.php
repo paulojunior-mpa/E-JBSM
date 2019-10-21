@@ -8,7 +8,7 @@ if (isset($_GET["info"])) {
 }
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <h4>Aqui você pode sugerir a criação de uma nova área.</h4>
     <?php if ($info == "area_sugerida") { ?>
         <div class="alert alert-success" role="alert">Sua sugestão de área foi cadastrada</div>
@@ -27,7 +27,7 @@ if (isset($_GET["info"])) {
             </tr>
             <tr>
                 <td>
-                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::SUGERIR_AREA?>">
+                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::SUGERIR_AREA?>">
                     <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar sugestão
@@ -50,7 +50,7 @@ if (isset($_GET["info"])) {
                         $exec = $link->query($sql) or die(mysql_error());
                         while ($area = mysqli_fetch_object($exec)) {
                             ?>
-                            <option value="<?= $area->id ?>"><?= $area->nome ?></option>
+                            <option value="<?php echo  $area->id ?>"><?php echo  $area->nome ?></option>
                         <?php } ?>
                     </select>
                 </td>
@@ -66,7 +66,7 @@ if (isset($_GET["info"])) {
             </tr>
             <tr>
                 <td>
-                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::SUGERIR_SUBAREA?>">
+                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::SUGERIR_SUBAREA?>">
                     <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar sugestão
@@ -90,11 +90,11 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <span style="color: green"><b>Nome da área: </b></span> <? echo $area->nome ?><br><br>
-                            <span style="color: green"><b>Descrição da área: </b></span> <? echo $area->descricao ?>
+                            <span style="color: green"><b>Nome da área: </b></span> <?php echo $area->nome ?><br><br>
+                            <span style="color: green"><b>Descrição da área: </b></span> <?php echo $area->descricao ?>
                         </span>
                     </a>
-                    <? if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
+                    <?php if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
@@ -102,20 +102,20 @@ if (isset($_GET["info"])) {
                                         <form action="controller/ForumController.php" method="post">
                                             <tr>
                                                 <td colspan="2">Nome da área
-                                                    <input type="text" class="form-control" name="area_nome" value="<?= $area->nome ?>" required="">
+                                                    <input type="text" class="form-control" name="area_nome" value="<?php echo  $area->nome ?>" required="">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">Descrição da área
-                                                    <textarea name="area_descricao" class="form-control" required=""><?= $area->descricao ?></textarea>
+                                                    <textarea name="area_descricao" class="form-control" required=""><?php echo  $area->descricao ?></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="hidden" value="<?= $area->id ?>" name="id">
-                                                    <input type="hidden" value="<?= $area->nome ?>" name="area_nome_antigo">
+                                                    <input type="hidden" value="<?php echo  $area->id ?>" name="id">
+                                                    <input type="hidden" value="<?php echo  $area->nome ?>" name="area_nome_antigo">
 
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_AREA?>">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EDITAR_AREA?>">
                                                     <button type="submit" class="btn btn-warning">
                                                         <span class="glyphicon glyphicon-save"></span>
                                                         Aceitar esta sugestão
@@ -125,8 +125,8 @@ if (isset($_GET["info"])) {
                                         <form action="controller/ForumController.php" method="post">
                                             <td>
                                                 <input type="hidden" value="forum_sugestao" name="local">
-                                                <input type="hidden" value="<?= $area->id ?>" name="id">
-                                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_AREA?>">
+                                                <input type="hidden" value="<?php echo  $area->id ?>" name="id">
+                                                <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_AREA?>">
                                                 <button type="submit" class="btn btn-danger">
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                     Deletar área
@@ -138,7 +138,7 @@ if (isset($_GET["info"])) {
                                 </a>
                             </li>
                         </ul>
-                    <? } ?>
+                    <?php } ?>
                 </li>
             </ul>
         </div>
@@ -162,17 +162,17 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <span style="color: green"><b>Nome da subárea: </b></span> <? echo $subarea->nome ?><br><br>
-                            <span style="color: green"><b>Descrição da área: </b></span> <? echo $subarea->descricao ?><br><br>
+                            <span style="color: green"><b>Nome da subárea: </b></span> <?php echo $subarea->nome ?><br><br>
+                            <span style="color: green"><b>Descrição da área: </b></span> <?php echo $subarea->descricao ?><br><br>
                             <?
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
                             ?>
-                            <span style="color: green"><b>Área: </b></span> <? echo $nome_area ?>
+                            <span style="color: green"><b>Área: </b></span> <?php echo $nome_area ?>
                         </span>
                     </a>
-                    <? if ($user_permissao != "usuario") { ?>
+                    <?php if ($user_permissao != "usuario") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
@@ -186,7 +186,7 @@ if (isset($_GET["info"])) {
                                                         $qr2 = $link->query($sql2) or die(mysqli_error($link));
                                                         while ($area = mysqli_fetch_object($qr2)) {
                                                             ?>
-                                                            <option value="<?= $area->id ?>"><?= $area->nome ?></option>
+                                                            <option value="<?php echo  $area->id ?>"><?php echo  $area->nome ?></option>
                                                         <?php
                                                         }
                                                         ?>
@@ -194,7 +194,7 @@ if (isset($_GET["info"])) {
                                                 </td>
                                                 <td>
                                                     <input type="text" class="form-control" name="subarea_nome"
-                                                           value="<?= $subarea->nome ?>" required="">
+                                                           value="<?php echo  $subarea->nome ?>" required="">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -230,7 +230,7 @@ if (isset($_GET["info"])) {
                                 </a>
                             </li>
                         </ul>
-                    <? } ?>
+                    <?php } ?>
                 </li>
             </ul>
         </div>

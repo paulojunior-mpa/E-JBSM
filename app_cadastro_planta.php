@@ -15,10 +15,10 @@ if (isset($_GET["info"])) {
         <h3>Cadastro de plantas</h3>
 
         <div class="col-md-3">
-            <? include "app_menu.php"; ?>
+            <?php include "app_menu.php"; ?>
         </div>
         <div class="col-md-9">
-            <? if ($info == "cadastrada") {
+            <?php if ($info == "cadastrada") {
                 echo '<div class="alert alert-success"> <span class="glyphicon glyphicon-saved"></span> Planta cadastrada! </div>';
             }
             ?>

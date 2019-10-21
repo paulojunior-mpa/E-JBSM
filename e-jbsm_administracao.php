@@ -14,7 +14,7 @@ isUserInRole(array("administrador"));
                     <td>Quinta</td>
                     <td>Sexta</td>
                     <td rowspan="3">
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_DISPONIBILIDADE?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_DISPONIBILIDADE?>">
                         <button type="submit" class="btn btn-warning" value="Alterar">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
@@ -57,35 +57,35 @@ isUserInRole(array("administrador"));
                 <tr>
                     <td><div size="4" color="#556b2f">Manhã</div></td>
                     <td>
-                        <? if ($r->manha_segunda == 1) {
+                        <?php if ($r->manha_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_terca == 1) {
+                        <?php if ($r->manha_terca == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_quarta == 1) {
+                        <?php if ($r->manha_quarta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_quinta == 1) {
+                        <?php if ($r->manha_quinta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_sexta == 1) {
+                        <?php if ($r->manha_sexta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
@@ -95,35 +95,35 @@ isUserInRole(array("administrador"));
                 <tr>
                     <td><div size="4" color="#556b2f">Tarde</div></td>
                     <td>
-                        <? if ($r->tarde_segunda == 1) {
+                        <?php if ($r->tarde_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_terca == 1) {
+                        <?php if ($r->tarde_terca == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_quarta == 1) {
+                        <?php if ($r->tarde_quarta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_quinta == 1) {
+                        <?php if ($r->tarde_quinta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_sexta == 1) {
+                        <?php if ($r->tarde_sexta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
@@ -131,7 +131,7 @@ isUserInRole(array("administrador"));
                     </td>
                 </tr>
             </table>
-        <? } ?>
+        <?php } ?>
         <h3>Informações</h3>
 
         <form action="controller/SystemController.php" method="post">
@@ -144,53 +144,53 @@ isUserInRole(array("administrador"));
                 <tr>
                     <td>Nome da unidade/empresa
                         <input type="text" class="form-control" name="nome" placeholder="Nome"
-                               value="<?= $linha->nome ?>" required="">
+                               value="<?php echo  $linha->nome ?>" required="">
                     </td>
                     <td>Insituição pertencente
                         <input type="text" class="form-control" name="instituicao" placeholder="Instuição"
-                               value="<?= $linha->instituicao ?>" required="">
+                               value="<?php echo  $linha->instituicao ?>" required="">
                     </td>
                 </tr>
                 <tr>
                     <td>Fone para contato 1
                         <input type="text" class="form-control" name="fone1" placeholder="Fone 1"
-                               value="<?= $linha->fone1 ?>" required="">
+                               value="<?php echo  $linha->fone1 ?>" required="">
                     </td>
                     <td>Fone para contato 2
                         <input type="text" class="form-control" name="fone2" placeholder="Fone 2"
-                               value="<?= $linha->fone2 ?>" required="">
+                               value="<?php echo  $linha->fone2 ?>" required="">
                     </td>
                 </tr>
                 <tr>
                     <td>E-mail para contato
                         <input type="text" class="form-control" name="email" placeholder="E-mail"
-                               value="<?= $linha->email ?>" required="">
+                               value="<?php echo  $linha->email ?>" required="">
                     </td>
                     <td>Endereço
                         <input type="text" class="form-control" name="endereco" placeholder="Endereço"
-                               value="<?= $linha->endereco ?>" required="">
+                               value="<?php echo  $linha->endereco ?>" required="">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">Descrição sobre...
                         <textarea class="form-control" name="descricao" placeholder="Descrição"
-                                  required=""><?= $linha->descricao ?></textarea>
+                                  required=""><?php echo  $linha->descricao ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Latitude
                         <input type="text" class="form-control" name="latitude" placeholder="latitude"
-                               value="<?= $linha->latitude ?>" required="">
+                               value="<?php echo  $linha->latitude ?>" required="">
                     </td>
 
                     <td>Longitude
                         <input type="text" class="form-control" name="longitude" placeholder="longitude"
-                               value="<?= $linha->longitude ?>" required="">
+                               value="<?php echo  $linha->longitude ?>" required="">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_INFORMACOES?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_INFORMACOES?>">
                         <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-save"></span>
                             Salvar
@@ -211,7 +211,7 @@ isUserInRole(array("administrador"));
                         <input type="file" class="form-control" name="logo" required="">
                     </td>
                     <td>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_LOGO?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_LOGO?>">
                         <button type="submit" class="btn btn-warning" value="Alterar logo">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
@@ -234,7 +234,7 @@ isUserInRole(array("administrador"));
                         <input class="form-control" type="file" name="fundo" required="">
                     </td>
                     <td>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_FUNDO?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_FUNDO?>">
                         <button type="submit" class="btn btn-warning">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar
@@ -249,10 +249,10 @@ isUserInRole(array("administrador"));
             <table class="table">
                 <tr>
                     <td>
-                        <input class="form-control" type="text" name="titulo" value="<?= $linha->titulo ?>" required="">
+                        <input class="form-control" type="text" name="titulo" value="<?php echo  $linha->titulo ?>" required="">
                     </td>
                     <td>
-                        <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ALTERAR_TITULO?>">
+                        <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ALTERAR_TITULO?>">
                         <button class="btn btn-warning" type="submit">
                             <span class="glyphicon glyphicon-edit"></span>
                             Alterar

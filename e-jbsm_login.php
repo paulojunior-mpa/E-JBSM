@@ -1,8 +1,8 @@
-<?
-if (isset($_COOKIE["login_e-jbsm"]) and isset($_COOKIE["senha_e-jbsm"]) and $_COOKIE["login_e-jbsm"] != "" and $_COOKIE["senha_e-jbsm"] != "") {
-    header('location: controller/PublicController.php?opcao='.Constantes::LOGAR.'&user_login='.$_COOKIE["login_e-jbsm"].'&user_senha='.$_COOKIE["senha_e-jbsm"].'&sha1=0');
-    exit;
-}
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include 'e-jbsm_cabecalho.php';
 $info = "";
 if (isset($_GET["info"]))
@@ -20,7 +20,7 @@ if (isset($_GET["info"]))
             Bem vindo(a) ao sistema de gerencia do Jardim Botânico da Universidade Federal de Santa Maria.
         </div>
         <div class="col-md-offset-7" style="font-size: 40px">
-            <?
+            <?php
             $sql = "select titulo from ejbsm_informacao";
             $row = mysqli_fetch_object($link->query($sql)) or die(mysqli_error($link));
             echo $row->titulo;
@@ -30,7 +30,7 @@ if (isset($_GET["info"]))
 </div>
 <div class="row" style="background-image: url(arquivos_imagem_sistema/fundo.png);">
     <div class="col-md-5 col-md-offset-1">
-        <?
+        <?php
         list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png');
         $max = 245;
         $x = ($altura * $max) / $largura;
@@ -39,11 +39,11 @@ if (isset($_GET["info"]))
     </div>
     <div class="panel panel-default col-md-6" style="margin-top: 2%">
         <div class="panel-body" style="margin-bottom: 2%">
-            <? if (getParameter('info') == "cadastrado") { ?>
+            <?php if (getParameter('info') == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Usuario cadastrado! Utilize o login e senha informados
                     no cadastro.
                 </div>
-            <? } ?>
+            <?php } ?>
             <form class="form-horizontal" action="controller/PublicController.php" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Login</label>
@@ -60,13 +60,13 @@ if (isset($_GET["info"]))
                                placeholder="senha">
                     </div>
                 </div>
-                <? if (getParameter('info') == "login") { ?>
+                <?php if (getParameter('info') == "login") { ?>
                     <div class="alert alert-danger" role="alert">Este login não está cadastrado</div>
-                <? } ?>
-                <? if (getParameter('info') == "senha") { ?>
+                <?php } ?>
+                <?php if (getParameter('info') == "senha") { ?>
                 <div class="alert alert-danger" role="alert">
                     A senha informada é invalida.
-                    <?
+                    <?php
                     if (!empty(getParameter("tentativas"))) {
                         $t = getParameter("tentativas");
                         $r = (5 - $t);
@@ -78,9 +78,9 @@ if (isset($_GET["info"]))
                     }
                     } ?>
                 </div>
-                <? if (getParameter('info') == "inativo") { ?>
+                <?php if (getParameter('info') == "inativo") { ?>
                     <div class="alert alert-danger" role="alert">Esta conta foi desativada.</div>
-                <? } ?>
+                <?php } ?>
                 <div class="form-group">
                     <div class="col-sm-offset-1 col-sm-5">
                         <div class="checkbox">

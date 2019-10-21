@@ -10,11 +10,11 @@ if (isset($_GET["info"])) {
         <h3>Cadastro de orientador</h3>
 
         <form action="controller/SystemController.php" method="post">
-            <? if ($info == "cadastrado") { ?>
+            <?php if ($info == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Orientador cadastrado!</div>
-            <? } elseif ($info == "login") { ?>
+            <?php } elseif ($info == "login") { ?>
                 <div class="alert alert-danger" role="alert">Este login já está cadastrado!</div>
-            <? } ?>
+            <?php } ?>
             <table class="table">
                 <tr>
                     <td><h4>Dados pessoais</h4></td>

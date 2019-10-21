@@ -8,7 +8,7 @@ if (isset($_GET["info"])) {
 };
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <?
     if ($info == "area") {
         $area = "";
@@ -19,12 +19,12 @@ if (isset($_GET["info"])) {
         $row = mysqli_fetch_object($link->query($sql));
         ?>
         <div class="panel-heading">
-            <h3 class="panel-title">Informações da área <? echo $row->id; ?></h3>
+            <h3 class="panel-title">Informações da área <?php echo $row->id; ?></h3>
         </div>
         <div class="panel-body">
             <div class="alert alert-info" role="alert">
-                Nome: <? echo $row->nome; ?><br>
-                Descrição: <? echo $row->descricao; ?>
+                Nome: <?php echo $row->nome; ?><br>
+                Descrição: <?php echo $row->descricao; ?>
             </div>
         </div>
     <?
@@ -36,10 +36,10 @@ if (isset($_GET["info"])) {
         $sql = "select * from ejbsm_forum_subarea where id = '$subarea'";
         $row = mysqli_fetch_object($link->query($sql));
         ?>
-        <h3>Informações da subárea <? echo $subarea; ?></h3>
+        <h3>Informações da subárea <?php echo $subarea; ?></h3>
         <div class="alert alert-info" role="alert">
-            Nome: <? echo $row->nome; ?><br>
-            Descrição: <? echo $row->descricao; ?>
+            Nome: <?php echo $row->nome; ?><br>
+            Descrição: <?php echo $row->descricao; ?>
         </div>
     <?
     } elseif ($info == "login") {
@@ -47,9 +47,9 @@ if (isset($_GET["info"])) {
         $sql = "select * from ejbsm_usuario where login = '$login'";
         $row = mysqli_fetch_object($link->query($sql));
         ?>
-        <h3>Informações do usuário <? echo $login; ?></h3>
+        <h3>Informações do usuário <?php echo $login; ?></h3>
 
-        <div class="alert <? if ($row->status == 1) {
+        <div class="alert <?php if ($row->status == 1) {
         } else {
             echo "alert-danger";
         } ?>" role="alert">
@@ -59,38 +59,38 @@ if (isset($_GET["info"])) {
                         <?imagem($row->login, 100)?>
                     </td>
                     <td>
-                        Nome: <? echo $row->nome; ?><br>
+                        Nome: <?php echo $row->nome; ?><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Permissões: <? echo $row->permissao; ?><br>
+                        Permissões: <?php echo $row->permissao; ?><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        E-mail: <? echo $row->email; ?><br>
+                        E-mail: <?php echo $row->email; ?><br>
                     </td>
                 </tr>
-                <? if ($user_permissao != "usuario") { ?>
+                <?php if ($user_permissao != "usuario") { ?>
                 <tr>
                     <td>
-                        Telefone: <? echo $row->fixo; ?><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Celular: <? echo $row->celular; ?><br>
+                        Telefone: <?php echo $row->fixo; ?><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Status: <? echo $row->status; ?>
+                        Celular: <?php echo $row->celular; ?><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Status: <?php echo $row->status; ?>
                     </td>
                 </tr>
                 <?}?>
             </table>
-            <? if ($user_permissao == "administrador") { ?>
+            <?php if ($user_permissao == "administrador") { ?>
                 <form action="controller/SystemController.php" method="post">
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -104,15 +104,15 @@ if (isset($_GET["info"])) {
                                     <h4 class="modal-title" id="myModalLabel">Comfirmação</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <? if ($row->status == 1) { ?>
+                                    <?php if ($row->status == 1) { ?>
                                         <h3>Deseja mesmo desativar este usuário?</h3>
                                         <h5>Ao desativar este usuário, ele não será excluído, más será impedido de logar
                                             novamente no sistema.</h5>
-                                    <? } else { ?>
+                                    <?php } else { ?>
                                         <h3>Deseja mesmo reativar este usuário?</h3>
                                         <h5>Ao reativar este usuário, ele terá novamente permissão de logar no
                                             sistema.</h5>
-                                    <? } ?>
+                                    <?php } ?>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -120,19 +120,19 @@ if (isset($_GET["info"])) {
                                     </button>
                                     <input type="hidden" value="<?= $row->login ?>" name="login">
                                     <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ATIVAR_DESATIVAR?>">
-                                    <? if ($row->status == 1) { ?>
+                                    <?php if ($row->status == 1) { ?>
                                         <button type="submit" class="btn btn-danger" name="op"
                                                 value="0">
                                             <span class="glyphicon glyphicon-remove"></span>
                                             Desativar usuário
                                         </button>
-                                    <? } else { ?>
+                                    <?php } else { ?>
                                         <button type="submit" class="btn btn-warning" name="op"
                                                 value="1">
                                             <span class="glyphicon glyphicon-repeat"></span>
                                             Reativar usuário
                                         </button>
-                                    <? } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -142,15 +142,15 @@ if (isset($_GET["info"])) {
                 <button type="button" style="width: 20%;" class="btn btn-warning"
                         data-toggle="modal"
                         data-target="#myModal">
-                    <? if ($row->status == 1) { ?>
+                    <?php if ($row->status == 1) { ?>
                         <span class="glyphicon glyphicon-remove-sign"></span>
                         Desativar usuário
-                    <? } else { ?>
+                    <?php } else { ?>
                         <span class="glyphicon glyphicon-repeat"></span>
                         Reativar usuário
-                    <? } ?>
+                    <?php } ?>
                 </button>
-            <? } ?>
+            <?php } ?>
         </div>
-    <? } ?>
+    <?php } ?>
 </div>

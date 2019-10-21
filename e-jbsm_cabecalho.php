@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <?
+                <?php
                 $caminho = "arquivos_imagem_sistema";
                 if(!list($largura, $altura) = getimagesize('arquivos_imagem_sistema/logo.png')){
                     list($largura, $altura) = getimagesize('../arquivos_imagem_sistema/logo.png');
@@ -50,7 +50,7 @@
                 ?>
             </a>
         </div>
-        <?
+        <?php
         if (!isset($user_permissao)) {
             $user_permissao = "";
             $user_permissao = null;
@@ -69,7 +69,7 @@
                     <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                 </ul>
             </div>
-        <?
+        <?php
         } elseif ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador" or $user_permissao == "usuario") {
 
             if ($user_permissao == "usuario") {
@@ -103,7 +103,7 @@
                             <li>
                                 <a href="e-jbsm_lista_visitas.php"><span
                                         class="glyphicon glyphicon-list"></span> Listar visitas
-                                    <span class="badge"><?= $contagem_visitas ?></span>
+                                    <span class="badge"><?php echo $contagem_visitas ?></span>
                                 </a>
                             </li>
                             <li>
@@ -114,7 +114,7 @@
                             <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                         </ul>
                     </li>
-                    <?
+                    <?php
                     if ($user_permissao != "usuario") { ?>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
@@ -152,22 +152,22 @@
                                 </li>
                             </ul>
                         </li>
-                        <? if ($user_permissao != "bolsista") { ?>
+                        <?php if ($user_permissao != "bolsista") { ?>
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
                                         class="glyphicon glyphicon-pencil"></span> Cadastrar<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="e-jbsm_cadastro_bolsista.php"><span
                                                 class="glyphicon glyphicon-user"></span> Bolsista</a></li>
-                                    <? if ($user_permissao == "administrador") { ?>
+                                    <?php if ($user_permissao == "administrador") { ?>
                                         <li><a href="e-jbsm_cadastro_orientador.php"><span
                                                     class="glyphicon glyphicon-user"></span> Orientador</a></li>
                                         <li><a href="e-jbsm_cadastro_administrador.php"><span
                                                     class="glyphicon glyphicon-user"></span> Administrador</a></li>
-                                    <? } ?>
+                                    <?php } ?>
                                 </ul>
                             </li>
-                        <?
+                        <?php
                         }
                         echo "<li><a href='e-jbsm_bate-papo.php'><span class='glyphicon glyphicon-send'></span>
                                 Bate-papo <span class='badge'>$contagem_mensagens</span></a></li>";
@@ -180,14 +180,14 @@
                     $contagem_visitas = mysqli_num_rows($result);
                     ?>
                     <li><a href="app.php"><span class="glyphicon glyphicon-qrcode"></span> E-GEA</a></li>
-                    <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>Lixeira <span class="badge"><?= $contagem_visitas ?></span></a></li>
+                    <li><a href="e-jbsm_lixeira.php"><span class="glyphicon glyphicon-trash"></span>Lixeira <span class="badge"><?php echo $contagem_visitas ?></span></a></li>
                     <li><a href="e-jbsm_sobre.php"><span class="glyphicon glyphicon-info-sign"></span> Sobre</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
-                                class="glyphicon glyphicon-plus"></span> <? echo $user_login ?><span
+                                class="glyphicon glyphicon-plus"></span> <?php echo $user_login ?><span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -197,9 +197,9 @@
                                     </button>
                                 </a>
                             </li>
-                            <? if ($user_permissao == "administrador") { ?>
+                            <?php if ($user_permissao == "administrador") { ?>
                                 <li>
-                                    <a href="connection/adminer-4.6.3-mysql.php" target="_blank">
+                                    <a href="adminer-4.7.3-mysql.php" target="_blank">
                                         <button type="button" class="btn btn-default btn-lg">
                                             <span class="glyphicon glyphicon-hdd"></span> Banco
                                         </button>
@@ -222,7 +222,7 @@
                                         </button>
                                     </a>
                                 </li>
-                            <? } ?>
+                            <?php } ?>
                             <li class="divider"></li>
                             <li>
                                 <a href="controller/SystemController.php" methods="post">
@@ -235,7 +235,7 @@
                     </li>
                 </ul>
             </div>
-        <? } ?>
+        <?php } ?>
     </div>
     <!-- /.container-fluid -->
 </nav>

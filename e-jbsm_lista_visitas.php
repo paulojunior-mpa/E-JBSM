@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("usuario", "administrador", "orientador", "bolsista"));
 ;
 $inicio_consulta = "";
@@ -13,7 +13,7 @@ if (isset($_GET["info"])) {
 <ul class="nav nav-tabs" role="tablist" id="visitas">
     <li role="presentation"><a href="e-jbsm_cadastro_visita.php">Cadastro de visita</a></li>
     <li role="presentation" class="active"><a href="">Lista de visitas</a></li>
-    <? if ($user_permissao != "usuario") { ?>
+    <?php if ($user_permissao != "usuario") { ?>
         <form action="e-jbsm_lista_visitas.php" method="get" style="margin-top: 10px;">
             <div class="input-group">
                 <input type="text" name="instituicao" autocomplete="off">
@@ -23,7 +23,7 @@ if (isset($_GET["info"])) {
                 </button>
             </div>
         </form>
-    <? } ?>
+    <?php } ?>
 </ul>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -32,7 +32,7 @@ if (isset($_GET["info"])) {
             página para acessar registros mais antigos.
         </div>
         <h3>Lista de visitas</h3>
-        <?
+        <?php
         if ($info == "excluida")
             echo "<div class='alert alert-danger' role='alert' id='excluida'>Visita excluida!</div>";
         elseif ($info == "editada")
@@ -64,7 +64,7 @@ if (isset($_GET["info"])) {
                         <span>
                             <div class="input-group">
                                 <b>ID: </b> <span style="color: green"><?php echo "$visita->id " ?></span>
-                                <? if ($visita->status == "Confirmada") {
+                                <?php if ($visita->status == "Confirmada") {
                                     echo "<span class='glyphicon glyphicon-ok'>";
                                 } elseif ($visita->status == "Em espera") {
                                     echo "<span class='glyphicon glyphicon-warning-sign'>";
@@ -86,42 +86,42 @@ if (isset($_GET["info"])) {
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <b>Usuário: </b><?= $visita->login ?><br>
-                                                    <b>Data: </b><?= $visita->data ?><br>
-                                                    <b>Hora: </b><?= $visita->hora ?><br>
-                                                    <b>Oficina:</b><?= $visita->oficina; ?><br>
+                                                    <b>Usuário: </b><?php echo  $visita->login ?><br>
+                                                    <b>Data: </b><?php echo  $visita->data ?><br>
+                                                    <b>Hora: </b><?php echo  $visita->hora ?><br>
+                                                    <b>Oficina:</b><?php echo  $visita->oficina; ?><br>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Duração de visita:</b><?= $visita->duracao; ?><br>
-                                                    <b>Insituicao/Grupo:</b><?= $visita->instituicao; ?><br>
-                                                    <b>Tipo de Instituicao:</b><?= $visita->tipo_instituicao; ?><br>
-                                                    <b>Monitor:</b><?= $visita->monitor ?>
+                                                    <b>Duração de visita:</b><?php echo  $visita->duracao; ?><br>
+                                                    <b>Insituicao/Grupo:</b><?php echo  $visita->instituicao; ?><br>
+                                                    <b>Tipo de Instituicao:</b><?php echo  $visita->tipo_instituicao; ?><br>
+                                                    <b>Monitor:</b><?php echo  $visita->monitor ?>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Responsável: </b><?= $visita->responsavel; ?><br>
-                                                    <b>Cidade: </b><?= $visita->cidade; ?><br>
-                                                    <b>Curso / Ano: </b><?= $visita->curso; ?><br>
-                                                    <b>Numero de Visitantes: </b><?= $visita->visitantes; ?>
+                                                    <b>Responsável: </b><?php echo  $visita->responsavel; ?><br>
+                                                    <b>Cidade: </b><?php echo  $visita->cidade; ?><br>
+                                                    <b>Curso / Ano: </b><?php echo  $visita->curso; ?><br>
+                                                    <b>Numero de Visitantes: </b><?php echo  $visita->visitantes; ?>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <b>Telefone: </b><?= $visita->fone; ?><br>
-                                                    <b>Conteudo: </b><?= $visita->conteudo; ?><br>
-                                                    <b>Auxilio para desenvolver conteudo: </b><?= $visita->auxilio; ?>
+                                                    <b>Telefone: </b><?php echo  $visita->fone; ?><br>
+                                                    <b>Conteudo: </b><?php echo  $visita->conteudo; ?><br>
+                                                    <b>Auxilio para desenvolver conteudo: </b><?php echo  $visita->auxilio; ?>
                                                     <br>.
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <? if ($visita->status != "Confirmada") { ?>
+                                                <?php if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
                                                         <form action="controller/SystemController.php" method="post">
-                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?= $j ?>">
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?php echo  $j ?>">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                 Excluir visita
                                                             </button>
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1"
+                                                            <div class="modal fade" id="myModal<?php echo  $j ?>" tabindex="-1"
                                                                  role="dialog"
                                                                  aria-labelledby="myModalLabel"
                                                                  aria-hidden="true">
@@ -138,7 +138,7 @@ if (isset($_GET["info"])) {
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <h3>Deseja mesmo excluir esta visita?
-                                                                                (ID: <?= $visita->id ?>)</h3>
+                                                                                (ID: <?php echo  $visita->id ?>)</h3>
                                                                             <h5>Ao excluir a visita, ela poderá ser
                                                                                 recuperada através da lixeira.</h5>
                                                                         </div>
@@ -148,9 +148,9 @@ if (isset($_GET["info"])) {
                                                                                     data-dismiss="modal">Cancelar
                                                                             </button>
                                                                             <input type="hidden"
-                                                                                   value="<?= $visita->id ?>"
+                                                                                   value="<?php echo  $visita->id ?>"
                                                                                    name="id">
-                                                                            <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EXCLUIR_VISITA?>">
+                                                                            <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::EXCLUIR_VISITA?>">
                                                                             <button type="submit" class="btn btn-danger">
                                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                                                 Excluir visita
@@ -161,12 +161,12 @@ if (isset($_GET["info"])) {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                <? } ?>
-                                                <? if ($user_permissao != "usuario") { ?>
+                                                <?php } ?>
+                                                <?php if ($user_permissao != "usuario") { ?>
                                                     <div class="col-md-3">
                                                         <form action="e-jbsm_editar_visita.php" method="post">
                                                             <div class="input-group">
-                                                                <input type="hidden" value="<?= $visita->id ?>"
+                                                                <input type="hidden" value="<?php echo  $visita->id ?>"
                                                                        name="id">
                                                                 <button type="submit" class="btn btn-warning"
                                                                         value="Editar visita"
@@ -177,7 +177,7 @@ if (isset($_GET["info"])) {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                <? } ?>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -195,16 +195,16 @@ if (isset($_GET["info"])) {
                 if ($inicio_consulta != "" and $inicio_consulta != 0) {
                     ?>
                     <li>
-                        <a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= $inicio_consulta - 10 ?>#visitas">&laquo;</a>
+                        <a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  $inicio_consulta - 10 ?>#visitas">&laquo;</a>
                     </li>
                 <?php } ?>
-                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= 0 ?>">1</a></li>
-                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= 10 ?>">2</a></li>
-                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= 20 ?>">3</a></li>
-                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= 30 ?>">4</a></li>
-                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= 40 ?>">5</a></li>
+                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  0 ?>">1</a></li>
+                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  10 ?>">2</a></li>
+                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  20 ?>">3</a></li>
+                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  30 ?>">4</a></li>
+                <li><a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  40 ?>">5</a></li>
                 <li>
-                    <a href="e-jbsm_lista_visitas.php?inicio_consulta=<?= $inicio_consulta + 10 ?>#visitas">&raquo;</a>
+                    <a href="e-jbsm_lista_visitas.php?inicio_consulta=<?php echo  $inicio_consulta + 10 ?>#visitas">&raquo;</a>
                 </li>
             </ul>
         </nav>

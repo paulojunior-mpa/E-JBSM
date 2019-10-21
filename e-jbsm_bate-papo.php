@@ -34,12 +34,12 @@ if (isset($_GET["inicio_consulta"])) {
                         $qr = $link->query($sql);
                         while ($r = mysqli_fetch_object($qr)) {
                             ?>
-                            <option value="<?= $r->login ?>"><? echo "$r->nome / $r->login"; ?></option>
-                        <? } ?>
+                            <option value="<?php echo  $r->login ?>"><?php echo "$r->nome / $r->login"; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="col-md-4"><br>
-                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::ENVIAR_MENSAGEM?>">
+                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::ENVIAR_MENSAGEM?>">
                     <button type="submit" class="btn btn-success btn-block" value="Enviar mensagem">
                         <span class="glyphicon glyphicon-send"></span>
                         Enviar
@@ -67,37 +67,37 @@ while ($r = mysqli_fetch_object($qr)) {
     ?>
     <div class="panel panel-default" id="primeiro_topico">
         <div class="panel-body">
-            <span style="color: green"><b>Dia </b></span><? echo $r->data; ?>
-            <span style="color: green"><b>as </b></span><? echo $r->hora; ?>
-            <span style="color: green"><b>ID </b></span><? echo $r->id ?>
+            <span style="color: green"><b>Dia </b></span><?php echo $r->data; ?>
+            <span style="color: green"><b>as </b></span><?php echo $r->hora; ?>
+            <span style="color: green"><b>ID </b></span><?php echo $r->id ?>
             <table class="table">
                 <tr>
                     <td style="text-align: center; width: 7%;">
                         <?
                         imagem($r->login, 50);
                         ?>
-                        <? echo $r->login ?></b>
+                        <?php echo $r->login ?></b>
                     </td>
                     <td style="text-align: center; width: 5%;"><span style="color: green"><b>Para</b></span></td>
                     <td style="text-align: center; width: 7%;">
                         <?
                         imagem($r->para, 50);
                         ?>
-                        <?= $r->para ?>
+                        <?php echo  $r->para ?>
                     </td>
                     <td style="width: 75%; margin-left: 30%;">
                         <div id='cssmenu'>
                             <ul>
                                 <li class='active has-sub'>
                                     <a>
-                                        <?= $r->mensagem ?><br><br>
+                                        <?php echo  $r->mensagem ?><br><br>
                                     <span>
                                         <?
                                         $sql = "select id from ejbsm_batepapo_resposta where id_mensagem = $r->id;";
                                         $result = $link->query($sql) or die(mysqli_error($link));
                                         $contagem_mensagens = mysqli_num_rows($result);
                                         ?>
-                                        <span style="color: green; margin-left: 10px;"><b>Respostas<span class="badge"><?= $contagem_mensagens ?></span></b></span>
+                                        <span style="color: green; margin-left: 10px;"><b>Respostas<span class="badge"><?php echo  $contagem_mensagens ?></span></b></span>
                                     </span>
                                     </a>
                                     <ul>
@@ -118,24 +118,24 @@ while ($r = mysqli_fetch_object($qr)) {
                                                             </td>
                                                             <td> as <span STYLE="color: green"><b><?php echo "$resposta->hora"; ?></b></span>
                                                             </td>
-                                                            <? if ($resposta->login == $user_login) { ?>
+                                                            <?php if ($resposta->login == $user_login) { ?>
                                                                 <td>
                                                                     <form action="controller/SystemController.php" method="post">
-                                                                        <input type="hidden" value="<?= $resposta->id ?>" name="id">
-                                                                        <input type="hidden" value="<?=Constantes::APAGAR_RESPOSTA?>" name="opcao" id="opcao">
+                                                                        <input type="hidden" value="<?php echo  $resposta->id ?>" name="id">
+                                                                        <input type="hidden" value="<?php echo Constantes::APAGAR_RESPOSTA?>" name="opcao" id="opcao">
                                                                         <button type="submit" class="btn btn-danger" style="border-radius: 2px;">
                                                                             <span class="glyphicon glyphicon-remove"></span>
                                                                         </button>
                                                                     </form>
                                                                 </td>
-                                                            <? } ?>
+                                                            <?php } ?>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan='3'><span STYLE="color: green"><b>diz: </b></span><?= $resposta->resposta ?>
+                                                            <td colspan='3'><span STYLE="color: green"><b>diz: </b></span><?php echo  $resposta->resposta ?>
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                <? } ?>
+                                                <?php } ?>
                                             </a>
                                         </li>
                                     </ul>
@@ -154,8 +154,8 @@ while ($r = mysqli_fetch_object($qr)) {
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <input type="hidden" value="<?= $r->id ?>" name="id">
-                                                            <input type="hidden" value="<?=Constantes::ENVIAR_RESPOSTA?>" name="opcao" id="opcao">
+                                                            <input type="hidden" value="<?php echo  $r->id ?>" name="id">
+                                                            <input type="hidden" value="<?php echo Constantes::ENVIAR_RESPOSTA?>" name="opcao" id="opcao">
                                                             <button type="submit" class="btn btn-success">
                                                                 <span class="glyphicon glyphicon-send"></span>
                                                                 Enviar
@@ -171,15 +171,15 @@ while ($r = mysqli_fetch_object($qr)) {
                         </div>
                     </td>
                     <td>
-                        <? if ($r->login == $user_login) { ?>
+                        <?php if ($r->login == $user_login) { ?>
                             <form action="controller/SystemController.php" method="post">
                                 <button type="button" style="width: 100%;" class="btn btn-danger btn-block"
                                         data-toggle="modal"
-                                        data-target="#myModal<?= $j ?>">
+                                        data-target="#myModal<?php echo  $j ?>">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="myModal<?= $j ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="myModal<?php echo  $j ?>" tabindex="-1" role="dialog"
                                      aria-labelledby="myModalLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog">
@@ -191,15 +191,15 @@ while ($r = mysqli_fetch_object($qr)) {
                                                 <h4 class="modal-title" id="myModalLabel">Confirmar exclusão.</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h3>Deseja mesmo excluir esta mensagem? (ID: <?= $r->id ?>)</h3>
+                                                <h3>Deseja mesmo excluir esta mensagem? (ID: <?php echo  $r->id ?>)</h3>
                                                 <h5>Ao excluir a mensagem todas as respotas também serão apagadas.</h5>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Cancelar
                                                 </button>
-                                                <input type="hidden" value="<?=$r->id ?>" name="id">
-                                                <input type="hidden" value="<?=Constantes::APAGAR_MENSAGEM?>" name="opcao" id="opcao">
+                                                <input type="hidden" value="<?php echo $r->id ?>" name="id">
+                                                <input type="hidden" value="<?php echo Constantes::APAGAR_MENSAGEM?>" name="opcao" id="opcao">
                                                 <button type="submit" class="btn btn-danger">
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                     Apagar mensagem
@@ -209,11 +209,11 @@ while ($r = mysqli_fetch_object($qr)) {
                                     </div>
                                 </div>
                             </form>
-                        <? } else { ?>
+                        <?php } else { ?>
                             <button class="btn btn-danger disabled">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
-                        <? } ?>
+                        <?php } ?>
                     </td>
                 </tr>
             </table>
@@ -230,16 +230,16 @@ while ($r = mysqli_fetch_object($qr)) {
                 if ($inicio_consulta != "" and $inicio_consulta != 0) {
                     ?>
                     <li>
-                        <a href="e-jbsm_bate-papo.php?inicio_consulta=<?= $inicio_consulta - 10 ?>#primeiro_topico">&laquo;</a>
+                        <a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  $inicio_consulta - 10 ?>#primeiro_topico">&laquo;</a>
                     </li>
                 <?php } ?>
-                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?= 0 ?>#primeiro_topico">1</a></li>
-                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?= 10 ?>#primeiro_topico">2</a></li>
-                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?= 20 ?>#primeiro_topico">3</a></li>
-                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?= 30 ?>#primeiro_topico">4</a></li>
-                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?= 40 ?>#primeiro_topico">5</a></li>
+                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  0 ?>#primeiro_topico">1</a></li>
+                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  10 ?>#primeiro_topico">2</a></li>
+                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  20 ?>#primeiro_topico">3</a></li>
+                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  30 ?>#primeiro_topico">4</a></li>
+                <li><a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  40 ?>#primeiro_topico">5</a></li>
                 <li>
-                    <a href="e-jbsm_bate-papo.php?inicio_consulta=<?= $inicio_consulta + 10 ?>#primeiro_topico">&raquo;</a>
+                    <a href="e-jbsm_bate-papo.php?inicio_consulta=<?php echo  $inicio_consulta + 10 ?>#primeiro_topico">&raquo;</a>
                 </li>
             </ul>
         </nav>

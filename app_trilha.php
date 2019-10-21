@@ -6,7 +6,7 @@ include 'e-jbsm_cabecalho.php';
         <h3>Selecione a trilha</h3>
 
         <div class="col-md-3">
-            <? include "app_menu.php"; ?>
+            <?php include "app_menu.php"; ?>
         </div>
         <div class="col-md-9">
             <div class="alert alert-info">
@@ -51,7 +51,7 @@ include 'e-jbsm_cabecalho.php';
                     $result2 = $link->query($sql) or die(mysqli_error($link));
                     $planta = mysqli_fetch_object($result2) or die(mysqli_error($link));
                     ?>
-                    <a href='app.php?id=<?= $planta->id ?>'>
+                    <a href='app.php?id=<?php echo  $planta->id ?>'>
                         <div class="media">
                             <div class="media-left">
                                 <?
@@ -59,8 +59,8 @@ include 'e-jbsm_cabecalho.php';
                                 ?>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading"><?= $planta->nome_popular ?></h4>
-                                <label>Espécie: </label><?= $planta->especie ?>
+                                <h4 class="media-heading"><?php echo  $planta->nome_popular ?></h4>
+                                <label>Espécie: </label><?php echo  $planta->especie ?>
                             </div>
                         </div>
                     </a>

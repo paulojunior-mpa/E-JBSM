@@ -13,9 +13,9 @@ if (isset($_GET["info"]))
 
         <div class="row">
             <div class="col-md-3">
-                <? include "app_menu.php"; ?>
+                <?php include "app_menu.php"; ?>
             </div>
-            <? if ($info == "editada") {
+            <?php if ($info == "editada") {
                 echo '<div class="alert alert-success">
 <span class="glyphicon glyphicon-saved"></span>
             Planta editada!
@@ -38,7 +38,7 @@ if (isset($_GET["info"]))
                 </script>
                 <select id="seleciona_trilha" class="form-control" onchange="MostraTrilha()">
                     <option value="">Nenhuma</option>
-                    <?
+                    <?php
                     $sql = "select * from ejbsm_trilha";
                     $result = $link->query($sql);
                     while ($trilha = mysqli_fetch_object($result)) {
@@ -47,10 +47,10 @@ if (isset($_GET["info"]))
                     ?>
                 </select>
             </div>
-            <?
+            <?php
             if (isset($_GET["trilha_id"])) { ?>
                 <div class="col-md-9">
-                    <?
+                    <?php
                     $trilha_id = $_GET["trilha_id"];
                     $sql = "select * from ejbsm_trilha WHERE id = $trilha_id";
                     $result = $link->query($sql) or die(mysqli_error($link));
@@ -58,7 +58,7 @@ if (isset($_GET["info"]))
                     ?>
                     <div class="row">
                         <div class="col-md-8">
-                            <?
+                            <?php
                             if ($info == "editada") {
                                 echo "<div class='alert alert-info'><span class='glyphicon glyphicon-saved'></span>Alterarções salvas</div>";
                             }
@@ -67,11 +67,11 @@ if (isset($_GET["info"]))
                         <div class="col-md-12" id="trilha">
                             <form action="controller/AppControll.php" method="post">
                                 <h4>Trilha <input type="text" class="form-control" name="nome"
-                                                  value="<?= $trilha->nome ?>"></h4><h5>Descrição:
-                                    <textarea class="form-control" name="descricao"><?= $trilha->descricao ?></textarea>
+                                                  value="<?php echo  $trilha->nome ?>"></h4><h5>Descrição:
+                                    <textarea class="form-control" name="descricao"><?php echo  $trilha->descricao ?></textarea>
                                 </h5>
-                                <input type="hidden" name="id" value="<?= $trilha->id ?>">
-                                <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::CADASTRAR_TRILHA?>">
+                                <input type="hidden" name="id" value="<?php echo  $trilha->id ?>">
+                                <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::CADASTRAR_TRILHA?>">
                                 <button type="submit" value="Cadastrar trilha" class="btn btn-success">
                                     <span class="glyphicon glyphicon-save"></span>
                                     Salvar
@@ -101,15 +101,15 @@ if (isset($_GET["info"]))
                                                 </div>
                                                 <div class="modal-body">
                                                     <h3>Deseja mesmo excluir esta trilha?
-                                                        (ID: <?= $trilha_id ?>)</h3>
+                                                        (ID: <?php echo  $trilha_id ?>)</h3>
                                                     <h5>Ao excluir a trilha, as plantas permanecerão.</h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                                         Cancelar
                                                     </button>
-                                                    <input type="hidden" value="<?= $trilha_id ?>" name="id">
-                                                    <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_TRILHA?>">
+                                                    <input type="hidden" value="<?php echo  $trilha_id ?>" name="id">
+                                                    <input type="hidden" name="opcao" id="opcao" value="<?php echo Constantes::DELETAR_TRILHA?>">
                                                     <button type="submit" value="Deletar trilha" class="btn btn-danger">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                         Deletar
@@ -125,7 +125,7 @@ if (isset($_GET["info"]))
                     </div>
                 </div>
                 <div class="col-md-5 col-md-offset-3">
-                    <?
+                    <?php
                     //ADD NOVA PLANTA
                     if (isset($_GET["addplanta"])) {
                         $nova_planta = $_GET["addplanta"];
@@ -151,25 +151,25 @@ if (isset($_GET["info"]))
                         ?>
                         <div class="media alert alert-info">
                             <div class="media-left">
-                                <?
+                                <?php
                                 imagemPlanta($planta->img)
                                 ?>
                             </div>
                             <div class="media-body">
-                                <a href="app.php?id=<?= $planta->id ?>">
-                                    <h4 class="media-heading"><?= $planta->nome_popular ?></h4>
-                                    <label>Espécie: </label><?= $planta->especie ?>
+                                <a href="app.php?id=<?php echo  $planta->id ?>">
+                                    <h4 class="media-heading"><?php echo  $planta->nome_popular ?></h4>
+                                    <label>Espécie: </label><?php echo  $planta->especie ?>
                                 </a>
                             </div>
                             <div class="media-right">
-                                <a href="app_editar_trilha.php?trilha_id=<?= $trilha_id ?>&remplanta=<?= $planta->id ?>#trilha">
+                                <a href="app_editar_trilha.php?trilha_id=<?php echo  $trilha_id ?>&remplanta=<?php echo  $planta->id ?>#trilha">
                                     <button class="btn btn-danger">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </a>
                             </div>
                         </div>
-                        <?
+                        <?php
                     }
                     ?>
                 </div>
@@ -188,7 +188,7 @@ if (isset($_GET["info"]))
                                     }
                                 }
                                 var trilha_id = "";
-                                xmlhttp.open("GET", "helpers/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?=$trilha_id?>, true);
+                                xmlhttp.open("GET", "helpers/ajax_editar_trilhas.php?q=" + str + "&trilha_id=" +<?php echo $trilha_id?>, true);
                                 xmlhttp.send();
                             }
                         }
@@ -198,7 +198,7 @@ if (isset($_GET["info"]))
                     <br>
                     <span id="adicionar_plantas"></span>
                 </div>
-            <? } ?>
+            <?php } ?>
         </div>
     </div>
 </div>

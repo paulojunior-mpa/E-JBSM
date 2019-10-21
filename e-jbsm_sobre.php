@@ -20,9 +20,9 @@ include 'e-jbsm_cabecalho.php';
             echo "<b style='color: green'>Descrição: </b>" . $linha->descricao . "<br>";
             ?>
         </div>
-        <? /*
+        <?php /*
         <div class="panel-heading">
-            <h3 class="panel-title"><div style='color: green'><b>Localização: </b><? echo "Latitude " . $linha->latitude;
+            <h3 class="panel-title"><div style='color: green'><b>Localização: </b><?php echo "Latitude " . $linha->latitude;
                     echo " Longitude " . $linha->longitude; ?></div></h3>
         </div>
         <div class="panel-body" id="local">
@@ -39,7 +39,7 @@ include 'e-jbsm_cabecalho.php';
                             Gerar rota
                         </button>
                     </span>
-                <input type="hidden" value="<? echo "$linha->latitude, $linha->longitude" ?>" class="form-control"
+                <input type="hidden" value="<?php echo "$linha->latitude, $linha->longitude" ?>" class="form-control"
                        id="txtEnderecoChegada" name="txtEnderecoChegada"/>
             </form>
             <div id="mapa" style="height: 350px; width: 100%"></div>

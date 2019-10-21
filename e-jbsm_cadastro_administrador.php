@@ -9,11 +9,11 @@ if (isset($_GET["info"])) {
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Cadastro de administrador</h3>
-            <? if ($info == "cadastrado") { ?>
+            <?php if ($info == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Administrador cadastrado!</div>
-            <? } elseif ($info == "login") { ?>
+            <?php } elseif ($info == "login") { ?>
                 <div class="alert alert-danger" role="alert">Este login já está cadastrado!</div>
-            <? } ?>
+            <?php } ?>
             <table class="table">
                 <tr>
                     <td><h4>Dados pessoais</h4></td>

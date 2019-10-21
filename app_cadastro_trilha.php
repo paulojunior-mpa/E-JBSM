@@ -16,7 +16,7 @@ if (!empty(getParameter("info"))) {
 
         <div class="row">
             <div class="col-md-3">
-                <? include "app_menu.php"; ?>
+                <?php include "app_menu.php"; ?>
             </div>
             <div class="col-md-9">
                 <?

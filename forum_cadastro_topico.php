@@ -8,9 +8,9 @@ if (isset($_GET["info"])) {
 }
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <h3>Pesquisas personalizadas de tópicos</h3>
-    <? include 'forum_caixa _pesquisa_.php'; ?>
+    <?php include 'forum_caixa _pesquisa_.php'; ?>
     <h3>Cadastro de novo tópico</h3>
     <form action="controller/ForumController.php" method="post" enctype="multipart/form-data">
         <table class="table">
@@ -61,7 +61,7 @@ if (isset($_GET["info"])) {
         </table>
     </form>
     <!-- CADASTRO DE ÁREA -->
-    <? if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
+    <?php if ($user_permissao == "bolsista" or $user_permissao == "administrador" or $user_permissao == "orientador") { ?>
         <h3>Cadastro de área</h3>
         <?php if ($info == "area_cadastrada") { ?>
             <div class="alert alert-success" role="alert">Área cadastrada com sucesso!</div>
@@ -137,5 +137,5 @@ if (isset($_GET["info"])) {
                 </tr>
             </table>
         </form>
-    <? } ?>
+    <?php } ?>
 </div>

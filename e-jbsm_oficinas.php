@@ -37,10 +37,10 @@ if ($user_permissao != "usuario") { ?>
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);
                                     ?>
-                                    <option value="<?= $row->nome ?>"><? echo "$row->login / ";
+                                    <option value="<?= $row->nome ?>"><?php echo "$row->login / ";
                                         echo "$Pnome[0]"; ?>
                                     </option>
-                                <? } ?>
+                                <?php } ?>
                             </select>
                         </td>
                         <td colspan="2">Orientador
@@ -51,10 +51,10 @@ if ($user_permissao != "usuario") { ?>
                                 while ($row = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $row->nome);
                                     ?>
-                                    <option value="<?= $row->nome ?>"><? echo "$row->login / ";
+                                    <option value="<?= $row->nome ?>"><?php echo "$row->login / ";
                                         echo "$Pnome[0]"; ?>
                                     </option>
-                                <? } ?>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
@@ -89,7 +89,7 @@ if ($user_permissao != "usuario") { ?>
             </form>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <?
@@ -147,7 +147,7 @@ if ($user_permissao != "usuario") { ?>
                                             <b>Link para informações ou referências: </b><?= $row->anexo ?>
                                         </td>
                                     </tr>
-                                    <? if ($user_permissao != "usuario") { ?>
+                                    <?php if ($user_permissao != "usuario") { ?>
                                         <tr>
                                             <td>
                                                 <form action="e-jbsm_editar_oficina.php" method="post">
@@ -209,7 +209,7 @@ if ($user_permissao != "usuario") { ?>
                                                 </form>
                                             </td>
                                         </tr>
-                                    <? } ?>
+                                    <?php } ?>
                                 </table>
                             </li>
                         </ul>
@@ -217,6 +217,6 @@ if ($user_permissao != "usuario") { ?>
                 </ul>
             </div>
             <hr>
-        <? } ?>
+        <?php } ?>
     </div>
 </div>

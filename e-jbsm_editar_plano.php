@@ -36,10 +36,10 @@ $r = mysqli_fetch_object($qr);
                             while ($row = mysqli_fetch_object($result)) {
                                 $Pnome = explode(" ", $row->nome);
                                 ?>
-                                <option value="<?= $Pnome[0] ?>"><? echo "$row->login / ";
+                                <option value="<?= $Pnome[0] ?>"><?php echo "$row->login / ";
                                     echo "$Pnome[0]"; ?>
                                 </option>
-                            <? } ?>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>

@@ -54,7 +54,7 @@
                         <button class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown"
                                 aria-expanded="true" style="margin-bottom: 2px; text-align: left">
                             <span class="glyphicon glyphicon-menu-down"></span>
-                            <? echo $area->nome; ?>
+                            <?php echo $area->nome; ?>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                             <?
@@ -65,13 +65,13 @@
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
                                        href="forum_index.php?subarea=<?= $sub->id ?>">
-                                        <? echo $sub->nome ?>
+                                        <?php echo $sub->nome ?>
                                     </a>
                                 </li>
-                            <? } ?>
+                            <?php } ?>
                         </ul>
                     </div>
-                <? } }?>
+                <?php } }?>
             </div>
         </div>
     </div>

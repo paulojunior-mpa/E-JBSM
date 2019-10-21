@@ -8,9 +8,9 @@ if (isset($_GET["info"])) {
 }
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <h3>Lista de subáreas</h3>
-    <? if ($info == "alterada") { ?>
+    <?php if ($info == "alterada") { ?>
         <div class="alert alert-success" role="alert">Subárea alterada!<br>Tópicos desta subárea foram atualizados.
         </div>
     <?php }
@@ -31,17 +31,17 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <span style="color: green"><b>Nome: </b></span> <? echo $subarea->nome ?><br><br>
-                            <span style="color: green"><b>Descrição: </b></span> <? echo $subarea->descricao ?><br><br>
+                            <span style="color: green"><b>Nome: </b></span> <?php echo $subarea->nome ?><br><br>
+                            <span style="color: green"><b>Descrição: </b></span> <?php echo $subarea->descricao ?><br><br>
                             <?
                             $sql = "select nome from ejbsm_forum_area where id = $subarea->id_area";
                             $pega_nome = mysqli_fetch_object($link->query($sql));
                             $nome_area = $pega_nome->nome;
                             ?>
-                            <span style="color: green"><b>Área: </b></span> <? echo $nome_area ?>
+                            <span style="color: green"><b>Área: </b></span> <?php echo $nome_area ?>
                         </span>
                     </a>
-                    <? if ($user_permissao != "usuario") { ?>
+                    <?php if ($user_permissao != "usuario") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
@@ -86,7 +86,7 @@ if (isset($_GET["info"])) {
                                             </tr>
                                         </table>
                                     </form>
-                                    <? if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
+                                    <?php if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <form action="controller/ForumController.php" method="post">
                                             <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
@@ -132,11 +132,11 @@ if (isset($_GET["info"])) {
                                                 <input type="hidden" value="<?= $subarea->id ?>" name="id">
                                             </div>
                                         </form>
-                                    <? } ?>
+                                    <?php } ?>
                                 </a>
                             </li>
                         </ul>
-                    <? } ?>
+                    <?php } ?>
                 </li>
             </ul>
         </div>

@@ -53,9 +53,9 @@ if (isset($_GET["info"])) {
 }
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <h3>Pesquisas personalizadas de tópicos</h3>
-    <? include 'forum_caixa _pesquisa_.php'; ?>
+    <?php include 'forum_caixa _pesquisa_.php'; ?>
     <?
     $result = $link->query($consulta) or die(mysqli_error($link));
     $cont = 0;
@@ -64,7 +64,7 @@ if (isset($_GET["info"])) {
             $cont += 1;
         }
         ?>
-        <h3>Resultados <span class="badge"><? echo $cont; ?></span></h3>
+        <h3>Resultados <span class="badge"><?php echo $cont; ?></span></h3>
         <?
         if ($info == "topico_deletado") {
             ?>
@@ -89,14 +89,14 @@ if (isset($_GET["info"])) {
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><? echo $topico->assunto ?></h4>
-                    <span style="color: green; margin-left: 10px;"><b> ID </b></span><? echo $topico->id ?>.
+                    <h4 class="media-heading"><?php echo $topico->assunto ?></h4>
+                    <span style="color: green; margin-left: 10px;"><b> ID </b></span><?php echo $topico->id ?>.
                     <span style="color: green"><b>Por </b></span>
-                    <a href="forum_info.php?info=login&login=<?= $topico->login ?>"><? echo $topico->login ?></a>
-                    <span style="color: green"><b>dia </b></span><? echo $topico->data; ?>
-                    <span style="color: green"><b>as </b></span><? echo $topico->hora; ?>
-                    <span style="color: green"><b>na área </b></span><a href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><? echo $nome_area ?></a>
-                    <span style="color: green"><b>e subárea </b></span><a href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><? echo $nome_subarea ?></a>.
+                    <a href="forum_info.php?info=login&login=<?= $topico->login ?>"><?php echo $topico->login ?></a>
+                    <span style="color: green"><b>dia </b></span><?php echo $topico->data; ?>
+                    <span style="color: green"><b>as </b></span><?php echo $topico->hora; ?>
+                    <span style="color: green"><b>na área </b></span><a href="forum_info.php?info=area&area=<?= $topico->id_area ?>"><?php echo $nome_area ?></a>
+                    <span style="color: green"><b>e subárea </b></span><a href="forum_info.php?info=subarea&subarea=<?= $topico->id_subarea ?>"><?php echo $nome_subarea ?></a>.
                 </div>
                 <div class="media-right">
                     <a href="forum_topico.php?topico=<?= $topico->id ?>">
@@ -107,7 +107,7 @@ if (isset($_GET["info"])) {
                     </a>
                 </div>
             </div>
-        <? }
+        <?php }
     } ?>
     <nav class="paginacao">
         <ul class="pagination">

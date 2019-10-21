@@ -86,7 +86,7 @@ $user = mysqli_fetch_object($result);
                            placeholder="Celular">
                 </div>
                 <div class="col-md-6">
-                    <? if ($user->permissao != "usuario") {
+                    <?php if ($user->permissao != "usuario") {
                         if ($user->permissao == "bolsista") {
                             echo "Matricula";
                         } else {
@@ -102,10 +102,10 @@ $user = mysqli_fetch_object($result);
                         Órgão expedidor
                         <input type="text" class="form-control" name="orgao" value="<?= $user->orgao ?>"
                                placeholder="Órgão">
-                    <? } ?>
+                    <?php } ?>
                 </div>
             </div>
-            <? if ($user->permissao == "bolsista") { ?>
+            <?php if ($user->permissao == "bolsista") { ?>
                 <h3>Conta bancária</h3>
                 <div class="row">
                     <div class="col-md-6">
@@ -128,9 +128,9 @@ $user = mysqli_fetch_object($result);
                     </div>
                 </div>
                 <h3>Horários</h3>
-                <? $login_usuario = $user->login;
+                <?php $login_usuario = $user->login;
                 include 'e-jbsm_bolsista_horario.php'; ?>
-            <? } ?>
+            <?php } ?>
             <hr>
             <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PERFIL?>">
             <button type="submit" class="btn btn-success">

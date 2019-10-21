@@ -1,4 +1,4 @@
-<?
+<?php
 isUserInRole(array("administrador", "orientador", "bolsista"));
 
 if (isset($_GET["info"]) and $_GET["info"] == "editado") {
@@ -66,7 +66,7 @@ function PegaHorarios($condicao, $login, $link)
                         <h4 class="modal-title" id="myModalLabel">Horário dos bolsistas</h4>
                     </div>
                     <div class="modal-body">
-                        <?
+                        <?php
                         PegaHorarios(1, null, $link);
                         ?>
                     </div>
@@ -83,8 +83,8 @@ function PegaHorarios($condicao, $login, $link)
 <div class="panel panel-default">
     <div class="panel-body">
         <h3>Lista de bolsistas ativos</h3>
-        <?
-        $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao = 'bolsista' and status='Ativo' and ejbsm_integrante.login=ejbsm_usuario.login ORDER by status;";
+        <?php
+        $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao = 'bolsista' and status=1 and ejbsm_integrante.login=ejbsm_usuario.login ORDER by status;";
         $qr = $link->query($sql);
         while ($bolsista = mysqli_fetch_object($qr)) { ?>
             <br><br>
@@ -96,11 +96,11 @@ function PegaHorarios($condicao, $login, $link)
                         <table>
                             <tr>
                                 <td rowspan="3" style="width: 15%;" colspan="2">
-                                    <? imagem($bolsista->login, 80) ?>
+                                    <?php imagem($bolsista->login, 80) ?>
                                 </td>
-                                <td style="width: 35%;"><b>Nome: </b><? echo "{$bolsista->nome}"; ?></td>
-                                <td style="width: 25%;"><b>Login: </b><? echo "{$bolsista->login}"; ?></td>
-                                <td style="width: 35%;"><b>E-mail: </b><? echo "{$bolsista->email}"; ?></td>
+                                <td style="width: 35%;"><b>Nome: </b><?php echo "{$bolsista->nome}"; ?></td>
+                                <td style="width: 25%;"><b>Login: </b><?php echo "{$bolsista->login}"; ?></td>
+                                <td style="width: 35%;"><b>E-mail: </b><?php echo "{$bolsista->email}"; ?></td>
                             </tr>
                         </table>
                     </span>
@@ -110,31 +110,31 @@ function PegaHorarios($condicao, $login, $link)
                                 <a>
                                 <table class="table">
                                     <tr>
-                                        <td style="width: 15%;"><b>Celular: </b><?= $bolsista->celular; ?></td>
-                                        <td style="width: 15%;"><b>Fixo: </b><?= $bolsista->fixo; ?></td>
-                                        <td style="width: 15%;"><b>Matrícula: </b><?= $bolsista->id; ?></td>
-                                        <td style="width: 15%;"><b>CPF: </b><?= $bolsista->cpf; ?></td>
-                                        <td style="width: 15%;"><b>RG: </b><?= $bolsista->rg; ?></td>
+                                        <td style="width: 15%;"><b>Celular: </b><?php echo $bolsista->celular; ?></td>
+                                        <td style="width: 15%;"><b>Fixo: </b><?php echo $bolsista->fixo; ?></td>
+                                        <td style="width: 15%;"><b>Matrícula: </b><?php echo $bolsista->id; ?></td>
+                                        <td style="width: 15%;"><b>CPF: </b><?php echo $bolsista->cpf; ?></td>
+                                        <td style="width: 15%;"><b>RG: </b><?php echo $bolsista->rg; ?></td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 15%;"><b>Órgão Expedidor: </b><?= $bolsista->orgao; ?></td>
-                                        <td style="width: 15%;"><b>Área: </b><?= $bolsista->area; ?></td>
-                                        <td style="width: 15%;"><b>Ênfase: </b><?= $bolsista->subarea; ?></td>
-                                        <td style="width: 15%;"><b>Projeto: </b><?= $bolsista->projeto; ?></td>
-                                        <td style="width: 15%;"><b>Status: </b><?= $bolsista->status; ?></td>
+                                        <td style="width: 15%;"><b>Órgão Expedidor: </b><?php echo $bolsista->orgao; ?></td>
+                                        <td style="width: 15%;"><b>Área: </b><?php echo $bolsista->area; ?></td>
+                                        <td style="width: 15%;"><b>Ênfase: </b><?php echo $bolsista->subarea; ?></td>
+                                        <td style="width: 15%;"><b>Projeto: </b><?php echo $bolsista->projeto; ?></td>
+                                        <td style="width: 15%;"><b>Status: </b><?php echo $bolsista->status; ?></td>
                                     </tr>
                                     <tr>
                                         <td colspan="6" width="100%">
-                                            <? PegaHorarios(2, $bolsista->login, $link); ?>
+                                            <?php PegaHorarios(2, $bolsista->login, $link); ?>
                                         </td>
                                     </tr>
-                                    <?
+                                    <?php
                                     if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <tr>
                                             <td>
                                                 <form action="e-jbsm_editar_bolsista.php" method="post">
                                                     <div class="input-group">
-                                                        <input type="hidden" name="bolsista_login" value="<?= $bolsista->login ?>">
+                                                        <input type="hidden" name="bolsista_login" value="<?php echo $bolsista->login ?>">
                                                         <button class="btn btn-warning" type="submit" value="Editar Informações">
                                                             <span class="glyphicon glyphicon-edit"></span>
                                                             Editar informações
@@ -143,7 +143,7 @@ function PegaHorarios($condicao, $login, $link)
                                                 </form>
                                             </td>
                                         </tr>
-                                        <?
+                                        <?php
                                     }
                                     ?>
                                 </table>
@@ -153,7 +153,7 @@ function PegaHorarios($condicao, $login, $link)
                     </li>
                 </ul>
             </div>
-            <?
+            <?php
         }
         ?>
     </div>
@@ -165,7 +165,7 @@ function PegaHorarios($condicao, $login, $link)
         if (isset($_GET["info"]) and $_GET["info"] == "editado") {
             echo "<div class='alert alert-success' role='alert'>Dados do bolsista foram alterados!</div>";
         }
-        $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao = 'bolsista' and status='Inativo' AND ejbsm_integrante.login=ejbsm_usuario.login ORDER by status;";
+        $sql = "select * from ejbsm_usuario, ejbsm_integrante where permissao = 'bolsista' and status=0 AND ejbsm_integrante.login=ejbsm_usuario.login ORDER by status;";
         $qr = $link->query($sql);
         while ($bolsista = mysqli_fetch_object($qr)) { ?>
             <br><br>
@@ -177,11 +177,11 @@ function PegaHorarios($condicao, $login, $link)
                         <table>
                             <tr>
                                 <td rowspan="3" style="width: 15%;" colspan="2">
-                                    <? imagem($bolsista->login, 80); ?>
+                                    <?php imagem($bolsista->login, 80); ?>
                                 </td>
-                                <td style="width: 35%;"><b>Nome: </b><? echo "{$bolsista->nome}"; ?></td>
-                                <td style="width: 25%;"><b>Login: </b><? echo "{$bolsista->login}"; ?></td>
-                                <td style="width: 35%;"><b>E-mail: </b><? echo "{$bolsista->email}"; ?></td>
+                                <td style="width: 35%;"><b>Nome: </b><?php echo "{$bolsista->nome}"; ?></td>
+                                <td style="width: 25%;"><b>Login: </b><?php echo "{$bolsista->login}"; ?></td>
+                                <td style="width: 35%;"><b>E-mail: </b><?php echo "{$bolsista->email}"; ?></td>
                             </tr>
                         </table>
                     </span>
@@ -191,18 +191,18 @@ function PegaHorarios($condicao, $login, $link)
                                 <a>
                                 <table class="table">
                                     <tr>
-                                        <td style="width: 15%;"><b>Celular: </b><?= $bolsista->celular; ?></td>
-                                        <td style="width: 15%;"><b>Fixo: </b><?= $bolsista->fixo; ?></td>
-                                        <td style="width: 15%;"><b>Matrícula: </b><?= $bolsista->id; ?></td>
-                                        <td style="width: 15%;"><b>CPF: </b><?= $bolsista->cpf; ?></td>
-                                        <td style="width: 15%;"><b>RG: </b><?= $bolsista->rg; ?></td>
+                                        <td style="width: 15%;"><b>Celular: </b><?php echo $bolsista->celular; ?></td>
+                                        <td style="width: 15%;"><b>Fixo: </b><?php echo $bolsista->fixo; ?></td>
+                                        <td style="width: 15%;"><b>Matrícula: </b><?php echo $bolsista->id; ?></td>
+                                        <td style="width: 15%;"><b>CPF: </b><?php echo $bolsista->cpf; ?></td>
+                                        <td style="width: 15%;"><b>RG: </b><?php echo $bolsista->rg; ?></td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 15%;"><b>Órgão Expedidor: </b><?= $bolsista->orgao; ?></td>
-                                        <td style="width: 15%;"><b>Área: </b><?= $bolsista->area; ?></td>
-                                        <td style="width: 15%;"><b>Ênfase: </b><?= $bolsista->subarea; ?></td>
-                                        <td style="width: 15%;"><b>Projeto: </b><?= $bolsista->projeto; ?></td>
-                                        <td style="width: 15%;"><b>Status: </b><?= $bolsista->status; ?></td>
+                                        <td style="width: 15%;"><b>Órgão Expedidor: </b><?php echo $bolsista->orgao; ?></td>
+                                        <td style="width: 15%;"><b>Área: </b><?php echo $bolsista->area; ?></td>
+                                        <td style="width: 15%;"><b>Ênfase: </b><?php echo $bolsista->subarea; ?></td>
+                                        <td style="width: 15%;"><b>Projeto: </b><?php echo $bolsista->projeto; ?></td>
+                                        <td style="width: 15%;"><b>Status: </b><?php echo $bolsista->status; ?></td>
                                     </tr>
                                     <tr>
                                         <td colspan="6" width="100%">
@@ -215,7 +215,7 @@ function PegaHorarios($condicao, $login, $link)
                                                     <td style='width: 18%'><div>Qui</div> </td>
                                                     <td style='width: 18%'><div>Sex</div> </td>
                                                 </tr>
-                                                <? PegaHorarios(2, $bolsista->login, $link); ?>
+                                                <?php PegaHorarios(2, $bolsista->login, $link); ?>
                                             </table>
                                         </td>
                                     </tr>
@@ -225,7 +225,7 @@ function PegaHorarios($condicao, $login, $link)
                                             <td>
                                                 <form action="e-jbsm_editar_bolsista.php" method="post">
                                                     <div class="input-group">
-                                                        <input type="hidden" name="bolsista_login" value="<?= $bolsista->login ?>">
+                                                        <input type="hidden" name="bolsista_login" value="<?php echo $bolsista->login ?>">
                                                         <button class="btn btn-warning" type="submit" value="Editar Informações">Editar informações
                                                         </button>
                                                     </div>

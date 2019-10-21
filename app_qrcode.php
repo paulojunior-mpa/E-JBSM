@@ -15,9 +15,9 @@ if (isset($_POST["info"]))
 
         <div class="row">
             <div class="col-md-3">
-                <? include "app_menu.php"; ?>
+                <?php include "app_menu.php"; ?>
             </div>
-            <? if ($info == "editada") {
+            <?php if ($info == "editada") {
                 echo '<div class="alert alert-success">
 <span class="glyphicon glyphicon-saved"></span>
             Planta editada!

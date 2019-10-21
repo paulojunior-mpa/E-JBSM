@@ -1,7 +1,3 @@
-ALTER TABLE ejbsm_batepapo_mensagem DROP anexo;
-alter table ejbsm_batepapo_resposta
-  drop column anexo;
-
 ALTER TABLE ejbsm_integrante MODIFY id int(20) NOT NULL;
 
 update ejbsm_integrante set monitor = 1 where monitor;

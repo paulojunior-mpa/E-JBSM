@@ -7,9 +7,9 @@ if (isset($_GET["info"])) {
 }
 ?>
 <div class="panel-body">
-    <? include 'forum_texto.php'; ?>
+    <?php include 'forum_texto.php'; ?>
     <h3>Lista de áreas</h3>
-    <? if ($info == "alterada") { ?>
+    <?php if ($info == "alterada") { ?>
         <div class="alert alert-success" role="alert">
             Área alterada!<br>Subáreas desta área foram atualizadas.<br>Tópicos desta área foram atualizados.
         </div>
@@ -32,11 +32,11 @@ if (isset($_GET["info"])) {
                 <li class='active has-sub'>
                     <a>
                         <span>
-                            <span="color: green"><b>Nome: </b></span> <? echo $area->nome ?><br><br>
-                            <span style="color: green"><b>Descrição: </b></span> <? echo $area->descricao ?>
+                            <span="color: green"><b>Nome: </b></span> <?php echo $area->nome ?><br><br>
+                            <span style="color: green"><b>Descrição: </b></span> <?php echo $area->descricao ?>
                         </span>
                     </a>
-                    <? if ($user_permissao != "usuario") { ?>
+                    <?php if ($user_permissao != "usuario") { ?>
                         <ul>
                             <li class='has-sub'>
                                 <a>
@@ -68,7 +68,7 @@ if (isset($_GET["info"])) {
                                             </tr>
                                         </table>
                                     </form>
-                                    <? if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
+                                    <?php if ($user_permissao == "administrador" or $user_permissao == "orientador") { ?>
                                         <form action="controller/ForumController.php" method="post">
                                             <div class="modal fade" id="myModal<?=$j?>" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
@@ -112,11 +112,11 @@ if (isset($_GET["info"])) {
                                             </button>
                                             <input type="hidden" value="<?= $area->id ?>" name="id">
                                         </form>
-                                    <? } ?>
+                                    <?php } ?>
                                 </a>
                             </li>
                         </ul>
-                    <? } ?>
+                    <?php } ?>
                 </li>
             </ul>
         </div>

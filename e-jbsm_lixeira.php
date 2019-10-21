@@ -72,7 +72,7 @@ if ($info == "deletada") {
                                         </div>
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <? if ($visita->status != "Confirmada") { ?>
+                                                <?php if ($visita->status != "Confirmada") { ?>
                                                     <div class="col-md-3">
                                                         <form action="controller/SystemController.php" method="post">
                                                             <button type="button" class="btn btn-danger"
@@ -115,8 +115,8 @@ if ($info == "deletada") {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                <? } ?>
-                                                <? if ($user_permissao != "usuario") { ?>
+                                                <?php } ?>
+                                                <?php if ($user_permissao != "usuario") { ?>
                                                     <div class="col-md-3">
                                                         <form action="e-jbsm_editar_visita.php" method="post">
                                                             <div class="input-group">
@@ -128,7 +128,7 @@ if ($info == "deletada") {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                <? } ?>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -138,6 +138,6 @@ if ($info == "deletada") {
                     </li>
                 </ul>
             </div>
-        <? } ?>
+        <?php } ?>
     </div>
 </div>

@@ -466,6 +466,7 @@ login =  '$user_login' WHERE  id ='$id';";
             $semana = array("seg", "ter", "qua", "qui", "sex");
             $h = 8;
             $h2 = 9;
+            $sql = "UPDATE ejbsm_horario_bolsista SET ";
             for ($i = 0; $i < 8; $i++) {
                 if ($h == 12) {
                     $h++;
@@ -474,60 +475,15 @@ login =  '$user_login' WHERE  id ='$id';";
                 for ($j = 0; $j < 5; $j++) {
                     ${$semana[$j] . $h . $h2} = 0;
                     if (isset($_POST["$semana[$j]$h$h2"])) {
-                        ${$semana[$j] . $h . $h2} = getParameter("$semana[$j]$h$h2");
+                        if($j != 0 OR $i != 0)
+                            $sql .= ', ';
+                        $sql.= $semana[$j] .$h . $h2 . " = '" . getParameter($semana[$j] . $h . $h2) . "' ";
                     }
                 }
                 $h++;
                 $h2++;
             }
-            $sql = "UPDATE ejbsm_horario_bolsista SET
-seg89 =  '$seg89',
-ter89 =  '$ter89',
-qua89 =  '$qua89',
-qui89 =  '$qui89',
-sex89 =  '$sex89',
-
-seg910 =  '$seg910',
-ter910 =  '$ter910',
-qua910 =  '$qua910',
-qui910 =  '$qui910',
-sex910 =  '$sex910',
-
-seg1011 =  '$seg1011',
-ter1011 =  '$ter1011',
-qua1011 =  '$qua1011',
-qui1011 =  '$qui1011',
-sex1011 =  '$sex1011',
-
-seg1112 =  '$seg1112',
-ter1112 =  '$ter1112',
-qua1112 =  '$qua1112',
-qui1112 =  '$qui1112',
-sex1112 =  '$sex1112',
-
-seg1314 =  '$seg1314',
-ter1314 =  '$ter1314',
-qua1314 =  '$qua1314',
-qui1314 =  '$qui1314',
-sex1314 =  '$sex1314',
-
-seg1415 =  '$seg1415',
-ter1415 =  '$ter1415',
-qua1415 =  '$qua1415',
-qui1415 =  '$qui1415',
-sex1415 =  '$sex1415',
-
-seg1516 =  '$seg1516',
-ter1516 =  '$ter1516',
-qua1516 =  '$qua1516',
-qui1516 =  '$qui1516',
-sex1516 =  '$sex1516',
-
-seg1617 =  '$seg1617',
-ter1617 =  '$ter1617',
-qua1617 =  '$qua1617',
-qui1617 =  '$qui1617',
-sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
+            $sql.= " WHERE login =  '$loginBolsista'";
 
             $link->query($sql) or die(mysqli_error($link));
             header('location: ../e-jbsm_lista_bolsistas.php?info=editado');
@@ -637,68 +593,8 @@ sex1617 =  '$sex1617' WHERE login =  '$loginBolsista'";
             $semana = array("seg", "ter", "qua", "qui", "sex");
             $h = 8;
             $h2 = 9;
-            for ($i = 0; $i < 8; $i++) {
-                if ($h == 12) {
-                    $h++;
-                    $h2++;
-                }
-                for ($j = 0; $j < 5; $j++) {
-                    ${$semana[$j] . $h . $h2} = 0;
-                    if (isset($_POST["$semana[$j]$h$h2"])) {
-                        ${$semana[$j] . $h . $h2} = getParameter("$semana[$j]$h$h2");
-                    }
-                }
-                $h++;
-                $h2++;
-            }
-            $sql = "UPDATE ejbsm_horario_bolsista SET
-seg89 =  '$seg89',
-ter89 =  '$ter89',
-qua89 =  '$qua89',
-qui89 =  '$qui89',
-sex89 =  '$sex89',
+            $sql.= " WHERE login =  '$user_login'";
 
-seg910 =  '$seg910',
-ter910 =  '$ter910',
-qua910 =  '$qua910',
-qui910 =  '$qui910',
-sex910 =  '$sex910',
-
-seg1011 =  '$seg1011',
-ter1011 =  '$ter1011',
-qua1011 =  '$qua1011',
-qui1011 =  '$qui1011',
-sex1011 =  '$sex1011',
-
-seg1112 =  '$seg1112',
-ter1112 =  '$ter1112',
-qua1112 =  '$qua1112',
-qui1112 =  '$qui1112',
-sex1112 =  '$sex1112',
-
-seg1314 =  '$seg1314',
-ter1314 =  '$ter1314',
-qua1314 =  '$qua1314',
-qui1314 =  '$qui1314',
-sex1314 =  '$sex1314',
-
-seg1415 =  '$seg1415',
-ter1415 =  '$ter1415',
-qua1415 =  '$qua1415',
-qui1415 =  '$qui1415',
-sex1415 =  '$sex1415',
-
-seg1516 =  '$seg1516',
-ter1516 =  '$ter1516',
-qua1516 =  '$qua1516',
-qui1516 =  '$qui1516',
-sex1516 =  '$sex1516',
-
-seg1617 =  '$seg1617',
-ter1617 =  '$ter1617',
-qua1617 =  '$qua1617',
-qui1617 =  '$qui1617',
-sex1617 =  '$sex1617' WHERE login =  '$user_login'";
 
             $link->query($sql) or die(mysqli_error($link));
 

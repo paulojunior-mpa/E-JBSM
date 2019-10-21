@@ -22,12 +22,12 @@ if ($q !== "") {
             </div>
             <div class="media-body">
                 <a href="app.php?id=<?=$a->id?>">
-                    <h4 class="media-heading"><?= $a->nome_popular ?></h4>
-                    Espécie: <?= $a->especie ?><br>
+                    <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
+                    Espécie: <?php echo $a->especie ?><br>
                 </a>
             </div>
             <div class="media-right">
-                <a href="app_editar_trilha.php?trilha_id=<?= $trilha_id ?>&addplanta=<?= $a->id ?>#trilha">
+                <a href="app_editar_trilha.php?trilha_id=<?php echo $trilha_id ?>&addplanta=<?php echo $a->id ?>#trilha">
                     <button class="btn btn-success" style="min-width: 0">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>

@@ -12,15 +12,15 @@ if (isset($_GET["info"])) {
         <h3>Pesuisa por planta</h3>
 
         <div class="col-md-3">
-            <? include "app_menu.php"; ?>
+            <?php include "app_menu.php"; ?>
         </div>
         <div class="col-md-9">
             <!--BOAS VINDAS-->
-            <? if ($info == "permissao") { ?>
+            <?php if ($info == "permissao") { ?>
                 <div class="alert alert-warning">
                     Somente administradores tem acesso a alterações no sistema.
                 </div>
-            <? } ?>
+            <?php } ?>
             <div class="alert alert-info">
                 Olá, aqui você pode realizar pesquisas por espécimes do JBSM.
             </div>

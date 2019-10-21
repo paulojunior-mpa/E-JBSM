@@ -44,10 +44,10 @@ if ($user_permissao != "usuario") { ?>
                                 while ($r = mysqli_fetch_object($result)) {
                                     $Pnome = explode(" ", $r->nome);
                                     ?>
-                                    <option value="<?= $Pnome[0] ?>"><? echo "$r->login / ";
+                                    <option value="<?php echo $Pnome[0] ?>"><?php echo "$r->login / ";
                                         echo "$Pnome[0]"; ?>
                                     </option>
-                                <? } ?>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
@@ -112,7 +112,7 @@ if ($user_permissao != "usuario") { ?>
             </form>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <?
@@ -129,48 +129,48 @@ if ($user_permissao != "usuario") { ?>
                     <li class='active has-sub'>
                         <a>
                         <span>
-                            <b>ID: </b><? echo "{$r->id}"; ?>
-                            <b>Nome: </b><? echo "{$r->nome}"; ?>
-                            <b>Publico alvo: </b><? echo "{$r->publico_alvo}"; ?>
-                            <b>Nome do guia: </b><? echo "{$r->monitor}"; ?>
-                            <b>Por: </b><? echo "{$r->login}"; ?>
+                            <b>ID: </b><?php echo "{$r->id}"; ?>
+                            <b>Nome: </b><?php echo "{$r->nome}"; ?>
+                            <b>Publico alvo: </b><?php echo "{$r->publico_alvo}"; ?>
+                            <b>Nome do guia: </b><?php echo "{$r->monitor}"; ?>
+                            <b>Por: </b><?php echo "{$r->login}"; ?>
                         </span>
                         </a>
                         <ul>
                             <li class='has-sub'>
                                 <table class="table">
                                     <tr>
-                                        <td colspan="2"><b>Nome: </b><?= $r->nome ?></td>
+                                        <td colspan="2"><b>Nome: </b><?php echo $r->nome ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Público alvo: </b><?= $r->publico_alvo ?></td>
+                                        <td colspan="2"><b>Público alvo: </b><?php echo $r->publico_alvo ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Guia: </b><?= $r->monitor ?></td>
+                                        <td colspan="2"><b>Guia: </b><?php echo $r->monitor ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Objetivo: </b><?= $r->objetivo ?></td>
+                                        <td colspan="2"><b>Objetivo: </b><?php echo $r->objetivo ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Assuntos para aobrdar: </b><?= $r->assunto ?></td>
+                                        <td colspan="2"><b>Assuntos para aobrdar: </b><?php echo $r->assunto ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Recursos extras: </b><?= $r->recursos ?></td>
+                                        <td colspan="2"><b>Recursos extras: </b><?php echo $r->recursos ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Locais a serem visitados: </b><?= $r->locais ?></td>
+                                        <td colspan="2"><b>Locais a serem visitados: </b><?php echo $r->locais ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Relevância de cada local: </b><?= $r->relevancia ?></td>
+                                        <td colspan="2"><b>Relevância de cada local: </b><?php echo $r->relevancia ?></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><b>Instrumento de coleta de dados: </b> <?= $r->instrumento ?></td>
+                                        <td colspan="2"><b>Instrumento de coleta de dados: </b> <?php echo $r->instrumento ?></td>
                                     </tr>
-                                    <? if ($user_permissao != "usuario") { ?>
+                                    <?php if ($user_permissao != "usuario") { ?>
                                         <tr>
                                             <td>
                                                 <form action="e-jbsm_editar_plano.php" method="post">
-                                                    <input type="hidden" name="id" value="<?= $r->id ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $r->id ?>">
                                                     <button type="submit" class="btn btn-warning" value="Editar">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                         Editar
@@ -180,7 +180,7 @@ if ($user_permissao != "usuario") { ?>
                                             <td>
                                                 <form action="controller/SystemController.php" method="post">
                                                     <input class="form-control" type="hidden" name="id"
-                                                           value="<?= $r->id ?>">
+                                                           value="<?php echo $r->id ?>">
                                                     <!-- Modal -->
                                                     </button>
                                                     <button type="button" class="btn btn-danger"
@@ -206,14 +206,14 @@ if ($user_permissao != "usuario") { ?>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <h3>Deseja mesmo excluir este plano?
-                                                                        (ID: <?= $r->id ?>)</h3>
+                                                                        (ID: <?php echo $r->id ?>)</h3>
                                                                     <h5></h5>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default"
                                                                             data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <input type="hidden" value="<?= $r->id ?>" name="codigo">
+                                                                    <input type="hidden" value="<?php echo $r->id ?>" name="codigo">
                                                                     <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::DELETAR_PLANO?>">
                                                                     <button type="submit" class="btn btn-danger">
                                                                         <span class="glyphicon glyphicon-remove"></span>
@@ -226,7 +226,7 @@ if ($user_permissao != "usuario") { ?>
                                                 </form>
                                             </td>
                                         </tr>
-                                    <? } ?>
+                                    <?php } ?>
                                 </table>
                             </li>
                         </ul>
@@ -234,6 +234,6 @@ if ($user_permissao != "usuario") { ?>
                 </ul>
             </div>
             <hr>
-        <? } ?>
+        <?php } ?>
     </div>
 </div>

@@ -55,35 +55,35 @@ if (isset($_GET["info"])) {
                 <tr>
                     <td><div size="4" color="#556b2f">Manhã</div></td>
                     <td>
-                        <? if ($r->manha_segunda == 1) {
+                        <?php if ($r->manha_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_terca == 1) {
+                        <?php if ($r->manha_terca == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_quarta == 1) {
+                        <?php if ($r->manha_quarta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_quinta == 1) {
+                        <?php if ($r->manha_quinta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->manha_sexta == 1) {
+                        <?php if ($r->manha_sexta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
@@ -93,35 +93,35 @@ if (isset($_GET["info"])) {
                 <tr>
                     <td><div size="4" color="#556b2f">Tarde</div></td>
                     <td>
-                        <? if ($r->tarde_segunda == 1) {
+                        <?php if ($r->tarde_segunda == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_terca == 1) {
+                        <?php if ($r->tarde_terca == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_quarta == 1) {
+                        <?php if ($r->tarde_quarta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_quinta == 1) {
+                        <?php if ($r->tarde_quinta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
                         } ?>
                     </td>
                     <td>
-                        <? if ($r->tarde_sexta == 1) {
+                        <?php if ($r->tarde_sexta == 1) {
                             echo "<img src='arquivos_imagem_sistema/certo.png'>";
                         } else {
                             echo "<img src='arquivos_imagem_sistema/errado.png'>";
@@ -129,7 +129,7 @@ if (isset($_GET["info"])) {
                     </td>
                 </tr>
             </table>
-        <? }
+        <?php }
         $data = "";
         if (isset($_GET["data"])) {
             $data = $_GET["data"];
@@ -174,7 +174,7 @@ if (isset($_GET["info"])) {
                             Calendário anual de visitas.</h4>
                     </div>
                     <div class="modal-body">
-                        <? include 'e-jbsm_calendario_.php' ?>
+                        <?php include 'e-jbsm_calendario_.php' ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
@@ -187,9 +187,9 @@ if (isset($_GET["info"])) {
         <h3>Cadastro de visita</h3>
 
         <div class="panel-body" id="cadastrada">
-            <? if ($info == "cadastrada") { ?>
+            <?php if ($info == "cadastrada") { ?>
                 <div class="alert alert-info" role="alert">Visita cadastrada!</div>
-            <? } ?>
+            <?php } ?>
         </div>
         <form action="controller/SystemController.php" method="post">
             <h4>1º - Dados dos visitantes</h4>
@@ -275,7 +275,7 @@ if (isset($_GET["info"])) {
                            name="visita_responsavel">
                     Telefone para contato
                     <input type="number" class="form-control" placeholder="Somente números" name="visita_fone">
-                    <? if ($user_permissao != "usuario") { ?>
+                    <?php if ($user_permissao != "usuario") { ?>
                         Plano de visitação
                         <select name="visita_plano" required class="form-control">
                             <?php
@@ -288,7 +288,7 @@ if (isset($_GET["info"])) {
                                 </option>
                             <?php } ?>
                         </select>
-                    <? } ?>
+                    <?php } ?>
                     <hr>
                 </div>
             </div>

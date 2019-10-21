@@ -18,7 +18,7 @@ $r = mysqli_fetch_object($result);
                 <tr>
                     <td>
                         Data
-                        <input type="date" class="form-control" value="<?= $r->data ?>"
+                        <input type="date" class="form-control" value="<?php echo $r->data ?>"
                                name="programacao_data" required="">
                     </td>
                 </tr>
@@ -38,28 +38,28 @@ $r = mysqli_fetch_object($result);
                     <td>
                         Houve algum fato significativo na semana que passou?
             <textarea class="form-control" name="programacao_fato" required=""
-                      placeholder="Houve algum fato extremamente significativo na semana que passou?"><? echo "$r->fato_significativo"; ?></textarea>
+                      placeholder="Houve algum fato extremamente significativo na semana que passou?"><?php echo "$r->fato_significativo"; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Cite pontos positivos (produtivos) na semana que passou.
             <textarea class="form-control" name="programacao_pontos_produtivos" required=""
-                      placeholder="Cite pontos positivos (produtivos) na semana que passou."><? echo "$r->produtivos"; ?></textarea>
+                      placeholder="Cite pontos positivos (produtivos) na semana que passou."><?php echo "$r->produtivos"; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Cite pontos negativos (improdutivos) na semana que passou.
             <textarea class="form-control" name="programacao_pontos_inprodutivos" required=""
-                      placeholder="Cite pontos negativos (improdutivos) na semana que passou."><? echo $r->improdutivos; ?></textarea>
+                      placeholder="Cite pontos negativos (improdutivos) na semana que passou."><?php echo $r->improdutivos; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Você teria alguma sugestão para melhorar rendimento nas atividades executadas?
             <textarea class="form-control" name="programacao_sugestao" required=""
-                      placeholder="Você teria alguma sugestão para melhorar rendimento nas atividades executadas?"><? echo $r->sugestao; ?></textarea>
+                      placeholder="Você teria alguma sugestão para melhorar rendimento nas atividades executadas?"><?php echo $r->sugestao; ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -67,54 +67,54 @@ $r = mysqli_fetch_object($result);
                         Algum item ou material se fez necessário para um melhor aproveitamento na execução das
                         atividades?
             <textarea class="form-control" name="programacao_material" required=""
-                      placeholder="Algum item ou material se fez necessário para um melhor aproveitamento na execução das atividades?"><? echo "$r->material_necessario"; ?></textarea>
+                      placeholder="Algum item ou material se fez necessário para um melhor aproveitamento na execução das atividades?"><?php echo "$r->material_necessario"; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Atividade prioritária para a próxima semana
             <textarea class="form-control" placeholder="Atividade prioritária para a próxima semana"
-                      name="programacao_prioritaria" required=""><? echo $r->prioridades; ?></textarea>
+                      name="programacao_prioritaria" required=""><?php echo $r->prioridades; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Segunda
                         <textarea class="form-control" name="programacao_segunda"
-                                  required=""><? echo $r->segunda; ?></textarea>
+                                  required=""><?php echo $r->segunda; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Terça
                         <textarea class="form-control" name="programacao_terca"
-                                  required=""><? echo $r->terca; ?></textarea>
+                                  required=""><?php echo $r->terca; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Quarta
                         <textarea class="form-control" name="programacao_quarta"
-                                  required=""><? echo $r->quarta; ?></textarea>
+                                  required=""><?php echo $r->quarta; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Quinta
                         <textarea class="form-control" name="programacao_quinta"
-                                  required=""><? echo $r->quinta; ?></textarea>
+                                  required=""><?php echo $r->quinta; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Sexta
                         <textarea class="form-control" name="programacao_sexta"
-                                  required=""><? echo $r->sexta; ?></textarea>
+                                  required=""><?php echo $r->sexta; ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="id" value="<?= $r->id ?>">
+                        <input type="hidden" name="id" value="<?php echo $r->id ?>">
                         <input type="hidden" name="opcao" id="opcao" value="<?=Constantes::EDITAR_PROGRAMACAO?>">
                         <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-save"></span>

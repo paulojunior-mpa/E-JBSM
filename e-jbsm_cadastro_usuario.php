@@ -32,12 +32,12 @@ if (isset($_REQUEST["usuario"])) {
                 <div class="form-group">
                     <label for="nome">Nome completo</label>
                     <input type="text" class="form-control" id="usuario_nome" placeholder="Nome completo" required=""
-                           name="usuario_nome" value="<?= $usuario['nome']; ?>">
+                           name="usuario_nome" value="<?php echo $usuario['nome']; ?>">
                 </div>
                 <div class="form-group">
                     <label for="cidade">Cidade</label>
                     <input type="text" class="form-control" placeholder="Cidade" name="usuario_cidade" id="cidade"
-                           value="<?= $usuario['cidade']; ?>">
+                           value="<?php echo $usuario['cidade']; ?>">
                 </div>
             </div>
             <div class="col-md-6">
@@ -46,14 +46,14 @@ if (isset($_REQUEST["usuario"])) {
                     <input type="tel" id="celular" OnKeyPress="formatar('##-####-#####', this)" maxlength="13"
                            class="form-control" required placeholder="xx-xxxx-xxxx"
                            name="usuario_celular"
-                           value="<?= $usuario['celular']; ?>">
+                           value="<?php echo $usuario['celular']; ?>">
                     </td>
                 </div>
                 <div class="form-group">
                     <label for="fixo">Telefone fixo</label>
                     <input type="tel" OnKeyPress="formatar('##-####-#####', this)" maxlength="13"
                            class="form-control" placeholder="xx-xxxx-xxxx" required name="usuario_fixo" id="fixo"
-                           value="<?= $usuario['fixo']; ?>">
+                           value="<?php echo $usuario['fixo']; ?>">
                 </div>
             </div>
             <div class="col-md-6">
@@ -61,7 +61,7 @@ if (isset($_REQUEST["usuario"])) {
                     <label for="email">Email</label>
                     <input type="email" class="form-control" placeholder="E-mail" required="" id="email"
                            name="usuario_email"
-                           value="<?= $usuario['email']; ?>">
+                           value="<?php echo $usuario['email']; ?>">
                 </div>
             </div>
             <div class="col-md-12">
@@ -71,12 +71,12 @@ if (isset($_REQUEST["usuario"])) {
             <div class="form-group col-md-6">
                 <label for="login_user">Login</label>
                 <input type="text" class="form-control" placeholder="insira seu login desejado" id="login_user"
-                       required="" name="usuario_login" value="<?= $usuario['login'] ?>">
+                       required="" name="usuario_login" value="<?php echo $usuario['login'] ?>">
             </div>
             <div class="form-group col-md-6">
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" placeholder="insira a senha" required="" id="senha"
-                       name="usuario_senha" value="<?= $usuario['senha'] ?>">
+                       name="usuario_senha" value="<?php echo $usuario['senha'] ?>">
             </div>
             <div class="form-group col-md-6">
                 <label for="repita_senha">Repita a senha</label>
@@ -101,16 +101,16 @@ if (isset($_REQUEST["usuario"])) {
             </div>
         </form>
     </div>
-    <? if ($info == "senha") { ?>
+    <?php if ($info == "senha") { ?>
         <div class="alert alert-danger" role="alert">As senhas não são iguais, pro favor insira novamente a
             senha e a confirme.
         </div>
-    <? } elseif ($info == "login") { ?>
+    <?php } elseif ($info == "login") { ?>
         <div class="alert alert-danger" role="alert">O login digitado já existe, tente outro.</div>
-    <? } elseif ($info == "cadastrado") { ?>
+    <?php } elseif ($info == "cadastrado") { ?>
         <div class="alert alert-success" role="alert">Usuario cadastrado! Você será redirecionado em 5
             segundos
         </div>
         <meta http-equiv="refresh" content="5; url=index.php?info=cadastrado">
-    <? } ?>
+    <?php } ?>
 </div>

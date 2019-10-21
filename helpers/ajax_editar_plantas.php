@@ -24,8 +24,8 @@ if ($q !== null) {
                     ?>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><?= $a->nome_popular ?></h4>
-                    Espécie: <?= $a->especie ?><br>
+                    <h4 class="media-heading"><?php echo $a->nome_popular ?></h4>
+                    Espécie: <?php echo $a->especie ?><br>
                     Descrição: <?=$a->descricao?>
                 </div>
             </div>

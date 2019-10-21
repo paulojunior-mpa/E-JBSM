@@ -62,13 +62,13 @@ if (isset($_GET["email"])) {
                             </button>
                         </td>
                     </tr>
-                    <? if ($info == "nao") { ?>
+                    <?php if ($info == "nao") { ?>
                         <tr>
                             <td>
                                 <div class="alert alert-danger" role="alert">Este login não está cadastrado</div>
                             </td>
                         </tr>
-                    <? } elseif ($info == "enviada") { ?>
+                    <?php } elseif ($info == "enviada") { ?>
                         <tr>
                             <td>
                                 <div class="alert alert-success" role="alert">
@@ -81,7 +81,7 @@ if (isset($_GET["email"])) {
                                 </div>
                             </td>
                         </tr>
-                    <? } ?>
+                    <?php } ?>
                     <tr>
                         <td>
                             Caso o login inserido esteja cadastrado, sua nova senha será enviada para o e-mail

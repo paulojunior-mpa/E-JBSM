@@ -9,11 +9,11 @@ if (isset($_GET["info"])) {
     <div class="panel-body">
         <h3>Cadastro bolsista</h3>
         <form action="controller/SystemController.php" method="post">
-            <? if ($info == "cadastrado") { ?>
+            <?php if ($info == "cadastrado") { ?>
                 <div class="alert alert-success" role="alert">Bolsista cadastrado!</div>
-            <? } elseif ($info == "login") { ?>
+            <?php } elseif ($info == "login") { ?>
                 <div class="alert alert-danger" role="alert">Este login já está cadastrado!</div>
-            <? } ?>
+            <?php } ?>
             <table class="table">
                 <tr>
                     <td colspan="3">

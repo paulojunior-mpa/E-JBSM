@@ -33,10 +33,10 @@ isUserInRole(array("administrador", "orientador", "bolsista"));
                         imagem($r->login, 80);
                         ?>
                     </td>
-                    <td><? echo "{$r->nome}"; ?></td>
-                    <td><? echo "{$r->id}"; ?></td>
-                    <td><? echo "{$r->login}"; ?></td>
-                    <td><? echo "{$r->email}"; ?></td>
+                    <td><?php echo "{$r->nome}"; ?></td>
+                    <td><?php echo "{$r->id}"; ?></td>
+                    <td><?php echo "{$r->login}"; ?></td>
+                    <td><?php echo "{$r->email}"; ?></td>
                     <td class="active"><a href="forum_info.php?info=login&login=<?= $r->login ?>">Mais</a></td>
                 </tr>
             <?
